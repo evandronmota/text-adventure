@@ -13,8 +13,10 @@ int main() {
     insere(t, "teste", val);
     Elemento* vel = busca(t, "teste");
     printf("%s\n", vel->n);
+    retira(t, "teste");
+    vel = busca(t, "teste");
+    printf("%s\n", (vel==NULL ? "null" : vel->n));
     destroi(t);
 
-    // simulacao da lista_ligada
     return 0;
 }
