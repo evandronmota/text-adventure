@@ -1,9 +1,9 @@
 typedef struct {
     int tam;
-    Lista* elementos;
+    Lista *elementos;
 } tabSim;
 
-typedef tabSim* TabSim;
+typedef tabSim *TabSim;
 
 TabSim cria(int tam);
 void destroi(TabSim t);

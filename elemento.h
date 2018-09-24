@@ -1,3 +1,3 @@
 typedef struct {
-    char* n;
+    char *n;
 } Elemento;

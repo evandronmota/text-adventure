@@ -27,19 +27,20 @@ void destroi(TabSim t) {
     free(t);
 }
 
-int insere(TabSim t, char* n, Elemento* val) {
+int insere(TabSim t, char *n, Elemento *val) {
     int h = hash(t->tam, n);
     insereL(t->elementos[h], val);
     return 1;
 }
 
-Elemento* busca(TabSim t, char *n) {
+// Associar nomes diferentes ao mesmo elemento?
+// Gera mesmo hash com nomes diferentes e adiciona um nome a mais ao elemento, então na busca procura na lista de nomes.
+Elemento *busca(TabSim t, char *n) {
     int h = hash(t->tam, n);
-    if (t->elementos[h]->next != NULL)
-        return buscaL(t->elementos[h], n);
-    return NULL;
+    return buscaL(t->elementos[h], n);
 }
 
+// Liberando a memória?
 int retira(TabSim t, char *n) {
     int h = hash(t->tam, n);
     if (retiraL(t->elementos[h], buscaL(t->elementos[h], n)) != NULL)

@@ -21,6 +21,7 @@ void destroiL(Lista l) {
     free(p);
 }
 
+// Erro ao inserir?
 Lista insereL(Lista l, Elemento *val) {
     Lista new = criaL();
     new->next = l->next;
@@ -40,6 +41,7 @@ Elemento *buscaL(Lista l, char *n) {
     return NULL;
 }
 
+// Não remove da memória?
 Elemento *retiraL(Lista l, Elemento *val) {
     Lista p = l->next;
     Lista anterior = l;

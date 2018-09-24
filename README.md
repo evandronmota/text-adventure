@@ -1,2 +1,0 @@
-# Aventura do Gubi
-
