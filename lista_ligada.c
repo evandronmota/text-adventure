@@ -10,7 +10,7 @@ Lista criaL() {
 }
 
 void destroiL(Lista l) {
-    Lista p = l->next;
+    Lista p = l->next;  
     free(l);
     Lista aux;
     while (p != NULL) {
@@ -41,7 +41,6 @@ Elemento *buscaL(Lista l, char *n) {
     return NULL;
 }
 
-// Não remove da memória?
 Elemento *retiraL(Lista l, Elemento *val) {
     Lista p = l->next;
     Lista anterior = l;
