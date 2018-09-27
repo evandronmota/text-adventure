@@ -4,6 +4,8 @@
 
 Lista criaL() {
     Lista l = malloc(sizeof(struct node));
+    if (l == NULL)
+        return NULL;
     l->next = NULL;
     l->val = NULL;
     return l;
@@ -21,9 +23,10 @@ void destroiL(Lista l) {
     free(p);
 }
 
-// Erro ao inserir?
 Lista insereL(Lista l, Elemento *val) {
     Lista new = criaL();
+    if (new == NULL)
+        return NULL;
     new->next = l->next;
     new->val = val;
     l->next = new;
@@ -33,9 +36,11 @@ Lista insereL(Lista l, Elemento *val) {
 
 Elemento *buscaL(Lista l, char *n) {
     Lista p = l->next;
+    int i;
     while (p != NULL) {
-        if (p->val->n == n)
-            return p->val;
+        for (i=0; i < p->val->posLivre; i++)
+            if (p->val->nicks[i] == n)
+                return p->val;
         p = p->next;
     }
     return NULL;
