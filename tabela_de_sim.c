@@ -41,11 +41,13 @@ Elemento *busca(TabSim t, char *n) {
 }
 
 int retira(TabSim t, char *n) {
-    int h = hash(t->tam, n);
+    int h = hash(t->tam, n), i;
     Elemento *el = buscaL(t->elementos[h], n);
-    if (retiraL(t->elementos[h], el) != NULL){
-        free(el);
-        return 1;
+    for (i=0; i<el->posLivre; i++) {
+        h = hash(t->tam, el->nicks[i]);
+        retiraL(t->elementos[h], buscaL(t->elementos[h], el->nicks[i]));
     }
+    free(el);
+
     return 0;
 }
