@@ -29,27 +29,26 @@ int main() {
     insere(t, "gaodra", el1);
 
     // TESTE: BUSCA ------------------------------------------------------------------------------------
-    // Saída correta: dragao com asas de fogo
+    printf("Saída correta: 'dragao com asas de fogo'\n");
     el2 = busca(t, "dragao");
-    printf("%s\n", el2->n);
+    printf("SAÍDA: %s\n\n", el2->n);
 
-    // Saída correta: dragao com asas de fogo
+    printf("Saída correta: 'dragao com asas de fogo' \n");
     el2 = busca(t, "feioso");
-    printf("%s\n", el2->n);
+    printf("SAÍDA: %s\n\n", el2->n);
 
-    // Saída correta: dragao com colisao
+    printf("Saída correta: 'dragao com colisao' \n");
     el2 = busca(t, "gaodra");
-    printf("%s\n", el2->n);
+    printf("SAÍDA: %s\n\n", el2->n);
 
     // TESTE: RETIRA -----------------------------------------------------------------------------------
-    // Saída correta: NÃO ENCONTRADO!, NÃO ENCONTRADO! e dragao com colisao
     retira(t, "dragao");
     el2 = busca(t, "dragao");
-    printf("%s\n", (el2==NULL ? "NÃO ENCONTRADO!" : el2->n));
+    printf("Saída correta: 'NÃO ENCONTRADO!' \nSAÍDA: %s\n\n", (el2==NULL ? "NÃO ENCONTRADO!" : el2->n));
     el2 = busca(t, "feioso");
-    printf("%s\n", (el2==NULL ? "NÃO ENCONTRADO!" : el2->n));
-    el2 = busca(t, "gaodra");
-    printf("%s\n", (el2==NULL ? "NÃO ENCONTRADO!" : el2->n));
+    printf("Saída correta: 'NÃO ENCONTRADO!' \nSAÍDA: %s\n\n", (el2==NULL ? "NÃO ENCONTRADO!" : el2->n));
+    el2 = busca(t, "gaodra"); 
+    printf("Saída correta: 'dragao com colisao' \nSAÍDA: %s\n\n", (el2==NULL ? "NÃO ENCONTRADO!" : el2->n));
 
     destroi(t);
     
