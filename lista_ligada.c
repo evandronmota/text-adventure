@@ -3,20 +3,20 @@
 #include "lista_ligada.h"
 
 Lista criaL() {
-    Lista l = malloc(sizeof(struct celula));
-    if (l == NULL)
+    Lista l = malloc(sizeof(struct elo));
+    l->nomes = malloc(sizeof(char));
+    if (l == NULL || l->nomes==NULL)
         return NULL;
-    l->nick = malloc(sizeof(char));
+    l->nomes = NULL;
     l->next = NULL;
-    l->nick = NULL;
     l->val = NULL;
     return l;
 }
 
 void destroiL(Lista l) {
     Lista p = l->next;  
-    free(l);
     Lista aux;
+    free(l);
     while (p != NULL) {
         aux = p->next;
         free(p);
@@ -39,24 +39,18 @@ Lista insereL(Lista l, Elemento *val) {
 Elemento *buscaL(Lista l, char *n) {
     Lista p = l->next;
     while (p != NULL) {
-        if (p->nick == n)
+        if (p->nomes == n)
             return p->val;
         p = p->next;
     }
     return NULL;
 }
 
-// Elemento *retiraL(Lista l, Elemento *val) {
-//     Lista p = l->next;
-//     Lista anterior = l;
-//     while (p != NULL) {
-//         if (p->nick == val->n) {
-//             anterior->next = p->next;
-//             return p->val;
-//         }
-//         anterior = p;
-//         p = p->next;
-//     }
-//     return NULL;
-
-// }
+Elemento *retiraL(Lista l, Elemento *val) {
+    Lista anterior = l;
+    Lista p = l->next;
+    if (p==NULL)
+        return NULL;
+    anterior->next = p->next;
+    return p->val;
+}

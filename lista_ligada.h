@@ -1,10 +1,10 @@
-struct celula{
-    char *nick;
+struct elo {
+    char *nomes;
     Elemento *val;
-    struct celula *next;
+    struct elo *next;
 };
 
-typedef struct celula *Lista;
+typedef struct elo *Lista;
 
 Lista criaL(void);
 void destroiL(Lista l);

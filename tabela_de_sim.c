@@ -3,19 +3,24 @@
 #include "lista_ligada.h"
 #include "tabela_de_sim.h"
 
-int hash(int tam, char *key) {
-    int i, sum=0;
-    for (i=0; key[i]!='\0'; i++)
-        sum+=key[i];
-    return sum%tam;
+int hash(int tam, char *chave) {
+    int i, soma=0;
+    for (i=0; chave[i]!='\0'; i++)
+        soma+=chave[i];
+    return soma%tam;
 }
 
 TabSim cria(int tam) {
     TabSim t = malloc(sizeof(tabSim));
     t->elementos = malloc(tam*sizeof(Lista));
+    if (t==NULL || t->elementos==NULL)
+        return NULL;
     int i;
-    for (i=0; i<tam; i++)
+    for (i=0; i<tam; i++) {
         t->elementos[i] = criaL();
+        if (t->elementos[i]==NULL)
+            return NULL;
+    }
     t->tam = tam;
     return t;
 }
@@ -29,10 +34,10 @@ void destroi(TabSim t) {
 
 int insere(TabSim t, char *n, Elemento *val) {
     int h = hash(t->tam, n);
-    Lista lst = insereL(t->elementos[h], val);
-    if (lst == NULL)
+    Lista l = insereL(t->elementos[h], val);
+    if (l == NULL)
         return 0;
-    lst->nick = n;
+    l->nomes = n;
     return 1;
 }
 
@@ -43,14 +48,17 @@ Elemento *busca(TabSim t, char *n) {
 
 int retira(TabSim t, char *n) {
     int h = hash(t->tam, n);
+    Elemento *el = busca(t, n);
+    if (el==NULL)
+        return 0;
     Lista l = t->elementos[h];
 
-    // retiraL?
     Lista p = l->next;
     Lista anterior = l;
     while (p != NULL) {
-        if (p->nick == n) {
-            anterior->next = p->next;
+        if (p->nomes == n) {
+            if (retiraL(anterior, el)==NULL)
+                return 0;
             return 1;
         }
         anterior = p;
