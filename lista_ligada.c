@@ -47,10 +47,9 @@ Elemento *buscaL(Lista l, char *n) {
 }
 
 Elemento *retiraL(Lista l, Elemento *val) {
-    Lista anterior = l;
     Lista p = l->next;
     if (p==NULL)
         return NULL;
-    anterior->next = p->next;
+    l->next = p->next;
     return p->val;
 }
