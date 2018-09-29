@@ -1,9 +1,10 @@
-struct no{
+struct celula{
+    char *nick;
     Elemento *val;
-    struct no *prox;
+    struct celula *next;
 };
 
-typedef struct no *Lista;
+typedef struct celula *Lista;
 
 Lista criaL(void);
 void destroiL(Lista l);

@@ -29,9 +29,10 @@ void destroi(TabSim t) {
 
 int insere(TabSim t, char *n, Elemento *val) {
     int h = hash(t->tam, n);
-    val->apelidos[val->posLivre++] = n;
-    if(insereL(t->elementos[h], val) == NULL)
+    Lista lst = insereL(t->elementos[h], val);
+    if (lst == NULL)
         return 0;
+    lst->nick = n;
     return 1;
 }
 
@@ -41,13 +42,20 @@ Elemento *busca(TabSim t, char *n) {
 }
 
 int retira(TabSim t, char *n) {
-    int h = hash(t->tam, n), i;
-    Elemento *el = buscaL(t->elementos[h], n);
-    for (i=0; i<el->posLivre; i++) {
-        h = hash(t->tam, el->apelidos[i]);
-        retiraL(t->elementos[h], buscaL(t->elementos[h], el->apelidos[i]));
+    int h = hash(t->tam, n);
+    Lista l = t->elementos[h];
+
+    // retiraL?
+    Lista p = l->next;
+    Lista anterior = l;
+    while (p != NULL) {
+        if (p->nick == n) {
+            anterior->next = p->next;
+            return 1;
+        }
+        anterior = p;
+        p = p->next;
     }
-    free(el);
 
     return 0;
 }

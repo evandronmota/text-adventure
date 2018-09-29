@@ -1,22 +1,24 @@
-#include "elemento.h"
 #include <stdlib.h>
+#include "elemento.h"
 #include "lista_ligada.h"
 
 Lista criaL() {
-    Lista l = malloc(sizeof(struct no));
+    Lista l = malloc(sizeof(struct celula));
     if (l == NULL)
         return NULL;
-    l->prox = NULL;
+    l->nick = malloc(sizeof(char));
+    l->next = NULL;
+    l->nick = NULL;
     l->val = NULL;
     return l;
 }
 
 void destroiL(Lista l) {
-    Lista p = l->prox;  
+    Lista p = l->next;  
     free(l);
     Lista aux;
     while (p != NULL) {
-        aux = p->prox;
+        aux = p->next;
         free(p);
         p = aux;
     }
@@ -24,38 +26,37 @@ void destroiL(Lista l) {
 }
 
 Lista insereL(Lista l, Elemento *val) {
-    Lista novo = criaL();
-    if (novo == NULL)
+    Lista new = criaL();
+    if (new == NULL)
         return NULL;
-    novo->prox = l->prox;
-    novo->val = val;
-    l->prox = novo;
+    new->next = l->next;
+    new->val = val;
+    l->next = new;
 
-    return novo;
+    return new;
 }
 
 Elemento *buscaL(Lista l, char *n) {
-    Lista p = l->prox;
-    int i;
+    Lista p = l->next;
     while (p != NULL) {
-        for (i=0; i < p->val->posLivre; i++)
-            if (p->val->apelidos[i] == n)
-                return p->val;
-        p = p->prox;
+        if (p->nick == n)
+            return p->val;
+        p = p->next;
     }
     return NULL;
 }
 
-Elemento *retiraL(Lista l, Elemento *val) {
-    Lista p = l->prox;
-    Lista anterior = l;
-    while (p != NULL) {
-        if (p->val->n == val->n) {
-            anterior->prox = p->prox;
-            return p->val;
-        }
-        anterior = p;
-        p = p->prox;
-    }
-    return NULL;
-}
+// Elemento *retiraL(Lista l, Elemento *val) {
+//     Lista p = l->next;
+//     Lista anterior = l;
+//     while (p != NULL) {
+//         if (p->nick == val->n) {
+//             anterior->next = p->next;
+//             return p->val;
+//         }
+//         anterior = p;
+//         p = p->next;
+//     }
+//     return NULL;
+
+// }
