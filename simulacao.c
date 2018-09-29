@@ -10,9 +10,9 @@ Elemento *criaElemento(char *n) {
     el->n = malloc(100*sizeof(char));
     el->n = n;
     el->posLivre = 0;
-    el->nicks = malloc(10*sizeof(char*));
+    el->apelidos = malloc(10*sizeof(char*));
     for (i=0; i<10; i++)
-        el->nicks[i] = malloc(100*sizeof(char));
+        el->apelidos[i] = malloc(100*sizeof(char));
     return el;
 }
 

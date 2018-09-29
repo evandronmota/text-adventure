@@ -1,5 +1,5 @@
 typedef struct {
     char *n;
-    char **nicks;
+    char **apelidos;
     int posLivre; 
 } Elemento;

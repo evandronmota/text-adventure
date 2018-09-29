@@ -29,7 +29,7 @@ void destroi(TabSim t) {
 
 int insere(TabSim t, char *n, Elemento *val) {
     int h = hash(t->tam, n);
-    val->nicks[val->posLivre++] = n;
+    val->apelidos[val->posLivre++] = n;
     if(insereL(t->elementos[h], val) == NULL)
         return 0;
     return 1;
@@ -44,8 +44,8 @@ int retira(TabSim t, char *n) {
     int h = hash(t->tam, n), i;
     Elemento *el = buscaL(t->elementos[h], n);
     for (i=0; i<el->posLivre; i++) {
-        h = hash(t->tam, el->nicks[i]);
-        retiraL(t->elementos[h], buscaL(t->elementos[h], el->nicks[i]));
+        h = hash(t->tam, el->apelidos[i]);
+        retiraL(t->elementos[h], buscaL(t->elementos[h], el->apelidos[i]));
     }
     free(el);
 

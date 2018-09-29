@@ -1,9 +1,9 @@
-struct node{
+struct no{
     Elemento *val;
-    struct node *next;
+    struct no *prox;
 };
 
-typedef struct node *Lista;
+typedef struct no *Lista;
 
 Lista criaL(void);
 void destroiL(Lista l);
