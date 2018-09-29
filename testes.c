@@ -38,17 +38,17 @@ int main() {
     el2 = busca(t, "dragao");
     if (el2!=NULL)
         printf("Sucesso ao buscar elemento: '%s' a partir de 'dragao'!\n", el2->n);
-    else printf("Erro ao buscar elemento a partir de dragao!\n");
+    else printf("Elemento a partir de 'dragao' não encontrado!\n");
 
     el2 = busca(t, "feioso");
     if (el2!=NULL)
         printf("Sucesso ao buscar elemento: '%s' a partir de 'feioso'!\n", el2->n);
-    else printf("Erro ao buscar elemento a partir de feioso!\n");
+    else printf("Elemento a partir de 'feioso' não encontrado!\n");
 
     el2 = busca(t, "gaodra");
     if (el2!=NULL)
         printf("Sucesso ao buscar elemento: '%s' a partir de 'gaodra'!\n", el2->n);
-    else printf("Erro ao buscar elemento a partir de gaodra!\n");
+    else printf("Elemento a partir de 'gaodra' não encontrado!\n");
     printf("\n");
 
 
@@ -61,17 +61,17 @@ int main() {
     el2 = busca(t, "dragao");
     if (el2!=NULL)
         printf("Sucesso ao buscar elemento: '%s' a partir de 'dragao'!\n", el2->n);
-    else printf("Erro ao buscar elemento a partir de dragao!\n");
+    else printf("Elemento a partir de 'dragao' não encontrado!\n");
 
     el2 = busca(t, "feioso");
     if (el2!=NULL)
         printf("Sucesso ao buscar elemento: '%s' a partir de 'feioso'!\n", el2->n);
-    else printf("Erro ao buscar elemento a partir de feioso!\n");
+    else printf("Elemento a partir de 'feioso' não encontrado!\n");
 
     el2 = busca(t, "gaodra");
     if (el2!=NULL)
         printf("Sucesso ao buscar elemento: '%s' a partir de 'gaodra'!\n", el2->n);
-    else printf("Erro ao buscar elemento a partir de gaodra!\n");
+    else printf("Elemento a partir de 'gaodra' não encontrado!\n");
     printf("\n");
 
 
