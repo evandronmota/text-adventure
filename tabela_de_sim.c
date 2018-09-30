@@ -56,8 +56,10 @@ int retira(TabSim t, char *n) {
     Lista p = l->next;
     while (p != NULL) {
         if (p->nomes == n) {
-            if (retiraL(l, el)==NULL)
+            if (retiraL(l, el)==NULL) {
+                free(p->nomes);
                 return 0;
+            }
             return 1;
         }
         l = p;
