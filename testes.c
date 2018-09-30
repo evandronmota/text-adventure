@@ -1,3 +1,15 @@
+/*
+MAC0216 - Técnicas de Programação
+Nome: Evandro Nakayama Mota, Número USP: 10737230
+Nome: Gabriel Brandão de Almeida, Número USP: 10737182 
+Nome: Leonardo Alves Pereira, Número USP: 10737199
+
+DECLARAMOS QUE SOMOS OS UNICOS AUTORES E RESPONSAVEIS POR ESTE PROGRAMA.  
+TODAS AS PARTES DO PROGRAMA, EXCETO AS QUE SaO BASEADAS EM MATERIAL FORNECIDO
+PELO PROFESSOR OU COPIADAS DO LIVRO OU BIBLIOTECAS, FORAM DESENVOLVIDAS 
+POR NOS. 
+*/
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "elemento.h"
