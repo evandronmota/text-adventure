@@ -1,0 +1,48 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage[portuguese]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+\title{
+\textbf{MAC0216 - Técnicas de Programação I \\ Relatório - Aventura! }
+}
+\author{
+\textbf{Nome:} Evandro Nakayama Mota 
+\hspace{2cm}
+\textbf{Número USP:} 10737230 \\
+\textbf{Nome:} Gabriel Brandão de Almeida
+\hfill
+\textbf{Número USP:} 10737182 \\
+\textbf{Nome:} Leonardo Alves Pereira
+\hfill
+\textbf{Número USP:} 10737199 \\
+}
+\date {30 de Setembro de 2018}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+O programa foi implementado em módulos, responsáveis por controlar a tabela de símbolos ($hash$ $table$) e as listas ligadas.
+
+Para inserir elementos na tabela utiliza-se a função de hash, que retorna um índice na lista a partir da soma dos valores em ASCII de cada caracter da string 'chave' módulo tam, onde tam é o tamanho da tabela. 
+
+O tratamento de colisões na inserção é feito através da lista ligada, assim, cada posição da tabela pode possuir uma lista de elementos.
+
+Vale ressaltar que a função retiraL, que remove um elo na lista ligada, foi implementada de forma a retirar o elo seguinte àquele que recebe como argumento.
+
+Para realizar os testes, fizemos um programa de simulação que verifica o funcionamento das funções definidas. Para tanto, foi implementada uma função criaElemento que recebe uma string como argumento e retorna um ponteiro para um Elemento, os quais são inseridos, buscados e retirados da tabela de símbolos. Todos essas verificações são impressas na tela com mensagens de sucesso ou falha.
+
+Para facilitar a compilação do programa fizemos uma biblioteca estática que agrupa o arquivo objeto dos módulos de listas ligadas e da tabela de simbolos. Assim, basta utilizar o comando:
+
+
+\begin{verbatim}
+gcc -o testes testes.c libestat.a
+\end{verbatim}
+\end{document}
