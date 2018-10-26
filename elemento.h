@@ -1,3 +1,5 @@
+#include "tabela_de_sim.h"
+
 typedef enum {
     False, True
 } boolean;
@@ -9,11 +11,13 @@ typedef struct {
     boolean ativo;
     boolean visivel;
     boolean conhecido;
+    Elemento* conteudo;
     info detalhe;
     void **acoes;
     void* animacao;
 } Elemento;
 
 typedef union {
-
-} info;
+    TabSim tabela;
+    Elemento *saidas;
+} Info;
