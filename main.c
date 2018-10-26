@@ -18,14 +18,26 @@ Elemento criarElemento(char *nome, char *curta,
     novo.detalhe = detalhe;
 }
 
-typedef void (*checar)(boolean);
-void checarRelogio(boolean estaComPonteiro) {
-    printf("São 8 horas e ... minutos.\n");
-    if (estaComPonteiro)
-        printf("Que horas são?\n");   
+typedef void (*checar)();
+
+void checarRelogio() {
+    printf("São 8 horas e ... minutos.\n");   
+}
+
+void checarMensagem() {
+    printf("1+1 = 2\n");
 }
 
 int main() {
+    void **acoesMensagem = malloc(sizeof(checar));
+    acoesMensagem[0] = checarMensagem;
+
+    Elemento mensagem =
+    criarElemento("Mensagem",
+        "Mensagem",
+        "Mensagem na parede", False, False, NULL,
+        acoesMensagem, NULL, unionaqui);
+
     Elemento chave =
     criarElemento("Chave",
         "Chave velha",
@@ -56,12 +68,15 @@ int main() {
     void **acoesRelogio = malloc(sizeof(checar));
     acoesRelogio[0] = checarRelogio;
 
+    /* para usar a funçao na lista 
+    tem que fazer typecasting */
+
     Elemento relogio =
     criarElemento("Relogio",
         "Minutos inoperantes",
         "Sem o ponteiro dos minutos, com o ponteiro das horas
         apontando para o 8", False, False, NULL,
-        NULL, NULL, unionaqui);
+        acoesRelogio, NULL, unionaqui);
 
 
     Info unionS1;
@@ -81,8 +96,8 @@ int main() {
         "Há um relógio quebrado
         e um ponteiro no chao, uma mensagem
         na parede, uma concha em um pilar e uma
-        porta fechada", False, False, conteudoS1, NULL, NULL,
-        unionS1);
+        porta fechada", False, False, conteudoS1, NULL,
+        NULL, unionS1);
 
     return 0;
 }
