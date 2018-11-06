@@ -30,14 +30,13 @@ void descricao(Elemento e) {
         printf("%s\n", e.longa);
 }
 
-void checarRelogio() {
-    printf("São 8 horas e ... minutos.\n");   
+int checar(Elemento *e1, Elemento *e2) {
+    if (e1 == NULL)
+        printf("Checar o quê?");
+    // e1!=NULL e e2!=NULL ?
+    else
+        printf("%s", e1->curta);
 }
-
-void checarMensagem() {
-    printf("1+1 = 2\n");
-}
-
 
 Elemento criarSala1() {
     /* mensagem */
@@ -49,16 +48,16 @@ Elemento criarSala1() {
 
     Elemento mensagem =
     criarElemento("Mensagem",
-        "Mensagem",
-        "Mensagem na parede", False, False, NULL,
+        "Na parede há uma mensagem: 1+1=2",
+        "Na parede está escrito com tinta vermelha (ou será sangue...?): 1+1 = 2", False, False, NULL,
         acoesMensagem, NULL, unionDef);
 
     /* chave */
 
     Elemento chave =
     criarElemento("Chave",
-        "Chave velha",
-        "Chave velha e suja", False, False, NULL,
+        "Uma chave velha",
+        "Uma chave velha e enferrujada", False, False, NULL,
         NULL, NULL, unionDef);
 
     Elemento *conteudoConcha = malloc(sizeof(Elemento));
@@ -68,24 +67,24 @@ Elemento criarSala1() {
 
     Elemento concha =
     criarElemento("Concha",
-        "Concha espiralada",
-        "Concha espiralada e oca", False, False, conteudoConcha,
+        "Uma concha em formato de espiral",
+        "Uma concha verde em formato de espiral", False, False, conteudoConcha,
         NULL, NULL, unionDef);
 
     /* porta */
 
     Elemento porta =
     criarElemento("Porta",
-        "Porta trancada",
-        "Porta oxidada e trancada", False, False, NULL,
+        "Uma porta trancada",
+        "Uma porta de ferro com fechadura dourada", False, False, NULL,
         NULL, NULL, unionDef);
 
     /* ponteiro do relogio */
 
     Elemento ponteiro =
     criarElemento("Ponteiro",
-        "Ponteiro dos minutos",
-        "Ponteiro dos minutos no chão", False, False, NULL,
+        "Um ponteiro de relógio",
+        "Um ponteiro de minutos do relógio quebrado", False, False, NULL,
         NULL, NULL, unionDef);
 
     /* relogio */
@@ -98,8 +97,8 @@ Elemento criarSala1() {
 
     Elemento relogio =
     criarElemento("Relogio",
-        "Minutos inoperantes",
-        "Sem o ponteiro dos minutos, com o ponteiro das horas \
+        "Relógio quebrado sem um dos ponteiros",
+        "Relógio sem o ponteiro dos minutos, com o ponteiro das horas \
         apontando para o 8", False, False, NULL,
         acoesRelogio, NULL, unionDef);
 
@@ -117,12 +116,11 @@ Elemento criarSala1() {
 
     Elemento sala1 =
     criarElemento("Fibonacci",
-        "Há um ponteiro no chão",
-        "Há um relógio quebrado \
-        e um ponteiro no chao, uma mensagem \
-        na parede, uma concha em um pilar e uma \
-        porta fechada", False, False, conteudoS1, NULL,
-        NULL, unionS1);
+        "Uma sala empoeirada com cheiro de mofo",
+        "Uma sala empoeirada com cheiro de mofo. Há um relógio e um ponteiro no chão. \
+        Na parede está escrita uma mensagem e em sob um pedestal há uma concha. \
+        Além disso, tem uma porta no fundo da sala.",
+         False, False, conteudoS1, NULL, NULL, unionS1);
 
     return sala1;    
 }

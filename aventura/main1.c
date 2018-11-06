@@ -26,12 +26,7 @@ int main() {
     Elemento *aux = &salaFib;
     while (True) {
         descricao(*aux);
-
-        /* ta feio isso
-        toda iteração ele define como true
-        e nao precisa mas se arrumar
-        vai so ficar bonitinho
-        e vai dar na mesma */
+        
         aux->conhecido = True;
 
         // recebe comando
