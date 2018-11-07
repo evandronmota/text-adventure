@@ -7,6 +7,7 @@
 
 int main() {
     Elemento salaFib = criarSala1();
+    int i;
 
     /* 
     conteudoS1[0] = relogio;
@@ -16,7 +17,7 @@ int main() {
     conteudoS1[4] = chave;
     */
 
-    ((checar)salaFib.conteudo[0].acoes[0])();
+    // ((func)salaFib.conteudo[0].acoes[0])(&salaFib, NULL);
 
 
     /* mundo criado */
@@ -24,13 +25,16 @@ int main() {
 
     // elemento da vez
     Elemento *aux = &salaFib;
-    while (True) {
+
+
+    // while (True) {
+    for (i=0; i<2; i++) { // MOSTRA DESCRIÇÃO DUAS VEZES PARA TESTAR LONGA E CURTA
         descricao(*aux);
         
         aux->conhecido = True;
 
         // recebe comando
-        scanf()
+        // scanf()
 
         // se for valido atualiza o auxiliar
 

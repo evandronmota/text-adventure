@@ -1,6 +1,0 @@
-gcc -c lista_ligada.c -o lista_ligada.o
-gcc -c tabela_de_sim.c -o tabela_de_sim.o
-gcc -c salas.c -o salas.o
-rm libestat.a
-ar -rcv libestat.a lista_ligada.o tabela_de_sim.o salas.o
-gcc -o main1 main1.c libestat.a && ./main1

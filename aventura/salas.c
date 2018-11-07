@@ -31,17 +31,22 @@ void descricao(Elemento e) {
 }
 
 int checar(Elemento *e1, Elemento *e2) {
-    if (e1 == NULL)
+    if (e1 == NULL) {
         printf("Checar o quê?");
+        return 0;
+    }
     // e1!=NULL e e2!=NULL ?
-    else
+    else {
         printf("%s", e1->curta);
+        return 1;
+    }
 }
 
 Elemento criarSala1() {
     /* mensagem */
+    func checarMensagem=checar, checarRelogio=checar;
 
-    void **acoesMensagem = malloc(sizeof(checar));
+    void **acoesMensagem = malloc(sizeof(func));
     acoesMensagem[0] = checarMensagem;
 
     Info unionDef;
@@ -89,7 +94,7 @@ Elemento criarSala1() {
 
     /* relogio */
     
-    void **acoesRelogio = malloc(sizeof(checar));
+    void **acoesRelogio = malloc(sizeof(func));
     acoesRelogio[0] = checarRelogio;
 
     /* para usar a funçao na lista 
@@ -116,11 +121,9 @@ Elemento criarSala1() {
 
     Elemento sala1 =
     criarElemento("Fibonacci",
-        "Uma sala empoeirada com cheiro de mofo",
-        "Uma sala empoeirada com cheiro de mofo. Há um relógio e um ponteiro no chão. \
-        Na parede está escrita uma mensagem e em sob um pedestal há uma concha. \
-        Além disso, tem uma porta no fundo da sala.",
-         False, False, conteudoS1, NULL, NULL, unionS1);
+        "Uma sala empoeirada com cheiro de mofo.",
+        "Uma sala empoeirada com cheiro de mofo. Há um relógio e um ponteiro no chão. Na parede está escrita uma mensagem e em sob um pedestal há uma concha. Além disso, tem uma porta no fundo da sala.",
+        False, False, conteudoS1, NULL, NULL, unionS1);
 
     return sala1;    
 }

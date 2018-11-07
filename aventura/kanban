@@ -1,12 +1,19 @@
+PARA RODAR:
+make && ./main1
+
 To Do:
 -Criar salas 2-5
 -Aplicar a TabSim, corrigindo imports
 -Arrumar a main
 -Makefile
+-Animação (mesmo se nenhum elemento utiliza)
+-Apresentação do jogo (pg 13, 4.5)
+-Documentação
+-Testes
+-ansi pedantic
 
 Doing:
 -Criar estória
--
 
 Done:
 -Ep1
