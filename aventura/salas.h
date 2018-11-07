@@ -1,7 +1,6 @@
 Elemento criarSala1();
 
-/* ta errado, olha no pdf (pag 12, 4.3 comandos), 
-tem um prototipo */
 typedef int (*func)(Elemento *e1, Elemento *e2);
 
-void descricao(Elemento e);
+int examinar(Elemento *e1, Elemento *e2);
+void nome(Elemento e);

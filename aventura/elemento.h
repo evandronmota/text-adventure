@@ -3,11 +3,12 @@ typedef enum {
 } boolean;
 
 typedef union {
-    // TabSim tabela;
+    /* TabSim tabela; */
     struct ele *saidas;
 } Info;
 
 typedef struct ele {
+    char *artigo;
     char *n;
     char *curta;
     char *longa;
@@ -15,7 +16,8 @@ typedef struct ele {
     boolean visivel;
     boolean conhecido;
     struct ele* conteudo;
+    int nele; /* numero de elementos na lista de conteudos */
     Info detalhe;
     void **acoes;
-    void* animacao;
+    void *animacao;
 } Elemento;
