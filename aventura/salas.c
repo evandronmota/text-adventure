@@ -201,5 +201,56 @@ Elemento criarSala2(){
         "Há uma letra \"E\".",
         "Há uma letra \"E\".", False, False, NULL, 0,
         NULL, NULL, unionDef);
+
+    Info unionS2;
+
+    Elemento *conteudoS2 = malloc(7*sizeof(Elemento));
+    conteudoS2[0] = letra2;
+    conteudoS2[1] = cofre2;
+    conteudoS2[2] = livro2;
+    conteudoS2[3] = pagina2;
+    conteudoS2[4] = morsa2;
+    conteudoS2[5] = porta2;
+    conteudoS2[6] = mensagem2;
+
+    Elemento sala2 =
+    criarElemento("Uma","Binaria",
+        "Uma sala.",
+        "Uma sala.",
+        False, False, conteudoS2, 6, NULL, NULL, unionS2);
+
+    return sala2;
     
+}
+
+Elemento criaSala3(){
+    /* --------------------------------------- SALA 3 --------------------------------------------- */
+
+    Info unionDef;
+
+    /* porta */
+
+    Elemento porta3 =
+    criarElemento("Uma", "Porta",
+        "Uma porta.",
+        "Uma porta de madeira.", False, False, NULL, 0,
+        NULL, NULL, unionDef);
+
+    Elemento gaiola3 =
+    criarElemento("Uma", "Gaiola",
+        "Há um papagaio na gaiola.",
+        "Há um papagaio verde e tagarela na gaiola.", False, False, NULL, 0,
+        NULL, NULL, unionDef);
+
+    Elemento papagaio3 =
+    criarElemento("Um", "Papagaio",
+        "Papagaio verde.",
+        "Papagaio verde e tagarela. Ele não para de falar.", False, False, NULL, 0,
+        NULL, NULL, unionDef);
+
+    Elemento ima3 =
+    criarElemento("Um", "Ima",
+        "Papagaio verde.",
+        "Papagaio verde e tagarela. Ele não para de falar.", False, False, NULL, 0,
+        NULL, NULL, unionDef);
 }
