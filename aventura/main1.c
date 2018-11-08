@@ -20,7 +20,6 @@ int main() {
         insere(tab, sala1->conteudo[i].n, &sala1->conteudo[i]); /* Insere objetos na tabela */
 
     while (True) {
-<<<<<<< HEAD
         ((func)sala1->conteudo[0].acoes[0])(&sala1->conteudo[0], NULL);
         examinar(sala1, NULL);
 
@@ -28,7 +27,6 @@ int main() {
             nomear(sala1->conteudo[i]);
             printf("%s\n", busca(tab, sala1->conteudo[i].n)->curta); /* Testa a busca pelo elemento na tabela */
         }
->>>>>>> lista de atributos dos objetos
 
         /* se for valido atualiza o auxiliar */
         /* se nao, manda uma msg de erro e nao atualiza o auxiliar */

@@ -41,11 +41,11 @@ int examinar(Elemento *e1, Elemento *e2) {
     return (e1==NULL? 0: 1);
 }
 
+Info unionVazia;
+
 Elemento criarSala1() {
     /* ------------------------------------- SALA 1 ---------------------------------------------- */
     /* mensagem */
-
-    Info unionVazia;
 
     func checarMensagem, checarRelogio;
     checarMensagem = checarRelogio = examinar;
@@ -148,34 +148,16 @@ Elemento criarSala1() {
 
     return sala1;
 
-<<<<<<< HEAD
-    
-    
+
+
 }
 
 Elemento criarSala2(){
-=======
->>>>>>> lista de atributos dos objetos
     /* --------------------------------------- SALA 2 --------------------------------------------- */
     /* .. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .
     0 0 0 0 0 0 0 0 1 1 1 1 0 0 1 1 1 1 0 1 0 1 0 1 1 1 1 0 0 0 0 1 1 0 1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 */
 
-<<<<<<< HEAD
- 
     func checarMensagem=examinar;
-=======
-    /*
-    func checarMensagem=checar, checarRelogio=checar;
->>>>>>> lista de atributos dos objetos
-
-    void **acoesMensagem = malloc(sizeof(func));
-    acoesMensagem[0] = checarMensagem;
-
-<<<<<<< HEAD
-    Info unionDef;
-=======
-    */
->>>>>>> lista de atributos dos objetos
 
     /* mensagem */
 
@@ -183,7 +165,7 @@ Elemento criarSala2(){
     criarElemento("Uma","Mensagem",
         "Está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"",
         "Numa folha de papel amassada está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"", False, False, NULL, 0,
-        acoesMensagem, NULL, unionVazia);
+        NULL, NULL, unionVazia);
 
     /* porta */
 
@@ -198,9 +180,8 @@ Elemento criarSala2(){
     Elemento morsa2 =
     criarElemento("Uma","Pelúcia",
         "Uma morsa de pelúcia.",
-<<<<<<< HEAD
         "Uma morsa de pelúcia marrom.", False, False, NULL, 0,
-        NULL, NULL, unionDef);
+        NULL, NULL, unionVazia);
 
     /* livro */
 
@@ -208,7 +189,7 @@ Elemento criarSala2(){
     criarElemento("Um","Livro",
         "Um livro velho. O título é \"Existem apenas -. tipos de pessoas no mundo\".",
         "Um livro velho e surpreendentemente grande. O título é \"Existem apenas 10 tipos de pessoas no mundo\".", False, False, NULL, 0,
-        NULL, NULL, unionDef);
+        NULL, NULL, unionVazia);
 
     /* pagina */
 
@@ -216,15 +197,15 @@ Elemento criarSala2(){
     criarElemento("Uma","Página",
         "Você já tentou procurar embaixo do cofre?.",
         "Você já tentou procurar embaixo do cofre?.", False, False, NULL, 0,
-        NULL, NULL, unionDef);
-    
+        NULL, NULL, unionVazia);
+
     /* cofre */
 
     Elemento cofre2 =
     criarElemento("Um","Cofre",
         "Um cofre de ferro.",
         "Um cofre grande de ferro com uma fechadura mecânica.", False, False, NULL, 0,
-        NULL, NULL, unionDef);
+        NULL, NULL, unionVazia);
 
     /* letra */
 
@@ -232,7 +213,7 @@ Elemento criarSala2(){
     criarElemento("Um","Papel",
         "Há uma letra \"E\".",
         "Há uma letra \"E\".", False, False, NULL, 0,
-        NULL, NULL, unionDef);
+        NULL, NULL, unionVazia);
 
     Info unionS2;
 
@@ -252,13 +233,13 @@ Elemento criarSala2(){
         False, False, conteudoS2, 6, NULL, NULL, unionS2);
 
     return sala2;
-    
+
 }
 
 Elemento criaSala3(){
     /* --------------------------------------- SALA 3 --------------------------------------------- */
 
-    Info unionDef;
+    Info unionVazia;
 
     /* porta */
 
@@ -266,28 +247,23 @@ Elemento criaSala3(){
     criarElemento("Uma", "Porta",
         "Uma porta.",
         "Uma porta de madeira.", False, False, NULL, 0,
-        NULL, NULL, unionDef);
+        NULL, NULL, unionVazia);
 
     Elemento gaiola3 =
     criarElemento("Uma", "Gaiola",
         "Há um papagaio na gaiola.",
         "Há um papagaio verde e tagarela na gaiola.", False, False, NULL, 0,
-        NULL, NULL, unionDef);
+        NULL, NULL, unionVazia);
 
     Elemento papagaio3 =
     criarElemento("Um", "Papagaio",
         "Papagaio verde.",
         "Papagaio verde e tagarela. Ele não para de falar.", False, False, NULL, 0,
-        NULL, NULL, unionDef);
+        NULL, NULL, unionVazia);
 
     Elemento ima3 =
     criarElemento("Um", "Ima",
         "Papagaio verde.",
         "Papagaio verde e tagarela. Ele não para de falar.", False, False, NULL, 0,
-        NULL, NULL, unionDef);
-}
-=======
-        "Uma morsa de pelúcia", False, False, NULL, 0,
         NULL, NULL, unionVazia);
 }
->>>>>>> lista de atributos dos objetos
