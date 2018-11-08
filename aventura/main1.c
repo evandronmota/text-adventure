@@ -21,7 +21,7 @@ int main() {
         ((func)aux->conteudo[0].acoes[0])(&aux->conteudo[0], NULL);
         examinar(aux, NULL);
         
-        for (i = 0; i<aux->nele; i++)
+        for (i = 0; i<aux->nEle; i++)
             nome(aux->conteudo[i]);
 
         /* se for valido atualiza o auxiliar */

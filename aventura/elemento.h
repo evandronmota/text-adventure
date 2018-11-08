@@ -16,7 +16,7 @@ typedef struct ele {
     boolean visivel;
     boolean conhecido;
     struct ele* conteudo;
-    int nele; /* numero de elementos na lista de conteudos */
+    int nEle; /* numero de elementos na lista de conteudos */
     Info detalhe;
     void **acoes;
     void *animacao;

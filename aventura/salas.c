@@ -5,7 +5,7 @@
 
 Elemento criarElemento(char *artigo, char *nome, char *curta,
     char *longa, boolean visivel, boolean conhecido,
-    Elemento *conteudo, int nele, void **acoes,
+    Elemento *conteudo, int nEle, void **acoes,
     void *animacao, Info detalhe) {
 
     Elemento novo;
@@ -17,7 +17,7 @@ Elemento criarElemento(char *artigo, char *nome, char *curta,
     novo.visivel = visivel;
     novo.conhecido = conhecido;
     novo.conteudo = conteudo;
-    novo.nele = nele;
+    novo.nEle = nEle;
     novo.acoes = acoes;
     novo.animacao = animacao;
     novo.detalhe = detalhe;
@@ -136,13 +136,13 @@ Elemento criarSala1() {
     /* .. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .
     0 0 0 0 0 0 0 0 1 1 1 1 0 0 1 1 1 1 0 1 0 1 0 1 1 1 1 0 0 0 0 1 1 0 1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 */
 
-
+/* 
     func checarMensagem=checar, checarRelogio=checar;
 
     void **acoesMensagem = malloc(sizeof(func));
     acoesMensagem[0] = checarMensagem;
 
-    Info unionDef;
+    Info unionDef; */
 
     /* mensagem */
 
@@ -162,9 +162,9 @@ Elemento criarSala1() {
 
     /* chave */
 
-    Elemento chave1 =
-    criarElemento("Uma","Chave",
-        "Uma chave velha.",
-        "Uma chave velha e enferrujada.", False, False, NULL, 0,
+    Elemento morsa2 =
+    criarElemento("Uma","Morsa",
+        "Uma morsa de pelúcia.",
+        "Uma morsa de pelúcia", False, False, NULL, 0,
         NULL, NULL, unionDef);
 }
