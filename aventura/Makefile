@@ -11,4 +11,11 @@ salas.o : salas.c
 		gcc -c salas.c -o salas.o
 
 tabela_de_sim.o : tabela_de_sim.c
+<<<<<<< HEAD
 		gcc -c tabela_de_sim.c -o tabela_de_sim.o
+=======
+		gcc -c tabela_de_sim.c -o tabela_de_sim.o
+
+lista_ligada.o : lista_ligada.c
+		gcc -c lista_ligada.c -o lista_ligada.o
+>>>>>>> lista de atributos dos objetos

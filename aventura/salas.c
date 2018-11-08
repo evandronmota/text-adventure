@@ -30,7 +30,7 @@ void nomear(Elemento e) {
 }
 
 int examinar(Elemento *e1, Elemento *e2) {
-    if (e1 == NULL) 
+    if (e1 == NULL)
         printf("Examinar o quê?\n");
     else if (e1->conhecido)
         printf("%s\n", e1->curta);
@@ -44,20 +44,20 @@ int examinar(Elemento *e1, Elemento *e2) {
 Elemento criarSala1() {
     /* ------------------------------------- SALA 1 ---------------------------------------------- */
     /* mensagem */
-    
+
+    Info unionVazia;
+
     func checarMensagem, checarRelogio;
     checarMensagem = checarRelogio = examinar;
 
     void **acoesMensagem = malloc(sizeof(func));
     acoesMensagem[0] = checarMensagem;
 
-    Info unionDef;
-
     Elemento mensagem1 =
     criarElemento("Uma","Mensagem",
         "Na parede há uma mensagem: 1 + 1 = 2.",
         "Na parede está escrito com tinta vermelha (ou será sangue...?): 1 + 1 = 2.", False, False, NULL, 0,
-        acoesMensagem, NULL, unionDef);
+        acoesMensagem, NULL, unionVazia);
 
     /* chave */
 
@@ -65,18 +65,25 @@ Elemento criarSala1() {
     criarElemento("Uma","Chave",
         "Uma chave velha.",
         "Uma chave velha e enferrujada.", False, False, NULL, 0,
-        NULL, NULL, unionDef);
+        NULL, NULL, unionVazia);
 
     Elemento *conteudoConcha = malloc(sizeof(Elemento));
     conteudoConcha[0] = chave1;
 
     /* concha */
 
+    Info unionConcha1;
+    unionConcha1.atributos = malloc(sizeof(obj_atr));
+
+    obj_atr estaQuebrada;
+    estaQuebrada.nome = "estaQuebrada";
+    estaQuebrada.valor.valor_estado = False;
+
     Elemento concha1 =
     criarElemento("Uma","Concha",
         "Uma concha em formato de espiral.",
         "Uma concha verde em formato de espiral.", False, False, conteudoConcha, 0,
-        NULL, NULL, unionDef);
+        NULL, NULL, unionConcha1);
 
     /* porta */
 
@@ -84,30 +91,42 @@ Elemento criarSala1() {
     criarElemento("Uma", "Porta",
         "Uma porta trancada.",
         "Uma porta de ferro com fechadura dourada.", False, False, NULL, 0,
-        NULL, NULL, unionDef);
+        NULL, NULL, unionVazia);
 
     /* ponteiro do relogio */
+
+    Info unionPonteiro1;
+    unionPonteiro1.atributos = malloc(sizeof(obj_atr));
+
+    /*
+    no chao = 0
+    no relogio = 1
+    com o cara = 2
+    */
+
+    obj_atr comQuem;
+    comQuem.nome = "comQuem";
+    comQuem.valor.valor_num = 0;
 
     Elemento ponteiro1 =
     criarElemento("Um", "Ponteiro",
         "Um ponteiro de relógio.",
         "Um ponteiro de minutos do relógio quebrado.", False, False, NULL, 0,
-        NULL, NULL, unionDef);
+        NULL, NULL, unionPonteiro1);
 
     /* relogio */
-    
+
     void **acoesRelogio = malloc(sizeof(func));
     acoesRelogio[0] = checarRelogio;
 
-    /* para usar a funçao na lista 
+    /* para usar a funçao na lista
     tem que fazer typecasting */
 
     Elemento relogio1 =
     criarElemento("Um","Relógio",
         "Relógio quebrado sem um dos ponteiros.",
-        "Relógio sem o ponteiro dos minutos e com o ponteiro das horas apontando para o 8.", 
-        False, False, NULL, 0, acoesRelogio, NULL, unionDef);
-
+        "Relógio sem o ponteiro dos minutos e com o ponteiro das horas apontando para o 8.",
+        False, False, NULL, 0, acoesRelogio, NULL, unionVazia);
 
     /* sala 1 */
 
@@ -129,22 +148,34 @@ Elemento criarSala1() {
 
     return sala1;
 
+<<<<<<< HEAD
     
     
 }
 
 Elemento criarSala2(){
+=======
+>>>>>>> lista de atributos dos objetos
     /* --------------------------------------- SALA 2 --------------------------------------------- */
     /* .. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .
     0 0 0 0 0 0 0 0 1 1 1 1 0 0 1 1 1 1 0 1 0 1 0 1 1 1 1 0 0 0 0 1 1 0 1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 */
 
+<<<<<<< HEAD
  
     func checarMensagem=examinar;
+=======
+    /*
+    func checarMensagem=checar, checarRelogio=checar;
+>>>>>>> lista de atributos dos objetos
 
     void **acoesMensagem = malloc(sizeof(func));
     acoesMensagem[0] = checarMensagem;
 
+<<<<<<< HEAD
     Info unionDef;
+=======
+    */
+>>>>>>> lista de atributos dos objetos
 
     /* mensagem */
 
@@ -152,7 +183,7 @@ Elemento criarSala2(){
     criarElemento("Uma","Mensagem",
         "Está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"",
         "Numa folha de papel amassada está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"", False, False, NULL, 0,
-        acoesMensagem, NULL, unionDef);
+        acoesMensagem, NULL, unionVazia);
 
     /* porta */
 
@@ -160,13 +191,14 @@ Elemento criarSala2(){
     criarElemento("Uma", "Porta",
         "Uma porta.",
         "Uma porta dourada.", False, False, NULL, 0,
-        NULL, NULL, unionDef);
+        NULL, NULL, unionVazia);
 
     /* chave */
 
     Elemento morsa2 =
     criarElemento("Uma","Pelúcia",
         "Uma morsa de pelúcia.",
+<<<<<<< HEAD
         "Uma morsa de pelúcia marrom.", False, False, NULL, 0,
         NULL, NULL, unionDef);
 
@@ -254,3 +286,8 @@ Elemento criaSala3(){
         "Papagaio verde e tagarela. Ele não para de falar.", False, False, NULL, 0,
         NULL, NULL, unionDef);
 }
+=======
+        "Uma morsa de pelúcia", False, False, NULL, 0,
+        NULL, NULL, unionVazia);
+}
+>>>>>>> lista de atributos dos objetos

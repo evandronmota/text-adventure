@@ -3,7 +3,18 @@ typedef enum {
 } boolean;
 
 typedef union {
-    /* TabSim tabela; */
+    boolean valor_estado;
+    int valor_num;
+    char *valor_str;
+} atr_val;
+
+typedef struct {
+    char *nome;
+    atr_val valor;
+} obj_atr;
+
+typedef union {
+    obj_atr *atributos;
     struct ele *saidas;
 } Info;
 
