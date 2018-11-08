@@ -138,18 +138,13 @@ Elemento criarSala2(){
     /* .. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .
     0 0 0 0 0 0 0 0 1 1 1 1 0 0 1 1 1 1 0 1 0 1 0 1 1 1 1 0 0 0 0 1 1 0 1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 */
 
-/* 
-    func checarMensagem=checar, checarRelogio=checar;
+ 
+    func checarMensagem=examinar;
 
     void **acoesMensagem = malloc(sizeof(func));
     acoesMensagem[0] = checarMensagem;
-*/
+
     Info unionDef;
-/* 
-    char *artigo, char *nome, char *curta,
-    char *longa, boolean visivel, boolean conhecido,
-    Elemento *conteudo, int nEle, void **acoes,
-    void *animacao, Info detalhe */
 
     /* mensagem */
 
@@ -157,7 +152,7 @@ Elemento criarSala2(){
     criarElemento("Uma","Mensagem",
         "Está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"",
         "Numa folha de papel amassada está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"", False, False, NULL, 0,
-        NULL, NULL, unionDef);
+        acoesMensagem, NULL, unionDef);
 
     /* porta */
 
@@ -199,5 +194,12 @@ Elemento criarSala2(){
         "Um cofre grande de ferro com uma fechadura mecânica.", False, False, NULL, 0,
         NULL, NULL, unionDef);
 
-    /*  */    
+    /* letra */
+
+    Elemento letra2 =
+    criarElemento("Um","Papel",
+        "Há uma letra \"E\".",
+        "Há uma letra \"E\".", False, False, NULL, 0,
+        NULL, NULL, unionDef);
+    
 }
