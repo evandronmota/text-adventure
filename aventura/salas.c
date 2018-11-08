@@ -5,8 +5,8 @@
 
 Elemento criarElemento(char *artigo, char *nome, char *curta,
     char *longa, boolean visivel, boolean conhecido,
-    Elemento *conteudo, int nEle, void **acoes,
-    void *animacao, Info detalhe) {
+    Elemento *conteudo, int nEle, int nAcoes, int *transitividade,
+    void **acoes, void *animacao, Info detalhe) {
 
     Elemento novo;
     novo.artigo = artigo;
@@ -18,6 +18,8 @@ Elemento criarElemento(char *artigo, char *nome, char *curta,
     novo.conhecido = conhecido;
     novo.conteudo = conteudo;
     novo.nEle = nEle;
+    novo.nAcoes = nAcoes;
+    novo.transitividade = transitividade;
     novo.acoes = acoes;
     novo.animacao = animacao;
     novo.detalhe = detalhe;
@@ -25,7 +27,7 @@ Elemento criarElemento(char *artigo, char *nome, char *curta,
     return novo;
 }
 
-void nomear(Elemento e) {
+void nomear(Elemento e) {   
     printf("%s %s.\n", e.artigo, e.n);
 }
 
@@ -56,7 +58,7 @@ Elemento criarSala1() {
     Elemento mensagem1 =
     criarElemento("Uma","Mensagem",
         "Na parede há uma mensagem: 1 + 1 = 2.",
-        "Na parede está escrito com tinta vermelha (ou será sangue...?): 1 + 1 = 2.", False, False, NULL, 0,
+        "Na parede está escrito com tinta vermelha (ou será sangue...?): 1 + 1 = 2.", False, False, NULL, 0, 0, NULL,
         acoesMensagem, NULL, unionVazia);
 
     /* chave */
@@ -64,7 +66,7 @@ Elemento criarSala1() {
     Elemento chave1 =
     criarElemento("Uma","Chave",
         "Uma chave velha.",
-        "Uma chave velha e enferrujada.", False, False, NULL, 0,
+        "Uma chave velha e enferrujada.", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
 
     Elemento *conteudoConcha = malloc(sizeof(Elemento));
@@ -79,10 +81,12 @@ Elemento criarSala1() {
     estaQuebrada.nome = "estaQuebrada";
     estaQuebrada.valor.valor_estado = False;
 
+    unionConcha1.atributos[0] = estaQuebrada;
+
     Elemento concha1 =
     criarElemento("Uma","Concha",
         "Uma concha em formato de espiral.",
-        "Uma concha verde em formato de espiral.", False, False, conteudoConcha, 0,
+        "Uma concha verde em formato de espiral.", False, False, conteudoConcha, 0, 0, NULL,
         NULL, NULL, unionConcha1);
 
     /* porta */
@@ -90,7 +94,7 @@ Elemento criarSala1() {
     Elemento porta1 =
     criarElemento("Uma", "Porta",
         "Uma porta trancada.",
-        "Uma porta de ferro com fechadura dourada.", False, False, NULL, 0,
+        "Uma porta de ferro com fechadura dourada.", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
 
     /* ponteiro do relogio */
@@ -108,16 +112,20 @@ Elemento criarSala1() {
     comQuem.nome = "comQuem";
     comQuem.valor.valor_num = 0;
 
-    Elemento ponteiro1 =
+    unionPonteiro1.atributos[0] = comQuem;
+
+    Elemento ponteiro1 = 
     criarElemento("Um", "Ponteiro",
         "Um ponteiro de relógio.",
-        "Um ponteiro de minutos do relógio quebrado.", False, False, NULL, 0,
+        "Um ponteiro de minutos do relógio quebrado.", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionPonteiro1);
 
     /* relogio */
 
     void **acoesRelogio = malloc(sizeof(func));
     acoesRelogio[0] = checarRelogio;
+    int *tRel = malloc(sizeof(int));
+    tRel[0] = 1;
 
     /* para usar a funçao na lista
     tem que fazer typecasting */
@@ -126,7 +134,7 @@ Elemento criarSala1() {
     criarElemento("Um","Relógio",
         "Relógio quebrado sem um dos ponteiros.",
         "Relógio sem o ponteiro dos minutos e com o ponteiro das horas apontando para o 8.",
-        False, False, NULL, 0, acoesRelogio, NULL, unionVazia);
+        False, False, NULL, 0, 1, tRel, acoesRelogio, NULL, unionVazia);
 
     /* sala 1 */
 
@@ -144,12 +152,9 @@ Elemento criarSala1() {
     criarElemento("Uma","Fibonacci",
         "Uma sala empoeirada com cheiro de mofo.",
         "Uma sala empoeirada com cheiro de mofo. Há um relógio e um ponteiro no chão. Na parede está escrita uma mensagem e sob um pedestal há uma concha. Além disso, tem uma porta no fundo da sala.",
-        False, False, conteudoS1, 6, NULL, NULL, unionS1);
+        False, False, conteudoS1, 6, 0, NULL, NULL, NULL, unionS1);
 
     return sala1;
-
-
-
 }
 
 Elemento criarSala2(){
@@ -157,14 +162,12 @@ Elemento criarSala2(){
     /* .. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .
     0 0 0 0 0 0 0 0 1 1 1 1 0 0 1 1 1 1 0 1 0 1 0 1 1 1 1 0 0 0 0 1 1 0 1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 */
 
-    func checarMensagem=examinar;
-
     /* mensagem */
 
     Elemento mensagem2 =
     criarElemento("Uma","Mensagem",
         "Está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"",
-        "Numa folha de papel amassada está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"", False, False, NULL, 0,
+        "Numa folha de papel amassada está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
 
     /* porta */
@@ -172,7 +175,7 @@ Elemento criarSala2(){
     Elemento porta2 =
     criarElemento("Uma", "Porta",
         "Uma porta.",
-        "Uma porta dourada.", False, False, NULL, 0,
+        "Uma porta dourada.", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
 
     /* chave */
@@ -180,7 +183,7 @@ Elemento criarSala2(){
     Elemento morsa2 =
     criarElemento("Uma","Pelúcia",
         "Uma morsa de pelúcia.",
-        "Uma morsa de pelúcia marrom.", False, False, NULL, 0,
+        "Uma morsa de pelúcia marrom.", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
 
     /* livro */
@@ -188,7 +191,7 @@ Elemento criarSala2(){
     Elemento livro2 =
     criarElemento("Um","Livro",
         "Um livro velho. O título é \"Existem apenas -. tipos de pessoas no mundo\".",
-        "Um livro velho e surpreendentemente grande. O título é \"Existem apenas 10 tipos de pessoas no mundo\".", False, False, NULL, 0,
+        "Um livro velho e surpreendentemente grande. O título é \"Existem apenas 10 tipos de pessoas no mundo\".", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
 
     /* pagina */
@@ -196,7 +199,7 @@ Elemento criarSala2(){
     Elemento pagina2 =
     criarElemento("Uma","Página",
         "Você já tentou procurar embaixo do cofre?.",
-        "Você já tentou procurar embaixo do cofre?.", False, False, NULL, 0,
+        "Você já tentou procurar embaixo do cofre?.", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
 
     /* cofre */
@@ -204,7 +207,7 @@ Elemento criarSala2(){
     Elemento cofre2 =
     criarElemento("Um","Cofre",
         "Um cofre de ferro.",
-        "Um cofre grande de ferro com uma fechadura mecânica.", False, False, NULL, 0,
+        "Um cofre grande de ferro com uma fechadura mecânica.", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
 
     /* letra */
@@ -212,7 +215,7 @@ Elemento criarSala2(){
     Elemento letra2 =
     criarElemento("Um","Papel",
         "Há uma letra \"E\".",
-        "Há uma letra \"E\".", False, False, NULL, 0,
+        "Há uma letra \"E\".", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
 
     Info unionS2;
@@ -230,40 +233,44 @@ Elemento criarSala2(){
     criarElemento("Uma","Binaria",
         "Uma sala.",
         "Uma sala.",
-        False, False, conteudoS2, 6, NULL, NULL, unionS2);
+        False, False, conteudoS2, 6, 0, NULL, NULL, NULL, unionS2);
 
     return sala2;
 
 }
 
-Elemento criaSala3(){
-    /* --------------------------------------- SALA 3 --------------------------------------------- */
+// Elemento criarSala3(){
+//     /* --------------------------------------- SALA 3 --------------------------------------------- */
 
-    Info unionVazia;
+//     Info unionVazia;
 
-    /* porta */
+//     /* porta */
 
-    Elemento porta3 =
-    criarElemento("Uma", "Porta",
-        "Uma porta.",
-        "Uma porta de madeira.", False, False, NULL, 0,
-        NULL, NULL, unionVazia);
+//     Elemento porta3 =
+//     criarElemento("Uma", "Porta",
+//         "Uma porta.",
+//         "Uma porta de madeira.", False, False, NULL, 0,
+//         NULL, NULL, unionVazia);
 
-    Elemento gaiola3 =
-    criarElemento("Uma", "Gaiola",
-        "Há um papagaio na gaiola.",
-        "Há um papagaio verde e tagarela na gaiola.", False, False, NULL, 0,
-        NULL, NULL, unionVazia);
+//     Elemento gaiola3 =
+//     criarElemento("Uma", "Gaiola",
+//         "Há um papagaio na gaiola.",
+//         "Há um papagaio verde e tagarela na gaiola.", False, False, NULL, 0,
+//         NULL, NULL, unionVazia);
 
-    Elemento papagaio3 =
-    criarElemento("Um", "Papagaio",
-        "Papagaio verde.",
-        "Papagaio verde e tagarela. Ele não para de falar.", False, False, NULL, 0,
-        NULL, NULL, unionVazia);
+//     Elemento papagaio3 =
+//     criarElemento("Um", "Papagaio",
+//         "Papagaio verde.",
+//         "Papagaio verde e tagarela. Ele não para de falar.", False, False, NULL, 0,
+//         NULL, NULL, unionVazia);
 
-    Elemento ima3 =
-    criarElemento("Um", "Ima",
-        "Papagaio verde.",
-        "Papagaio verde e tagarela. Ele não para de falar.", False, False, NULL, 0,
-        NULL, NULL, unionVazia);
-}
+//     Elemento ima3 =
+//     criarElemento("Um", "Ima",
+//         "Papagaio verde.",
+//         "Papagaio verde e tagarela. Ele não para de falar.", False, False, NULL, 0,
+//         NULL, NULL, unionVazia);
+
+//     Elemento tiraDaquiDps;
+
+//     return tiraDaquiDps;
+// }

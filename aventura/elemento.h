@@ -28,7 +28,14 @@ typedef struct ele {
     boolean conhecido;
     struct ele* conteudo;
     int nEle; /* numero de elementos na lista de conteudos */
-    Info detalhe;
+    int nAcoes; /* numero de acoes do elemento */
     void **acoes;
+    int *transitividade;
+    /*
+        0 = intransitivo
+        1 = transitivo
+        2 = bitransitivo
+    */
     void *animacao;
+    Info detalhe;
 } Elemento;

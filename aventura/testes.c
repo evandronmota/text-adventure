@@ -14,6 +14,7 @@ POR NOS.
 #include <stdio.h>
 #include "elemento.h"
 #include "lista_ligada.h"
+#include "salas.h"
 #include "tabela_de_sim.h"
 
 Elemento *criaElemento(char *n) {
@@ -23,8 +24,24 @@ Elemento *criaElemento(char *n) {
     return el;
 }
 
-int main() {
+void testarSala(Elemento sala) {
+    printf("OI: %s\n", sala.longa);
 
+    int i, j;
+    for (i=0; i < sala.nEle; i++) {
+        Elemento obj = sala.conteudo[i];
+        for (j=0; j < obj.nAcoes; j++) {
+            if (obj.transitividade[j] == 0)
+                ((func)obj.acoes[j])(NULL, NULL);
+            else if (obj.transitividade[j] == 1)
+                ((func)obj.acoes[j])(&obj, NULL);
+            else 
+                ((func)obj.acoes[j])(&obj, &obj);
+        }
+    }
+}
+
+int main() {
     // TESTE: CRIAR
     printf("TESTE: CRIAR\n");
     TabSim t = cria(17);
@@ -63,8 +80,6 @@ int main() {
     else printf("Elemento a partir de 'gaodra' não encontrado!\n");
     printf("\n");
 
-
-
     // TESTE: RETIRAR
     printf("TESTE: RETIRAR\n");
     printf("%s\n", (retira(t, "dragao") ? "Sucesso ao retirar dragao!" : "Erro ao retirar dragao!"));
@@ -86,9 +101,14 @@ int main() {
     else printf("Elemento a partir de 'gaodra' não encontrado!\n");
     printf("\n");
 
-
-
     destroi(t);
+
+    /* ============================================ */
+
+    Elemento sala1 = criarSala1();
+    testarSala(sala1);
 
     return 0;
 }
+
+    /* d(- _ -)b */

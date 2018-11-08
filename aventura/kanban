@@ -7,16 +7,16 @@ To Do:
 -Animação (mesmo se nenhum elemento utiliza)
 -Apresentação do jogo (pg 13, 4.5)
 -Documentação
--Testes
 -Definir senha do puzzle final
 
 Doing:
 -Criar estória
--Makefile
 -Sala 2
--Aplicar a tabela de simbolos
+-Testes
 
 Done:
+-Makefile
+-Aplicar a tabela de simbolos
 -Arrumar a main
 -Ep1
 -Imports corrigidos

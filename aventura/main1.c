@@ -30,7 +30,9 @@ int main() {
 
         /* se for valido atualiza o auxiliar */
         /* se nao, manda uma msg de erro e nao atualiza o auxiliar */
-        getchar();
+        /* getchar(); */
+
+        exit(0);
     }
 
     return 0;
