@@ -3,8 +3,7 @@ struct elo {
     Elemento *val;
     struct elo *next;
 };
-
-typedef struct elo *Lista;
+typedef struct elo* Lista;
 
 Lista criaL(void);
 void destroiL(Lista l);

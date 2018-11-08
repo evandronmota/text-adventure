@@ -25,7 +25,7 @@ Elemento criarElemento(char *artigo, char *nome, char *curta,
     return novo;
 }
 
-void nome(Elemento e) {
+void nomear(Elemento e) {
     printf("%s %s.\n", e.artigo, e.n);
 }
 
@@ -131,7 +131,9 @@ Elemento criarSala1() {
 
     
     
-    
+}
+
+Elemento criarSala2(){
     /* --------------------------------------- SALA 2 --------------------------------------------- */
     /* .. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .
     0 0 0 0 0 0 0 0 1 1 1 1 0 0 1 1 1 1 0 1 0 1 0 1 1 1 1 0 0 0 0 1 1 0 1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 */
@@ -141,8 +143,13 @@ Elemento criarSala1() {
 
     void **acoesMensagem = malloc(sizeof(func));
     acoesMensagem[0] = checarMensagem;
-
-    Info unionDef; */
+*/
+    Info unionDef;
+/* 
+    char *artigo, char *nome, char *curta,
+    char *longa, boolean visivel, boolean conhecido,
+    Elemento *conteudo, int nEle, void **acoes,
+    void *animacao, Info detalhe */
 
     /* mensagem */
 
@@ -150,7 +157,7 @@ Elemento criarSala1() {
     criarElemento("Uma","Mensagem",
         "Está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"",
         "Numa folha de papel amassada está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"", False, False, NULL, 0,
-        acoesMensagem, NULL, unionDef);
+        NULL, NULL, unionDef);
 
     /* porta */
 
@@ -163,8 +170,34 @@ Elemento criarSala1() {
     /* chave */
 
     Elemento morsa2 =
-    criarElemento("Uma","Morsa",
+    criarElemento("Uma","Pelúcia",
         "Uma morsa de pelúcia.",
-        "Uma morsa de pelúcia", False, False, NULL, 0,
+        "Uma morsa de pelúcia marrom.", False, False, NULL, 0,
         NULL, NULL, unionDef);
+
+    /* livro */
+
+    Elemento livro2 =
+    criarElemento("Um","Livro",
+        "Um livro velho. O título é \"Existem apenas -. tipos de pessoas no mundo\".",
+        "Um livro velho e surpreendentemente grande. O título é \"Existem apenas 10 tipos de pessoas no mundo\".", False, False, NULL, 0,
+        NULL, NULL, unionDef);
+
+    /* pagina */
+
+    Elemento pagina2 =
+    criarElemento("Uma","Página",
+        "Você já tentou procurar embaixo do cofre?.",
+        "Você já tentou procurar embaixo do cofre?.", False, False, NULL, 0,
+        NULL, NULL, unionDef);
+    
+    /* cofre */
+
+    Elemento cofre2 =
+    criarElemento("Um","Cofre",
+        "Um cofre de ferro.",
+        "Um cofre grande de ferro com uma fechadura mecânica.", False, False, NULL, 0,
+        NULL, NULL, unionDef);
+
+    /*  */    
 }

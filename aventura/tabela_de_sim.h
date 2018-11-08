@@ -2,7 +2,7 @@ typedef struct {
     int tam;
     Lista *elementos;
 } tabSim;
-
+ 
 typedef tabSim *TabSim;
 
 TabSim cria(int tam);
