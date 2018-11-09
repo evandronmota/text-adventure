@@ -1,10 +1,19 @@
+/*
+    Uma célula da lista ligada guarda um
+    ponteiro para um elemento e o nome desse
+    elemento.
+*/
 struct elo {
-    char *nomes;
+    char *nome;
     Elemento *val;
     struct elo *next;
 };
-typedef struct elo* Lista;
 
+// ponteiro para a lista ligada
+typedef struct elo *Lista;
+
+
+// funções da lista ligada
 Lista criaL(void);
 void destroiL(Lista l);
 Lista insereL(Lista l, Elemento *val);

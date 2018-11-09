@@ -2,17 +2,24 @@
 #include "elemento.h"
 #include "lista_ligada.h"
 
+/*
+    Cria uma lista ligada. Retorna a lista criada.
+*/
 Lista criaL() {
     Lista l = malloc(sizeof(struct elo));
-    l->nomes = malloc(sizeof(char));
-    if (l == NULL || l->nomes==NULL)
+    l->nome = malloc(sizeof(char));
+    if (l == NULL || l->nome==NULL)
         return NULL;
-    l->nomes = NULL;
+    l->nome = NULL;
     l->next = NULL;
     l->val = NULL;
     return l;
 }
 
+/*
+    Recebe uma lista ligada. Destroi a lista
+    recebida.
+*/
 void destroiL(Lista l) {
     Lista p = l->next;  
     Lista aux;
@@ -25,6 +32,11 @@ void destroiL(Lista l) {
     free(p);
 }
 
+/*
+    Recebe uma lista ligada e um ponteiro para
+    um elemento. Insere nessa lista o elemento
+    recebido.
+*/
 Lista insereL(Lista l, Elemento *val) {
     Lista new = criaL();
     if (new == NULL)
@@ -36,16 +48,29 @@ Lista insereL(Lista l, Elemento *val) {
     return new;
 }
 
+/*
+    Recebe uma lista ligada e uma string. Realiza
+    uma busca nessa lista a partir da string
+    recebida. Retorna um ponteiro para o elemento
+    associado a tal string, em caso de sucesso, ou
+    NULL, caso contrário.
+*/
 Elemento *buscaL(Lista l, char *n) {
     Lista p = l->next;
     while (p != NULL) {
-        if (p->nomes == n)
+        if (p->nome == n)
             return p->val;
         p = p->next;
     }
     return NULL;
 }
 
+/*
+    Recebe uma lista ligada e um ponteiro para um
+    elemento. Remove esse elemento da lista recebida.
+    Retorna um ponteiro para tal elemento, em caso
+    de sucesso, ou NULL, caso contrário.
+*/
 Elemento *retiraL(Lista l, Elemento *val) {
     Lista p = l->next;
     if (p==NULL)

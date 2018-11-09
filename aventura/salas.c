@@ -3,6 +3,11 @@
 #include "elemento.h"
 #include "salas.h"
 
+/*
+    Recebe os parâmetros necessários ao elemento.
+    Cria um elemento com esses parâmetros.
+    Retorna o elemento criado.
+*/
 Elemento criarElemento(char *artigo, char *nome, char *curta,
     char *longa, boolean visivel, boolean conhecido,
     Elemento *conteudo, int nEle, int nAcoes, int *transitividade,
@@ -27,27 +32,43 @@ Elemento criarElemento(char *artigo, char *nome, char *curta,
     return novo;
 }
 
-void nomear(Elemento e) {   
+/*
+    Recebe um elemento. Imprime o nome do elemento
+    recebido precedido de seu artigo.
+*/
+void nome(Elemento e) {   
     printf("%s %s.\n", e.artigo, e.n);
 }
 
+/*
+    Recebe dois ponteiros para elementos.
+    Imprime a descrição do primeiro elemento caso
+    essa seja uma ação válida para ele.
+    Retorna um inteiro indicando se a ação foi
+    bem-sucedida.
+*/
 int examinar(Elemento *e1, Elemento *e2) {
-    if (e1 == NULL)
+    if (e1 == NULL) // verbo intransitivo
         printf("Examinar o quê?\n");
-    else if (e1->conhecido)
+    else if (e1->conhecido) // verbo transitivo
         printf("%s\n", e1->curta);
-    else {
+    else { // verbo bitransitivo
         printf("%s\n", e1->longa);
         e1->conhecido = True;
     }
     return (e1==NULL? 0: 1);
 }
 
+// union para objetos sem atributos
 Info unionVazia;
 
+/*
+    Cria a primeira sala com todos os objetos.
+    Retorna a sala criada.
+*/
 Elemento criarSala1() {
     /* ------------------------------------- SALA 1 ---------------------------------------------- */
-    /* mensagem */
+    /*++++++++++++++++++mensagem++++++++++++++++++*/
 
     func checarMensagem, checarRelogio;
     checarMensagem = checarRelogio = examinar;
@@ -61,7 +82,7 @@ Elemento criarSala1() {
         "Na parede está escrito com tinta vermelha (ou será sangue...?): 1 + 1 = 2.", False, False, NULL, 0, 0, NULL,
         acoesMensagem, NULL, unionVazia);
 
-    /* chave */
+    /*+++++++++++++++++++chave+++++++++++++++++++*/
 
     Elemento chave1 =
     criarElemento("Uma","Chave",
@@ -72,7 +93,7 @@ Elemento criarSala1() {
     Elemento *conteudoConcha = malloc(sizeof(Elemento));
     conteudoConcha[0] = chave1;
 
-    /* concha */
+    /*+++++++++++++++++++concha+++++++++++++++++++*/
 
     Info unionConcha1;
     unionConcha1.atributos = malloc(sizeof(obj_atr));
@@ -89,7 +110,7 @@ Elemento criarSala1() {
         "Uma concha verde em formato de espiral.", False, False, conteudoConcha, 0, 0, NULL,
         NULL, NULL, unionConcha1);
 
-    /* porta */
+    /*+++++++++++++++++++porta+++++++++++++++++++*/
 
     Elemento porta1 =
     criarElemento("Uma", "Porta",
@@ -97,7 +118,7 @@ Elemento criarSala1() {
         "Uma porta de ferro com fechadura dourada.", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
 
-    /* ponteiro do relogio */
+    /*++++++++++++ponteiro do relogio++++++++++++*/
 
     Info unionPonteiro1;
     unionPonteiro1.atributos = malloc(sizeof(obj_atr));
@@ -120,15 +141,14 @@ Elemento criarSala1() {
         "Um ponteiro de minutos do relógio quebrado.", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionPonteiro1);
 
-    /* relogio */
+    /*++++++++++++++++++relogio++++++++++++++++++*/
 
     void **acoesRelogio = malloc(sizeof(func));
     acoesRelogio[0] = checarRelogio;
+
+    // transitividade das ações do relogio
     int *tRel = malloc(sizeof(int));
     tRel[0] = 1;
-
-    /* para usar a funçao na lista
-    tem que fazer typecasting */
 
     Elemento relogio1 =
     criarElemento("Um","Relógio",
@@ -136,7 +156,7 @@ Elemento criarSala1() {
         "Relógio sem o ponteiro dos minutos e com o ponteiro das horas apontando para o 8.",
         False, False, NULL, 0, 1, tRel, acoesRelogio, NULL, unionVazia);
 
-    /* sala 1 */
+    /*++++++++++++++++++sala 1++++++++++++++++++*/
 
     Info unionS1;
 
@@ -157,12 +177,16 @@ Elemento criarSala1() {
     return sala1;
 }
 
+/*
+    Cria a segunda sala com todos os objetos.
+    Retorna a sala criada.
+*/
 Elemento criarSala2(){
     /* --------------------------------------- SALA 2 --------------------------------------------- */
     /* .. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .
     0 0 0 0 0 0 0 0 1 1 1 1 0 0 1 1 1 1 0 1 0 1 0 1 1 1 1 0 0 0 0 1 1 0 1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 */
 
-    /* mensagem */
+    /*++++++++++++++++++mensagem++++++++++++++++++*/
 
     Elemento mensagem2 =
     criarElemento("Uma","Mensagem",
@@ -170,7 +194,7 @@ Elemento criarSala2(){
         "Numa folha de papel amassada está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
 
-    /* porta */
+    /*+++++++++++++++++++porta+++++++++++++++++++*/
 
     Elemento porta2 =
     criarElemento("Uma", "Porta",
@@ -178,7 +202,7 @@ Elemento criarSala2(){
         "Uma porta dourada.", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
 
-    /* chave */
+    /*+++++++++++++++++++chave+++++++++++++++++++*/
 
     Elemento morsa2 =
     criarElemento("Uma","Pelúcia",
@@ -186,7 +210,7 @@ Elemento criarSala2(){
         "Uma morsa de pelúcia marrom.", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
 
-    /* livro */
+    /*+++++++++++++++++++livro+++++++++++++++++++*/
 
     Elemento livro2 =
     criarElemento("Um","Livro",
@@ -194,7 +218,7 @@ Elemento criarSala2(){
         "Um livro velho e surpreendentemente grande. O título é \"Existem apenas 10 tipos de pessoas no mundo\".", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
 
-    /* pagina */
+    /*++++++++++++++++++pagina++++++++++++++++++*/
 
     Elemento pagina2 =
     criarElemento("Uma","Página",
@@ -202,7 +226,7 @@ Elemento criarSala2(){
         "Você já tentou procurar embaixo do cofre?.", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
 
-    /* cofre */
+    /*+++++++++++++++++++cofre+++++++++++++++++++*/
 
     Elemento cofre2 =
     criarElemento("Um","Cofre",
@@ -210,13 +234,15 @@ Elemento criarSala2(){
         "Um cofre grande de ferro com uma fechadura mecânica.", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
 
-    /* letra */
+    /*+++++++++++++++++++letra+++++++++++++++++++*/
 
     Elemento letra2 =
     criarElemento("Um","Papel",
         "Há uma letra \"E\".",
         "Há uma letra \"E\".", False, False, NULL, 0, 0, NULL,
         NULL, NULL, unionVazia);
+
+    /*++++++++++++++++++sala 2++++++++++++++++++*/
 
     Info unionS2;
 
@@ -236,7 +262,6 @@ Elemento criarSala2(){
         False, False, conteudoS2, 6, 0, NULL, NULL, NULL, unionS2);
 
     return sala2;
-
 }
 
 // Elemento criarSala3(){

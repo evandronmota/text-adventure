@@ -1,23 +1,31 @@
+// define o tipo boolean
 typedef enum {
     False, True
 } boolean;
 
+// union para o tipo de atributo
 typedef union {
     boolean valor_estado;
     int valor_num;
     char *valor_str;
 } atr_val;
 
+// atributos de um objeto
 typedef struct {
-    char *nome;
+    char *nome; // nome do atributo
     atr_val valor;
 } obj_atr;
 
+/*
+    union para atributos específicos de sala
+    e objeto.
+*/
 typedef union {
     obj_atr *atributos;
     struct ele *saidas;
 } Info;
 
+// elemento
 typedef struct ele {
     char *artigo;
     char *n;

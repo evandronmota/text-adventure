@@ -24,7 +24,7 @@ int main() {
         examinar(sala1, NULL);
 
         for (i = 0; i<sala1->nEle; i++){
-            nomear(sala1->conteudo[i]);
+            nome(sala1->conteudo[i]);
             printf("%s\n", busca(tab, sala1->conteudo[i].n)->curta); /* Testa a busca pelo elemento na tabela */
         }
 

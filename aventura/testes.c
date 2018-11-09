@@ -17,6 +17,11 @@ POR NOS.
 #include "salas.h"
 #include "tabela_de_sim.h"
 
+/*
+    Recebe uma string. Cria um elemento com nome
+    igual à string recebida. Retorna um ponteiro
+    para o elemento criado.
+*/
 Elemento *criaElemento(char *n) {
     Elemento *el = malloc(sizeof(Elemento));
     el->n = malloc(80*sizeof(char));
@@ -52,15 +57,11 @@ int main() {
     Elemento *el1 = criaElemento("dragao com colisao"); // Elemento para testar colisão
     Elemento *el2 = criaElemento("elemento teste");
 
-
-
     // TESTE: INSERIR
     printf("TESTE: INSERIR\n");
     printf("%s\n", (insere(t, "dragao", el0) ? "Sucesso ao inserir dragao!" : "Erro ao inserir dragao!"));
     printf("%s\n", (insere(t, "feioso", el0) ? "Sucesso ao inserir feioso!" : "Erro ao inserir feioso!"));
     printf("%s\n\n", (insere(t, "gaodra", el1) ? "Sucesso ao inserir gaodra!" : "Erro ao inserir gaodra!"));
-
-
 
     // TESTE: BUSCAR
     printf("TESTE: BUSCAR\n");
@@ -111,4 +112,12 @@ int main() {
     return 0;
 }
 
-    /* d(- _ -)b */
+/*          |^^^^^|          */
+/*         d(- _ -)b         */
+/*   0======|     |======0   */
+/*          |     |          */
+/*          |_____|          */
+/*          | | | |          */
+/*          | | | |          */
+/*        __| | | |__        */
+/*       |____| |____|       */
