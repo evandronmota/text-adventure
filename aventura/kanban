@@ -3,10 +3,11 @@ make && ./main1
 
 To Do:
 -Mudar descricao de portas e chaves (para letras)
--Criar salas 3-5
+-Criar salas 3 e 5
 -Animação (mesmo se nenhum elemento utiliza)
 -Apresentação do jogo (pg 13, 4.5)
 -Definir senha do puzzle final
+-Unions com as saidas de cada sala
 
 Doing:
 -Criar estória
@@ -15,6 +16,8 @@ Doing:
 -Testes
 
 Done:
+- Sala 1
+- Sala 4
 -Makefile
 -Aplicar a tabela de simbolos
 -Arrumar a main

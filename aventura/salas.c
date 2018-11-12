@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "elemento.h"
 #include "salas.h"
 
@@ -56,7 +57,26 @@ int examinar(Elemento *e1, Elemento *e2) {
         printf("%s\n", e1->longa);
         e1->conhecido = True;
     }
-    return (e1==NULL? 0: 1);
+    return (e1 == NULL ? 0 : 1);
+}
+
+/*
+    Recebe dois ponteiros para elementos.
+    Imprime uma mensagem avisando que o primeiro
+    elemento foi colocado sobre o segundo.
+    Retorna um inbteiro indicando se a ação foi
+    bem-sucedida.
+*/
+int colocarSobre(Elemento *e1, Elemento *e2) {
+    if (e1 == NULL)
+        printf("Colocar o quê?\n");
+    else if (e2 == NULL)
+        printf("Colocar onde?\n");
+    else {
+        printf("Você colocou %s %s n%s %s.", e1->artigo, e1->n, e2->artigo, e2->n);
+    }
+
+    return (e1 == NULL || e2 == NULL ? 0 : 1);
 }
 
 // union para objetos sem atributos
@@ -169,10 +189,11 @@ Elemento criarSala1() {
     conteudoS1[5] = mensagem1;
 
     Elemento sala1 =
-    criarElemento("Uma","Fibonacci",
+    criarElemento("Uma", "Fibonacci",
         "Uma sala empoeirada com cheiro de mofo.",
         "Uma sala empoeirada com cheiro de mofo. Há um relógio e um ponteiro no chão. Na parede está escrita uma mensagem e sob um pedestal há uma concha. Além disso, tem uma porta no fundo da sala.",
-        False, False, conteudoS1, 6, 0, NULL, NULL, NULL, unionS1);
+        False, False, conteudoS1, 6, 0, NULL,
+        NULL, NULL, unionS1);
 
     return sala1;
 }
@@ -259,7 +280,8 @@ Elemento criarSala2(){
     criarElemento("Uma","Binaria",
         "Uma sala.",
         "Uma sala.",
-        False, False, conteudoS2, 6, 0, NULL, NULL, NULL, unionS2);
+        False, False, conteudoS2, 6, 0, NULL,
+        NULL, NULL, unionS2);
 
     return sala2;
 }
@@ -299,3 +321,112 @@ Elemento criarSala2(){
 
 //     return tiraDaquiDps;
 // }
+
+/*
+    Cria a quarta sala com todos os objetos.
+    Retorna a sala criada.
+*/
+Elemento criarSala4() {
+    /*+++++++++++++++++mensagem+++++++++++++++++*/
+
+    int *transitMsg = malloc(sizeof(int));
+    transitMsg[0] = 1;
+
+    func checarMensagem = examinar;
+    void **acoesMsg = malloc(sizeof(func));
+    acoesMsg[0] = checarMensagem;
+
+    Elemento mensagem =
+    criarElemento("A", "Mensagem",
+        "Na parede há uma mensagem: acho que há pressão demais por aqui",
+        "Na parede está escrito em azul: acho que há pressão demais por aqui",
+        False, True, NULL, 0, 1, transitMsg,
+        acoesMsg, NULL, unionVazia);
+
+    /*+++++++++++++++++++poema+++++++++++++++++++*/
+
+    int *transitPoema = malloc(sizeof(int));
+    transitPoema[0] = 1;
+
+    func checarPoema = examinar;    
+    void **acoesPoema = malloc(sizeof(func));
+    acoesPoema[0] = checarPoema;
+
+    Elemento poema =
+    criarElemento("O", "Poema",
+        "Poema sem o sétimo verso.",
+        "Poema escrito a tinta com uma caligrafia estranha. Está faltando o sétimo verso.",
+        False, True, NULL, 0, 1, transitPoema,
+        acoesPoema, NULL, unionVazia);
+
+    /*+++++++++++++++++++blocos+++++++++++++++++++*/
+
+    Elemento* blocos = malloc(10*sizeof(Elemento));
+
+    for (int i = 0; i < 10; i++) {
+        int *transitBloco = malloc(sizeof(int));
+        transitBloco[0] = 2;
+
+        func colocarBlocoSobre = colocarSobre;
+        void **acoesBloco = malloc(sizeof(func));
+        acoesBloco[0] = colocarBlocoSobre;
+
+        char numBloco[2];
+        numBloco[0] = 1 + '0';
+        numBloco[1] = '\0';
+
+        char nomeBloco[10];
+        char descCurta[50];
+        char descLonga[50];
+
+        strcpy(nomeBloco, "Bloco ");
+        strcpy(descCurta, "Bloco com o número ");
+        strcpy(descLonga, "Bloco empoeirado e com o número ");
+        
+        strcat(nomeBloco, numBloco);
+        strcat(descCurta, numBloco);
+        strcat(descLonga, numBloco);
+
+        strcat(descCurta, ".");
+        strcat(descLonga, " gravado.");
+
+        Elemento bloco =
+        criarElemento("O", nomeBloco,
+        descCurta,
+        descLonga,
+        False, True, NULL, 0, 1, transitBloco,
+        acoesBloco, NULL, unionVazia);
+
+        blocos[i] = bloco;
+    }
+
+    /*+++++++++++++++++balanca+++++++++++++++++*/
+
+    Elemento balanca =
+    criarElemento("A", "Balança",
+        "Balança antiga.",
+        "Balança um pouco enferrujada. Aparenta ser bem antiga.",
+        False, True, NULL, 0, 0, NULL,
+        NULL, NULL, unionVazia);
+
+    /*+++++++++++++++++++sala 4+++++++++++++++++++*/
+
+    Elemento* conteudoS4 = malloc(13*sizeof(Elemento));
+    for (int i = 0; i < 10; i++) {
+        conteudoS4[i] = blocos[i];
+    }
+    conteudoS4[10] = mensagem;
+    conteudoS4[11] = poema;
+    conteudoS4[12] = balanca;
+
+    Info unionS4;
+
+    Elemento sala4 =
+    criarElemento("A", "Pascal",
+    "Uma sala triangular.",
+    "Uma sala triangular. Há uma mesa com blocos, um papel com um poema no chão, uma mensagem na parede e uma balança.",
+    False, True, conteudoS4, 13, 0, NULL,
+    NULL, NULL, unionS4);
+
+    return sala4;
+}
