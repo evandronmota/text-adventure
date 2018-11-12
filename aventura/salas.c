@@ -390,12 +390,19 @@ Elemento criarSala4() {
         strcat(descCurta, ".");
         strcat(descLonga, " gravado.");
 
+        Info unionBloco;
+        unionBloco.atributos = malloc(sizeof(obj_atr));
+
+        obj_atr estaNaBalanca;
+        estaNaBalanca.nome = "estaNaBalanca";
+        estaNaBalanca.valor.valor_estado = False;
+
         Elemento bloco =
         criarElemento("O", nomeBloco,
         descCurta,
         descLonga,
         False, True, NULL, 0, 1, transitBloco,
-        acoesBloco, NULL, unionVazia);
+        acoesBloco, NULL, unionBloco);
 
         blocos[i] = bloco;
     }
