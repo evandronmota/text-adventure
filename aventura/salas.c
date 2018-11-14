@@ -426,7 +426,7 @@ Elemento criarSala4() {
         acoesBloco[0] = colocarBlocoSobre;
 
         char numBloco[2];
-        numBloco[0] = 1 + '0';
+        numBloco[0] = i + '0';
         numBloco[1] = '\0';
 
         char nomeBloco[10];
