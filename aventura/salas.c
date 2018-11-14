@@ -286,41 +286,95 @@ Elemento criarSala2(){
     return sala2;
 }
 
-// Elemento criarSala3(){
-//     /* --------------------------------------- SALA 3 --------------------------------------------- */
+Elemento criarSala3(){
+    /* --------------------------------------- SALA 3 --------------------------------------------- */
 
-//     Info unionVazia;
+    Info unionVazia;
 
-//     /* porta */
+    /* porta */
 
-//     Elemento porta3 =
-//     criarElemento("Uma", "Porta",
-//         "Uma porta.",
-//         "Uma porta de madeira.", False, False, NULL, 0,
-//         NULL, NULL, unionVazia);
+    Elemento porta3 =
+    criarElemento("Uma", "Porta",
+        "Uma porta.",
+        "Uma porta de madeira.", False, False, NULL, 0,
+        NULL, NULL, unionVazia);
 
-//     Elemento gaiola3 =
-//     criarElemento("Uma", "Gaiola",
-//         "Há um papagaio na gaiola.",
-//         "Há um papagaio verde e tagarela na gaiola.", False, False, NULL, 0,
-//         NULL, NULL, unionVazia);
+    Elemento ovo3 = 
+    criarElemento("Um", "Ovo",
+        "Um ovo brilhante.",
+        "Um ovo feito de aço.", False, False, NULL, 0,
+        NULL, NULL, unionVazia);
 
-//     Elemento papagaio3 =
-//     criarElemento("Um", "Papagaio",
-//         "Papagaio verde.",
-//         "Papagaio verde e tagarela. Ele não para de falar.", False, False, NULL, 0,
-//         NULL, NULL, unionVazia);
+    Elemento *conteudoGalinha3 = malloc(1*sizeof(Elemento));
+    conteudoGalinha3[0] = ovo3;
 
-//     Elemento ima3 =
-//     criarElemento("Um", "Ima",
-//         "Papagaio verde.",
-//         "Papagaio verde e tagarela. Ele não para de falar.", False, False, NULL, 0,
-//         NULL, NULL, unionVazia);
+    Elemento galinha3 =
+    criarElemento("Uma", "Galinha",
+        "Uma galinha branca.",
+        "Uma galinha grande com penas brancas.", False, False, conteudoGalinha3, 0,
+        NULL, NULL, unionVazia);
 
-//     Elemento tiraDaquiDps;
+    Elemento *conteudoGaiola3 = malloc(1*sizeof(Elemento));
+    conteudoGaiola3[0] = galinha3;
 
-//     return tiraDaquiDps;
-// }
+    Elemento gaiola3 =
+    criarElemento("Uma", "Gaiola",
+        "Uma gaiola dourada.",
+        "Uma grande gaiola dourada. Há uma galinha presa nela?...", False, False, conteudoGaiola3, 0,
+        NULL, NULL, unionVazia);
+
+    Elemento metal3 =
+    criarElemento("Um", "Metal",
+        "Uma pequena barra de metal.",
+        "Uma pequena barra de metal. Nela está gradado: \"Co\"", False, False, NULL, 0,
+        NULL, NULL, unionVazia);
+
+    Elemento bobina3 =
+    criarElemento("Uma", "Bobina",
+        "Uma grande bobina elétrica.",
+        "Uma grande bobina elétrica. No centro há um buraco pequeno e na lateral um botão vermelho.", 
+        False, False, NULL, 0,
+        NULL, NULL, unionVazia);
+
+    Elemento botao3 = 
+    criarElemento("Um", "Botão",
+        "Um botão vermelho.",
+        "Um botão grande e vermelho.", False, False, NULL, 0,
+        NULL, NULL, unionVazia);
+
+    Elemento saco3 = 
+    criarElemento("Um", "Saco",
+        "Um saco com milho.",
+        "Um saco de linho com milho.", False, False, NULL, 0,
+        NULL, NULL, unionVazia);
+    
+    Elemento chave3 = 
+    criarElemento("Uma", "Chave",
+        "Uma chave dourada.",
+        "Uma chave pequena e dourada.", False, False, NULL, 0,
+        NULL, NULL, unionVazia);
+
+    Info unionS3;
+
+    Elemento *conteudoS3 = malloc(8*sizeof(Elemento));
+    conteudoS2[0] = porta3;
+    conteudoS2[1] = gaiola3;
+    conteudoS2[2] = galinha3;
+    conteudoS2[3] = ovo3;
+    conteudoS2[4] = bobina3;
+    conteudoS2[5] = botao3;
+    conteudoS2[6] = metal3;
+    conteudoS2[7] = saco3;
+    
+    Elemento sala2 =
+    criarElemento("Uma","Galinhada",
+        "Uma sala.",
+        "Uma sala.",
+        False, False, conteudoS3, 6, 0, NULL,
+        NULL, NULL, unionS3);
+
+    return sala2;
+}
 
 /*
     Cria a quarta sala com todos os objetos.
