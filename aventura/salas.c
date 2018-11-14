@@ -437,3 +437,33 @@ Elemento criarSala4() {
 
     return sala4;
 }
+
+/* ####################################################### SALA 5 ######################################################################### */
+
+Elemento criarSala5() {
+    Elemento enigma = criarElemento("A", "mensagem", "O que o cientista disse quando encontrou 2 atomos de hélio? HeHe", "Um enigma",
+    False, False, NULL, 0, 0, 0, NULL, NULL, unionVazia);
+
+    Elemento mapa = criarElemento("O", "mapa", "Qual país está faltando?", "Um mapa do mundo faltando um país",
+    False, False, NULL, 0, 0, 0, NULL, NULL, unionVazia);
+
+    Elemento poster = criarElemento("O", "Poster", "Poster de Blade Runner",
+    "Poster da cidade futurista de Los Angeles com muitas luzes, telões e carros voadores",
+    False, False, NULL, 0 , 0, 0, NULL, NULL, unionVazia);
+
+    Elemento caixadefosforo = criarElemento("A", "Caixa de Fósoforo", "Uma caixa de fósforo", "Uma caixa de fósforo", False, False, NULL, 0, 0, 0, NULL, NULL, unionVazia);
+
+    Elemento lataderefri = criarElemento("A", "Lata de refrigerante", "Lata de refrigerante", "Lata de refrigerante", False, False, NULL, 0, 0, 0, NULL, NULL, unionVazia);
+
+    Elemento *conteudoS5 = malloc(5*sizeof(Elemento));
+    conteudoS5[0] = enigma;
+    conteudoS5[1] = mapa;
+    conteudoS5[2] = poster;
+    conteudoS5[3] = caixadefosforo;
+    conteudoS5[4] = lataderefri;
+
+    Elemento sala5 = criarElemento("A", "NePAl", "Tem um poster, uma caixa de fósoforo e uma lata", "Tem um poster, uma caixa de fósforo e uma lata", 
+    False, False, conteudoS5, 0, 0, 0, NULL, NULL, unionVazia);
+
+    return sala5;
+}
