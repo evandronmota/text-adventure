@@ -6,7 +6,7 @@ typedef struct {
     int tam;
     Lista *elementos;
 } tabSim;
- 
+
 // ponteiro para tabela de símbolos
 typedef tabSim *TabSim;
 

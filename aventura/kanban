@@ -5,8 +5,15 @@ To Do:
 -Mudar descricao de portas e chaves (para letras)
 -Animação (mesmo se nenhum elemento utiliza)
 -Apresentação do jogo (pg 13, 4.5)
--Definir senha do puzzle final
+-Definir sala e senha do puzzle final
 -Unions com as saidas de cada sala
+-artigos pg 3
+-pg 4
+-jogar tudo para tabela de simbolos
+-criar objeto aventureiro
+-inicialização (4.4)
+-Conectar testes e main1 no Makefile
+-relatório
 
 Doing:
 -Criar estória
@@ -15,6 +22,7 @@ Doing:
 -Sala 3
 -Sala 5
 -Testes
+-Entregar (4.6 - parte 4)
 
 Done:
 - Sala 1
@@ -24,3 +32,4 @@ Done:
 -Arrumar a main
 -Ep1
 -Imports corrigidos
+-Entregar (4.6 - parte 2)

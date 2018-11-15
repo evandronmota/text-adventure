@@ -64,7 +64,7 @@ int examinar(Elemento *e1, Elemento *e2) {
     Recebe dois ponteiros para elementos.
     Imprime uma mensagem avisando que o primeiro
     elemento foi colocado sobre o segundo.
-    Retorna um inbteiro indicando se a ação foi
+    Retorna um inteiro indicando se a ação foi
     bem-sucedida.
 */
 int colocarSobre(Elemento *e1, Elemento *e2) {
@@ -202,7 +202,7 @@ Elemento criarSala1() {
     Cria a segunda sala com todos os objetos.
     Retorna a sala criada.
 */
-Elemento criarSala2(){
+Elemento criarSala2() {
     /* --------------------------------------- SALA 2 --------------------------------------------- */
     /* .. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .
     0 0 0 0 0 0 0 0 1 1 1 1 0 0 1 1 1 1 0 1 0 1 0 1 1 1 1 0 0 0 0 1 1 0 1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 */
@@ -279,7 +279,7 @@ Elemento criarSala2(){
     Elemento sala2 =
     criarElemento("Uma","Binaria",
         "Uma sala.",
-        "Uma sala.",
+        "Uma sala com um cofre, livro, mensagem, pagina, morsa e porta aberta",
         False, False, conteudoS2, 6, 0, NULL,
         NULL, NULL, unionS2);
 
@@ -289,20 +289,19 @@ Elemento criarSala2(){
 Elemento criarSala3(){
     /* --------------------------------------- SALA 3 --------------------------------------------- */
 
-    Info unionVazia;
 
     /* porta */
 
     Elemento porta3 =
     criarElemento("Uma", "Porta",
         "Uma porta.",
-        "Uma porta de madeira.", False, False, NULL, 0,
+        "Uma porta de madeira.", False, False, NULL, 0, 0, 0,
         NULL, NULL, unionVazia);
 
     Elemento ovo3 = 
     criarElemento("Um", "Ovo",
         "Um ovo brilhante.",
-        "Um ovo feito de aço.", False, False, NULL, 0,
+        "Um ovo feito de aço.", False, False, NULL, 0, 0, 0,
         NULL, NULL, unionVazia);
 
     Elemento *conteudoGalinha3 = malloc(1*sizeof(Elemento));
@@ -311,7 +310,7 @@ Elemento criarSala3(){
     Elemento galinha3 =
     criarElemento("Uma", "Galinha",
         "Uma galinha branca.",
-        "Uma galinha grande com penas brancas.", False, False, conteudoGalinha3, 0,
+        "Uma galinha grande com penas brancas.", False, False, conteudoGalinha3, 0, 0, 0,
         NULL, NULL, unionVazia);
 
     Elemento *conteudoGaiola3 = malloc(1*sizeof(Elemento));
@@ -320,60 +319,61 @@ Elemento criarSala3(){
     Elemento gaiola3 =
     criarElemento("Uma", "Gaiola",
         "Uma gaiola dourada.",
-        "Uma grande gaiola dourada. Há uma galinha presa nela?...", False, False, conteudoGaiola3, 0,
+        "Uma grande gaiola dourada. Há uma galinha presa nela?...", False, False, conteudoGaiola3, 0, 0, 0,
         NULL, NULL, unionVazia);
 
     Elemento metal3 =
     criarElemento("Um", "Metal",
         "Uma pequena barra de metal.",
-        "Uma pequena barra de metal. Nela está gradado: \"Co\"", False, False, NULL, 0,
+        "Uma pequena barra de metal. Nela está gradado: \"Co\"", False, False, NULL, 0, 0, 0,
         NULL, NULL, unionVazia);
 
     Elemento bobina3 =
     criarElemento("Uma", "Bobina",
         "Uma grande bobina elétrica.",
         "Uma grande bobina elétrica. No centro há um buraco pequeno e na lateral um botão vermelho.", 
-        False, False, NULL, 0,
+        False, False, NULL, 0, 0, 0,
         NULL, NULL, unionVazia);
 
     Elemento botao3 = 
     criarElemento("Um", "Botão",
         "Um botão vermelho.",
-        "Um botão grande e vermelho.", False, False, NULL, 0,
+        "Um botão grande e vermelho.", False, False, NULL, 0, 0, 0,
         NULL, NULL, unionVazia);
 
     Elemento saco3 = 
     criarElemento("Um", "Saco",
         "Um saco com milho.",
-        "Um saco de linho com milho.", False, False, NULL, 0,
+        "Um saco de linho com milho.", False, False, NULL, 0, 0, 0,
         NULL, NULL, unionVazia);
     
     Elemento chave3 = 
     criarElemento("Uma", "Chave",
         "Uma chave dourada.",
-        "Uma chave pequena e dourada.", False, False, NULL, 0,
+        "Uma chave pequena e dourada.", False, False, NULL, 0, 0, 0,
         NULL, NULL, unionVazia);
 
     Info unionS3;
 
-    Elemento *conteudoS3 = malloc(8*sizeof(Elemento));
-    conteudoS2[0] = porta3;
-    conteudoS2[1] = gaiola3;
-    conteudoS2[2] = galinha3;
-    conteudoS2[3] = ovo3;
-    conteudoS2[4] = bobina3;
-    conteudoS2[5] = botao3;
-    conteudoS2[6] = metal3;
-    conteudoS2[7] = saco3;
+    Elemento *conteudoS3 = malloc(9*sizeof(Elemento));
+    conteudoS3[0] = porta3;
+    conteudoS3[1] = gaiola3;
+    conteudoS3[2] = galinha3;
+    conteudoS3[3] = ovo3;
+    conteudoS3[4] = bobina3;
+    conteudoS3[5] = botao3;
+    conteudoS3[6] = metal3;
+    conteudoS3[7] = saco3;
+    conteudoS3[8] = chave3;
     
-    Elemento sala2 =
+    Elemento sala3 =
     criarElemento("Uma","Galinhada",
         "Uma sala.",
-        "Uma sala.",
+        "Uma sala longa.",
         False, False, conteudoS3, 6, 0, NULL,
         NULL, NULL, unionS3);
 
-    return sala2;
+    return sala3;
 }
 
 /*
@@ -509,15 +509,19 @@ Elemento criarSala5() {
 
     Elemento lataderefri = criarElemento("A", "Lata de refrigerante", "Lata de refrigerante", "Lata de refrigerante", False, False, NULL, 0, 0, 0, NULL, NULL, unionVazia);
 
-    Elemento *conteudoS5 = malloc(5*sizeof(Elemento));
+    Elemento porta = criarElemento("A", "Porta", "Porta", "Porta aberta", False, False, NULL, 0, 0, 0, NULL, NULL, unionVazia);
+
+    Elemento *conteudoS5 = malloc(6*sizeof(Elemento));
     conteudoS5[0] = enigma;
     conteudoS5[1] = mapa;
     conteudoS5[2] = poster;
     conteudoS5[3] = caixadefosforo;
     conteudoS5[4] = lataderefri;
+    conteudoS5[5] = porta;
 
-    Elemento sala5 = criarElemento("A", "NePAl", "Tem um poster, uma caixa de fósoforo e uma lata", "Tem um poster, uma caixa de fósforo e uma lata", 
-    False, False, conteudoS5, 0, 0, 0, NULL, NULL, unionVazia);
+    Elemento sala5 = criarElemento("A", "NePAl", "Salinha", "Tem um poster, uma caixa de fósforo e uma lata", 
+    False, False, conteudoS5, 6, 0, 0, NULL, NULL, unionVazia);
+
 
     return sala5;
 }
