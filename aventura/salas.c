@@ -79,6 +79,13 @@ int colocarSobre(Elemento *e1, Elemento *e2) {
     return (e1 == NULL || e2 == NULL ? 0 : 1);
 }
 
+/*
+    Recebe dois ponteiros para elementos.
+    Imprime uma mensagem avisando que o primeiro
+    elemento foi retirado de cima do segundo.
+    Retorna um inteiro indicando se a ação foi
+    bem-sucedida.
+*/
 int tirarDeCima(Elemento *e1, Elemento *e2) {
     if (e1 == NULL)
         printf("Colocar o quê?\n");
