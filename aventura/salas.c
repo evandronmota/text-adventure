@@ -79,6 +79,18 @@ int colocarSobre(Elemento *e1, Elemento *e2) {
     return (e1 == NULL || e2 == NULL ? 0 : 1);
 }
 
+int tirarDeCima(Elemento *e1, Elemento *e2) {
+    if (e1 == NULL)
+        printf("Colocar o quê?\n");
+    else if (e2 == NULL)
+        printf("Colocar onde?\n");
+    else {
+        printf("Você tirou %s %s d%s %s.", e1->artigo, e1->n, e2->artigo, e2->n);
+    }
+
+    return (e1 == NULL || e2 == NULL ? 0 : 1);
+}
+
 // union para objetos sem atributos
 Info unionVazia;
 
@@ -422,8 +434,10 @@ Elemento criarSala4() {
         transitBloco[0] = 2;
 
         func colocarBlocoSobre = colocarSobre;
-        void **acoesBloco = malloc(sizeof(func));
+        func tirarBlocoDeCima = tirarDeCima;
+        void **acoesBloco = malloc(2*sizeof(func));
         acoesBloco[0] = colocarBlocoSobre;
+        acoesBloco[1] = tirarBlocoDeCima;
 
         char numBloco[2];
         numBloco[0] = i + '0';
