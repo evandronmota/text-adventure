@@ -29,12 +29,15 @@ Elemento *criaElemento(char *n) {
     return el;
 }
 
-void testarSala(Elemento sala) {
-    printf("OI: %s\n", sala.longa);
+void testarSala(Elemento *sala, int num, boolean flag) {
+    printf("**************** SALA %d ***************\n", num);
+    examinar(sala, NULL);
 
     int i, j;
-    for (i=0; i < sala.nEle; i++) {
-        Elemento obj = sala.conteudo[i];
+    for (i=0; i < sala->nEle; i++) {
+        Elemento obj = sala->conteudo[i];
+        if (flag)
+            nome(obj);
         for (j=0; j < obj.nAcoes; j++) {
             if (obj.transitividade[j] == 0)
                 ((func)obj.acoes[j])(NULL, NULL);
@@ -44,6 +47,8 @@ void testarSala(Elemento sala) {
                 ((func)obj.acoes[j])(&obj, &obj);
         }
     }
+
+    printf("\n\n");
 }
 
 int main() {
@@ -107,7 +112,24 @@ int main() {
     /* ============================================ */
 
     Elemento sala1 = criarSala1();
-    testarSala(sala1);
+    Elemento sala2 = criarSala2();
+    Elemento sala3 = criarSala3();
+    Elemento sala4 = criarSala4();
+    Elemento sala5 = criarSala5();
+
+    boolean flag = True;
+
+    while (True) {
+        testarSala(&sala1, 1, flag);
+        testarSala(&sala2, 2, flag);
+        testarSala(&sala3, 3, flag);
+        testarSala(&sala4, 4, flag);
+        testarSala(&sala5, 5, flag);
+
+        flag = False;
+
+        getchar();
+    }
 
     return 0;
 }
