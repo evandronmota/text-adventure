@@ -7,10 +7,10 @@ typedef struct {
     Lista *elementos;
 } tabSim;
 
-// ponteiro para tabela de símbolos
+/* Ponteiro para tabela de símbolos */
 typedef tabSim *TabSim;
 
-// funções da tabela de símbolos
+/* Funções da tabela de símbolos */
 TabSim cria(int tam);
 void destroi(TabSim t);
 int insere(TabSim t, char *n, Elemento *val);

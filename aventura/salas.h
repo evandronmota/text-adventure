@@ -1,7 +1,7 @@
-// ponteiro para as funções dos elementos
+/* Ponteiro para as funções dos elementos */
 typedef int (*func)(Elemento *e1, Elemento *e2);
 
-// funções
+/* Funções */
 Elemento criarSala1();
 Elemento criarSala2();
 Elemento criarSala3();

@@ -19,7 +19,7 @@ int main() {
     Elemento salaFib = criarSala1();
     Elemento salaMorse = criarSala2();
     Elemento salaPapagaio = criarSala3();
-    Elemento salaPascal = criarSala4();
+    // Elemento salaPascal = criarSala4();
     Elemento salaElementos = criarSala5();
 
     TabSim tab = cria(97);
@@ -34,13 +34,13 @@ int main() {
     Elemento *sala1 = &salaFib;
     Elemento *sala2 = &salaMorse;
     Elemento *sala3 = &salaPapagaio;
-    Elemento *sala4 = &salaPascal;
+    // Elemento *sala4 = &salaPascal;
     Elemento *sala5 = &salaElementos;
 
     insereObjnaTabela(tab, "sala 1", sala1);
     insereObjnaTabela(tab, "sala 2", sala2);
     insereObjnaTabela(tab, "sala 3", sala3);
-    insereObjnaTabela(tab, "sala 4", sala4);
+    // insereObjnaTabela(tab, "sala 4", sala4);
     insereObjnaTabela(tab, "sala 5", sala5);
 
     while (True) {
@@ -94,17 +94,17 @@ int main() {
 
 
         /* ######################################## SALA 4 ################################################ */
-        printf("**************** SALA 4 ***************\n");
-        examinar(sala4, NULL);
-        if (ok4) {
-            for (i = 0; i<sala4->nEle; i++)
-                nome(sala4->conteudo[i]);
-            ok4 = False;
-        }
-        for (i = 0; i<sala4->nEle; i++)
-            for (j = 0; j<sala4->conteudo[i].nAcoes; j++)
-                ((func) sala4->conteudo[i].acoes[j])(&sala1->conteudo[i], NULL);
-        printf("\n\n");
+        // printf("**************** SALA 4 ***************\n");
+        // examinar(sala4, NULL);
+        // if (ok4) {
+        //     for (i = 0; i<sala4->nEle; i++)
+        //         nome(sala4->conteudo[i]);
+        //     ok4 = False;
+        // }
+        // for (i = 0; i<sala4->nEle; i++)
+        //     for (j = 0; j<sala4->conteudo[i].nAcoes; j++)
+        //         ((func) sala4->conteudo[i].acoes[j])(&sala1->conteudo[i], NULL);
+        // printf("\n\n");
 
 
         /* ######################################## SALA 5 ################################################ */

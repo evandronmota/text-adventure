@@ -1,5 +1,5 @@
 PARA RODAR:
-make && ./main1
+make && ./testes
 
 To Do:
 -Mudar descricao de portas e chaves (para letras)
@@ -9,27 +9,28 @@ To Do:
 -Unions com as saidas de cada sala
 -artigos pg 3
 -pg 4
--jogar tudo para tabela de simbolos
 -criar objeto aventureiro
 -inicialização (4.4)
--Conectar testes e main1 no Makefile
 -relatório
+-string.h ?
 
 Doing:
 -Criar estória
 -Documentação
 -Sala 2
 -Sala 3
+-Sala 4
 -Sala 5
 -Testes
 -Entregar (4.6 - parte 4)
 
 Done:
 - Sala 1
-- Sala 4
 -Makefile
 -Aplicar a tabela de simbolos
 -Arrumar a main
 -Ep1
 -Imports corrigidos
 -Entregar (4.6 - parte 2)
+-Conectar testes e main1 no Makefile
+-jogar tudo para tabela de simbolos
