@@ -7,7 +7,7 @@
     Inicializa as salas.
     Retorna todas as salas.
 */
-Elemento *iniciarSalas() {
+Elemento *inicializarSalas() {
     //Elemento lobby = criarLobby();
     Elemento sala1 = criarSala1();
     Elemento sala2 = criarSala2();
