@@ -462,121 +462,216 @@ Elemento criarSala3(){
     Cria a quarta sala com todos os objetos.
     Retorna a sala criada.
 */
-// Elemento criarSala4() {
+Elemento criarSala4() {
 
-//     /* ------------------------------------- SALA 4 ---------------------------------------------- */
+    /* ------------------------------------- SALA 4 ---------------------------------------------- */
 
-//     /* Mensagem */
-//     int *transitMsg = malloc(sizeof(int));
-//     transitMsg[0] = 1;
+    /* Mensagem */
+    int *transitMsg = malloc(sizeof(int));
+    transitMsg[0] = 1;
 
-//     func checarMensagem = examinar;
-//     void **acoesMsg = malloc(sizeof(func));
-//     acoesMsg[0] = checarMensagem;
+    func checarMensagem = examinar;
+    void **acoesMsg = malloc(sizeof(func));
+    acoesMsg[0] = checarMensagem;
 
-//     Elemento mensagem =
-//     criarElemento("A", "Mensagem",
-//         "Na parede há uma mensagem: acho que há pressão demais por aqui",
-//         "Na parede está escrito em azul: acho que há pressão demais por aqui",
-//         False, True, NULL, 0, 1, transitMsg,
-//         acoesMsg, NULL, unionVazia);
-
-
-//     /* Poema */
-//     int *transitPoema = malloc(sizeof(int));
-//     transitPoema[0] = 1;
-
-//     func checarPoema = examinar;    
-//     void **acoesPoema = malloc(sizeof(func));
-//     acoesPoema[0] = checarPoema;
-
-//     Elemento poema =
-//     criarElemento("O", "Poema",
-//         "Poema sem o sétimo verso.",
-//         "Poema escrito a tinta com uma caligrafia estranha. Está faltando o sétimo verso.",
-//         False, True, NULL, 0, 1, transitPoema,
-//         acoesPoema, NULL, unionVazia);
+    Elemento mensagem =
+    criarElemento("A", "Mensagem",
+        "Na parede há uma mensagem: acho que há pressão demais por aqui",
+        "Na parede está escrito em azul: acho que há pressão demais por aqui",
+        False, True, NULL, 0, 1, transitMsg,
+        acoesMsg, NULL, unionVazia);
 
 
-//     /* Blocos */
-//     Elemento* blocos = malloc(10*sizeof(Elemento));
+    /* Poema */
+    int *transitPoema = malloc(sizeof(int));
+    transitPoema[0] = 1;
 
-//     for (int i = 0; i < 10; i++) {
-//         int *transitBloco = malloc(sizeof(int));
-//         transitBloco[0] = 2;
+    func checarPoema = examinar;    
+    void **acoesPoema = malloc(sizeof(func));
+    acoesPoema[0] = checarPoema;
 
-//         func colocarBlocoSobre = colocarSobre;
-//         func tirarBlocoDeCima = tirarDeCima;
-//         void **acoesBloco = malloc(2*sizeof(func));
-//         acoesBloco[0] = colocarBlocoSobre;
-//         acoesBloco[1] = tirarBlocoDeCima;
-
-//         char numBloco[2];
-//         numBloco[0] = i + '0';
-//         numBloco[1] = '\0';
-
-//         char nomeBloco[10];
-//         char descCurta[50];
-//         char descLonga[50];
-
-//         strcpy(nomeBloco, "Bloco ");
-//         strcpy(descCurta, "Bloco com o número ");
-//         strcpy(descLonga, "Bloco empoeirado e com o número ");
-        
-//         strcat(nomeBloco, numBloco);
-//         strcat(descCurta, numBloco);
-//         strcat(descLonga, numBloco);
-
-//         strcat(descCurta, ".");
-//         strcat(descLonga, " gravado.");
-
-//         Info unionBloco;
-//         unionBloco.atributos = malloc(sizeof(obj_atr));
-
-//         obj_atr estaNaBalanca;
-//         estaNaBalanca.nome = "estaNaBalanca";
-//         estaNaBalanca.valor.valor_estado = False;
-
-//         Elemento bloco =
-//         criarElemento("O", nomeBloco,
-//         descCurta,
-//         descLonga,
-//         False, True, NULL, 0, 1, transitBloco,
-//         acoesBloco, NULL, unionBloco);
-
-//         blocos[i] = bloco;
-//     }
+    Elemento poema =
+    criarElemento("O", "Poema",
+        "Poema sem o sétimo verso.",
+        "Poema escrito a tinta com uma caligrafia estranha. Está faltando o sétimo verso.",
+        False, True, NULL, 0, 1, transitPoema,
+        acoesPoema, NULL, unionVazia);
 
 
-//     /* Balança */
-//     Elemento balanca =
-//     criarElemento("A", "Balança",
-//         "Balança antiga.",
-//         "Balança um pouco enferrujada. Aparenta ser bem antiga.",
-//         False, True, NULL, 0, 0, NULL,
-//         NULL, NULL, unionVazia);
+    /* Blocos */
+    func colocarBlocoSobre = colocarSobre;
+    func tirarBlocoDeCima = tirarDeCima;
+    void **acoesBloco = malloc(2*sizeof(func));
+    acoesBloco[0] = colocarBlocoSobre;
+    acoesBloco[1] = tirarBlocoDeCima;
+
+    int *transitBloco = malloc(sizeof(int));
+    transitBloco[0] = 2;
+
+    obj_atr estaNaBalanca;
+    estaNaBalanca.nome = "estaNaBalanca";
+    estaNaBalanca.valor.valor_estado = False;
+
+    /* Bloco 0 */
+    Info unionBloco0;
+    unionBloco0.atributos = malloc(sizeof(obj_atr));
+    unionBloco0.atributos[0] = estaNaBalanca;
+
+    Elemento bloco0 =
+    criarElemento("O", "Bloco 0",
+    "Bloco com o número 0.",
+    "Bloco empoeirado e com o número 0 gravado.",
+    False, True, NULL, 0, 1, transitBloco,
+    acoesBloco, NULL, unionBloco0);
+
+    /* Bloco 1 */
+    Info unionBloco1;
+    unionBloco1.atributos = malloc(sizeof(obj_atr));
+    unionBloco1.atributos[0] = estaNaBalanca;
+
+    Elemento bloco1 =
+    criarElemento("O", "Bloco 1",
+    "Bloco com o número 1.",
+    "Bloco empoeirado e com o número 1 gravado.",
+    False, True, NULL, 0, 1, transitBloco,
+    acoesBloco, NULL, unionBloco1);
+
+    /* Bloco 2 */
+    Info unionBloco2;
+    unionBloco2.atributos = malloc(sizeof(obj_atr));
+    unionBloco2.atributos[0] = estaNaBalanca;
+
+    Elemento bloco2 =
+    criarElemento("O", "Bloco 2",
+    "Bloco com o número 2.",
+    "Bloco empoeirado e com o número 2 gravado.",
+    False, True, NULL, 0, 1, transitBloco,
+    acoesBloco, NULL, unionBloco2);
+
+    /* Bloco 3 */
+    Info unionBloco3;
+    unionBloco3.atributos = malloc(sizeof(obj_atr));
+    unionBloco3.atributos[0] = estaNaBalanca;
+
+    Elemento bloco3 =
+    criarElemento("O", "Bloco 3",
+    "Bloco com o número 3.",
+    "Bloco empoeirado e com o número 3 gravado.",
+    False, True, NULL, 0, 1, transitBloco,
+    acoesBloco, NULL, unionBloco3);
+
+    /* Bloco 4 */
+    Info unionBloco4;
+    unionBloco4.atributos = malloc(sizeof(obj_atr));
+    unionBloco4.atributos[0] = estaNaBalanca;
+
+    Elemento bloco4 =
+    criarElemento("O", "Bloco 4",
+    "Bloco com o número 4.",
+    "Bloco empoeirado e com o número 4 gravado.",
+    False, True, NULL, 0, 1, transitBloco,
+    acoesBloco, NULL, unionBloco4);
+
+    /* Bloco 5 */
+    Info unionBloco5;
+    unionBloco5.atributos = malloc(sizeof(obj_atr));
+    unionBloco5.atributos[0] = estaNaBalanca;
+
+    Elemento bloco5 =
+    criarElemento("O", "Bloco 5",
+    "Bloco com o número 5.",
+    "Bloco empoeirado e com o número 5 gravado.",
+    False, True, NULL, 0, 1, transitBloco,
+    acoesBloco, NULL, unionBloco5);
+
+    /* Bloco 6 */
+    Info unionBloco6;
+    unionBloco6.atributos = malloc(sizeof(obj_atr));
+    unionBloco6.atributos[0] = estaNaBalanca;
+
+    Elemento bloco6 =
+    criarElemento("O", "Bloco 6",
+    "Bloco com o número 6.",
+    "Bloco empoeirado e com o número 6 gravado.",
+    False, True, NULL, 0, 1, transitBloco,
+    acoesBloco, NULL, unionBloco6);
+
+    /* Bloco 7 */
+    Info unionBloco7;
+    unionBloco7.atributos = malloc(sizeof(obj_atr));
+    unionBloco7.atributos[0] = estaNaBalanca;
+
+    Elemento bloco7 =
+    criarElemento("O", "Bloco 7",
+    "Bloco com o número 7.",
+    "Bloco empoeirado e com o número 7 gravado.",
+    False, True, NULL, 0, 1, transitBloco,
+    acoesBloco, NULL, unionBloco7);
+
+    /* Bloco 8 */
+    Info unionBloco8;
+    unionBloco8.atributos = malloc(sizeof(obj_atr));
+    unionBloco8.atributos[0] = estaNaBalanca;
+
+    Elemento bloco8 =
+    criarElemento("O", "Bloco 8",
+    "Bloco com o número 8.",
+    "Bloco empoeirado e com o número 8 gravado.",
+    False, True, NULL, 0, 1, transitBloco,
+    acoesBloco, NULL, unionBloco8);
+
+    /* Bloco 9 */
+    Info unionBloco9;
+    unionBloco9.atributos = malloc(sizeof(obj_atr));
+    unionBloco9.atributos[0] = estaNaBalanca;
+
+    Elemento bloco9 =
+    criarElemento("O", "Bloco 9",
+    "Bloco com o número 9.",
+    "Bloco empoeirado e com o número 9 gravado.",
+    False, True, NULL, 0, 1, transitBloco,
+    acoesBloco, NULL, unionBloco9);
 
 
-//     /* Sala 4 */
-//     Elemento* conteudoS4 = malloc(13*sizeof(Elemento));
-//     for (int i = 0; i < 10; i++) {
-//         conteudoS4[i] = blocos[i];
-//     }
-//     conteudoS4[10] = mensagem;
-//     conteudoS4[11] = poema;
-//     conteudoS4[12] = balanca;
 
-//     Info unionS4;
+    /* Balança */
+    Elemento balanca =
+    criarElemento("A", "Balança",
+        "Balança antiga.",
+        "Balança um pouco enferrujada. Aparenta ser bem antiga.",
+        False, True, NULL, 0, 0, NULL,
+        NULL, NULL, unionVazia);
 
-//     Elemento sala4 =
-//     criarElemento("A", "Pascal",
-//     "Uma sala triangular.",
-//     "Uma sala triangular. Há uma mesa com blocos, um papel com um poema no chão, uma mensagem na parede e uma balança.",
-//     False, True, conteudoS4, 13, 0, NULL,
-//     NULL, NULL, unionS4);
 
-//     return sala4;
-// }
+
+
+    /* Sala 4 */
+    Elemento* conteudoS4 = malloc(13*sizeof(Elemento));
+    conteudoS4[0] = bloco0;
+    conteudoS4[1] = bloco1;
+    conteudoS4[2] = bloco2;
+    conteudoS4[3] = bloco3;
+    conteudoS4[4] = bloco4;
+    conteudoS4[5] = bloco5;
+    conteudoS4[6] = bloco6;
+    conteudoS4[7] = bloco7;
+    conteudoS4[8] = bloco8;
+    conteudoS4[9] = bloco9;
+    conteudoS4[10] = mensagem;
+    conteudoS4[11] = poema;
+    conteudoS4[12] = balanca;
+
+    Info unionS4;
+
+    Elemento sala4 =
+    criarElemento("A", "Pascal",
+    "Uma sala triangular.",
+    "Uma sala triangular. Há uma mesa com blocos, um papel com um poema no chão, uma mensagem na parede e uma balança.",
+    False, True, conteudoS4, 13, 0, NULL,
+    NULL, NULL, unionS4);
+
+    return sala4;
+}
 
 
 

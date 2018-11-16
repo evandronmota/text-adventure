@@ -148,7 +148,7 @@ int main() {
     Elemento sala1 = criarSala1();
     Elemento sala2 = criarSala2();
     Elemento sala3 = criarSala3();
-    // Elemento sala4 = criarSala4();
+    Elemento sala4 = criarSala4();
     Elemento sala5 = criarSala5();
 
     boolean flag = True;
@@ -158,7 +158,7 @@ int main() {
         testarSala(&sala1, 1, flag, tab, "Fibonacci");
         testarSala(&sala2, 2, flag, tab, "Morse");
         testarSala(&sala3, 3, flag, tab, "Papagaio?");
-        // testarSala(&sala4, 4, flag, tab, "Pascal");
+        testarSala(&sala4, 4, flag, tab, "Pascal");
         testarSala(&sala5, 5, flag, tab, "NePAl");
 
         flag = False;
