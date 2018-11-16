@@ -30,6 +30,15 @@ Elemento *inicializarSalas() {
     sala5.detalhe.saidas = malloc(sizeof(Elemento*));
     //sala5.detalhe.saidas[0] = &lobby;
 
+    /*
+    lobby.detalhe.saidas = malloc(5*sizeof(Elemento*));
+    lobby.detalhe.saidas[0] = sala1;
+    lobby.detalhe.saidas[1] = sala2;
+    lobby.detalhe.saidas[2] = sala3;
+    lobby.detalhe.saidas[3] = sala4;
+    lobby.detalhe.saidas[4] = sala5;
+    */
+
     Elemento *salas = malloc(5*sizeof(Elemento));
     salas[0] = sala1;
     salas[1] = sala2;

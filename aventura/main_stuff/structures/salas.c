@@ -10,8 +10,8 @@
 */
 Elemento criarElemento(char *artigo, char *nome, char *curta,
     char *longa, boolean visivel, boolean conhecido,
-    Elemento *conteudo, int nEle, int nAcoes, int *transitividade,
-    void **acoes, void *animacao, Info detalhe) {
+    Elemento *conteudo, int nEle, int nAcoes,
+    void *animacao, Info detalhe) {
 
     Elemento novo;
     novo.artigo = artigo;
@@ -24,8 +24,16 @@ Elemento criarElemento(char *artigo, char *nome, char *curta,
     novo.conteudo = conteudo;
     novo.nEle = nEle;
     novo.nAcoes = nAcoes;
-    novo.transitividade = transitividade;
-    novo.acoes = acoes;
+    novo.transitividade = malloc(3*sizeof(int));
+    novo.transitividade[0] = 1;
+    novo.transitividade[1] = 1;
+    novo.transitividade[2] = 1;
+
+    novo.acoes = malloc(3*sizeof(func));
+    novo.acoes[0] = examinar;
+    /*novo.acoes[1] = pegar;
+    novo.acoes[2] = largar;*/
+
     novo.animacao = animacao;
     novo.detalhe = detalhe;
 
@@ -48,8 +56,6 @@ void nome(Elemento e) {
     bem-sucedida.
 */
 int examinar(Elemento *e1, Elemento *e2) {
-
-
     if (e1 == NULL) /* Verbo intransitivo */
         printf("Examinar o quê?\n");
     else if (e1->conhecido)
@@ -110,116 +116,6 @@ Info unionVazia;
 
 
 
-/*
-    Cria o salão principal do jogo com todos os elementos.
-    Retorna a sala criada. 
-*/
-
-Elemento criarSala0() {
-
-    func checarRobo, checarPorta;
-    checarRobo = checarPorta = examinar;
-
-    void **acoesPorta1 = malloc(sizeof(func));
-    acoesPorta1[0] = checarPorta;
-
-    /* Transitividade das ações do Porta */
-    int *tPorta1 = malloc(sizeof(int));
-    tPorta1[0] = 1;
-
-    Elemento porta1 =
-    criarElemento("Uma", "Porta 1",
-        "Uma porta de ferro.",
-        "Uma porta de ferro com fechadura dourada.", False, False, NULL, 0, 0, tPorta1,
-        acoesPorta1, NULL, unionVazia);
-
-    void **acoesPorta2 = malloc(sizeof(func));
-    acoesPorta2[0] = checarPorta;
-
-    /* Transitividade das ações do Porta */
-    int *tPorta2 = malloc(sizeof(int));
-    tPorta2[0] = 1;
-
-    Elemento porta2 =
-    criarElemento("Uma", "Porta 2",
-        "Uma porta dourada.",
-        "Uma porta dourada muito velha.", False, False, NULL, 0, 0, tPorta2,
-        acoesPorta2, NULL, unionVazia);
-
-    void **acoesPorta3 = malloc(sizeof(func));
-    acoesPorta3[0] = checarPorta;
-
-    /* Transitividade das ações do Porta */
-    int *tPorta3 = malloc(sizeof(int));
-    tPorta3[0] = 1;
-
-    Elemento porta3 =
-    criarElemento("Uma", "Porta 3",
-        "Uma porta de madeira.",
-        "Uma porta de madeira de ébano.", False, False, NULL, 0, 0, tPorta3,
-        acoesPorta3, NULL, unionVazia);
-
-    void **acoesPorta4 = malloc(sizeof(func));
-    acoesPorta4[0] = checarPorta;
-
-    /* Transitividade das ações do Porta */
-    int *tPorta4 = malloc(sizeof(int));
-    tPorta4[0] = 1;
-
-    Elemento porta4 =
-    criarElemento("Uma", "Porta 4",
-        "Uma porta branca.",
-        "Uma porta branca cheia de lascas.", False, False, NULL, 0, 0, tPorta4,
-        acoesPorta4, NULL, unionVazia);
-
-    void **acoesPorta5 = malloc(sizeof(func));
-    acoesPorta5[0] = checarPorta;
-
-    /* Transitividade das ações do Porta */
-    int *tPorta5 = malloc(sizeof(int));
-    tPorta5[0] = 1;
-
-    Elemento porta5 =
-    criarElemento("Uma", "Porta 5",
-        "Uma porta vermelha.",
-        "Uma porta vermelha com fechadura preta.", False, False, NULL, 0, 0, tPorta5,
-        acoesPorta5, NULL, unionVazia);
-
-    void **acoesGLaDOS = malloc(sizeof(func));
-    acoesGLaDOS[1] = checarRobo;
-
-    Elemento glados =
-    criarElemento("Um", "Robô",
-        "Um robô com voz feminina.",
-        "Um robô com voz feminina fala com você: \
-        \n \"Olá, seja bem-vindo ao Aperture Science Computer-Aided Enrichment Center. Você poderia me dizer a senha?\"",
-        False, False, NULL, 0, 0, NULL,
-        acoesGLaDOS, NULL, unionVazia);
-
-    Info unionS1;
-
-    Elemento *conteudoS0 = malloc(6*sizeof(Elemento));
-    conteudoS0[0] = porta1;
-    conteudoS0[1] = porta2;
-    conteudoS0[2] = porta3;
-    conteudoS0[3] = porta4;
-    conteudoS0[4] = porta5;
-    conteudoS0[5] = glados;
-
-    Elemento sala0 =
-    criarElemento("Um", "Lobby",
-        "Uma sala ampla com e circular.",
-        "Uma sala ampla com e circular. No centro há um robô branco. Ele está olhando pra você...",
-        False, False, conteudoS0, 6, 0, NULL,
-        NULL, NULL, unionS1);
-
-    return sala0;
-}
-
-
-
-
-
 
 
 
@@ -229,7 +125,6 @@ Elemento criarSala0() {
     Cria a primeira sala com todos os objetos.
     Retorna a sala criada.
 */
-
 Elemento criarSala1() {
     /* ------------------------------------- SALA 1 ---------------------------------------------- */
 
@@ -237,55 +132,56 @@ Elemento criarSala1() {
     func checarMensagem, checarRelogio;
     checarMensagem = checarRelogio = examinar;
 
-    void **acoesMensagem = malloc(sizeof(func));
-    acoesMensagem[0] = checarMensagem;
-
-    Elemento mensagem =
+    Elemento mensagem1 =
     criarElemento("Uma","Mensagem",
         "Na parede há uma mensagem: 1 + 1 = 2.",
-        "Na parede está escrito com tinta vermelha (ou será sangue...?): 1 + 1 = 2.", False, False, NULL, 0, 0, NULL,
-        acoesMensagem, NULL, unionVazia);
+        "Na parede está escrito com tinta vermelha (ou será sangue...?): 1 + 1 = 2.",
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
 
     /* Chave */
-    Elemento chave =
+    Elemento chave1 =
     criarElemento("Uma","Chave",
         "Uma chave velha.",
-        "Uma chave velha e enferrujada.", False, False, NULL, 0, 0, NULL,
-        NULL, NULL, unionVazia);
+        "Uma chave velha e enferrujada.",
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
     Elemento *conteudoConcha = malloc(sizeof(Elemento));
-    conteudoConcha[0] = chave;
+    conteudoConcha[0] = chave1;
 
 
     /* Concha */
-    Info unionConcha;
-    unionConcha.atributos = malloc(sizeof(obj_atr));
+    Info unionConcha1;
+    unionConcha1.atributos = malloc(sizeof(obj_atr));
 
     obj_atr estaQuebrada;
     estaQuebrada.nome = "estaQuebrada";
     estaQuebrada.valor.valor_estado = False;
 
-    unionConcha.atributos[0] = estaQuebrada;
+    unionConcha1.atributos[0] = estaQuebrada;
 
-    Elemento concha =
+    Elemento concha1 =
     criarElemento("Uma","Concha",
         "Uma concha em formato de espiral.",
-        "Uma concha verde em formato de espiral.", False, False, conteudoConcha, 0, 0, NULL,
-        NULL, NULL, unionConcha);
+        "Uma concha verde em formato de espiral.",
+        False, False, conteudoConcha, 0, 0,
+        NULL, unionConcha1);
 
 
     /* Porta */
-    Elemento porta =
+    Elemento porta1 =
     criarElemento("Uma", "Porta",
         "Uma porta trancada.",
-        "Uma porta de ferro com fechadura dourada.", False, False, NULL, 0, 0, NULL,
-        NULL, NULL, unionVazia);
+        "Uma porta de ferro com fechadura dourada.",
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
 
     /* Ponteiro do relógio */
-    Info unionPonteiro;
-    unionPonteiro.atributos = malloc(sizeof(obj_atr));
+    Info unionPonteiro1;
+    unionPonteiro1.atributos = malloc(sizeof(obj_atr));
 
     /*
         no chao = 0
@@ -297,47 +193,42 @@ Elemento criarSala1() {
     comQuem.nome = "comQuem";
     comQuem.valor.valor_num = 0;
 
-    unionPonteiro.atributos[0] = comQuem;
+    unionPonteiro1.atributos[0] = comQuem;
 
-    Elemento ponteiro = 
+    Elemento ponteiro1 = 
     criarElemento("Um", "Ponteiro",
         "Um ponteiro de relógio.",
-        "Um ponteiro de minutos do relógio quebrado.", False, False, NULL, 0, 0, NULL,
-        NULL, NULL, unionPonteiro);
+        "Um ponteiro de minutos do relógio quebrado.",
+        False, False, NULL, 0, 0,
+        NULL, unionPonteiro1);
 
 
     /* Relógio */
-    void **acoesRelogio = malloc(sizeof(func));
-    acoesRelogio[0] = checarRelogio;
-
-    /* Transitividade das ações do relogio */
-    int *tRel = malloc(sizeof(int));
-    tRel[0] = 1;
-
-    Elemento relogio =
+    Elemento relogio1 =
     criarElemento("Um","Relógio",
         "Relógio quebrado sem um dos ponteiros.",
         "Relógio sem o ponteiro dos minutos e com o ponteiro das horas apontando para o 8.",
-        False, False, NULL, 0, 1, tRel, acoesRelogio, NULL, unionVazia);
+        False, False, NULL, 0, 1, 
+        NULL, unionVazia);
 
 
     /* Sala 1 */
     Info unionS1;
 
     Elemento *conteudoS1 = malloc(6*sizeof(Elemento));
-    conteudoS1[0] = relogio;
-    conteudoS1[1] = ponteiro;
-    conteudoS1[2] = porta;
-    conteudoS1[3] = concha;
-    conteudoS1[4] = chave;
-    conteudoS1[5] = mensagem;
+    conteudoS1[0] = relogio1;
+    conteudoS1[1] = ponteiro1;
+    conteudoS1[2] = porta1;
+    conteudoS1[3] = concha1;
+    conteudoS1[4] = chave1;
+    conteudoS1[5] = mensagem1;
 
     Elemento sala1 =
     criarElemento("Uma", "Fibonacci",
         "Uma sala empoeirada com cheiro de mofo.",
         "Uma sala empoeirada com cheiro de mofo. Há um relógio e um ponteiro no chão. Na parede está escrita uma mensagem e sob um pedestal há uma concha. Além disso, tem uma porta no fundo da sala.",
-        False, False, conteudoS1, 6, 0, NULL,
-        NULL, NULL, unionS1);
+        False, False, conteudoS1, 6, 0,
+        NULL, unionS1);
 
     return sala1;
 }
@@ -363,79 +254,85 @@ Elemento criarSala2() {
 
 
     /* Mensagem */
-    Elemento mensagem =
+    Elemento mensagem2 =
     criarElemento("Uma","Mensagem",
         "Está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"",
-        "Numa folha de papel amassada está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"", False, False, NULL, 0, 0, NULL,
-        NULL, NULL, unionVazia);
+        "Numa folha de papel amassada está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"", False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
 
     /* Porta */
-    Elemento porta =
+    Elemento porta2 =
     criarElemento("Uma", "Porta",
         "Uma porta.",
-        "Uma porta dourada.", False, False, NULL, 0, 0, NULL,
-        NULL, NULL, unionVazia);
+        "Uma porta dourada.", 
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
 
     /* Morsa */
-    Elemento morsa =
+    Elemento morsa2 =
     criarElemento("Uma","Pelúcia",
         "Uma morsa de pelúcia.",
-        "Uma morsa de pelúcia marrom.", False, False, NULL, 0, 0, NULL,
-        NULL, NULL, unionVazia);
+        "Uma morsa de pelúcia marrom.", 
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
 
     /* Livro */
-    Elemento livro =
+    Elemento livro2 =
     criarElemento("Um","Livro",
         "Um livro velho. O título é \"Existem apenas -. tipos de pessoas no mundo\".",
-        "Um livro velho e surpreendentemente grande. O título é \"Existem apenas 10 tipos de pessoas no mundo\".", False, False, NULL, 0, 0, NULL,
-        NULL, NULL, unionVazia);
+        "Um livro velho e surpreendentemente grande. O título é \"Existem apenas 10 tipos de pessoas no mundo\".",
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
 
     /* Página */
-    Elemento pagina =
+    Elemento pagina2 =
     criarElemento("Uma","Página",
         "Você já tentou procurar embaixo do cofre?.",
-        "Você já tentou procurar embaixo do cofre?.", False, False, NULL, 0, 0, NULL,
-        NULL, NULL, unionVazia);
+        "Você já tentou procurar embaixo do cofre?.",
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
 
     /* Cofre */
-    Elemento cofre =
+    Elemento cofre2 =
     criarElemento("Um","Cofre",
         "Um cofre de ferro.",
-        "Um cofre grande de ferro com uma fechadura mecânica.", False, False, NULL, 0, 0, NULL,
-        NULL, NULL, unionVazia);
+        "Um cofre grande de ferro com uma fechadura mecânica.",
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
 
     /* Letra */
-    Elemento letra =
+    Elemento letra2 =
     criarElemento("Um","Papel",
         "Há uma letra \"E\".",
-        "Há uma letra \"E\".", False, False, NULL, 0, 0, NULL,
-        NULL, NULL, unionVazia);
+        "Há uma letra \"E\".",
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
 
     /* Sala 2 */
     Info unionS2;
 
     Elemento *conteudoS2 = malloc(7*sizeof(Elemento));
-    conteudoS2[0] = letra;
-    conteudoS2[1] = cofre;
-    conteudoS2[2] = livro;
-    conteudoS2[3] = pagina;
-    conteudoS2[4] = morsa;
-    conteudoS2[5] = porta;
-    conteudoS2[6] = mensagem;
+    conteudoS2[0] = letra2;
+    conteudoS2[1] = cofre2;
+    conteudoS2[2] = livro2;
+    conteudoS2[3] = pagina2;
+    conteudoS2[4] = morsa2;
+    conteudoS2[5] = porta2;
+    conteudoS2[6] = mensagem2;
 
     Elemento sala2 =
     criarElemento("Uma","Binaria",
         "Uma sala.",
         "Uma sala com um cofre, livro, mensagem, pagina, morsa e porta aberta",
-        False, False, conteudoS2, 7, 0, NULL,
-        NULL, NULL, unionS2);
+        False, False, conteudoS2, 6, 0,
+        NULL, unionS2);
 
     return sala2;
 }
@@ -460,95 +357,103 @@ Elemento criarSala3(){
 
 
     /* Porta */
-    Elemento porta =
+    Elemento porta3 =
     criarElemento("Uma", "Porta",
         "Uma porta.",
-        "Uma porta de madeira.", False, False, NULL, 0, 0, 0,
-        NULL, NULL, unionVazia);
+        "Uma porta de madeira.",
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
     /* Ovo */
-    Elemento ovo = 
+    Elemento ovo3 = 
     criarElemento("Um", "Ovo",
         "Um ovo brilhante.",
-        "Um ovo feito de aço.", False, False, NULL, 0, 0, 0,
-        NULL, NULL, unionVazia);
+        "Um ovo feito de aço.",
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
     /* Galinha */
-    Elemento *conteudoGalinha = malloc(1*sizeof(Elemento));
-    conteudoGalinha[0] = ovo;
+    Elemento *conteudoGalinha3 = malloc(1*sizeof(Elemento));
+    conteudoGalinha3[0] = ovo3;
 
-    Elemento galinha =
+    Elemento galinha3 =
     criarElemento("Uma", "Galinha",
         "Uma galinha branca.",
-        "Uma galinha grande com penas brancas.", False, False, conteudoGalinha, 0, 0, 0,
-        NULL, NULL, unionVazia);
+        "Uma galinha grande com penas brancas.",
+        False, False, conteudoGalinha3, 0, 0,
+        NULL, unionVazia);
 
     /* Gaiola */
-    Elemento *conteudoGaiola = malloc(1*sizeof(Elemento));
-    conteudoGaiola[0] = galinha;
+    Elemento *conteudoGaiola3 = malloc(1*sizeof(Elemento));
+    conteudoGaiola3[0] = galinha3;
 
-    Elemento gaiola =
+    Elemento gaiola3 =
     criarElemento("Uma", "Gaiola",
         "Uma gaiola dourada.",
-        "Uma grande gaiola dourada. Há uma galinha presa nela?...", False, False, conteudoGaiola3, 0, 0, 0,
-        NULL, NULL, unionVazia);
+        "Uma grande gaiola dourada. Há uma galinha presa nela?...",
+        False, False, conteudoGaiola3, 0, 0,
+        NULL, unionVazia);
 
     /* Metal */
-    Elemento metal =
+    Elemento metal3 =
     criarElemento("Um", "Metal",
         "Uma pequena barra de metal.",
-        "Uma pequena barra de metal. Nela está gradado: \"Co\"", False, False, NULL, 0, 0, 0,
-        NULL, NULL, unionVazia);
+        "Uma pequena barra de metal. Nela está gradado: \"Co\"",
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
     /* Bobina */
-    Elemento bobina =
+    Elemento bobina3 =
     criarElemento("Uma", "Bobina",
         "Uma grande bobina elétrica.",
-        "Uma grande bobina elétrica. No centro há um buraco pequeno e na lateral um botão vermelho.", 
-        False, False, NULL, 0, 0, 0,
-        NULL, NULL, unionVazia);
+        "Uma grande bobina elétrica. No centro há um buraco pequeno e na lateral um botão vermelho.",
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
     /* Botão */
-    Elemento botao = 
+    Elemento botao3 = 
     criarElemento("Um", "Botão",
         "Um botão vermelho.",
-        "Um botão grande e vermelho.", False, False, NULL, 0, 0, 0,
-        NULL, NULL, unionVazia);
+        "Um botão grande e vermelho.",
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
     /* Saco */
-    Elemento saco = 
+    Elemento saco3 = 
     criarElemento("Um", "Saco",
         "Um saco com milho.",
-        "Um saco de linho com milho.", False, False, NULL, 0, 0, 0,
-        NULL, NULL, unionVazia);
+        "Um saco de linho com milho.",
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
     /* Chave */
-    Elemento chave = 
+    Elemento chave3 = 
     criarElemento("Uma", "Chave",
         "Uma chave dourada.",
-        "Uma chave pequena e dourada.", False, False, NULL, 0, 0, 0,
-        NULL, NULL, unionVazia);
+        "Uma chave pequena e dourada.",
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
 
     /* Sala 3 */
     Info unionS3;
 
     Elemento *conteudoS3 = malloc(9*sizeof(Elemento));
-    conteudoS3[0] = porta;
-    conteudoS3[1] = gaiola;
-    conteudoS3[2] = galinha;
-    conteudoS3[3] = ovo;
-    conteudoS3[4] = bobina;
-    conteudoS3[5] = botao;
-    conteudoS3[6] = metal;
-    conteudoS3[7] = saco;
-    conteudoS3[8] = chave;
+    conteudoS3[0] = porta3;
+    conteudoS3[1] = gaiola3;
+    conteudoS3[2] = galinha3;
+    conteudoS3[3] = ovo3;
+    conteudoS3[4] = bobina3;
+    conteudoS3[5] = botao3;
+    conteudoS3[6] = metal3;
+    conteudoS3[7] = saco3;
+    conteudoS3[8] = chave3;
     
     Elemento sala3 =
     criarElemento("Uma","Galinhada",
         "Uma sala.",
         "Uma sala longa.",
-        False, False, conteudoS3, 9, 0, NULL,
-        NULL, NULL, unionS3);
+        False, False, conteudoS3, 6, 0,
+        NULL, unionS3);
 
     return sala3;
 }
@@ -577,52 +482,30 @@ Elemento criarSala4() {
     /* ------------------------------------- SALA 4 ---------------------------------------------- */
 
     /* Mensagem */
-    int *tMsg = malloc(sizeof(int));
-    tMsg[0] = 1;
-
-    func checarMensagem = examinar;
-    void **acoesMsg = malloc(sizeof(func));
-    acoesMsg[0] = checarMensagem;
-
     Elemento mensagem =
     criarElemento("A", "Mensagem",
         "Na parede há uma mensagem: acho que há pressão demais por aqui",
         "Na parede está escrito em azul: acho que há pressão demais por aqui",
-        False, True, NULL, 0, 1, tMsg,
-        acoesMsg, NULL, unionVazia);
+        False, True, NULL, 0, 1,
+        NULL, unionVazia);
 
 
     /* Poema */
-    int *tPoema = malloc(sizeof(int));
-    tPoema[0] = 1;
-
-    func checarPoema = examinar;    
-    void **acoesPoema = malloc(sizeof(func));
-    acoesPoema[0] = checarPoema;
-
     Elemento poema =
     criarElemento("O", "Poema",
         "Poema sem o sétimo verso.",
         "Poema escrito a tinta com uma caligrafia estranha. Está faltando o sétimo verso.",
-        False, True, NULL, 0, 1, tPoema,
-        acoesPoema, NULL, unionVazia);
+        False, True, NULL, 0, 1,
+        NULL, unionVazia);
 
 
     /* Blocos */
-    func colocarBlocoSobre = colocarSobre;
-    func tirarBlocoDeCima = tirarDeCima;
-    void **acoesBloco = malloc(2*sizeof(func));
-    acoesBloco[0] = colocarBlocoSobre;
-    acoesBloco[1] = tirarBlocoDeCima;
-
-    int *tBloco = malloc(sizeof(int));
-    tBloco[0] = 2;
-
     obj_atr estaNaBalanca;
     estaNaBalanca.nome = "estaNaBalanca";
     estaNaBalanca.valor.valor_estado = False;
 
-
+    func colocarBlocoSobre = colocarSobre;
+    func tirarBlocoDeCima = tirarDeCima;
 
     /* Bloco 0 */
     Info unionBloco0;
@@ -633,9 +516,16 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 0",
     "Bloco com o número 0.",
     "Bloco empoeirado e com o número 0 gravado.",
-    False, True, NULL, 0, 1, tBloco,
-    acoesBloco, NULL, unionBloco0);
+    False, True, NULL, 0, 1,
+    NULL, unionBloco0);
 
+    bloco0.acoes = realloc(bloco0.acoes, 5);
+    bloco0.acoes[3] = colocarBlocoSobre;
+    bloco0.acoes[4] = tirarBlocoDeCima;
+
+    bloco0.transitividade = realloc(bloco0.transitividade, 5);
+    bloco0.transitividade[3] = 2;
+    bloco0.transitividade[4] = 2;
 
 
     /* Bloco 1 */
@@ -647,10 +537,17 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 1",
     "Bloco com o número 1.",
     "Bloco empoeirado e com o número 1 gravado.",
-    False, True, NULL, 0, 1, tBloco,
-    acoesBloco, NULL, unionBloco1);
+    False, True, NULL, 0, 1,
+    NULL, unionBloco1);
+    
+    bloco1.acoes = realloc(bloco1.acoes, 5);
+    bloco1.acoes[3] = colocarBlocoSobre;
+    bloco1.acoes[4] = tirarBlocoDeCima;
 
-
+    bloco1.transitividade = realloc(bloco1.transitividade, 5);
+    bloco1.transitividade[3] = 2;
+    bloco1.transitividade[4] = 2;
+    
 
     /* Bloco 2 */
     Info unionBloco2;
@@ -661,8 +558,16 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 2",
     "Bloco com o número 2.",
     "Bloco empoeirado e com o número 2 gravado.",
-    False, True, NULL, 0, 1, tBloco,
-    acoesBloco, NULL, unionBloco2);
+    False, True, NULL, 0, 1,
+    NULL, unionBloco2);
+
+    bloco2.acoes = realloc(bloco2.acoes, 5);
+    bloco2.acoes[3] = colocarBlocoSobre;
+    bloco2.acoes[4] = tirarBlocoDeCima;
+
+    bloco2.transitividade = realloc(bloco2.transitividade, 5);
+    bloco2.transitividade[3] = 2;
+    bloco2.transitividade[4] = 2;
 
 
 
@@ -675,8 +580,16 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 3",
     "Bloco com o número 3.",
     "Bloco empoeirado e com o número 3 gravado.",
-    False, True, NULL, 0, 1, tBloco,
-    acoesBloco, NULL, unionBloco3);
+    False, True, NULL, 0, 1,
+    NULL, unionBloco3);
+
+    bloco3.acoes = realloc(bloco3.acoes, 5);
+    bloco3.acoes[3] = colocarBlocoSobre;
+    bloco3.acoes[4] = tirarBlocoDeCima;
+
+    bloco3.transitividade = realloc(bloco3.transitividade, 5);
+    bloco3.transitividade[3] = 2;
+    bloco3.transitividade[4] = 2;
 
 
 
@@ -689,8 +602,16 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 4",
     "Bloco com o número 4.",
     "Bloco empoeirado e com o número 4 gravado.",
-    False, True, NULL, 0, 1, tBloco,
-    acoesBloco, NULL, unionBloco4);
+    False, True, NULL, 0, 1,
+    NULL, unionBloco4);
+
+    bloco4.acoes = realloc(bloco4.acoes, 5);
+    bloco4.acoes[3] = colocarBlocoSobre;
+    bloco4.acoes[4] = tirarBlocoDeCima;
+
+    bloco4.transitividade = realloc(bloco4.transitividade, 5);
+    bloco4.transitividade[3] = 2;
+    bloco4.transitividade[4] = 2;
 
 
 
@@ -703,8 +624,16 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 5",
     "Bloco com o número 5.",
     "Bloco empoeirado e com o número 5 gravado.",
-    False, True, NULL, 0, 1, tBloco,
-    acoesBloco, NULL, unionBloco5);
+    False, True, NULL, 0, 1,
+    NULL, unionBloco5);
+
+    bloco5.acoes = realloc(bloco5.acoes, 5);
+    bloco5.acoes[3] = colocarBlocoSobre;
+    bloco5.acoes[4] = tirarBlocoDeCima;
+
+    bloco5.transitividade = realloc(bloco5.transitividade, 5);
+    bloco5.transitividade[3] = 2;
+    bloco5.transitividade[4] = 2;
 
 
 
@@ -717,8 +646,16 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 6",
     "Bloco com o número 6.",
     "Bloco empoeirado e com o número 6 gravado.",
-    False, True, NULL, 0, 1, tBloco,
-    acoesBloco, NULL, unionBloco6);
+    False, True, NULL, 0, 1,
+    NULL, unionBloco6);
+
+    bloco6.acoes = realloc(bloco6.acoes, 5);
+    bloco6.acoes[3] = colocarBlocoSobre;
+    bloco6.acoes[4] = tirarBlocoDeCima;
+
+    bloco6.transitividade = realloc(bloco6.transitividade, 5);
+    bloco6.transitividade[3] = 2;
+    bloco6.transitividade[4] = 2;
 
 
 
@@ -731,8 +668,16 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 7",
     "Bloco com o número 7.",
     "Bloco empoeirado e com o número 7 gravado.",
-    False, True, NULL, 0, 1, tBloco,
-    acoesBloco, NULL, unionBloco7);
+    False, True, NULL, 0, 1,
+    NULL, unionBloco7);
+
+    bloco7.acoes = realloc(bloco7.acoes, 5);
+    bloco7.acoes[3] = colocarBlocoSobre;
+    bloco7.acoes[4] = tirarBlocoDeCima;
+
+    bloco7.transitividade = realloc(bloco7.transitividade, 5);
+    bloco7.transitividade[3] = 2;
+    bloco7.transitividade[4] = 2;
 
 
 
@@ -745,8 +690,16 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 8",
     "Bloco com o número 8.",
     "Bloco empoeirado e com o número 8 gravado.",
-    False, True, NULL, 0, 1, tBloco,
-    acoesBloco, NULL, unionBloco8);
+    False, True, NULL, 0, 1,
+    NULL, unionBloco8);
+
+    bloco8.acoes = realloc(bloco8.acoes, 5);
+    bloco8.acoes[3] = colocarBlocoSobre;
+    bloco8.acoes[4] = tirarBlocoDeCima;
+
+    bloco8.transitividade = realloc(bloco8.transitividade, 5);
+    bloco8.transitividade[3] = 2;
+    bloco8.transitividade[4] = 2;
 
 
 
@@ -759,8 +712,16 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 9",
     "Bloco com o número 9.",
     "Bloco empoeirado e com o número 9 gravado.",
-    False, True, NULL, 0, 1, tBloco,
-    acoesBloco, NULL, unionBloco9);
+    False, True, NULL, 0, 1,
+    NULL, unionBloco9);
+
+    bloco9.acoes = realloc(bloco9.acoes, 5);
+    bloco9.acoes[3] = colocarBlocoSobre;
+    bloco9.acoes[4] = tirarBlocoDeCima;
+
+    bloco9.transitividade = realloc(bloco9.transitividade, 5);
+    bloco9.transitividade[3] = 2;
+    bloco9.transitividade[4] = 2;
 
 
 
@@ -769,17 +730,14 @@ Elemento criarSala4() {
     criarElemento("A", "Balança",
         "Balança antiga.",
         "Balança um pouco enferrujada. Aparenta ser bem antiga.",
-        False, True, NULL, 0, 0, NULL,
-        NULL, NULL, unionVazia);
+        False, True, NULL, 0, 0,
+        NULL, unionVazia);
 
-    Elemento porta =
-    criarElemento("Uma", "Porta",
-        "Uma porta branca.",
-        "Uma porta branca com várias lascas.", False, False, NULL, 0, 0, NULL,
-        NULL, NULL, unionVazia);
+
+
 
     /* Sala 4 */
-    Elemento* conteudoS4 = malloc(14*sizeof(Elemento));
+    Elemento* conteudoS4 = malloc(13*sizeof(Elemento));
     conteudoS4[0] = bloco0;
     conteudoS4[1] = bloco1;
     conteudoS4[2] = bloco2;
@@ -793,7 +751,6 @@ Elemento criarSala4() {
     conteudoS4[10] = mensagem;
     conteudoS4[11] = poema;
     conteudoS4[12] = balanca;
-    conteudoS4[13] = porta;
 
     Info unionS4;
 
@@ -801,8 +758,8 @@ Elemento criarSala4() {
     criarElemento("A", "Pascal",
     "Uma sala triangular.",
     "Uma sala triangular. Há uma mesa com blocos, um papel com um poema no chão, uma mensagem na parede e uma balança.",
-    False, True, conteudoS4, 14, 0, NULL,
-    NULL, NULL, unionS4);
+    False, True, conteudoS4, 13, 0,
+    NULL, unionS4);
 
     return sala4;
 }
@@ -830,20 +787,12 @@ Elemento criarSala5() {
 
 
     /* Enigma */
-
-    void **acoesEnigma = malloc(sizeof(func));
-    acoesEnigma[0] = checarEnigma;
-
-    /* Transitividade das ações do Enigma */
-    int *tEnigma = malloc(sizeof(int));
-    tEnigma[0] = 1;
-
     Elemento enigma =
     criarElemento("A", "mensagem",
         "O que o cientista disse quando encontrou 2 atomos de hélio? HeHe",
         "Um enigma",
-        False, False, NULL, 0, 1, tEnigma,
-        acoesEnigma, NULL, unionVazia);
+        False, False, NULL, 0, 1,
+        NULL, unionVazia);
 
 
 
@@ -851,20 +800,12 @@ Elemento criarSala5() {
 
 
     /* Mapa */
-
-    void **acoesMapa = malloc(sizeof(func));
-    acoesMapa[0] = checarMapa;
-
-    /* Transitividade das ações do Mapa */
-    int *tMapa = malloc(sizeof(int));
-    tMapa[0] = 1;
-
     Elemento mapa =
     criarElemento("O", "mapa",
         "Qual país está faltando?",
         "Um mapa do mundo faltando um país",
-        False, False, NULL, 0, 1, tMapa,
-        acoesMapa, NULL, unionVazia);
+        False, False, NULL, 0, 1,
+        NULL, unionVazia);
 
 
 
@@ -872,20 +813,12 @@ Elemento criarSala5() {
 
 
     /* Poster */
-
-    void **acoesPoster = malloc(sizeof(func));
-    acoesPoster[0] = checarPoster;
-
-    /* Transitividade das ações do Poster */
-    int *tPoster = malloc(sizeof(int));
-    tPoster[0] = 1;
-
     Elemento poster =
     criarElemento("O", "Poster",
         "Poster de Blade Runner",
         "Poster da cidade futurista de Los Angeles com muitas luzes, telões e carros voadores",
-        False, False, NULL, 0 , 1, tPoster,
-        acoesPoster, NULL, unionVazia);
+        False, False, NULL, 0 , 1,
+        NULL, unionVazia);
 
 
 
@@ -895,20 +828,12 @@ Elemento criarSala5() {
 
 
     /* Caixa de fósforo */
-
-    void **acoesCaixa = malloc(sizeof(func));
-    acoesCaixa[0] = checarCaixa;
-
-    /* Transitividade das ações do Caixa */
-    int *tCaixa = malloc(sizeof(int));
-    tCaixa[0] = 1;
-
     Elemento caixadefosforo =
     criarElemento("A", "Caixa de Fósoforo",
         "Uma caixa de fósforo",
         "Uma caixa de fósforo",
-        False, False, NULL, 0, 1, tCaixa,
-        acoesCaixa, NULL, unionVazia);
+        False, False, NULL, 0, 1,
+        NULL, unionVazia);
 
 
 
@@ -916,20 +841,12 @@ Elemento criarSala5() {
 
 
     /* Lata de refrigerante */
-
-    void **acoesLata = malloc(sizeof(func));
-    acoesLata[0] = checarLata;
-
-    /* Transitividade das ações do Lata */
-    int *tLata = malloc(sizeof(int));
-    tLata[0] = 1;
-
     Elemento lataderefri =
     criarElemento("A", "Lata de refrigerante",
         "Lata de refrigerante",
         "Lata de refrigerante",
-        False, False, NULL, 0, 1, tLata,
-        acoesLata, NULL, unionVazia);
+        False, False, NULL, 0, 1,
+        NULL, unionVazia);
 
 
 
@@ -937,20 +854,12 @@ Elemento criarSala5() {
 
 
     /* Porta */
-
-    void **acoesPorta = malloc(sizeof(func));
-    acoesPorta[0] = checarPorta;
-
-    /* Transitividade das ações do Porta */
-    int *tPorta = malloc(sizeof(int));
-    tPorta[0] = 1;
-
     Elemento porta =
     criarElemento("A", "Porta",
-        "Uma porta vermelha.",
-        "Uma porta vermelha com fechadura preta.",
-        False, False, NULL, 0, 1, tPorta,
-        acoesPorta, NULL, unionVazia);
+        "Porta",
+        "Porta aberta",
+        False, False, NULL, 0, 1,
+        NULL, unionVazia);
 
 
 
@@ -970,8 +879,8 @@ Elemento criarSala5() {
     criarElemento("A", "NePAl",
         "Salinha",
         "Tem um poster, uma caixa de fósforo e uma lata", 
-        False, False, conteudoS5, 6, 0, 0,
-        NULL, NULL, unionVazia);
+        False, False, conteudoS5, 6, 0,
+        NULL, unionVazia);
 
     return sala5;
 }
