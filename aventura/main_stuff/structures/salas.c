@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 #include "../libraries/elemento.h"
 #include "../libraries/salas.h"
 
@@ -467,8 +466,8 @@ Elemento criarSala4() {
     /* ------------------------------------- SALA 4 ---------------------------------------------- */
 
     /* Mensagem */
-    int *transitMsg = malloc(sizeof(int));
-    transitMsg[0] = 1;
+    int *tMsg = malloc(sizeof(int));
+    tMsg[0] = 1;
 
     func checarMensagem = examinar;
     void **acoesMsg = malloc(sizeof(func));
@@ -478,13 +477,13 @@ Elemento criarSala4() {
     criarElemento("A", "Mensagem",
         "Na parede há uma mensagem: acho que há pressão demais por aqui",
         "Na parede está escrito em azul: acho que há pressão demais por aqui",
-        False, True, NULL, 0, 1, transitMsg,
+        False, True, NULL, 0, 1, tMsg,
         acoesMsg, NULL, unionVazia);
 
 
     /* Poema */
-    int *transitPoema = malloc(sizeof(int));
-    transitPoema[0] = 1;
+    int *tPoema = malloc(sizeof(int));
+    tPoema[0] = 1;
 
     func checarPoema = examinar;    
     void **acoesPoema = malloc(sizeof(func));
@@ -494,7 +493,7 @@ Elemento criarSala4() {
     criarElemento("O", "Poema",
         "Poema sem o sétimo verso.",
         "Poema escrito a tinta com uma caligrafia estranha. Está faltando o sétimo verso.",
-        False, True, NULL, 0, 1, transitPoema,
+        False, True, NULL, 0, 1, tPoema,
         acoesPoema, NULL, unionVazia);
 
 
@@ -505,12 +504,14 @@ Elemento criarSala4() {
     acoesBloco[0] = colocarBlocoSobre;
     acoesBloco[1] = tirarBlocoDeCima;
 
-    int *transitBloco = malloc(sizeof(int));
-    transitBloco[0] = 2;
+    int *tBloco = malloc(sizeof(int));
+    tBloco[0] = 2;
 
     obj_atr estaNaBalanca;
     estaNaBalanca.nome = "estaNaBalanca";
     estaNaBalanca.valor.valor_estado = False;
+
+
 
     /* Bloco 0 */
     Info unionBloco0;
@@ -521,8 +522,10 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 0",
     "Bloco com o número 0.",
     "Bloco empoeirado e com o número 0 gravado.",
-    False, True, NULL, 0, 1, transitBloco,
+    False, True, NULL, 0, 1, tBloco,
     acoesBloco, NULL, unionBloco0);
+
+
 
     /* Bloco 1 */
     Info unionBloco1;
@@ -533,8 +536,10 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 1",
     "Bloco com o número 1.",
     "Bloco empoeirado e com o número 1 gravado.",
-    False, True, NULL, 0, 1, transitBloco,
+    False, True, NULL, 0, 1, tBloco,
     acoesBloco, NULL, unionBloco1);
+
+
 
     /* Bloco 2 */
     Info unionBloco2;
@@ -545,8 +550,10 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 2",
     "Bloco com o número 2.",
     "Bloco empoeirado e com o número 2 gravado.",
-    False, True, NULL, 0, 1, transitBloco,
+    False, True, NULL, 0, 1, tBloco,
     acoesBloco, NULL, unionBloco2);
+
+
 
     /* Bloco 3 */
     Info unionBloco3;
@@ -557,8 +564,10 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 3",
     "Bloco com o número 3.",
     "Bloco empoeirado e com o número 3 gravado.",
-    False, True, NULL, 0, 1, transitBloco,
+    False, True, NULL, 0, 1, tBloco,
     acoesBloco, NULL, unionBloco3);
+
+
 
     /* Bloco 4 */
     Info unionBloco4;
@@ -569,8 +578,10 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 4",
     "Bloco com o número 4.",
     "Bloco empoeirado e com o número 4 gravado.",
-    False, True, NULL, 0, 1, transitBloco,
+    False, True, NULL, 0, 1, tBloco,
     acoesBloco, NULL, unionBloco4);
+
+
 
     /* Bloco 5 */
     Info unionBloco5;
@@ -581,8 +592,10 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 5",
     "Bloco com o número 5.",
     "Bloco empoeirado e com o número 5 gravado.",
-    False, True, NULL, 0, 1, transitBloco,
+    False, True, NULL, 0, 1, tBloco,
     acoesBloco, NULL, unionBloco5);
+
+
 
     /* Bloco 6 */
     Info unionBloco6;
@@ -593,8 +606,10 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 6",
     "Bloco com o número 6.",
     "Bloco empoeirado e com o número 6 gravado.",
-    False, True, NULL, 0, 1, transitBloco,
+    False, True, NULL, 0, 1, tBloco,
     acoesBloco, NULL, unionBloco6);
+
+
 
     /* Bloco 7 */
     Info unionBloco7;
@@ -605,8 +620,10 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 7",
     "Bloco com o número 7.",
     "Bloco empoeirado e com o número 7 gravado.",
-    False, True, NULL, 0, 1, transitBloco,
+    False, True, NULL, 0, 1, tBloco,
     acoesBloco, NULL, unionBloco7);
+
+
 
     /* Bloco 8 */
     Info unionBloco8;
@@ -617,8 +634,10 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 8",
     "Bloco com o número 8.",
     "Bloco empoeirado e com o número 8 gravado.",
-    False, True, NULL, 0, 1, transitBloco,
+    False, True, NULL, 0, 1, tBloco,
     acoesBloco, NULL, unionBloco8);
+
+
 
     /* Bloco 9 */
     Info unionBloco9;
@@ -629,7 +648,7 @@ Elemento criarSala4() {
     criarElemento("O", "Bloco 9",
     "Bloco com o número 9.",
     "Bloco empoeirado e com o número 9 gravado.",
-    False, True, NULL, 0, 1, transitBloco,
+    False, True, NULL, 0, 1, tBloco,
     acoesBloco, NULL, unionBloco9);
 
 
@@ -704,8 +723,12 @@ Elemento criarSala5() {
     int *tEnigma = malloc(sizeof(int));
     tEnigma[0] = 1;
 
-    Elemento enigma = criarElemento("A", "mensagem", "O que o cientista disse quando encontrou 2 atomos de hélio? HeHe",
-    "Um enigma", False, False, NULL, 0, 1, tEnigma, acoesEnigma, NULL, unionVazia);
+    Elemento enigma =
+    criarElemento("A", "mensagem",
+        "O que o cientista disse quando encontrou 2 atomos de hélio? HeHe",
+        "Um enigma",
+        False, False, NULL, 0, 1, tEnigma,
+        acoesEnigma, NULL, unionVazia);
 
 
 
@@ -721,8 +744,12 @@ Elemento criarSala5() {
     int *tMapa = malloc(sizeof(int));
     tMapa[0] = 1;
 
-    Elemento mapa = criarElemento("O", "mapa", "Qual país está faltando?", "Um mapa do mundo faltando um país",
-    False, False, NULL, 0, 1, tMapa, acoesMapa, NULL, unionVazia);
+    Elemento mapa =
+    criarElemento("O", "mapa",
+        "Qual país está faltando?",
+        "Um mapa do mundo faltando um país",
+        False, False, NULL, 0, 1, tMapa,
+        acoesMapa, NULL, unionVazia);
 
 
 
@@ -738,9 +765,12 @@ Elemento criarSala5() {
     int *tPoster = malloc(sizeof(int));
     tPoster[0] = 1;
 
-    Elemento poster = criarElemento("O", "Poster", "Poster de Blade Runner",
-    "Poster da cidade futurista de Los Angeles com muitas luzes, telões e carros voadores",
-    False, False, NULL, 0 , 1, tPoster, acoesPoster, NULL, unionVazia);
+    Elemento poster =
+    criarElemento("O", "Poster",
+        "Poster de Blade Runner",
+        "Poster da cidade futurista de Los Angeles com muitas luzes, telões e carros voadores",
+        False, False, NULL, 0 , 1, tPoster,
+        acoesPoster, NULL, unionVazia);
 
 
 
@@ -758,8 +788,12 @@ Elemento criarSala5() {
     int *tCaixa = malloc(sizeof(int));
     tCaixa[0] = 1;
 
-    Elemento caixadefosforo = criarElemento("A", "Caixa de Fósoforo", "Uma caixa de fósforo", "Uma caixa de fósforo",
-    False, False, NULL, 0, 1, tCaixa, acoesCaixa, NULL, unionVazia);
+    Elemento caixadefosforo =
+    criarElemento("A", "Caixa de Fósoforo",
+        "Uma caixa de fósforo",
+        "Uma caixa de fósforo",
+        False, False, NULL, 0, 1, tCaixa,
+        acoesCaixa, NULL, unionVazia);
 
 
 
@@ -775,8 +809,12 @@ Elemento criarSala5() {
     int *tLata = malloc(sizeof(int));
     tLata[0] = 1;
 
-    Elemento lataderefri = criarElemento("A", "Lata de refrigerante", "Lata de refrigerante", "Lata de refrigerante",
-    False, False, NULL, 0, 1, tLata, acoesLata, NULL, unionVazia);
+    Elemento lataderefri =
+    criarElemento("A", "Lata de refrigerante",
+        "Lata de refrigerante",
+        "Lata de refrigerante",
+        False, False, NULL, 0, 1, tLata,
+        acoesLata, NULL, unionVazia);
 
 
 
@@ -792,8 +830,12 @@ Elemento criarSala5() {
     int *tPorta = malloc(sizeof(int));
     tPorta[0] = 1;
 
-    Elemento porta = criarElemento("A", "Porta", "Porta", "Porta aberta",
-    False, False, NULL, 0, 1, tPorta, acoesPorta, NULL, unionVazia);
+    Elemento porta =
+    criarElemento("A", "Porta",
+        "Porta",
+        "Porta aberta",
+        False, False, NULL, 0, 1, tPorta,
+        acoesPorta, NULL, unionVazia);
 
 
 
@@ -809,8 +851,12 @@ Elemento criarSala5() {
     conteudoS5[4] = lataderefri;
     conteudoS5[5] = porta;
 
-    Elemento sala5 = criarElemento("A", "NePAl", "Salinha", "Tem um poster, uma caixa de fósforo e uma lata", 
-    False, False, conteudoS5, 6, 0, 0, NULL, NULL, unionVazia);
+    Elemento sala5 =
+    criarElemento("A", "NePAl",
+        "Salinha",
+        "Tem um poster, uma caixa de fósforo e uma lata", 
+        False, False, conteudoS5, 6, 0, 0,
+        NULL, NULL, unionVazia);
 
     return sala5;
 }
