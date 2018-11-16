@@ -12,7 +12,6 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 #include "elemento.h"
 #include "lista_ligada.h"
 #include "salas.h"
@@ -43,25 +42,11 @@ void insereObjnaTabela(TabSim tabela, char *nome, Elemento *sala) {
 }
 
 /* Testa salas */
-void testarSala(Elemento *sala, int num, boolean flag, TabSim tabela) {
+void testarSala(Elemento *sala, int num, boolean flag, TabSim tabela, char *name) {
     printf("********************************\tTESTE: SALA %d\t\t********************************\n", num);
 
     /* Descrição longa ou curta */
     examinar(sala, NULL);
-
-    /* Nome da sala para tabela */
-    char name[50];
-    strcpy(name, "sala");
-
-    if (num == 1)
-        strcat(name, "1");
-    else if (num == 2)
-        strcat(name, "2");
-    else if (num == 3)
-        strcat(name, "3");
-    else if (num == 4)
-        strcat(name, "4");
-    else strcat(name, "5");
 
     /* Insere todos objetos da sala na tabela */
     if (flag)
@@ -170,11 +155,11 @@ int main() {
 
     /* Testes */
     while (True) {
-        testarSala(&sala1, 1, flag, tab);
-        testarSala(&sala2, 2, flag, tab);
-        testarSala(&sala3, 3, flag, tab);
-        // testarSala(&sala4, 4, flag, tab);
-        testarSala(&sala5, 5, flag, tab);
+        testarSala(&sala1, 1, flag, tab, "Fibonacci");
+        testarSala(&sala2, 2, flag, tab, "Morse");
+        testarSala(&sala3, 3, flag, tab, "Papagaio?");
+        // testarSala(&sala4, 4, flag, tab, "Pascal");
+        testarSala(&sala5, 5, flag, tab, "NePAl");
 
         flag = False;
 
