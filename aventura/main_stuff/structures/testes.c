@@ -12,10 +12,10 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "elemento.h"
-#include "lista_ligada.h"
-#include "salas.h"
-#include "tabela_de_sim.h"
+#include "../libraries/elemento.h"
+#include "../libraries/lista_ligada.h"
+#include "../libraries/salas.h"
+#include "../libraries/tabela_de_sim.h"
 
 /*
     Recebe uma string. Cria um elemento com nome

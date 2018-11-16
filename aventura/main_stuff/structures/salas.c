@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "elemento.h"
-#include "salas.h"
+#include "../libraries/elemento.h"
+#include "../libraries/salas.h"
 
 /*
     Recebe os parâmetros necessários ao elemento.

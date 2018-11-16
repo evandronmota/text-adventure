@@ -1,6 +1,6 @@
 #include <stdlib.h>
-#include "elemento.h"
-#include "lista_ligada.h"
+#include "../libraries/elemento.h"
+#include "../libraries/lista_ligada.h"
 
 /*
     Cria uma lista ligada. Retorna a lista criada.
