@@ -92,10 +92,10 @@ Elemento criarElemento(char *artigo, char *nome, char *curta,
     novo.transitividade[1] = 1;
     novo.transitividade[2] = 1;
 
-    novo.acoes = malloc(3*sizeof(func));
+    novo.acoes = malloc(10*sizeof(func));
     novo.acoes[0] = examinar;
-    /*novo.acoes[1] = pegar;
-    novo.acoes[2] = largar;*/
+    novo.acoes[1] = pegar;
+    /*novo.acoes[2] = largar;*/
 
     novo.animacao = animacao;
     novo.detalhe = detalhe;
@@ -810,6 +810,13 @@ Elemento criarSala4() {
     bloco9.transitividade[3] = 2;
     bloco9.transitividade[4] = 2;
 
+    /* Porta */
+    Elemento porta =
+    criarElemento("Uma", "Porta",
+        "Uma porta branca.",
+        "Uma porta branca com várias lascas.", 
+        False, True, NULL, 0, 0,
+        NULL, unionVazia);
 
 
     /* Balança */
@@ -824,7 +831,7 @@ Elemento criarSala4() {
 
 
     /* Sala 4 */
-    Elemento* conteudoS4 = malloc(13*sizeof(Elemento));
+    Elemento* conteudoS4 = malloc(14*sizeof(Elemento));
     conteudoS4[0] = bloco0;
     conteudoS4[1] = bloco1;
     conteudoS4[2] = bloco2;
@@ -838,6 +845,7 @@ Elemento criarSala4() {
     conteudoS4[10] = mensagem;
     conteudoS4[11] = poema;
     conteudoS4[12] = balanca;
+    conteudoS4[13] = porta;
 
     Info unionS4;
 
@@ -845,7 +853,7 @@ Elemento criarSala4() {
     criarElemento("A", "Pascal",
     "Uma sala triangular.",
     "Uma sala triangular. Há uma mesa com blocos, um papel com um poema no chão, uma mensagem na parede e uma balança.",
-    False, True, conteudoS4, 13, 0,
+    False, True, conteudoS4, 14, 0,
     NULL, unionS4);
 
     return sala4;
@@ -943,8 +951,8 @@ Elemento criarSala5() {
     /* Porta */
     Elemento porta =
     criarElemento("A", "Porta",
-        "Porta",
-        "Porta aberta",
+        "Uma porta vermelha.",
+        "Uma porta vermelha com fechadura preta.",
         False, False, NULL, 0, 1,
         NULL, unionVazia);
 
