@@ -9,11 +9,10 @@ struct elo {
     struct elo *next;
 };
 
-// ponteiro para a lista ligada
+/* Ponteiro para a lista ligada */
 typedef struct elo *Lista;
 
-
-// funções da lista ligada
+/* Funções da lista ligada */
 Lista criaL(void);
 void destroiL(Lista l);
 Lista insereL(Lista l, Elemento *val);

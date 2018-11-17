@@ -1,2 +1,2 @@
-// inicializa as salas
-Elemento* inicializarSalas();
+/* inicializa as salas */
+Elemento *inicializarSalas();

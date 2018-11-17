@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "../libraries/initSalas.h"
 #include "../libraries/elemento.h"
+#include "../libraries/initSalas.h"
 #include "../libraries/salas.h"
 
 /*
@@ -16,6 +16,7 @@ Elemento *inicializarSalas() {
     Elemento sala4 = criarSala4();
     Elemento sala5 = criarSala5();
 
+
     lobby.detalhe.saidas = malloc(5*sizeof(Elemento*));
     sala1.detalhe.saidas = malloc(sizeof(Elemento*));
     sala2.detalhe.saidas = malloc(sizeof(Elemento*));
@@ -23,7 +24,7 @@ Elemento *inicializarSalas() {
     sala4.detalhe.saidas = malloc(sizeof(Elemento*));
     sala5.detalhe.saidas = malloc(sizeof(Elemento*));
 
-    // direções cardeais
+    /* Direções cardeais */
     for (int i = 0; i < 4; i++) {
         lobby.detalhe.saidas[i] = NULL;
         sala1.detalhe.saidas[i] = NULL;
@@ -45,7 +46,8 @@ Elemento *inicializarSalas() {
     lobby.detalhe.saidas[7] = &sala4;
     lobby.detalhe.saidas[8] = &sala5;
 
-    Elemento *salas = malloc(5*sizeof(Elemento));
+    Elemento *salas = malloc(6 * sizeof(Elemento));
+    // return NULL;
     salas[0] = lobby;
     salas[1] = sala1;
     salas[2] = sala2;

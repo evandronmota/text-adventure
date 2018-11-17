@@ -65,7 +65,6 @@ int pegar(Elemento *e1, Elemento *e2) {
     return (e1 == NULL ? 0 : 1);
 }
 
-
 /*
     Recebe os parâmetros necessários ao elemento.
     Cria um elemento com esses parâmetros.
@@ -102,7 +101,6 @@ Elemento criarElemento(char *artigo, char *nome, char *curta,
 
     return novo;
 }
-
 
 /* Union para objetos sem atributos */
 Info unionVazia;

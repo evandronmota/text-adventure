@@ -2,9 +2,7 @@
 #include "../libraries/elemento.h"
 #include "../libraries/lista_ligada.h"
 
-/*
-    Cria uma lista ligada. Retorna a lista criada.
-*/
+/* Cria uma lista ligada. Retorna a lista criada. */
 Lista criaL() {
     Lista l = malloc(sizeof(struct elo));
     l->nome = malloc(sizeof(char));

@@ -16,6 +16,7 @@
 #include "../libraries/lista_ligada.h"
 #include "../libraries/salas.h"
 #include "../libraries/tabela_de_sim.h"
+#include "../libraries/initSalas.h"
 
 /*
     Recebe uma string. Cria um elemento com nome
@@ -145,21 +146,24 @@ int main() {
 
     /* Criar tabela e salas */
     TabSim tab = cria(97);
-    Elemento sala1 = criarSala1();
-    Elemento sala2 = criarSala2();
-    Elemento sala3 = criarSala3();
-    Elemento sala4 = criarSala4();
-    Elemento sala5 = criarSala5();
+    // Elemento sala1 = criarSala1();
+    // Elemento sala2 = criarSala2();
+    // Elemento sala3 = criarSala3();
+    // Elemento sala4 = criarSala4();
+    // Elemento sala5 = criarSala5();
+
+    Elemento *salas = inicializarSalas();
+    exit(0);
 
     boolean flag = True;
 
     /* Testes */
     while (True) {
-        testarSala(&sala1, 1, flag, tab, "Fibonacci");
-        testarSala(&sala2, 2, flag, tab, "Morse");
-        testarSala(&sala3, 3, flag, tab, "Papagaio?");
-        testarSala(&sala4, 4, flag, tab, "Pascal");
-        testarSala(&sala5, 5, flag, tab, "NePAl");
+        testarSala(&salas[1], 1, flag, tab, "Fibonacci");
+        testarSala(&salas[2], 2, flag, tab, "Morse");
+        testarSala(&salas[3], 3, flag, tab, "Papagaio?");
+        testarSala(&salas[4], 4, flag, tab, "Pascal");
+        testarSala(&salas[5], 5, flag, tab, "NePAl");
 
         flag = False;
 
@@ -171,12 +175,14 @@ int main() {
 
 /*          |^^^^^|          */
 /*         d(- _ -)b         */
-/*   0======|     |======0   */
-/*          |     |          */
+/*   3======| _O_ |======K   */
+/*          |  |  |          */
+/*          |  /\ |          */
+/*          | `--´|          */
 /*          |_____|          */
 /*          | | | |          */
 /*          | | | |          */
 /*        __| | | |__        */
 /*       |____| |____|       */
-/*   \-------------------/   */
+/*   \___________________/   */
 /*     O O            O O    */
