@@ -6,16 +6,16 @@ To Do:
 -Animação (mesmo se nenhum elemento utiliza)
 -Apresentação do jogo (pg 13, 4.5)
 -Definir sala e senha do puzzle final
--Unions com as saidas de cada sala
 -artigos pg 3
 -pg 4
 -criar objeto aventureiro
 -inicialização (4.4)
 -relatório
--string.h ?
 -deletar trans.py
 -comandos default (pegar, examinar e largar)
 -largar ??
+-Makefile
+-Arrumar testes.c (usar o initSalas.c [ou nao])
 
 Doing:
 -Criar estória
@@ -26,10 +26,10 @@ Doing:
 -Sala 5
 -Testes
 -Entregar (4.6 - parte 4)
+-Unions com as saidas de cada sala
 
 Done:
 - Sala 1
--Makefile
 -Aplicar a tabela de simbolos
 -Arrumar a main
 -Ep1
@@ -37,3 +37,4 @@ Done:
 -Entregar (4.6 - parte 2)
 -Conectar testes e main1 no Makefile
 -jogar tudo para tabela de simbolos
+-string.h ?
