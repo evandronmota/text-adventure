@@ -2,6 +2,7 @@
 typedef int (*func)(Elemento *e1, Elemento *e2);
 
 /* Funções */
+Elemento criarSala0();
 Elemento criarSala1();
 Elemento criarSala2();
 Elemento criarSala3();

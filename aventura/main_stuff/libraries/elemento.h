@@ -22,7 +22,7 @@ typedef struct {
 */
 typedef union {
     obj_atr *atributos;
-    struct ele *saidas;
+    struct ele **saidas;
 } Info;
 
 // elemento
