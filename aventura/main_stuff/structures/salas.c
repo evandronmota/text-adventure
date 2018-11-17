@@ -211,7 +211,7 @@ Elemento criarSala1() {
     func checarMensagem, checarRelogio;
     checarMensagem = checarRelogio = examinar;
 
-    Elemento mensagem1 =
+    Elemento mensagem =
     criarElemento("Uma","Mensagem",
         "Na parede há uma mensagem: 1 + 1 = 2.",
         "Na parede está escrito com tinta vermelha (ou será sangue...?): 1 + 1 = 2.",
@@ -220,7 +220,7 @@ Elemento criarSala1() {
 
 
     /* Chave */
-    Elemento chave1 =
+    Elemento chave =
     criarElemento("Uma","Chave",
         "Uma chave velha.",
         "Uma chave velha e enferrujada.",
@@ -232,25 +232,25 @@ Elemento criarSala1() {
 
 
     /* Concha */
-    Info unionConcha1;
-    unionConcha1.atributos = malloc(sizeof(obj_atr));
+    Info unionConcha;
+    unionConcha.atributos = malloc(sizeof(obj_atr));
 
     obj_atr estaQuebrada;
     estaQuebrada.nome = "estaQuebrada";
     estaQuebrada.valor.valor_estado = False;
 
-    unionConcha1.atributos[0] = estaQuebrada;
+    unionConcha.atributos[0] = estaQuebrada;
 
-    Elemento concha1 =
+    Elemento concha =
     criarElemento("Uma","Concha",
         "Uma concha em formato de espiral.",
         "Uma concha verde em formato de espiral.",
         False, False, conteudoConcha, 0, 0,
-        NULL, unionConcha1);
+        NULL, unionConcha);
 
 
     /* Porta */
-    Elemento porta1 =
+    Elemento porta =
     criarElemento("Uma", "Porta",
         "Uma porta trancada.",
         "Uma porta de ferro com fechadura dourada.",
@@ -259,8 +259,8 @@ Elemento criarSala1() {
 
 
     /* Ponteiro do relógio */
-    Info unionPonteiro1;
-    unionPonteiro1.atributos = malloc(sizeof(obj_atr));
+    Info unionPonteiro;
+    unionPonteiro.atributos = malloc(sizeof(obj_atr));
 
     /*
         no chao = 0
@@ -272,18 +272,18 @@ Elemento criarSala1() {
     comQuem.nome = "comQuem";
     comQuem.valor.valor_num = 0;
 
-    unionPonteiro1.atributos[0] = comQuem;
+    unionPonteiro.atributos[0] = comQuem;
 
-    Elemento ponteiro1 = 
+    Elemento ponteiro = 
     criarElemento("Um", "Ponteiro",
         "Um ponteiro de relógio.",
         "Um ponteiro de minutos do relógio quebrado.",
         False, False, NULL, 0, 0,
-        NULL, unionPonteiro1);
+        NULL, unionPonteiro);
 
 
     /* Relógio */
-    Elemento relogio1 =
+    Elemento relogio =
     criarElemento("Um","Relógio",
         "Relógio quebrado sem um dos ponteiros.",
         "Relógio sem o ponteiro dos minutos e com o ponteiro das horas apontando para o 8.",
@@ -295,12 +295,12 @@ Elemento criarSala1() {
     Info unionS1;
 
     Elemento *conteudoS1 = malloc(6*sizeof(Elemento));
-    conteudoS1[0] = relogio1;
-    conteudoS1[1] = ponteiro1;
-    conteudoS1[2] = porta1;
-    conteudoS1[3] = concha1;
-    conteudoS1[4] = chave1;
-    conteudoS1[5] = mensagem1;
+    conteudoS1[0] = relogio;
+    conteudoS1[1] = ponteiro;
+    conteudoS1[2] = porta;
+    conteudoS1[3] = concha;
+    conteudoS1[4] = chave;
+    conteudoS1[5] = mensagem;
 
     Elemento sala1 =
     criarElemento("Uma", "Fibonacci",
@@ -333,7 +333,7 @@ Elemento criarSala2() {
 
 
     /* Mensagem */
-    Elemento mensagem2 =
+    Elemento mensagem =
     criarElemento("Uma","Mensagem",
         "Está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"",
         "Numa folha de papel amassada está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"", False, False, NULL, 0, 0,
@@ -341,7 +341,7 @@ Elemento criarSala2() {
 
 
     /* Porta */
-    Elemento porta2 =
+    Elemento porta =
     criarElemento("Uma", "Porta",
         "Uma porta.",
         "Uma porta dourada.", 
@@ -350,7 +350,7 @@ Elemento criarSala2() {
 
 
     /* Morsa */
-    Elemento morsa2 =
+    Elemento morsa =
     criarElemento("Uma","Pelúcia",
         "Uma morsa de pelúcia.",
         "Uma morsa de pelúcia marrom.", 
@@ -359,7 +359,7 @@ Elemento criarSala2() {
 
 
     /* Livro */
-    Elemento livro2 =
+    Elemento livro =
     criarElemento("Um","Livro",
         "Um livro velho. O título é \"Existem apenas -. tipos de pessoas no mundo\".",
         "Um livro velho e surpreendentemente grande. O título é \"Existem apenas 10 tipos de pessoas no mundo\".",
@@ -368,7 +368,7 @@ Elemento criarSala2() {
 
 
     /* Página */
-    Elemento pagina2 =
+    Elemento pagina =
     criarElemento("Uma","Página",
         "Você já tentou procurar embaixo do cofre?.",
         "Você já tentou procurar embaixo do cofre?.",
@@ -377,7 +377,7 @@ Elemento criarSala2() {
 
 
     /* Cofre */
-    Elemento cofre2 =
+    Elemento cofre =
     criarElemento("Um","Cofre",
         "Um cofre de ferro.",
         "Um cofre grande de ferro com uma fechadura mecânica.",
@@ -386,7 +386,7 @@ Elemento criarSala2() {
 
 
     /* Letra */
-    Elemento letra2 =
+    Elemento letra =
     criarElemento("Um","Papel",
         "Há uma letra \"E\".",
         "Há uma letra \"E\".",
@@ -398,13 +398,13 @@ Elemento criarSala2() {
     Info unionS2;
 
     Elemento *conteudoS2 = malloc(7*sizeof(Elemento));
-    conteudoS2[0] = letra2;
-    conteudoS2[1] = cofre2;
-    conteudoS2[2] = livro2;
-    conteudoS2[3] = pagina2;
-    conteudoS2[4] = morsa2;
-    conteudoS2[5] = porta2;
-    conteudoS2[6] = mensagem2;
+    conteudoS2[0] = letra;
+    conteudoS2[1] = cofre;
+    conteudoS2[2] = livro;
+    conteudoS2[3] = pagina;
+    conteudoS2[4] = morsa;
+    conteudoS2[5] = porta;
+    conteudoS2[6] = mensagem;
 
     Elemento sala2 =
     criarElemento("Uma","Binaria",
@@ -436,7 +436,7 @@ Elemento criarSala3(){
 
 
     /* Porta */
-    Elemento porta3 =
+    Elemento porta =
     criarElemento("Uma", "Porta",
         "Uma porta.",
         "Uma porta de madeira.",
@@ -444,7 +444,7 @@ Elemento criarSala3(){
         NULL, unionVazia);
 
     /* Ovo */
-    Elemento ovo3 = 
+    Elemento ovo = 
     criarElemento("Um", "Ovo",
         "Um ovo brilhante.",
         "Um ovo feito de aço.",
@@ -452,29 +452,29 @@ Elemento criarSala3(){
         NULL, unionVazia);
 
     /* Galinha */
-    Elemento *conteudoGalinha3 = malloc(1*sizeof(Elemento));
-    conteudoGalinha3[0] = ovo3;
+    Elemento *conteudoGalinha = malloc(1*sizeof(Elemento));
+    conteudoGalinha[0] = ovo3;
 
-    Elemento galinha3 =
+    Elemento galinha =
     criarElemento("Uma", "Galinha",
         "Uma galinha branca.",
         "Uma galinha grande com penas brancas.",
-        False, False, conteudoGalinha3, 0, 0,
+        False, False, conteudoGalinha, 0, 0,
         NULL, unionVazia);
 
     /* Gaiola */
-    Elemento *conteudoGaiola3 = malloc(1*sizeof(Elemento));
-    conteudoGaiola3[0] = galinha3;
+    Elemento *conteudoGaiola = malloc(1*sizeof(Elemento));
+    conteudoGaiola[0] = galinha3;
 
-    Elemento gaiola3 =
+    Elemento gaiola =
     criarElemento("Uma", "Gaiola",
         "Uma gaiola dourada.",
         "Uma grande gaiola dourada. Há uma galinha presa nela?...",
-        False, False, conteudoGaiola3, 0, 0,
+        False, False, conteudoGaiola, 0, 0,
         NULL, unionVazia);
 
     /* Metal */
-    Elemento metal3 =
+    Elemento metal =
     criarElemento("Um", "Metal",
         "Uma pequena barra de metal.",
         "Uma pequena barra de metal. Nela está gradado: \"Co\"",
@@ -482,7 +482,7 @@ Elemento criarSala3(){
         NULL, unionVazia);
 
     /* Bobina */
-    Elemento bobina3 =
+    Elemento bobina =
     criarElemento("Uma", "Bobina",
         "Uma grande bobina elétrica.",
         "Uma grande bobina elétrica. No centro há um buraco pequeno e na lateral um botão vermelho.",
@@ -490,7 +490,7 @@ Elemento criarSala3(){
         NULL, unionVazia);
 
     /* Botão */
-    Elemento botao3 = 
+    Elemento botao = 
     criarElemento("Um", "Botão",
         "Um botão vermelho.",
         "Um botão grande e vermelho.",
@@ -498,7 +498,7 @@ Elemento criarSala3(){
         NULL, unionVazia);
 
     /* Saco */
-    Elemento saco3 = 
+    Elemento saco = 
     criarElemento("Um", "Saco",
         "Um saco com milho.",
         "Um saco de linho com milho.",
@@ -506,7 +506,7 @@ Elemento criarSala3(){
         NULL, unionVazia);
 
     /* Chave */
-    Elemento chave3 = 
+    Elemento chave = 
     criarElemento("Uma", "Chave",
         "Uma chave dourada.",
         "Uma chave pequena e dourada.",
@@ -517,15 +517,15 @@ Elemento criarSala3(){
     Info unionS3;
 
     Elemento *conteudoS3 = malloc(9*sizeof(Elemento));
-    conteudoS3[0] = porta3;
-    conteudoS3[1] = gaiola3;
-    conteudoS3[2] = galinha3;
-    conteudoS3[3] = ovo3;
-    conteudoS3[4] = bobina3;
-    conteudoS3[5] = botao3;
-    conteudoS3[6] = metal3;
-    conteudoS3[7] = saco3;
-    conteudoS3[8] = chave3;
+    conteudoS3[0] = porta;
+    conteudoS3[1] = gaiola;
+    conteudoS3[2] = galinha;
+    conteudoS3[3] = ovo;
+    conteudoS3[4] = bobina;
+    conteudoS3[5] = botao;
+    conteudoS3[6] = metal;
+    conteudoS3[7] = saco;
+    conteudoS3[8] = chave;
     
     Elemento sala3 =
     criarElemento("Uma","Galinhada",
