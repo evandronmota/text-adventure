@@ -46,14 +46,14 @@ Elemento *inicializarSalas() {
     lobby.detalhe.saidas[7] = &sala4;
     lobby.detalhe.saidas[8] = &sala5;
 
-    Elemento *salas = malloc(sizeof(Elemento));
+    Elemento *salas = malloc(6 * sizeof(Elemento));
 
     salas[0] = lobby;
-    salas[0] = sala1;
+    salas[1] = sala1;
     salas[2] = sala2;
     salas[3] = sala3;
     salas[4] = sala4;
-    salas[4] = sala5;
+    salas[5] = sala5;
 
     return salas;
 }

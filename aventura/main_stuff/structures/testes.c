@@ -18,6 +18,29 @@
 #include "../libraries/tabela_de_sim.h"
 #include "../libraries/initSalas.h"
 
+/* Cores */
+#define RESET   "\033[0m"
+#define BLACK   "\033[30m"      /* Black */
+#define RED     "\033[31m"      /* Red */
+#define GREEN   "\033[32m"      /* Green */
+#define YELLOW  "\033[33m"      /* Yellow */
+#define BLUE    "\033[34m"      /* Blue */
+#define MAGENTA "\033[35m"      /* Magenta */
+#define CYAN    "\033[36m"      /* Cyan */
+#define WHITE   "\033[37m"      /* White */
+#define BOLDBLACK   "\033[1m\033[30m"      /* Bold Black */
+#define BOLDRED     "\033[1m\033[31m"      /* Bold Red */
+#define BOLDGREEN   "\033[1m\033[32m"      /* Bold Green */
+#define BOLDYELLOW  "\033[1m\033[33m"      /* Bold Yellow */
+#define BOLDBLUE    "\033[1m\033[34m"      /* Bold Blue */
+#define BOLDMAGENTA "\033[1m\033[35m"      /* Bold Magenta */
+#define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
+#define BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
+
+/* Mensagens */
+#define OK BOLDGREEN "OK\t" RESET
+#define ERROR BOLDRED "ERROR\t" RESET
+
 /*
     Recebe uma string. Cria um elemento com nome
     igual à string recebida. Retorna um ponteiro
@@ -44,16 +67,25 @@ void insereObjnaTabela(TabSim tabela, char *nome, Elemento *sala) {
 
 /* Testa salas */
 void testarSala(Elemento *sala, int num, boolean flag, TabSim tabela, char *name) {
-    printf("********************************\tTESTE: SALA %d\t\t********************************\n", num);
+    int i, j;
+
+    printf(CYAN "********************************\tTESTE: " BOLDWHITE "SALA %d" RESET CYAN "\t\t********************************\n" RESET, num);
 
     /* Descrição longa ou curta */
+    if (flag)
+        printf(BOLDBLUE "Descrição LONGA da sala:\n" RESET);
+    else printf(BOLDBLUE "Descrição CURTA da sala:\n" RESET);
     examinar(sala, NULL);
 
     /* Insere todos objetos da sala na tabela */
     if (flag)
         insereObjnaTabela(tabela, name, sala);
 
-    int i, j;
+    if (flag)
+        printf(BOLDBLUE"\nLista de OBJETOS da sala:\n"RESET);
+    else printf(BOLDBLUE"\nLista de AÇÕES de cada objeto:\n"RESET);
+
+    /* Imprime todos os objetos da sala ou aplica todas as ações */
     for (i=0; i < sala->nEle; i++) {
         Elemento *obj = &sala->conteudo[i];
         if (flag)
@@ -76,61 +108,61 @@ void testarSala(Elemento *sala, int num, boolean flag, TabSim tabela, char *name
 int main() {
 
     /* FASE: 1 */
-    printf("############################################################\tFASE 1\t############################################################\n\n");
+    printf(BOLDMAGENTA "################################################################\tFASE 1\t\t################################################################\n\n\n\n" RESET);
 
     /* TESTE: CRIAR */
-    printf("********************************\tTESTE: CRIAR\t\t********************************\n");
+    printf(CYAN "********************************\tTESTE: " BOLDWHITE "CRIAR" RESET CYAN "\t\t********************************\n" RESET);
     TabSim t = cria(17);
-    printf("%s\n\n", (t!=NULL ? "Tabela criada e sucesso na criação das listas!" : "Erro ao criar tabela!"));
+    printf("%s\n\n", (t != NULL ? OK "Tabela criada e sucesso na criação das listas!" : ERROR "Erro ao criar tabela!"));
 
     /* Criação dos elementos */
-    Elemento *el0 = criaElemento("dragao com asas de fogo"); // Elemento para testar colisão e possui dois nomes
-    Elemento *el1 = criaElemento("dragao com colisao"); // Elemento para testar colisão
+    Elemento *el0 = criaElemento("dragao com asas de fogo"); /* Elemento para testar colisão e possui dois nomes */
+    Elemento *el1 = criaElemento("dragao com colisao"); /* Elemento para testar colisão */
     Elemento *el2 = criaElemento("elemento teste");
 
     /* TESTE: INSERIR */
-    printf("********************************\tTESTE: INSERIR\t\t********************************\n");
-    printf("%s\n", (insere(t, "dragao", el0) ? "Sucesso ao inserir dragao!" : "Erro ao inserir dragao!"));
-    printf("%s\n", (insere(t, "feioso", el0) ? "Sucesso ao inserir feioso!" : "Erro ao inserir feioso!"));
-    printf("%s\n\n", (insere(t, "gaodra", el1) ? "Sucesso ao inserir gaodra!" : "Erro ao inserir gaodra!"));
+    printf(CYAN "********************************\tTESTE: " BOLDWHITE "INSERIR" RESET CYAN "\t\t********************************\n" RESET);
+    printf("%s\n", (insere(t, "dragao", el0) ? OK "Sucesso ao inserir " BOLDWHITE "dragao!" RESET : ERROR "Erro ao inserir " BOLDWHITE "dragao!" RESET));
+    printf("%s\n", (insere(t, "feioso", el0) ? OK "Sucesso ao inserir "BOLDWHITE "feioso!" RESET : ERROR "Erro ao inserir " BOLDWHITE "feioso!" RESET));
+    printf("%s\n\n", (insere(t, "gaodra", el1) ? OK "Sucesso ao inserir "BOLDWHITE "gaodra!" RESET : ERROR "Erro ao inserir " BOLDWHITE "gaodra!" RESET));
 
     /* TESTE: BUSCAR */
-    printf("********************************\tTESTE: BUSCAR\t\t********************************\n");
+    printf(CYAN "********************************\tTESTE: " BOLDWHITE "BUSCAR" RESET CYAN "\t\t********************************\n" RESET);
     el2 = busca(t, "dragao");
     if (el2!=NULL)
-        printf("Sucesso ao buscar elemento: '%s' a partir de 'dragao'!\n", el2->n);
-    else printf("Elemento a partir de 'dragao' não encontrado!\n");
+        printf(OK "Sucesso ao buscar elemento: " BOLDWHITE "'%s'" RESET " a partir de " BOLDWHITE "'dragao'! " RESET "\n", el2->n);
+    else printf(ERROR "Elemento a partir de " BOLDWHITE "'dragao'" RESET " não encontrado!\n");
 
     el2 = busca(t, "feioso");
     if (el2!=NULL)
-        printf("Sucesso ao buscar elemento: '%s' a partir de 'feioso'!\n", el2->n);
-    else printf("Elemento a partir de 'feioso' não encontrado!\n");
+        printf(OK "Sucesso ao buscar elemento: " BOLDWHITE "'%s'" RESET " a partir de " BOLDWHITE "'feioso'!" RESET "\n", el2->n);
+    else printf(ERROR "Elemento a partir de " BOLDWHITE "'feioso'" RESET " não encontrado!\n");
 
     el2 = busca(t, "gaodra");
     if (el2!=NULL)
-        printf("Sucesso ao buscar elemento: '%s' a partir de 'gaodra'!\n", el2->n);
-    else printf("Elemento a partir de 'gaodra' não encontrado!\n");
+        printf(OK "Sucesso ao buscar elemento: " BOLDWHITE "'%s'" RESET " a partir de " BOLDWHITE "'gaodra'!" RESET "\n", el2->n);
+    else printf(ERROR "Elemento a partir de " BOLDWHITE "'gaodra'" RESET " não encontrado!\n");
     printf("\n");
 
     /* TESTE: RETIRAR */
-    printf("********************************\tTESTE: RETIRAR\t\t********************************\n");
-    printf("%s\n", (retira(t, "dragao") ? "Sucesso ao retirar dragao!" : "Erro ao retirar dragao!"));
+    printf(CYAN"********************************\tTESTE: " BOLDWHITE "RETIRAR" RESET CYAN "\t\t********************************\n" RESET);
+    printf("%s\n", (retira(t, "dragao") ? OK "Sucesso ao retirar " BOLDWHITE "dragao!" RESET : ERROR "Erro ao retirar " BOLDWHITE "dragao!" RESET));
 
-    printf("VERIFICAÇÃO DO RETIRAR:\n");
+    printf(BOLDWHITE"\nVERIFICAÇÃO DO RETIRAR:\n" RESET);
     el2 = busca(t, "dragao");
     if (el2!=NULL)
-        printf("Sucesso ao buscar elemento: '%s' a partir de 'dragao'!\n", el2->n);
-    else printf("Elemento a partir de 'dragao' não encontrado!\n");
+        printf(ERROR "Sucesso ao buscar elemento: " BOLDWHITE "'%s'" RESET " a partir de " BOLDWHITE "'dragao'!" RESET "\n", el2->n);
+    else printf(OK "Elemento a partir de " BOLDWHITE "'dragao'" RESET " não encontrado!\n");
 
     el2 = busca(t, "feioso");
     if (el2!=NULL)
-        printf("Sucesso ao buscar elemento: '%s' a partir de 'feioso'!\n", el2->n);
-    else printf("Elemento a partir de 'feioso' não encontrado!\n");
+        printf(OK "Sucesso ao buscar elemento: " BOLDWHITE "'%s'" RESET " a partir de " BOLDWHITE "'feioso'!" RESET "\n", el2->n);
+    else printf(ERROR "Elemento a partir de " BOLDWHITE "'feioso'" RESET " não encontrado!\n");
 
     el2 = busca(t, "gaodra");
     if (el2!=NULL)
-        printf("Sucesso ao buscar elemento: '%s' a partir de 'gaodra'!\n", el2->n);
-    else printf("Elemento a partir de 'gaodra' não encontrado!\n");
+        printf(OK "Sucesso ao buscar elemento: " BOLDWHITE "'%s'" RESET " a partir de " BOLDWHITE "'gaodra'!" RESET "\n", el2->n);
+    else printf(ERROR "Elemento a partir de " BOLDWHITE "'gaodra'" RESET " não encontrado!\n");
     printf("\n");
 
     destroi(t);
@@ -141,36 +173,33 @@ int main() {
 
 
 
+
     /* FASE: 2 */
-    printf("\n\n############################################################\tFASE 2\t############################################################\n\n");
+    printf(BOLDMAGENTA "\n\n################################################################\tFASE 2\t\t################################################################\n\n\n\n" RESET);
 
     /* Criar tabela e salas */
     TabSim tab = cria(97);
-    // Elemento sala1 = criarSala1();
-    // Elemento sala2 = criarSala2();
-    // Elemento sala3 = criarSala3();
-    // Elemento sala4 = criarSala4();
-    // Elemento sala5 = criarSala5();
-
     Elemento *salas = inicializarSalas();
-    //exit(0);
-
 
     boolean flag = True;
+    int i=0;
 
     /* Testes */
     while (True) {
-        printf("TESTEZAO\n");
+        if (!flag)
+            printf("______________________________________________________________________________________________________________________________\n\n\n\n");
+        printf(BOLDWHITE "TESTE DE SALAS - COMANDO: %d\n\n\n" RESET, i++);
         testarSala(&salas[1], 1, flag, tab, "Fibonacci");
-        /*testarSala(&salas[2], 2, flag, tab, "Morse");
+        testarSala(&salas[2], 2, flag, tab, "Morse");
         testarSala(&salas[3], 3, flag, tab, "Papagaio?");
         testarSala(&salas[4], 4, flag, tab, "Pascal");
-        testarSala(&salas[5], 5, flag, tab, "NePAl"); */
+        testarSala(&salas[5], 5, flag, tab, "NePAl");
 
         flag = False;
 
         getchar(); /* Simulação de comando */
     }
+
 
     return 0;
 }
