@@ -86,12 +86,12 @@ Elemento criarElemento(char *artigo, char *nome, char *curta,
     novo.conteudo = conteudo;
     novo.nEle = nEle;
     novo.nAcoes = nAcoes;
-    novo.transitividade = malloc(5*sizeof(int));
+    novo.transitividade = malloc(7*sizeof(int));
     novo.transitividade[0] = 1;
     novo.transitividade[1] = 1;
     novo.transitividade[2] = 1;
 
-    novo.acoes = malloc(10*sizeof(func));
+    novo.acoes = malloc(7*sizeof(func));
     novo.acoes[0] = examinar;
     novo.acoes[1] = pegar;
     /*novo.acoes[2] = largar;*/
@@ -602,11 +602,11 @@ Elemento criarSala4() {
         False, True, NULL, 0, 1,
         NULL, unionBloco0);
 
-    bloco0.acoes = realloc(bloco0.acoes, 5*sizeof(func));
+
     bloco0.acoes[3] = colocarBlocoSobre;
     bloco0.acoes[4] = tirarBlocoDeCima;
 
-    bloco0.transitividade = realloc(bloco0.transitividade, 5*sizeof(int));
+
     bloco0.transitividade[3] = 2;
     bloco0.transitividade[4] = 2;
 
@@ -624,11 +624,11 @@ Elemento criarSala4() {
         False, True, NULL, 0, 1,
         NULL, unionBloco1);
     
-    bloco1.acoes = realloc(bloco1.acoes, 5*sizeof(func));
+
     bloco1.acoes[3] = colocarBlocoSobre;
     bloco1.acoes[4] = tirarBlocoDeCima;
 
-    bloco1.transitividade = realloc(bloco1.transitividade, 5*sizeof(int));
+
     bloco1.transitividade[3] = 2;
     bloco1.transitividade[4] = 2;
     
@@ -646,11 +646,11 @@ Elemento criarSala4() {
         False, True, NULL, 0, 1,
         NULL, unionBloco2);
 
-    bloco2.acoes = realloc(bloco2.acoes, 5*sizeof(func));
+
     bloco2.acoes[3] = colocarBlocoSobre;
     bloco2.acoes[4] = tirarBlocoDeCima;
 
-    bloco2.transitividade = realloc(bloco2.transitividade, 5*sizeof(int));
+
     bloco2.transitividade[3] = 2;
     bloco2.transitividade[4] = 2;
 
@@ -668,11 +668,11 @@ Elemento criarSala4() {
         False, True, NULL, 0, 1,
         NULL, unionBloco3);
 
-    bloco3.acoes = realloc(bloco3.acoes, 5*sizeof(func));
+
     bloco3.acoes[3] = colocarBlocoSobre;
     bloco3.acoes[4] = tirarBlocoDeCima;
 
-    bloco3.transitividade = realloc(bloco3.transitividade, 5*sizeof(int));
+
     bloco3.transitividade[3] = 2;
     bloco3.transitividade[4] = 2;
 
@@ -690,11 +690,11 @@ Elemento criarSala4() {
         False, True, NULL, 0, 1,
         NULL, unionBloco4);
 
-    bloco4.acoes = realloc(bloco4.acoes, 5*sizeof(func));
+
     bloco4.acoes[3] = colocarBlocoSobre;
     bloco4.acoes[4] = tirarBlocoDeCima;
 
-    bloco4.transitividade = realloc(bloco4.transitividade, 5*sizeof(int));
+
     bloco4.transitividade[3] = 2;
     bloco4.transitividade[4] = 2;
 
@@ -712,11 +712,11 @@ Elemento criarSala4() {
         False, True, NULL, 0, 1,
         NULL, unionBloco5);
 
-    bloco5.acoes = realloc(bloco5.acoes, 5*sizeof(func));
+
     bloco5.acoes[3] = colocarBlocoSobre;
     bloco5.acoes[4] = tirarBlocoDeCima;
 
-    bloco5.transitividade = realloc(bloco5.transitividade, 5*sizeof(int));
+
     bloco5.transitividade[3] = 2;
     bloco5.transitividade[4] = 2;
 
@@ -734,11 +734,11 @@ Elemento criarSala4() {
         False, True, NULL, 0, 1,
         NULL, unionBloco6);
 
-    bloco6.acoes = realloc(bloco6.acoes, 5*sizeof(func));
+
     bloco6.acoes[3] = colocarBlocoSobre;
     bloco6.acoes[4] = tirarBlocoDeCima;
 
-    bloco6.transitividade = realloc(bloco6.transitividade, 5*sizeof(int));
+
     bloco6.transitividade[3] = 2;
     bloco6.transitividade[4] = 2;
 
@@ -756,11 +756,11 @@ Elemento criarSala4() {
         False, True, NULL, 0, 1,
         NULL, unionBloco7);
 
-    bloco7.acoes = realloc(bloco7.acoes, 5*sizeof(func));
+
     bloco7.acoes[3] = colocarBlocoSobre;
     bloco7.acoes[4] = tirarBlocoDeCima;
 
-    bloco7.transitividade = realloc(bloco7.transitividade, 5*sizeof(int));
+
     bloco7.transitividade[3] = 2;
     bloco7.transitividade[4] = 2;
 
@@ -778,11 +778,11 @@ Elemento criarSala4() {
         False, True, NULL, 0, 1,
         NULL, unionBloco8);
 
-    bloco8.acoes = realloc(bloco8.acoes, 5*sizeof(func));
+
     bloco8.acoes[3] = colocarBlocoSobre;
     bloco8.acoes[4] = tirarBlocoDeCima;
 
-    bloco8.transitividade = realloc(bloco8.transitividade, 5*sizeof(int));
+
     bloco8.transitividade[3] = 2;
     bloco8.transitividade[4] = 2;
 
@@ -800,11 +800,11 @@ Elemento criarSala4() {
         False, True, NULL, 0, 1,
         NULL, unionBloco9);
 
-    bloco9.acoes = realloc(bloco9.acoes, 5*sizeof(func));
+
     bloco9.acoes[3] = colocarBlocoSobre;
     bloco9.acoes[4] = tirarBlocoDeCima;
 
-    bloco9.transitividade = realloc(bloco9.transitividade, 5*sizeof(int));
+
     bloco9.transitividade[3] = 2;
     bloco9.transitividade[4] = 2;
 
