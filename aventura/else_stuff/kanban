@@ -15,7 +15,7 @@ To Do:
 -comandos default (pegar, examinar e largar)
 -largar ??
 -Makefile
--Arrumar testes.c (usar o initSalas.c [ou nao])
+-Arrumar testes.c (usar o initSalas.c [ou nao] e sala0)
 
 Doing:
 -Criar estória
