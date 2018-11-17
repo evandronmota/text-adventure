@@ -52,26 +52,18 @@ int colocarSobre(Elemento *e1, Elemento *e2) {
 
 /*
     Recebe dois ponteiros para elementos.
-    Imprime uma mensagem avisando que o primeiro
-    elemento foi retirado de cima do segundo.
+    Imprime uma mensagem avisando que pegou o primeiro elemento.
     Retorna um inteiro indicando se a ação foi
     bem-sucedida.
 */
-int tirarDeCima(Elemento *e1, Elemento *e2) {
+int pegar(Elemento *e1, Elemento *e2) {
     if (e1 == NULL)
-        printf("Colocar o quê?\n");
-    else if (e2 == NULL)
-        printf("Colocar onde?\n");
-    else {
-        printf("Você tirou %s %s d%s %s.", e1->artigo, e1->n, e2->artigo, e2->n);
-    }
+        printf("Pegar o quê?\n");
+    else 
+        printf("Você pegou %s %s.", e1->artigo, e1->n);
 
-    return (e1 == NULL || e2 == NULL ? 0 : 1);
+    return (e1 == NULL ? 0 : 1);
 }
-
-
-
-
 
 
 /*
@@ -220,15 +212,15 @@ Elemento criarSala1() {
 
 
     /* Chave */
-    Elemento chave =
-    criarElemento("Uma","Chave",
-        "Uma chave velha.",
-        "Uma chave velha e enferrujada.",
+    Elemento letra =
+    criarElemento("Uma","Letra",
+        "Uma letra A.",
+        "Uma letra A de madeira.",
         False, False, NULL, 0, 0,
         NULL, unionVazia);
 
     Elemento *conteudoConcha = malloc(sizeof(Elemento));
-    conteudoConcha[0] = chave1;
+    conteudoConcha[0] = letra;
 
 
     /* Concha */
@@ -299,7 +291,7 @@ Elemento criarSala1() {
     conteudoS1[1] = ponteiro;
     conteudoS1[2] = porta;
     conteudoS1[3] = concha;
-    conteudoS1[4] = chave;
+    conteudoS1[4] = letra;
     conteudoS1[5] = mensagem;
 
     Elemento sala1 =
@@ -387,9 +379,9 @@ Elemento criarSala2() {
 
     /* Letra */
     Elemento letra =
-    criarElemento("Um","Papel",
-        "Há uma letra \"E\".",
-        "Há uma letra \"E\".",
+    criarElemento("Uma","Letra",
+        "Uma letra \"B\".",
+        "Uma letra \"B\" de madeira.",
         False, False, NULL, 0, 0,
         NULL, unionVazia);
 
@@ -410,7 +402,7 @@ Elemento criarSala2() {
     criarElemento("Uma","Binaria",
         "Uma sala.",
         "Uma sala com um cofre, livro, mensagem, pagina, morsa e porta aberta",
-        False, False, conteudoS2, 6, 0,
+        False, False, conteudoS2, 7, 0,
         NULL, unionS2);
 
     return sala2;
@@ -443,17 +435,28 @@ Elemento criarSala3(){
         False, False, NULL, 0, 0,
         NULL, unionVazia);
 
+    /* Letra */
+    Elemento letra = 
+    criarElemento("Uma", "Letra",
+        "Uma letra \"R\".",
+        "Uma letra \"R\".",
+        False, False, NULL, 0, 0,
+        NULL, unionVazia);
+
+    Elemento *conteudoOvo = malloc(1*sizeof(Elemento));
+    conteudoOvo[0] = letra;
+
     /* Ovo */
     Elemento ovo = 
     criarElemento("Um", "Ovo",
         "Um ovo brilhante.",
         "Um ovo feito de aço.",
-        False, False, NULL, 0, 0,
+        False, False, conteudoOvo, 0, 0,
         NULL, unionVazia);
 
     /* Galinha */
     Elemento *conteudoGalinha = malloc(1*sizeof(Elemento));
-    conteudoGalinha[0] = ovo3;
+    conteudoGalinha[0] = ovo;
 
     Elemento galinha =
     criarElemento("Uma", "Galinha",
@@ -464,7 +467,7 @@ Elemento criarSala3(){
 
     /* Gaiola */
     Elemento *conteudoGaiola = malloc(1*sizeof(Elemento));
-    conteudoGaiola[0] = galinha3;
+    conteudoGaiola[0] = galinha;
 
     Elemento gaiola =
     criarElemento("Uma", "Gaiola",
@@ -516,7 +519,7 @@ Elemento criarSala3(){
     /* Sala 3 */
     Info unionS3;
 
-    Elemento *conteudoS3 = malloc(9*sizeof(Elemento));
+    Elemento *conteudoS3 = malloc(10*sizeof(Elemento));
     conteudoS3[0] = porta;
     conteudoS3[1] = gaiola;
     conteudoS3[2] = galinha;
@@ -526,12 +529,13 @@ Elemento criarSala3(){
     conteudoS3[6] = metal;
     conteudoS3[7] = saco;
     conteudoS3[8] = chave;
+    conteudoS3[9] = letra;
     
     Elemento sala3 =
     criarElemento("Uma","Galinhada",
         "Uma sala.",
         "Uma sala longa.",
-        False, False, conteudoS3, 6, 0,
+        False, False, conteudoS3, 10, 0,
         NULL, unionS3);
 
     return sala3;
@@ -584,7 +588,7 @@ Elemento criarSala4() {
     estaNaBalanca.valor.valor_estado = False;
 
     func colocarBlocoSobre = colocarSobre;
-    func tirarBlocoDeCima = tirarDeCima;
+    func tirarBlocoDeCima = pegar;
 
 
 
