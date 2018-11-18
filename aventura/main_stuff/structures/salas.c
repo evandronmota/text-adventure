@@ -97,6 +97,7 @@ Elemento criarElemento(int isObjeto, char *artigo, char *nome, char *curta,
     novo.conteudo = conteudo;
     novo.nEle = nEle;
     novo.nAcoes = 3;
+    novo.nAtr = 3;
     novo.transitividade = malloc(3*sizeof(int));
     novo.transitividade[0] = 1;
     novo.transitividade[1] = 1;
@@ -104,7 +105,7 @@ Elemento criarElemento(int isObjeto, char *artigo, char *nome, char *curta,
 
     novo.acoes = malloc(3*sizeof(func));
     novo.acoes[0] = examinar;
-    novo.acoes[1] = pegar;
+    //novo.acoes[1] = pegar;
     novo.acoes[2] = largar;
 
     novo.animacao = animacao;
@@ -136,10 +137,13 @@ Elemento criarElemento(int isObjeto, char *artigo, char *nome, char *curta,
     Recebe um ponteiro para um elemento e uma função de
     ação. Adiciona essa ação à lista de ações do elemento.
 */
-void adicionarAcao(Elemento *e, func acao) {
+void adicionarAcao(Elemento *e, func acao, int transitividade) {
     e->nAcoes++;
     e->acoes = realloc(e->acoes, e->nAcoes*sizeof(func));
     e->acoes[e->nAcoes-1] = acao;
+
+    e->transitividade = realloc(e->transitividade, e->nAcoes*sizeof(int));
+    e->transitividade[e->nAcoes-1] = transitividade;
 }
 
 /*
@@ -201,7 +205,7 @@ Elemento criarSala0() {
         False, False, NULL, 0,
         NULL);
 
-    Info unionS1;
+    
 
     Elemento *conteudoS0 = malloc(6*sizeof(Elemento));
     conteudoS0[0] = porta1;
@@ -282,8 +286,6 @@ Elemento criarSala1() {
 
 
     /* Ponteiro do relógio */
-    Info unionPonteiro;
-    unionPonteiro.atributos = malloc(sizeof(obj_atr));
 
     /*
         no chao = 0
@@ -295,14 +297,14 @@ Elemento criarSala1() {
     comQuem.nome = "comQuem";
     comQuem.valor.valor_num = 0;
 
-    unionPonteiro.atributos[0] = comQuem;
-
     Elemento ponteiro = 
     criarElemento(1, "Um", "Ponteiro",
         "Um ponteiro de relógio.",
         "Um ponteiro de minutos do relógio quebrado.",
         False, False, NULL, 0,
         NULL);
+
+    adicionarAtributo(&ponteiro, comQuem);
 
 
     /* Relógio */
@@ -315,7 +317,7 @@ Elemento criarSala1() {
 
 
     /* Sala 1 */
-    Info unionS1;
+    
 
     Elemento *conteudoS1 = malloc(6*sizeof(Elemento));
     conteudoS1[0] = relogio;
@@ -416,7 +418,7 @@ Elemento criarSala2() {
 
 
     /* Sala 2 */
-    Info unionS2;
+    
 
     Elemento *conteudoS2 = malloc(7*sizeof(Elemento));
     conteudoS2[0] = letra;
@@ -542,7 +544,7 @@ Elemento criarSala3(){
         NULL);
 
     /* Sala 3 */
-    Info unionS3;
+    
 
     Elemento *conteudoS3 = malloc(10*sizeof(Elemento));
     conteudoS3[0] = porta;
@@ -615,11 +617,10 @@ Elemento criarSala4() {
     func tirarBlocoDeCima = pegar;
 
 
-
     /* Bloco 0 */
-    Info unionBloco0;
-    unionBloco0.atributos = malloc(sizeof(obj_atr));
-    unionBloco0.atributos[0] = estaNaBalanca;
+    
+    
+    
 
     Elemento bloco0 =
     criarElemento(1, "O", "Bloco 0",
@@ -629,20 +630,16 @@ Elemento criarSala4() {
         NULL);
 
 
-    adicionarAcao(&bloco0 ,colocarBlocoSobre);
-    
-
-
-    bloco0.transitividade[3] = 2;
-    bloco0.transitividade[4] = 2;
+    adicionarAcao(&bloco0 ,colocarBlocoSobre, 2);
+    adicionarAtributo(&bloco0, estaNaBalanca);
 
 
 
     /* Bloco 1 */
-    Info unionBloco1;
-    unionBloco1.atributos = malloc(sizeof(obj_atr));
+    
+    
     // return mensagem;
-    unionBloco1.atributos[0] = estaNaBalanca;
+    
 
     Elemento bloco1 =
     criarElemento(1, "O", "Bloco 1",
@@ -652,19 +649,20 @@ Elemento criarSala4() {
         NULL);
     
 
-    adicionarAcao(&bloco1 ,colocarBlocoSobre);
+    adicionarAcao(&bloco1 ,colocarBlocoSobre, 2);
+    adicionarAtributo(&bloco1, estaNaBalanca);
     
 
 
-    bloco1.transitividade[3] = 2;
-    bloco1.transitividade[4] = 2;
+    
+    
     
 
 
     /* Bloco 2 */
-    Info unionBloco2;
-    unionBloco2.atributos = malloc(sizeof(obj_atr));
-    unionBloco2.atributos[0] = estaNaBalanca;
+    
+
+
 
     Elemento bloco2 =
     criarElemento(1, "O", "Bloco 2",
@@ -674,19 +672,20 @@ Elemento criarSala4() {
         NULL);
 
 
-    adicionarAcao(&bloco2 ,colocarBlocoSobre);
+    adicionarAcao(&bloco2 ,colocarBlocoSobre, 2);
+    adicionarAtributo(&bloco2, estaNaBalanca);
     
 
 
-    bloco2.transitividade[3] = 2;
-    bloco2.transitividade[4] = 2;
+    
+    
 
 
 
     /* Bloco 3 */
-    Info unionBloco3;
-    unionBloco3.atributos = malloc(sizeof(obj_atr));
-    unionBloco3.atributos[0] = estaNaBalanca;
+    
+    
+    
 
     Elemento bloco3 =
     criarElemento(1, "O", "Bloco 3",
@@ -696,19 +695,20 @@ Elemento criarSala4() {
         NULL);
 
 
-    adicionarAcao(&bloco3 ,colocarBlocoSobre);
+    adicionarAcao(&bloco3 ,colocarBlocoSobre, 2);
+    adicionarAtributo(&bloco3, estaNaBalanca);
     
 
 
-    bloco3.transitividade[3] = 2;
-    bloco3.transitividade[4] = 2;
+    
+    
 
 
 
     /* Bloco 4 */
-    Info unionBloco4;
-    unionBloco4.atributos = malloc(sizeof(obj_atr));
-    unionBloco4.atributos[0] = estaNaBalanca;
+    
+    
+    
 
     Elemento bloco4 =
     criarElemento(1, "O", "Bloco 4",
@@ -718,19 +718,20 @@ Elemento criarSala4() {
         NULL);
 
 
-    adicionarAcao(&bloco4 ,colocarBlocoSobre);
+    adicionarAcao(&bloco4 ,colocarBlocoSobre, 2);
+    adicionarAtributo(&bloco4, estaNaBalanca);
     
 
 
-    bloco4.transitividade[3] = 2;
-    bloco4.transitividade[4] = 2;
+    
+    
 
 
 
     /* Bloco 5 */
-    Info unionBloco5;
-    unionBloco5.atributos = malloc(sizeof(obj_atr));
-    unionBloco5.atributos[0] = estaNaBalanca;
+    
+    
+    
 
     Elemento bloco5 =
     criarElemento(1, "O", "Bloco 5",
@@ -740,19 +741,20 @@ Elemento criarSala4() {
         NULL);
 
 
-    adicionarAcao(&bloco5 ,colocarBlocoSobre);
+    adicionarAcao(&bloco5 ,colocarBlocoSobre, 2);
+    adicionarAtributo(&bloco5, estaNaBalanca);
     
 
 
-    bloco5.transitividade[3] = 2;
-    bloco5.transitividade[4] = 2;
+    
+    
 
 
 
     /* Bloco 6 */
-    Info unionBloco6;
-    unionBloco6.atributos = malloc(sizeof(obj_atr));
-    unionBloco6.atributos[0] = estaNaBalanca;
+    
+    
+    
 
     Elemento bloco6 =
     criarElemento(1, "O", "Bloco 6",
@@ -762,19 +764,20 @@ Elemento criarSala4() {
         NULL);
 
 
-    adicionarAcao(&bloco6 ,colocarBlocoSobre);
+    adicionarAcao(&bloco6 ,colocarBlocoSobre, 2);
+    adicionarAtributo(&bloco6, estaNaBalanca);
     
 
 
-    bloco6.transitividade[3] = 2;
-    bloco6.transitividade[4] = 2;
+    
+    
 
 
 
     /* Bloco 7 */
-    Info unionBloco7;
-    unionBloco7.atributos = malloc(sizeof(obj_atr));
-    unionBloco7.atributos[0] = estaNaBalanca;
+    
+    
+    
 
     Elemento bloco7 =
     criarElemento(1, "O", "Bloco 7",
@@ -784,19 +787,20 @@ Elemento criarSala4() {
         NULL);
 
 
-    adicionarAcao(&bloco7 ,colocarBlocoSobre);
+    adicionarAcao(&bloco7 ,colocarBlocoSobre, 2);
+    adicionarAtributo(&bloco7, estaNaBalanca);
     
 
 
-    bloco7.transitividade[3] = 2;
-    bloco7.transitividade[4] = 2;
+    
+    
 
 
 
     /* Bloco 8 */
-    Info unionBloco8;
-    unionBloco8.atributos = malloc(sizeof(obj_atr));
-    unionBloco8.atributos[0] = estaNaBalanca;
+    
+    
+    
 
     Elemento bloco8 =
     criarElemento(1, "O", "Bloco 8",
@@ -806,19 +810,20 @@ Elemento criarSala4() {
         NULL);
 
 
-    adicionarAcao(&bloco8 ,colocarBlocoSobre);
+    adicionarAcao(&bloco8 ,colocarBlocoSobre, 2);
+    adicionarAtributo(&bloco8, estaNaBalanca);
     
 
 
-    bloco8.transitividade[3] = 2;
-    bloco8.transitividade[4] = 2;
+    
+    
 
 
 
     /* Bloco 9 */
-    Info unionBloco9;
-    unionBloco9.atributos = malloc(sizeof(obj_atr));
-    unionBloco9.atributos[0] = estaNaBalanca;
+    
+    
+    
 
     Elemento bloco9 =
     criarElemento(1, "O", "Bloco 9",
@@ -828,12 +833,13 @@ Elemento criarSala4() {
         NULL);
 
 
-    adicionarAcao(&bloco9 ,colocarBlocoSobre);
+    adicionarAcao(&bloco9 ,colocarBlocoSobre, 2);
+    adicionarAtributo(&bloco9, estaNaBalanca);
     
 
 
-    bloco9.transitividade[3] = 2;
-    bloco9.transitividade[4] = 2;
+    
+    
 
     /* Porta */
     Elemento porta =
@@ -872,7 +878,7 @@ Elemento criarSala4() {
     conteudoS4[12] = balanca;
     conteudoS4[13] = porta;
 
-    Info unionS4;
+    
 
     Elemento sala4 =
     criarElemento(0, "A", "Pascal",
