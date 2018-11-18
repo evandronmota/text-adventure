@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "../libraries/elemento.h"
-#include "../libraries/salas.h"
-#include "../libraries/initSalas.h"
+#include "../headers/elemento.h"
+#include "../headers/salas.h"
+#include "../headers/initSalas.h"
 
 Elemento *inicializarSalas() {
     Elemento lobby = criarSala0();

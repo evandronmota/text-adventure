@@ -1,6 +1,6 @@
 #include <stdlib.h>
-#include "../libraries/elemento.h"
-#include "../libraries/lista_ligada.h"
+#include "../headers/elemento.h"
+#include "../headers/lista_ligada.h"
 
 Lista criaL() {
     Lista l = malloc(sizeof(struct elo));

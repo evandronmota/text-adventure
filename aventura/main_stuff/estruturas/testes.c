@@ -12,13 +12,13 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "../libraries/introducao.h"
-#include "../libraries/elemento.h"
-#include "../libraries/aventureiro.h"
-#include "../libraries/lista_ligada.h"
-#include "../libraries/salas.h"
-#include "../libraries/tabela_de_sim.h"
-#include "../libraries/initSalas.h"
+#include "../headers/introducao.h"
+#include "../headers/elemento.h"
+#include "../headers/aventureiro.h"
+#include "../headers/lista_ligada.h"
+#include "../headers/salas.h"
+#include "../headers/tabela_de_sim.h"
+#include "../headers/initSalas.h"
 
 /* Cores */
 #define RESET   "\033[0m"

@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "../libraries/elemento.h"
+#include "../headers/elemento.h"
 
 void nome(Elemento e) {   
     printf("%c%c%c %s.\n", e.artigo[0]-32, e.artigo[1], e.artigo[2], e.n);
