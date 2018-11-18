@@ -24,14 +24,14 @@ void adicionarAcao(Elemento *e, func acao, int transitividade) {
 */
 void adicionarAtributo(Elemento *e, obj_atr atributo) {
     e->nAtr++;
-    e->detalhe.atributos = realloc(e->detalhe.atributos, e->nAtr*sizeof(obj_atr));
+    e->detalhe.atributos = realloc(e->detalhe.atributos, e->nAtr * sizeof(obj_atr));
     e->detalhe.atributos[e->nAtr-1] = atributo;
 }
 
 /* Adiciona o elemento e1 no elemento e2 */
 void adicionarElemento(Elemento *e1, Elemento *e2) {
     e2->nEle++;
-    e2->conteudo = realloc(e2->conteudo, e2->nEle);
+    e2->conteudo = realloc(e2->conteudo, e2->nEle * sizeof(Elemento));
     e2->conteudo[e2->nEle-1] = *e1;
 }
 
@@ -954,7 +954,7 @@ Elemento criarSala5() {
     /* Enigma */
     Elemento enigma =
     criarElemento(1, "uma", "mensagem",
-        "O que o cientista disse quando encontrou 2 atomos de hélio? HeHe.",
+        "O que o cientista disse quando encontrou 2 átomos de hélio? HeHe.",
         "Um enigma.",
         False, False, NULL, 0,
         NULL);
