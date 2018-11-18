@@ -91,3 +91,17 @@ int colocarSobre(Elemento *e1, Elemento *e2) {
 
     return (e1 == NULL || e2 == NULL ? 0 : 1);
 }
+
+// int ligar(Elemento *e1, Elemento *e2) {
+//     if (e1 == NULL)
+//         printf("Ligar o quê?\n");
+//     else {
+//         if (e2 != NULL)
+            
+//         else {
+//             printf("Não é possível fazer isso.\n")
+//         }
+//     }
+
+//     return (e1 == NULL || e2 == NULL ? 0 : 1);
+// }

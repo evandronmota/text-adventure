@@ -431,13 +431,11 @@ Elemento criarSala2() {
 Elemento criarSala3(){
     /* --------------------------------------- SALA 3 --------------------------------------------- */
 
-
-
     /* Porta */
     Elemento porta =
     criarElemento(1, "uma", "Porta",
-        "Uma porta.",
         "Uma porta de madeira.",
+        "Uma porta de madeira de ébano.",
         False, False, NULL, 0,
         NULL);
 
@@ -455,6 +453,10 @@ Elemento criarSala3(){
     Elemento *conteudoOvo = malloc(1*sizeof(Elemento));
     conteudoOvo[0] = letra;
 
+    obj_atr estaQuebrado;
+    estaQuebrado.nome = "estaQuebrada";
+    estaQuebrado.valor.valor_estado = False;
+
     /* Ovo */
     Elemento ovo = 
     criarElemento(1, "um", "Ovo",
@@ -462,6 +464,11 @@ Elemento criarSala3(){
         "Um ovo feito de aço.",
         False, False, conteudoOvo, 1,
         NULL);
+
+    func quebrarOvo = quebrar;
+
+    adicionarAtributo(&ovo, estaQuebrado);
+    adicionarAcao(&ovo, quebrarOvo, 1);
 
     /* Galinha */
     Elemento *conteudoGalinha = malloc(1*sizeof(Elemento));
