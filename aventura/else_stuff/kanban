@@ -8,18 +8,17 @@ To Do:
 -Definir sala e senha do puzzle final
 -artigos pg 3
 -pg 4
--criar objeto aventureiro
 -inicialização (4.4)
--relatório
 -deletar trans.py
--comandos default (pegar, examinar e largar)
--largar ??
--Makefile
--Arrumar testes.c (usar o initSalas.c [ou nao] e sala0)
 -função adicionar ação com realloc
 
 Doing:
+-Arrumar testes.c (usar o initSalas.c [ou nao] e sala0)
+-largar ??
+-comandos default (pegar, examinar e largar)
+-relatório
 -Criar estória
+-criar objeto aventureiro
 -Documentação
 -Sala 2
 -Sala 3
@@ -30,6 +29,7 @@ Doing:
 -Unions com as saidas de cada sala
 
 Done:
+-Makefile
 -Sala 1
 -Aplicar a tabela de simbolos
 -Arrumar a main
