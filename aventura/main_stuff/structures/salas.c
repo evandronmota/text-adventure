@@ -61,20 +61,20 @@ int colocarSobre(Elemento *e1, Elemento *e2) {
     Retorna um inteiro indicando se a ação foi
     bem-sucedida.
 */
-int pegar(Elemento *e1, Elemento *e2) {
-    if (e1 == NULL)
-        printf("Pegar o quê?\n");
-    // else {
-    //     if (!buscarnaMochila(e1)) {
-    //         printf("Você pegou %s %s.", e1->artigo, e1->n);
-    //         adicionarnaMochila(e1);
-    //     }
-    //     else printf("Você já pegou %s %s.", e1->artigo, e1->n);
+// int pegar(Elemento *e1, Elemento *e2) {
+//     if (e1 == NULL)
+//         printf("Pegar o quê?\n");
+//     // else {
+//     //     if (!buscarnaMochila(e1)) {
+//     //         printf("Você pegou %s %s.", e1->artigo, e1->n);
+//     //         adicionarnaMochila(e1);
+//     //     }
+//     //     else printf("Você já pegou %s %s.", e1->artigo, e1->n);
 
-    // }
+//     // }
 
-    return (e1 == NULL ? 0 : 1);
-}
+//     return (e1 == NULL ? 0 : 1);
+// }
 
 /*
     Recebe os parâmetros necessários ao elemento.
@@ -641,6 +641,7 @@ Elemento criarSala4() {
     /* Bloco 1 */
     Info unionBloco1;
     unionBloco1.atributos = malloc(sizeof(obj_atr));
+    // return mensagem;
     unionBloco1.atributos[0] = estaNaBalanca;
 
     Elemento bloco1 =
