@@ -3,22 +3,19 @@ make && ./testes
 
 To Do:
 -Animação (mesmo se nenhum elemento utiliza)
--Apresentação do jogo (pg 13, 4.5)
 -artigos pg 3
 -pg 4
--inicialização (4.4)
 -Letras podem ser apenas prints em vez de objetos?
--Arrumar: Tudo é pegavel e largavel
--Descr longa: sala 4 : uma sala triangular? sério?
 -arrumar descrições/ artigos
 -testes para cada ação
 -testar objetos?
--adicionar ação especifica de cada objeto de suas salas
 -função sair da sala?
--saida 2.2 - fechada
 -o que entregar 6 - verbo de salas?
 
 Doing:
+-saida 2.2 - fechada
+-adicionar ação especifica de cada objeto de suas salas
+-Apresentação do jogo (pg 13, 4.5)
 -relatório
 -Criar estória
 -criar objeto aventureiro
@@ -26,8 +23,11 @@ Doing:
 -Entregar (4.6 - parte 4)
 -Mudar descricao de portas e chaves (para letras)
 -divirta-se
+-inicialização (4.4)
 
 Done:
+-Descr longa: sala 4 : uma sala triangular? sério?
+-Arrumar: Tudo é pegavel e largavel
 -Descr longa: sala 3
 -Ep1
 -Makefile

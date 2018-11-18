@@ -16,13 +16,19 @@ typedef struct {
     atr_val valor;
 } obj_atr;
 
+/* Saídas */
+typedef struct {
+    struct ele *saida;
+    boolean esta_fechada;
+} saidas;
+
 /*
     Union para atributos específicos de sala
     e objeto.
 */
 typedef union {
     obj_atr *atributos;
-    struct ele **saidas;
+    saidas **saidas;
 } Info;
 
 /* Elemento */
