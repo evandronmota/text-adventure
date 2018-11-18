@@ -606,13 +606,6 @@ Elemento criarSala3(){
         False, False, NULL, 0,
         NULL);
 
-    /* Chave */
-    Elemento chave = 
-    criarElemento(1, "uma", "Chave",
-        "Uma chave dourada.",
-        "Uma chave pequena e dourada.",
-        False, False, NULL, 0,
-        NULL);
 
     /* Sala 3 */
     
@@ -631,8 +624,8 @@ Elemento criarSala3(){
     
     Elemento sala3 =
     criarElemento(0, "uma","Galinhada",
-        "Uma sala.",
-        "Uma sala longa.",
+        "Uma sala circular. No centro há uma gaiola pendurada no teto e uma bobina muito grande no chão.",
+        "Uma sala circular. No centro há uma gaiola pendurada no teto e uma bobina muito grande no chão. No fundo há um saco de de linho e ao lado uma barra de metal.",
         False, False, conteudoS3, 10,
         NULL);
 
