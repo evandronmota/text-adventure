@@ -16,6 +16,7 @@ To Do:
 -largar ??
 -Makefile
 -Arrumar testes.c (usar o initSalas.c [ou nao] e sala0)
+-função adicionar ação com realloc
 
 Doing:
 -Criar estória

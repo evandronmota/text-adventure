@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "../libraries/elemento.h"
+#include "../libraries/aventureiro.h"
 #include "../libraries/salas.h"
 
 void nome(Elemento e) {   
@@ -52,6 +53,27 @@ int colocarSobre(Elemento *e1, Elemento *e2) {
     }
 
     return (e1 == NULL || e2 == NULL ? 0 : 1);
+}
+
+/*
+    Recebe dois ponteiros para elementos.
+    Imprime uma mensagem avisando que pegou o primeiro elemento.
+    Retorna um inteiro indicando se a ação foi
+    bem-sucedida.
+*/
+int pegar(Elemento *e1, Elemento *e2) {
+    if (e1 == NULL)
+        printf("Pegar o quê?\n");
+    // else {
+    //     if (!buscarnaMochila(e1)) {
+    //         printf("Você pegou %s %s.", e1->artigo, e1->n);
+    //         adicionarnaMochila(e1);
+    //     }
+    //     else printf("Você já pegou %s %s.", e1->artigo, e1->n);
+
+    // }
+
+    return (e1 == NULL ? 0 : 1);
 }
 
 /*

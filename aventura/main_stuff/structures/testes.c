@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "../libraries/elemento.h"
+#include "../libraries/aventureiro.h"
 #include "../libraries/lista_ligada.h"
 #include "../libraries/salas.h"
 #include "../libraries/tabela_de_sim.h"
@@ -105,6 +106,7 @@ void testarSala(Elemento *sala, int num, boolean flag, TabSim tabela, char *name
     printf("\n\n");
 }
 
+// Aventureiro *heroi = criaAventureiro();
 int main() {
 
     /* FASE: 1 */
