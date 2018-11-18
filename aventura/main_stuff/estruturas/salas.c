@@ -58,17 +58,29 @@ Elemento criarElemento(int isObjeto, char *artigo, char *nome, char *curta,
     novo.conhecido = conhecido;
     novo.conteudo = conteudo;
     novo.nEle = nEle;
-    novo.nAcoes = 3;
-    novo.nAtr = 2;
-    novo.transitividade = malloc(3*sizeof(int));
-    novo.transitividade[0] = 1;
-    novo.transitividade[1] = 1;
-    novo.transitividade[2] = 1;
 
-    novo.acoes = malloc(3*sizeof(func));
-    novo.acoes[0] = examinar;
-    novo.acoes[1] = pegar;
-    novo.acoes[2] = largar;
+    if (isObjeto) {
+        novo.nAcoes = 3;
+        novo.nAtr = 2;
+        novo.transitividade = malloc(3*sizeof(int));
+        novo.transitividade[0] = 1;
+        novo.transitividade[1] = 1;
+        novo.transitividade[2] = 1;
+
+        novo.acoes = malloc(3*sizeof(func));
+        novo.acoes[0] = examinar;
+        novo.acoes[1] = pegar;
+        novo.acoes[2] = largar;
+    }
+    else {
+        novo.nAcoes = 1;
+        novo.nAtr = 0;
+        novo.transitividade = malloc(sizeof(int));
+        novo.transitividade[0] = 1;
+
+        novo.acoes = malloc(sizeof(func));
+        novo.acoes[0] = examinar;
+    }
 
     novo.animacao = animacao;
 
@@ -431,13 +443,11 @@ Elemento criarSala2() {
 Elemento criarSala3(){
     /* --------------------------------------- SALA 3 --------------------------------------------- */
 
-
-
     /* Porta */
     Elemento porta =
     criarElemento(1, "uma", "Porta",
-        "Uma porta.",
         "Uma porta de madeira.",
+        "Uma porta de madeira de ébano.",
         False, False, NULL, 0,
         NULL);
 
@@ -455,6 +465,10 @@ Elemento criarSala3(){
     Elemento *conteudoOvo = malloc(1*sizeof(Elemento));
     conteudoOvo[0] = letra;
 
+    obj_atr estaQuebrado;
+    estaQuebrado.nome = "estaQuebrada";
+    estaQuebrado.valor.valor_estado = False;
+
     /* Ovo */
     Elemento ovo = 
     criarElemento(1, "um", "Ovo",
@@ -463,9 +477,20 @@ Elemento criarSala3(){
         False, False, conteudoOvo, 1,
         NULL);
 
+    func quebrarOvo = quebrar;
+
+    adicionarAtributo(&ovo, estaQuebrado);
+    adicionarAcao(&ovo, quebrarOvo, 1);
+
     /* Galinha */
     Elemento *conteudoGalinha = malloc(1*sizeof(Elemento));
     conteudoGalinha[0] = ovo;
+
+    obj_atr estaFaminta;
+    estaFaminta.nome = "estaFaminta";
+    estaFaminta.valor.valor_estado = True;
+
+    func alimentarGalinha = alimentar;
 
     Elemento galinha =
     criarElemento(1, "uma", "Galinha",
@@ -473,6 +498,9 @@ Elemento criarSala3(){
         "Uma galinha grande com penas brancas.",
         False, False, conteudoGalinha, 1,
         NULL);
+
+    adicionarAtributo(&galinha, estaFaminta);
+    adicionarAcao(&galinha, alimentarGalinha, 2);
 
     /* Gaiola */
     Elemento *conteudoGaiola = malloc(1*sizeof(Elemento));
@@ -485,6 +513,10 @@ Elemento criarSala3(){
         False, False, conteudoGaiola, 1,
         NULL);
 
+    obj_atr estaMagnetizado;
+    estaMagnetizado.nome = "estaMagnetizado";
+    estaMagnetizado.valor.valor_estado = False;
+
     /* Metal */
     Elemento metal =
     criarElemento(1, "um", "Metal",
@@ -493,13 +525,18 @@ Elemento criarSala3(){
         False, False, NULL, 0,
         NULL);
 
+    adicionarAtributo(&metal, estaMagnetizado);
+
+    func ligarBobina = ligar;
     /* Bobina */
     Elemento bobina =
     criarElemento(1, "uma", "Bobina",
         "Uma grande bobina elétrica.",
-        "Uma grande bobina elétrica. No centro há um buraco pequeno e na lateral um botão vermelho.",
+        "Uma grande bobina elétrica. No um fio rompido e na lateral um botão vermelho.",
         False, False, NULL, 0,
         NULL);
+    
+    adicionarAcao(&bobina, ligarBobina, 2);
 
     /* Botão */
     Elemento botao = 

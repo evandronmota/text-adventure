@@ -102,3 +102,21 @@ int quebrar(Elemento *e1, Elemento *e2);
     bem-sucedida.
 */
 int colocarSobre(Elemento *e1, Elemento *e2);
+
+/*
+    Recebe dois ponteiros para elementos.
+    Imprime uma mensagem avisando que o primeiro
+    elemento foi alimentado usando o segundo.
+    Retorna um inteiro indicando se a ação foi
+    bem-sucedida.
+*/
+int alimentar(Elemento *e1, Elemento *e2);
+
+/*
+    Recebe dois ponteiros para elementos.
+    Imprime uma mensagem avisando que o primeiro
+    elemento foi ligado usando o segundo.
+    Retorna um inteiro indicando se a ação foi
+    bem-sucedida.
+*/
+int ligar(Elemento *e1, Elemento *e2);
