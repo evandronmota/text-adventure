@@ -486,12 +486,21 @@ Elemento criarSala3(){
     Elemento *conteudoGalinha = malloc(1*sizeof(Elemento));
     conteudoGalinha[0] = ovo;
 
+    obj_atr estaFaminta;
+    estaFaminta.nome = "estaFaminta";
+    estaFaminta.valor.valor_estado = True;
+
+    func alimentarGalinha = alimentar;
+
     Elemento galinha =
     criarElemento(1, "uma", "Galinha",
         "Uma galinha branca.",
         "Uma galinha grande com penas brancas.",
         False, False, conteudoGalinha, 1,
         NULL);
+
+    adicionarAtributo(&galinha, estaFaminta);
+    adicionarAcao(&galinha, alimentarGalinha, 2);
 
     /* Gaiola */
     Elemento *conteudoGaiola = malloc(1*sizeof(Elemento));

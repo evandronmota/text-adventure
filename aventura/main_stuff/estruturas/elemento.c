@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "../headers/elemento.h"
 
 void nome(Elemento e) {   
@@ -54,7 +55,7 @@ int quebrar(Elemento *e1, Elemento *e2) {
         /* Quebrar sem elemento e2 */
         if (e2 == NULL) {
             for (i=0; i<e1->nAtr; i++) { /* Procura atributo */
-                if (e1->detalhe.atributos[i].nome == "estaQuebrada") { /* Acha estaQuebrada */
+                if (strcmp(e1->detalhe.atributos[i].nome, "estaQuebrada")==0) { /* Acha estaQuebrada */
                     if (e1->detalhe.atributos[i].valor.valor_estado == False) { /* Se não está quebrada */
                         e1->detalhe.atributos[i].valor.valor_estado = True;
                         printf("Você quebrou %s %s!\n", e1->artigo, e1->n);
@@ -87,6 +88,34 @@ int colocarSobre(Elemento *e1, Elemento *e2) {
     else {
         printf("Você colocou %s %s n%s %s.\n", e1->artigo, e1->n, e2->artigo, e2->n);
         adicionarElemento(e1, e2);
+    }
+
+    return (e1 == NULL || e2 == NULL ? 0 : 1);
+}
+
+int alimentar(Elemento *e1, Elemento *e2) {
+    if (e1 == NULL)
+        printf("Alimentar o quê?\n");
+    else if (e2 == NULL)
+        printf("Alimentar com o quê?\n");
+    else {
+        int i;
+        for (i=0; i<e1->nAtr; i++) { /* Procura atributo */
+                if (strcmp(e1->detalhe.atributos[i].nome, "estaFaminta")==0) { /* Acha estaFaminta */
+                    if (e1->detalhe.atributos[i].valor.valor_estado == True) { /* Se não está quebrada */
+                        e1->detalhe.atributos[i].valor.valor_estado = False;
+                        printf("A %s botou um ovo prateado!\n", e1->n);
+                        for (i=0; i<e1->nEle; i++)
+                            if (strcmp(e1->conteudo[i].n, "Ovo")){
+                                e1->conteudo[i].visivel = True;
+                                break;
+                            }
+                    }
+                    else /* Se está aliementada */
+                        printf("Você já alimentou a %s!\n", e1->n);
+                    break;
+                }
+            }
     }
 
     return (e1 == NULL || e2 == NULL ? 0 : 1);
