@@ -84,6 +84,10 @@ Elemento criarElemento(int isObjeto, char *artigo, char *nome, char *curta,
         obj_atr largavel;
         largavel.nome = "largavel";
         largavel.valor.valor_estado = True;
+
+        detalhe.atributos[0] = examinavel;
+        detalhe.atributos[1] = pegavel;
+        detalhe.atributos[2] = largavel;
     }
 
     novo.detalhe = detalhe;
@@ -112,24 +116,23 @@ int examinar(Elemento *e1, Elemento *e2) {
 int pegar(Elemento *e1, Elemento *e2) {
     if (e1 == NULL)
         printf("Pegar o quê?\n");
-    else 
-        printf("Você pegou %s %s.\n", e1->artigo, e1->n);
+    else  {
+        if (e1->detalhe.atributos[1].valor.valor_estado)
+            printf("Você pegou %s %s.\n", e1->artigo, e1->n);
+        else printf("Você não pode pegar %s %s.\n", e1->artigo, e1->n);
+    }
 
     return (e1 == NULL ? 0 : 1);
 }
 
 int largar(Elemento *e1, Elemento *e2) {
-    char *artigo2;
     if (e1 == NULL)
         printf("Largar o quê?\n");
     else {
         if (e2 == NULL)
             printf("Você largou %s %s.\n", e1->artigo, e1->n);
-        else {
-            artigo2 = e2->artigo;
-            artigo2[0] += 32;
-            printf("Você %s %s n%s %s.\n", e1->artigo, e1->n, artigo2, e2->n);
-        }
+        else
+            printf("Você %s %s n%s %s.\n", e1->artigo, e1->n, e2->artigo, e2->n);
     }
 
     return (e1 == NULL ? 0 : 1);
