@@ -517,18 +517,11 @@ Elemento criarSala3(){
         False, False, NULL, 0,
         NULL);
 
-    /* Chave */
-    Elemento chave = 
-    criarElemento(1, "uma", "Chave",
-        "Uma chave dourada.",
-        "Uma chave pequena e dourada.",
-        False, False, NULL, 0,
-        NULL);
 
     /* Sala 3 */
     
 
-    Elemento *conteudoS3 = malloc(10*sizeof(Elemento));
+    Elemento *conteudoS3 = malloc(9*sizeof(Elemento));
     conteudoS3[0] = porta;
     conteudoS3[1] = gaiola;
     conteudoS3[2] = galinha;
@@ -537,14 +530,13 @@ Elemento criarSala3(){
     conteudoS3[5] = botao;
     conteudoS3[6] = metal;
     conteudoS3[7] = saco;
-    conteudoS3[8] = chave;
-    conteudoS3[9] = letra;
+    conteudoS3[8] = letra;
     
     Elemento sala3 =
     criarElemento(0, "uma","Galinhada",
-        "Uma sala.",
-        "Uma sala longa.",
-        False, False, conteudoS3, 10,
+        "Uma sala circular. No centro há uma gaiola pendurada no teto e uma bobina muito grande no chão.",
+        "Uma sala circular. No centro há uma gaiola pendurada no teto e uma bobina muito grande no chão. No fundo há um saco de de linho e ao lado uma barra de metal.",
+        False, False, conteudoS3, 9,
         NULL);
 
     return sala3;
