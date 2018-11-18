@@ -5,13 +5,12 @@
 #include "../libraries/initSalas.h"
 
 Elemento *inicializarSalas() {
+    Elemento lobby = criarSala0();
     Elemento sala1 = criarSala1();
     Elemento sala2 = criarSala2();
     Elemento sala3 = criarSala3();
     Elemento sala4 = criarSala4();
-    // return NULL;
     Elemento sala5 = criarSala5();
-    Elemento lobby = criarSala0();
 
     sala1.detalhe.saidas = malloc(5*sizeof(Elemento*));
     sala2.detalhe.saidas = malloc(5*sizeof(Elemento*));

@@ -12,6 +12,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include "../libraries/introducao.h"
 #include "../libraries/elemento.h"
 #include "../libraries/aventureiro.h"
 #include "../libraries/lista_ligada.h"
@@ -84,7 +85,7 @@ void testarSala(Elemento *sala, int num, boolean flag, TabSim tabela, char *name
 
     if (flag)
         printf(BOLDBLUE"\nLista de OBJETOS da sala:\n"RESET);
-    else printf(BOLDBLUE"\nLista de AÇÕES de cada objeto:\n"RESET);
+    else printf(BOLDBLUE"\nLista de VERBOS de cada objeto:\n"RESET);
 
     /* Imprime todos os objetos da sala ou aplica todas as ações */
     for (i=0; i < sala->nEle; i++) {
@@ -93,13 +94,28 @@ void testarSala(Elemento *sala, int num, boolean flag, TabSim tabela, char *name
             nome(*obj);
         else {
             for (j=0; j < obj->nAcoes; j++) {
+                switch(j) {
+                    case 0 :
+                        printf(BOLDWHITE "EXAMINAR:\t" RESET);
+                        break;
+                    case 1 :
+                        printf(BOLDWHITE "PEGAR:\t\t" RESET);
+                        break;
+                    case 2 :
+                        printf(BOLDWHITE "LARGAR:\t\t" RESET);
+                        break;
+                    default :
+                        printf(BOLDWHITE "OUTROS:\t\t" RESET);
+                }
                 if (obj->transitividade[j] == 0)
                     ((func)obj->acoes[j])(NULL, NULL);
                 else if (obj->transitividade[j] == 1)
                     ((func)obj->acoes[j])(obj, NULL);
                 else 
-                    ((func)obj->acoes[j])(obj, obj);
+                    ((func)obj->acoes[j])(obj, obj); /* Só para testar */
+                /* Animação */
             }
+            printf("\n");
         }
     }
 
@@ -175,9 +191,11 @@ int main() {
 
 
 
-
     /* FASE: 2 */
     printf(BOLDMAGENTA "\n\n################################################################\tFASE 2\t\t################################################################\n\n\n\n" RESET);
+
+    /* Introdução */
+    introducao();
 
     /* Criar tabela e salas */
     TabSim tab = cria(97);
@@ -188,9 +206,9 @@ int main() {
 
     /* Testes */
     while (True) {
-        if (!flag)
-            printf("______________________________________________________________________________________________________________________________\n\n\n\n");
+        printf("______________________________________________________________________________________________________________________________\n\n\n\n");
         printf(BOLDWHITE "TESTE DE SALAS - COMANDO: %d\n\n\n" RESET, i++);
+        testarSala(&salas[0], 0, flag, tab, "Lobby");
         testarSala(&salas[1], 1, flag, tab, "Fibonacci");
         testarSala(&salas[2], 2, flag, tab, "Morse");
         testarSala(&salas[3], 3, flag, tab, "Papagaio?");
@@ -208,10 +226,9 @@ int main() {
 
 /*          |^^^^^|          */
 /*         d(- _ -)b         */
-/*   3======| _O_ |======K   */
-/*          |  |  |          */
-/*          |  /\ |          */
-/*          | `--´|          */
+/*   0======|     |======0   */
+/*          |     |          */
+/*          |     |          */
 /*          |_____|          */
 /*          | | | |          */
 /*          | | | |          */
