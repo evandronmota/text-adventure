@@ -19,7 +19,6 @@ To Do:
 -função sair da sala?
 -saida 2.2 - fechada
 -o que entregar 6 - verbo de salas?
--Makefile
 
 Doing:
 -relatório
@@ -31,6 +30,7 @@ Doing:
 -divirta-se
 
 Done:
+-Makefile
 -Ep1
 -Aplicar a tabela de simbolos
 -Imports corrigidos
