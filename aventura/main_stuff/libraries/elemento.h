@@ -35,9 +35,9 @@ typedef struct ele {
     boolean visivel;
     boolean conhecido;
     struct ele* conteudo;
-    int nEle; /* número de elementos na lista de conteudos */
-    int nAcoes; /* número de acoes do elemento */
-    int nAtr; /* número de atributos do elemento */
+    int nEle; /* Número de elementos na lista de conteúdos */
+    int nAcoes; /* Número de ações do elemento */
+    int nAtr; /* Número de atributos do elemento */
     void **acoes;
     int *transitividade;
     /*
