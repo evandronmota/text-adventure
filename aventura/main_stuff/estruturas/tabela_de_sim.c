@@ -1,7 +1,7 @@
 #include <stdlib.h>
-#include "../libraries/elemento.h"
-#include "../libraries/lista_ligada.h"
-#include "../libraries/tabela_de_sim.h"
+#include "../headers/elemento.h"
+#include "../headers/lista_ligada.h"
+#include "../headers/tabela_de_sim.h"
 
 /* 
     Recebe o tamanho da tabela de símbolos e uma

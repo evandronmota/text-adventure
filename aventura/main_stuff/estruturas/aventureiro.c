@@ -1,6 +1,6 @@
 // #include <stdlib.h>
-// #include "../libraries/elemento.h"
-// #include "../libraries/aventureiro.h"
+// #include "../headers/elemento.h"
+// #include "../headers/aventureiro.h"
 
 // Aventureiro *criaAventureiro() {
 //     Aventureiro *heroi = malloc(sizeof(Aventureiro));

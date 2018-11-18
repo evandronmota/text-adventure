@@ -1,9 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "../libraries/elemento.h"
-#include "../libraries/lista_ligada.h"
-#include "../libraries/tabela_de_sim.h"
-#include "../libraries/salas.h"
+#include "../headers/elemento.h"
+#include "../headers/lista_ligada.h"
+#include "../headers/tabela_de_sim.h"
+#include "../headers/salas.h"
 
 /* Insere objetos na tabela */
 void insereObjnaTabela(TabSim tabela, char *nome, Elemento *sala) {
