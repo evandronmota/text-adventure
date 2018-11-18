@@ -58,17 +58,29 @@ Elemento criarElemento(int isObjeto, char *artigo, char *nome, char *curta,
     novo.conhecido = conhecido;
     novo.conteudo = conteudo;
     novo.nEle = nEle;
-    novo.nAcoes = 3;
-    novo.nAtr = 2;
-    novo.transitividade = malloc(3*sizeof(int));
-    novo.transitividade[0] = 1;
-    novo.transitividade[1] = 1;
-    novo.transitividade[2] = 1;
 
-    novo.acoes = malloc(3*sizeof(func));
-    novo.acoes[0] = examinar;
-    novo.acoes[1] = pegar;
-    novo.acoes[2] = largar;
+    if (isObjeto) {
+        novo.nAcoes = 3;
+        novo.nAtr = 2;
+        novo.transitividade = malloc(3*sizeof(int));
+        novo.transitividade[0] = 1;
+        novo.transitividade[1] = 1;
+        novo.transitividade[2] = 1;
+
+        novo.acoes = malloc(3*sizeof(func));
+        novo.acoes[0] = examinar;
+        novo.acoes[1] = pegar;
+        novo.acoes[2] = largar;
+    }
+    else {
+        novo.nAcoes = 1;
+        novo.nAtr = 0;
+        novo.transitividade = malloc(sizeof(int));
+        novo.transitividade[0] = 1;
+
+        novo.acoes = malloc(sizeof(func));
+        novo.acoes[0] = examinar;
+    }
 
     novo.animacao = animacao;
 
