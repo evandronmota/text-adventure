@@ -4,12 +4,7 @@
 #include "../libraries/salas.h"
 #include "../libraries/initSalas.h"
 
-/*
-    Inicializa as salas.
-    Retorna todas as salas.
-*/
 Elemento *inicializarSalas() {
-
     Elemento sala1 = criarSala1();
     Elemento sala2 = criarSala2();
     Elemento sala3 = criarSala3();
@@ -46,10 +41,10 @@ Elemento *inicializarSalas() {
     lobby.detalhe.saidas[7] = &sala4;
     lobby.detalhe.saidas[8] = &sala5;
 
-    Elemento *salas = malloc(sizeof(Elemento));
+    Elemento *salas = malloc(6*sizeof(Elemento));
 
     salas[0] = lobby;
-    salas[0] = sala1;
+    salas[1] = sala1;
     salas[2] = sala2;
     salas[3] = sala3;
     salas[4] = sala4;

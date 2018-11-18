@@ -37,6 +37,7 @@ typedef struct ele {
     struct ele* conteudo;
     int nEle; /* número de elementos na lista de conteudos */
     int nAcoes; /* número de acoes do elemento */
+    int nAtr; /* número de atributos do elemento */
     void **acoes;
     int *transitividade;
     /*
