@@ -9,7 +9,6 @@ To Do:
 -inicialização (4.4)
 -Letras podem ser apenas prints em vez de objetos?
 -Arrumar: Tudo é pegavel e largavel
--Descr longa: sala 3
 -Descr longa: sala 4 : uma sala triangular? sério?
 -arrumar descrições/ artigos
 -testes para cada ação
@@ -29,6 +28,7 @@ Doing:
 -divirta-se
 
 Done:
+-Descr longa: sala 3
 -Ep1
 -Makefile
 -Aplicar a tabela de simbolos
