@@ -513,6 +513,10 @@ Elemento criarSala3(){
         False, False, conteudoGaiola, 1,
         NULL);
 
+    obj_atr estaMagnetizado;
+    estaMagnetizado.nome = "estaMagnetizado";
+    estaMagnetizado.valor.valor_estado = False;
+
     /* Metal */
     Elemento metal =
     criarElemento(1, "um", "Metal",
@@ -521,13 +525,18 @@ Elemento criarSala3(){
         False, False, NULL, 0,
         NULL);
 
+    adicionarAtributo(&metal, estaMagnetizado);
+
+    func ligarBobina = ligar;
     /* Bobina */
     Elemento bobina =
     criarElemento(1, "uma", "Bobina",
         "Uma grande bobina elétrica.",
-        "Uma grande bobina elétrica. No centro há um buraco pequeno e na lateral um botão vermelho.",
+        "Uma grande bobina elétrica. No um fio rompido e na lateral um botão vermelho.",
         False, False, NULL, 0,
         NULL);
+    
+    adicionarAcao(&bobina, ligarBobina, 2);
 
     /* Botão */
     Elemento botao = 

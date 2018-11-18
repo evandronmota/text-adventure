@@ -101,36 +101,46 @@ int alimentar(Elemento *e1, Elemento *e2) {
     else {
         int i;
         for (i=0; i<e1->nAtr; i++) { /* Procura atributo */
-                if (strcmp(e1->detalhe.atributos[i].nome, "estaFaminta")==0) { /* Acha estaFaminta */
-                    if (e1->detalhe.atributos[i].valor.valor_estado == True) { /* Se não está quebrada */
-                        e1->detalhe.atributos[i].valor.valor_estado = False;
-                        printf("A %s botou um ovo prateado!\n", e1->n);
-                        for (i=0; i<e1->nEle; i++)
-                            if (strcmp(e1->conteudo[i].n, "Ovo")){
-                                e1->conteudo[i].visivel = True;
-                                break;
-                            }
-                    }
-                    else /* Se está aliementada */
-                        printf("Você já alimentou a %s!\n", e1->n);
-                    break;
+            if (strcmp(e1->detalhe.atributos[i].nome, "estaFaminta")==0) { /* Acha estaFaminta */
+                if (e1->detalhe.atributos[i].valor.valor_estado == True) { /* Se não está quebrada */
+                    e1->detalhe.atributos[i].valor.valor_estado = False;
+                    printf("A %s botou um ovo prateado!\n", e1->n);
+                    for (i=0; i<e1->nEle; i++)
+                        if (strcmp(e1->conteudo[i].n, "Ovo")){
+                            e1->conteudo[i].visivel = True;
+                            break;
+                        }
                 }
+                else /* Se está aliementada */
+                    printf("Você já alimentou a %s!\n", e1->n);
+                break;
             }
+        }
     }
 
     return (e1 == NULL || e2 == NULL ? 0 : 1);
 }
 
-// int ligar(Elemento *e1, Elemento *e2) {
-//     if (e1 == NULL)
-//         printf("Ligar o quê?\n");
-//     else {
-//         if (e2 != NULL)
-            
-//         else {
-//             printf("Não é possível fazer isso.\n")
-//         }
-//     }
+int ligar(Elemento *e1, Elemento *e2) {
+    if (e1 == NULL)
+        printf("Ligar o quê?\n");
+    else if (e2 == NULL) 
+        printf("Parece que a bobina não liga com o fio rompido.\n");
+    else if (strcmp(e2->n, "Metal") == 0) {
+        int i;
+        for (i=0; i<e2->nAtr; i++) { /* Procura atributo */
+            if (strcmp(e1->detalhe.atributos[i].nome, "estaMagnetizado")==0) { 
+                if (e1->detalhe.atributos[i].valor.valor_estado == False) { /* Se não está quebrada */
+                    e1->detalhe.atributos[i].valor.valor_estado = True;
+                    printf("A %s ligou e agora o %s está magnetizado!\n", e1->n, e2->n);
+                }
+                else 
+                    printf("A %s já está ligada e o %s magnetizado. %s!\n", e1->n);
+                break;
+            }
+        }
+    }
+    else printf("Não é possível fazer isso!\n");
 
-//     return (e1 == NULL || e2 == NULL ? 0 : 1);
-// }
+    return (e1 == NULL || e2 == NULL ? 0 : 1);
+}
