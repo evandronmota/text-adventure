@@ -620,6 +620,7 @@ Elemento criarSala4() {
     /* Bloco 1 */
     Info unionBloco1;
     unionBloco1.atributos = malloc(sizeof(obj_atr));
+    // return mensagem;
     unionBloco1.atributos[0] = estaNaBalanca;
 
     Elemento bloco1 =

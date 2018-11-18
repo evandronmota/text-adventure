@@ -9,6 +9,7 @@ Elemento *inicializarSalas() {
     Elemento sala2 = criarSala2();
     Elemento sala3 = criarSala3();
     Elemento sala4 = criarSala4();
+    // return NULL;
     Elemento sala5 = criarSala5();
     Elemento lobby = criarSala0();
 
