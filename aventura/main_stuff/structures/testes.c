@@ -212,7 +212,7 @@ int main() {
         testarSala(&salas[1], 1, flag, tab, "Fibonacci");
         testarSala(&salas[2], 2, flag, tab, "Morse");
         testarSala(&salas[3], 3, flag, tab, "Papagaio?");
-        //testarSala(&salas[4], 4, flag, tab, "Pascal");
+        testarSala(&salas[4], 4, flag, tab, "Pascal");
         testarSala(&salas[5], 5, flag, tab, "NePAl");
 
         flag = False;

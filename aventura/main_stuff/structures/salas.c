@@ -11,28 +11,32 @@
 */
 void adicionarAcao(Elemento *e, func acao, int transitividade) {
     e->nAcoes++;
-    e->acoes = realloc(e->acoes, (e->nAcoes * sizeof(func)));
+    e->acoes = realloc(e->acoes, e->nAcoes*sizeof(func));
     e->acoes[e->nAcoes-1] = acao;
 
-    e->transitividade = realloc(e->transitividade, (e->nAcoes * sizeof(int)));
+    e->transitividade = realloc(e->transitividade, e->nAcoes*sizeof(int));
     e->transitividade[e->nAcoes-1] = transitividade;
 }
 
 /*
     Recebe um ponteiro para um elemento e um atributo.
-    Adiciona esse  atributo à lista de atributos do elemento.
+    Adiciona esse atributo à lista de atributos do elemento.
 */
 void adicionarAtributo(Elemento *e, obj_atr atributo) {
     e->nAtr++;
-    e->detalhe.atributos = realloc(e->detalhe.atributos, (e->nAtr * sizeof(obj_atr)));
+    e->detalhe.atributos = realloc(e->detalhe.atributos, e->nAtr*sizeof(obj_atr));
     e->detalhe.atributos[e->nAtr-1] = atributo;
 }
 
-/* Adiciona o elemento e1 no elemento e2 */
-void adicionarElemento(Elemento *e1, Elemento *e2) {
-    e2->nEle++;
-    e2->conteudo = realloc(e2->conteudo, e2->nEle*sizeof(Elemento));
-    e2->conteudo[e2->nEle-1] = *e1;
+/* 
+    Recebe dois ponteiros para elementos.
+    Adiciona o segundo elemento à lista de conteúdos do
+    primeiro.
+*/
+void adicionarElemento(Elemento *contem, Elemento *contido) {
+    contido->nEle++;
+    contido->conteudo = realloc(contido->conteudo, contido->nEle*sizeof(Elemento));
+    contido->conteudo[contido->nEle-1] = *contem;
 }
 
 /*
@@ -80,6 +84,9 @@ Elemento criarElemento(int isObjeto, char *artigo, char *nome, char *curta,
         obj_atr largavel;
         largavel.nome = "largavel";
         largavel.valor.valor_estado = True;
+
+        detalhe.atributos[0] = pegavel;
+        detalhe.atributos[1] = largavel;
     }
 
     novo.detalhe = detalhe;
@@ -108,24 +115,23 @@ int examinar(Elemento *e1, Elemento *e2) {
 int pegar(Elemento *e1, Elemento *e2) {
     if (e1 == NULL)
         printf("Pegar o quê?\n");
-    else 
-        printf("Você pegou %s %s.\n", e1->artigo, e1->n);
+    else  {
+        if (e1->detalhe.atributos[1].valor.valor_estado)
+            printf("Você pegou %s %s.\n", e1->artigo, e1->n);
+        else printf("Você não pode pegar %s %s.\n", e1->artigo, e1->n);
+    }
 
     return (e1 == NULL ? 0 : 1);
 }
 
 int largar(Elemento *e1, Elemento *e2) {
-    char *artigo2;
     if (e1 == NULL)
         printf("Largar o quê?\n");
     else {
         if (e2 == NULL)
             printf("Você largou %s %s.\n", e1->artigo, e1->n);
-        else {
-            artigo2 = e2->artigo;
-            artigo2[0] += 32;
-            printf("Você %s %s n%s %s.\n", e1->artigo, e1->n, artigo2, e2->n);
-        }
+        else
+            printf("Você %s %s n%s %s.\n", e1->artigo, e1->n, e2->artigo, e2->n);
     }
 
     return (e1 == NULL ? 0 : 1);
@@ -192,6 +198,9 @@ Elemento criarSala0() {
         False, False, NULL, 0,
         NULL);
 
+    porta1.detalhe.atributos[0].valor.valor_estado = False;
+    porta1.detalhe.atributos[1].valor.valor_estado = False;
+
     /* Porta 2 */
     Elemento porta2 =
     criarElemento(1, "uma", "Porta 2",
@@ -199,6 +208,9 @@ Elemento criarSala0() {
         "Uma porta dourada muito velha.",
         False, False, NULL, 0,
         NULL);
+
+    porta2.detalhe.atributos[0].valor.valor_estado = False;
+    porta2.detalhe.atributos[1].valor.valor_estado = False;
 
     /* Porta 3 */
     Elemento porta3 =
@@ -208,6 +220,9 @@ Elemento criarSala0() {
         False, False, NULL, 0,
         NULL);
 
+    porta3.detalhe.atributos[0].valor.valor_estado = False;
+    porta3.detalhe.atributos[1].valor.valor_estado = False;
+
     /* Porta 4 */
     Elemento porta4 =
     criarElemento(1, "uma", "Porta 4",
@@ -216,6 +231,9 @@ Elemento criarSala0() {
         False, False, NULL, 0,
         NULL);
 
+    porta4.detalhe.atributos[0].valor.valor_estado = False;
+    porta4.detalhe.atributos[1].valor.valor_estado = False;
+
     /* Porta 5 */
     Elemento porta5 =
     criarElemento(1, "uma", "Porta 5",
@@ -223,6 +241,9 @@ Elemento criarSala0() {
         "Uma porta vermelha com fechadura preta.",
         False, False, NULL, 0,
         NULL);
+
+    porta5.detalhe.atributos[0].valor.valor_estado = False;
+    porta5.detalhe.atributos[1].valor.valor_estado = False;
 
     /* GLaDOS */
     Elemento GLaDOS =
@@ -315,6 +336,11 @@ Elemento criarSala1() {
         False, False, NULL, 0,
         NULL);
 
+    porta.detalhe.atributos[0].valor.valor_estado = False;
+    porta.detalhe.atributos[1].valor.valor_estado = False;
+
+    
+
 
     /* Ponteiro do relógio */
 
@@ -402,6 +428,9 @@ Elemento criarSala2() {
         "Uma porta dourada.", 
         False, False, NULL, 0,
         NULL);
+
+    porta.detalhe.atributos[0].valor.valor_estado = False;
+    porta.detalhe.atributos[1].valor.valor_estado = False;
 
 
     /* Morsa */
@@ -500,6 +529,9 @@ Elemento criarSala3(){
         "Uma porta de madeira.",
         False, False, NULL, 0,
         NULL);
+
+    porta.detalhe.atributos[0].valor.valor_estado = False;
+    porta.detalhe.atributos[1].valor.valor_estado = False;
 
     /* Letra */
     Elemento letra = 
@@ -888,6 +920,9 @@ Elemento criarSala4() {
         False, True, NULL, 0,
         NULL);
 
+    porta.detalhe.atributos[0].valor.valor_estado = False;
+    porta.detalhe.atributos[1].valor.valor_estado = False;
+
 
     /* Balança */
     Elemento balanca =
@@ -991,6 +1026,9 @@ Elemento criarSala5() {
         "Uma porta vermelha com fechadura preta.",
         False, False, NULL, 0,
         NULL);
+
+    porta.detalhe.atributos[0].valor.valor_estado = False;
+    porta.detalhe.atributos[1].valor.valor_estado = False;
 
     /* Sala 5 */
     Elemento *conteudoS5 = malloc(6*sizeof(Elemento));
