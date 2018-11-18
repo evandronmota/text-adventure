@@ -934,7 +934,7 @@ Elemento criarSala5() {
     porta.detalhe.atributos[1].valor.valor_estado = False;
 
     /* Sala 5 */
-    Elemento *conteudoS5 = malloc(6*sizeof(Elemento));
+    Elemento *conteudoS5 = malloc(6 * sizeof(Elemento));
     conteudoS5[0] = enigma;
     conteudoS5[1] = mapa;
     conteudoS5[2] = poster;

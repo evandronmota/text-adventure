@@ -25,5 +25,5 @@
 // }
 
 // void adicionarnaMochila(Elemento *e1) {
-//     heroi->mochila[nMochila++] = e1;
+//     heroi->mochila[heroi->nMochila++] = e1;
 // }
