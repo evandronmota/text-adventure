@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "../libraries/elemento.h"
-#include "../libraries/aventureiro.h"
-#include "../libraries/salas.h"
+#include "../headers/elemento.h"
+#include "../headers/aventureiro.h"
+#include "../headers/salas.h"
 
 
 /*
