@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "../headers/elemento.h"
 #include "../headers/aventureiro.h"
 #include "../headers/salas.h"
@@ -627,227 +628,42 @@ Elemento criarSala4() {
     func colocarBlocoSobre = colocarSobre;
     func tirarBlocoDeCima = pegar;
 
-
-    /* Bloco 0 */
-    
-    
-    
-
-    Elemento bloco0 =
-    criarElemento(1, "um", "Bloco 0",
-        "Bloco com o número 0.",
-        "Bloco empoeirado e com o número 0 gravado.",
-        False, True, NULL, 0,
-        NULL);
-
-
-    adicionarAcao(&bloco0 ,colocarBlocoSobre, 2);
-    adicionarAtributo(&bloco0, estaNaBalanca);
-
-
-
-    /* Bloco 1 */
-    
-    
-    // return mensagem;
-    
-
-    Elemento bloco1 =
-    criarElemento(1, "um", "Bloco 1",
-        "Bloco com o número 1.",
-        "Bloco empoeirado e com o número 1 gravado.",
-        False, True, NULL, 0,
-        NULL);
-    
-
-    adicionarAcao(&bloco1 ,colocarBlocoSobre, 2);
-    adicionarAtributo(&bloco1, estaNaBalanca);
-    
-
-
-    
-    
-    
-
-
-    /* Bloco 2 */
-    
-
-
-
-    Elemento bloco2 =
-    criarElemento(1, "um", "Bloco 2",
-        "Bloco com o número 2.",
-        "Bloco empoeirado e com o número 2 gravado.",
-        False, True, NULL, 0,
-        NULL);
-
-
-    adicionarAcao(&bloco2 ,colocarBlocoSobre, 2);
-    adicionarAtributo(&bloco2, estaNaBalanca);
-    
-
-
-    
-    
-
-
-
-    /* Bloco 3 */
-    
-    
-    
-
-    Elemento bloco3 =
-    criarElemento(1, "um", "Bloco 3",
-        "Bloco com o número 3.",
-        "Bloco empoeirado e com o número 3 gravado.",
-        False, True, NULL, 0,
-        NULL);
-
-
-    adicionarAcao(&bloco3 ,colocarBlocoSobre, 2);
-    adicionarAtributo(&bloco3, estaNaBalanca);
-    
-
-
-    
-    
-
-
-
-    /* Bloco 4 */
-    
-    
-    
-
-    Elemento bloco4 =
-    criarElemento(1, "um", "Bloco 4",
-        "Bloco com o número 4.",
-        "Bloco empoeirado e com o número 4 gravado.",
-        False, True, NULL, 0,
-        NULL);
-
-
-    adicionarAcao(&bloco4 ,colocarBlocoSobre, 2);
-    adicionarAtributo(&bloco4, estaNaBalanca);
-    
-
-
-    
-    
-
-
-
-    /* Bloco 5 */
-    
-    
-    
-
-    Elemento bloco5 =
-    criarElemento(1, "um", "Bloco 5",
-        "Bloco com o número 5.",
-        "Bloco empoeirado e com o número 5 gravado.",
-        False, True, NULL, 0,
-        NULL);
-
-
-    adicionarAcao(&bloco5 ,colocarBlocoSobre, 2);
-    adicionarAtributo(&bloco5, estaNaBalanca);
-    
-
-
-    
-    
-
-
-
-    /* Bloco 6 */
-    
-    
-    
-
-    Elemento bloco6 =
-    criarElemento(1, "um", "Bloco 6",
-        "Bloco com o número 6.",
-        "Bloco empoeirado e com o número 6 gravado.",
-        False, True, NULL, 0,
-        NULL);
-
-
-    adicionarAcao(&bloco6 ,colocarBlocoSobre, 2);
-    adicionarAtributo(&bloco6, estaNaBalanca);
-    
-
-
-    
-    
-
-
-
-    /* Bloco 7 */
-    
-    
-    
-
-    Elemento bloco7 =
-    criarElemento(1, "um", "Bloco 7",
-        "Bloco com o número 7.",
-        "Bloco empoeirado e com o número 7 gravado.",
-        False, True, NULL, 0,
-        NULL);
-
-
-    adicionarAcao(&bloco7 ,colocarBlocoSobre, 2);
-    adicionarAtributo(&bloco7, estaNaBalanca);
-    
-
-
-    
-    
-
-
-
-    /* Bloco 8 */
-    
-    
-    
-
-    Elemento bloco8 =
-    criarElemento(1, "um", "Bloco 8",
-        "Bloco com o número 8.",
-        "Bloco empoeirado e com o número 8 gravado.",
-        False, True, NULL, 0,
-        NULL);
-
-
-    adicionarAcao(&bloco8 ,colocarBlocoSobre, 2);
-    adicionarAtributo(&bloco8, estaNaBalanca);
-    
-
-
-    
-    
-
-
-
-    /* Bloco 9 */
-    
-    
-    
-
-    Elemento bloco9 =
-    criarElemento(1, "um", "Bloco 9",
-        "Bloco com o número 9.",
-        "Bloco empoeirado e com o número 9 gravado.",
-        False, True, NULL, 0,
-        NULL);
-
-
-    adicionarAcao(&bloco9 ,colocarBlocoSobre, 2);
-    adicionarAtributo(&bloco9, estaNaBalanca);
-    
-
+    Elemento* blocos = malloc(10*sizeof(Elemento));
+    for (int i = 0; i < 10; i++) {
+        char num[2];
+        num[0] = i + 48;
+        num[1] = '\0';
+
+        char nome[] = "Bloco ";
+        char desc1Ini[] = "Bloco com o número ";
+        char desc1Fim[] = ".";
+        char desc2Ini[] = "Bloco empoeirado e com o número ";
+        char desc2Fim[] = " gravado.";
+
+        char* nomeBloco = malloc(strlen(nome) + strlen(num));
+        char* descCurta = malloc(strlen(desc1Ini) + strlen(num) + strlen(desc1Fim));
+        char* descLonga = malloc(strlen(desc2Ini) + strlen(num) + strlen(desc2Fim));
+
+        strcpy(nomeBloco, nome);
+        strcat(nomeBloco, num);
+
+        strcpy(descCurta, desc1Ini);
+        strcat(descCurta, num);
+        strcat(descCurta, desc1Fim);
+
+        strcpy(descLonga, desc2Ini);
+        strcat(descLonga, num);
+        strcat(descLonga, desc2Fim);
+
+        Elemento bloco =
+        criarElemento(1, "um", nomeBloco,
+            descCurta,
+            descLonga,
+            False, False, NULL, 0,
+            NULL);
+
+        blocos[i] = bloco;
+    }
 
     
     
@@ -874,24 +690,15 @@ Elemento criarSala4() {
 
 
 
-
     /* Sala 4 */
     Elemento* conteudoS4 = malloc(14*sizeof(Elemento));
     conteudoS4[0] = mensagem;
     conteudoS4[1] = poema;
     conteudoS4[2] = balanca;
     conteudoS4[3] = porta;
-    conteudoS4[4] = bloco0;
-    conteudoS4[5] = bloco1;
-    conteudoS4[6] = bloco2;
-    conteudoS4[7] = bloco3;
-    conteudoS4[8] = bloco4;
-    conteudoS4[9] = bloco5;
-    conteudoS4[10] = bloco6;
-    conteudoS4[11] = bloco7;
-    conteudoS4[12] = bloco8;
-    conteudoS4[13] = bloco9;
-
+    for (int i = 4; i < 14; i++) {
+        conteudoS4[i] = blocos[i-4];
+    }
     
 
     Elemento sala4 =
