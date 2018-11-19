@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "../headers/elemento.h"
+#include "../headers/aventureiro.h"
 
 void nome(Elemento e) {   
     printf("%c%c%c %s.\n", e.artigo[0]-32, e.artigo[1], e.artigo[2], e.n);
@@ -24,8 +25,10 @@ int pegar(Elemento *e1, Elemento *e2) {
     if (e1 == NULL)
         printf("Pegar o quê?\n");
     else  {
-        if (e1->detalhe.atributos[1].valor.valor_estado)
+        if (e1->detalhe.atributos[0].valor.valor_estado) {
             printf("Você pegou %s %s.\n", e1->artigo, e1->n);
+            //adicionarNaMochila(e1);
+        }
         else printf("Você não pode pegar %s %s.\n", e1->artigo, e1->n);
     }
 
@@ -111,7 +114,7 @@ int alimentar(Elemento *e1, Elemento *e2) {
                             break;
                         }
                 }
-                else /* Se está aliementada */
+                else /* Se está alimentada */
                     printf("Você já alimentou a %s!\n", e1->n);
                 break;
             }
