@@ -270,7 +270,7 @@ Elemento criarSala1() {
     /* Relógio */
     Elemento relogio =
     criarElemento(True, "um","Relógio",
-        "Relógio quebrado sem um dos ponteiros.",
+        "São 8h e ... ?",
         "Relógio sem o ponteiro dos minutos e com o ponteiro das horas apontando para o VIII.", NULL, 0);
 
     obj_atr senha;
@@ -806,6 +806,7 @@ void validarSala4() {
     int contBlocosCertos = 0;
     int i;
     int atr;
+
     for (i=5; i < heroi->salaAtual->nEle; i++) {
         atr = procurarAtributo(&heroi->salaAtual->conteudo[i], "estaNaBalanca");
         if (heroi->salaAtual->conteudo[i].detalhe.atributos[atr].valor.valor_estado == True) {

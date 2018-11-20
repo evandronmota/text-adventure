@@ -158,8 +158,6 @@ int quebrar(Elemento *e1, Elemento *e2) {
             printf("Você já quebrou %s %s!", e1->artigo, e1->n);
     }
 
-
-
     return quebrou;
 }
 
