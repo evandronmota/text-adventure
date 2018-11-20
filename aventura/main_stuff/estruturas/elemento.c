@@ -163,9 +163,10 @@ int colocar(Elemento *e1, Elemento *e2) {
     else {
         printf("Você colocou %s %s n%s %s.", e1->artigo, e1->n, e2->artigo, e2->n);
         i = procurarAtributo(e1, "estaNaBalanca");
-        if (i != -1)
+        if (i != -1) {
             e1->detalhe.atributos[i].valor.valor_estado = True;
-        //adicionarElemento(e1, e2);
+        }
+        adicionarElemento(e1, e2);
     }
 
     return (e1 == NULL || e2 == NULL ? 0 : 1);
