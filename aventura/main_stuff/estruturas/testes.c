@@ -137,13 +137,18 @@ void testarSala(Elemento *sala, int num, boolean flag) {
                 }
                 else /* Só para testar (transitividade 2 é nele mesmo) */
                     printf(" %s\n", (((func)obj->acoes[j])(obj, obj)) ? OK : FAIL);
-            }
-            if (obj->animacao != NULL) {
-                printf(BOLDWHITE "ANIMAÇÃO:\t" RESET);
-                printf(" %s\n", (((func)obj->animacao)(obj, NULL) ? OK : FAIL));
+                /* Animação */
             }
             printf("\n");
         }
+    }
+    
+    if (strcmp(sala->n,"Lobby") == 0) {
+        printf(BOLDBLUE"\nANIMAÇÃO da sala:\n"RESET);
+        printf(BOLDWHITE "SENHA INCORRETA:" RESET);
+        tentar("");
+        printf(BOLDWHITE "SENHA CORRETA:" RESET);
+        tentar("SENHA");
     }
 
     if (flag)
@@ -187,21 +192,31 @@ void testarSala(Elemento *sala, int num, boolean flag) {
                     printf(" %s\n", (((func)obj->acoes[j])(obj, NULL)) ? OK : FAIL);
                 else /* Só para testar (transitividade 2 é nele mesmo) */
                     printf(" %s\n", (((func)obj->acoes[j])(obj, obj)) ? OK : FAIL);
-            }
-            if (obj->animacao != NULL) {
-                printf(BOLDWHITE "ANIMAÇÃO:\t" RESET);
-                printf(" %s\n", (((func)obj->animacao)(obj, NULL) ? OK : FAIL));
+                /* Animação */
             }
             printf("\n");
         }
     }
 
-    // if (!strcmp(sala->n,"Lobby")) {
-    //     printf(BOLDWHITE "SENHA INCORRETA:\t" RESET);
-    //     tentar("");
-    //     printf(BOLDWHITE "SENHA CORRETA:\t\t" RESET);
-    //     tentar("SENHA");
-    // }
+
+
+    /* validação do puzzle sala 4 */
+    if (strcmp(heroi->salaAtual->n, "Pascal")) {
+        int cont = 0;
+        int i;
+        for (i=5; i < heroi->salaAtual->nEle; i++) {
+            procurarAtributo(&heroi->salaAtual->conteudo[i], "estaNaBalanca");
+            if (strcmp(heroi->salaAtual->n, "Bloco 1") ||
+                strcmp(heroi->salaAtual->n, "Bloco 2") ||
+                strcmp(heroi->salaAtual->n, "Bloco 8"))
+                cont++;
+        }
+
+        if (cont == 3) {
+            heroi->salaAtual->conteudo[4].visivel = True;
+            ((func)heroi->salaAtual->conteudo[4].acoes[0])(&heroi->salaAtual->conteudo[4], NULL);
+        }
+    }
 
     printf("\n\n\n");
 }
@@ -308,6 +323,7 @@ int main() {
     int i;
 
     /* Insere todos objetos da sala na tabela */
+    /* Os nomes são dos elementos na tabela de símbolos */
     for (i=0; i<6; i++)
         insereObjnaTabela(tab, salas[i].n, &salas[i]);
 
