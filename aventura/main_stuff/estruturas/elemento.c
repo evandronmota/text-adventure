@@ -79,6 +79,30 @@ int pegar(Elemento *e1, Elemento *e2) {
     return pegou;
 }
 
+int atrair(Elemento *e1, Elemento *e2) {
+    if (e1 == NULL)
+        printf("Atrair o quê?");
+    else if (e2 == NULL)
+        printf("Atrair com o quê?");
+    else {
+        if (strcmp(e2->n, "Metal") == 0){
+            int i = procurarAtributo(e2, "estaMagnetizado");
+            if (e2->detalhe.atributos[i].valor.valor_estado == False) { 
+                printf("Você não pode atrir coisas com %s %s!", e1->n, e2->n);
+            }
+            else {
+                printf("Você atraiu %s %s com %s %s magnetizado!", e1->artigo, e1->n, e2->artigo, e2->n);
+                pegar(e1, NULL);
+            }
+        }
+        else {
+            printf("Você não pode atrair %s %s usando %s %s!", e1->artigo, e1->n, e2->artigo, e2->n);
+        }
+    }
+
+    return (e1 == NULL || e2 == NULL ? 0 : 1); 
+}
+
 int largar(Elemento *e1, Elemento *e2) {
     int largou = 0;
 
@@ -197,7 +221,7 @@ int ligar(Elemento *e1, Elemento *e2) {
                 printf("A %s já está ligada e o %s magnetizado!", e1->n, e2->n);
         }
     }
-    else printf("Não é possível fazer isso!");
+    else printf("Não é possível ligar a bobina com %s %s.", e2->artigo, e2->n);
 
     return (e1 == NULL || e2 == NULL ? 0 : 1);
 }
