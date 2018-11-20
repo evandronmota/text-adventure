@@ -150,6 +150,14 @@ void testarSala(Elemento *sala, int num, boolean flag) {
             printf("\n");
         }
     }
+    
+    if (strcmp(sala->n,"Lobby") == 0) {
+        printf(BOLDBLUE"\nANIMAÇÃO da sala:\n"RESET);
+        printf(BOLDWHITE "SENHA INCORRETA:" RESET);
+        tentar("");
+        printf(BOLDWHITE "SENHA CORRETA:" RESET);
+        tentar("SENHA");
+    }
 
     if (flag)
         printf("\n");
@@ -310,6 +318,7 @@ int main() {
     int i;
 
     /* Insere todos objetos da sala na tabela */
+    /* Os nomes são dos elementos na tabela de símbolos */
     for (i=0; i<6; i++)
         insereObjnaTabela(tab, salas[i].n, &salas[i]);
 

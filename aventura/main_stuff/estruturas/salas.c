@@ -471,9 +471,10 @@ Elemento criarSala3() {
 
     ovo.visivel = False; /* Não é visível */
 
-    func quebrarOvo = quebrar;
+    func quebrarOvo = quebrar, atrairOvo = atrair;
 
     adicionarAtributo(&ovo, estaQuebrado);
+    adicionarAcao(&ovo, atrairOvo, 2);
     adicionarAcao(&ovo, quebrarOvo, 1);
 
 
@@ -529,11 +530,11 @@ Elemento criarSala3() {
     adicionarAcao(&bobina, ligarBobina, 2);
 
 
-    /* Botão */
-    Elemento botao = 
-    criarElemento(True, "um", "Botão",
-        "Um botão vermelho.",
-        "Um botão grande e vermelho.", NULL, 0);
+    // /* Botão */
+    // Elemento botao = 
+    // criarElemento(True, "um", "Botão",
+    //     "Um botão vermelho.",
+    //     "Um botão grande e vermelho.", NULL, 0);
 
 
     /* Saco */
@@ -544,22 +545,22 @@ Elemento criarSala3() {
 
 
     /* Sala 3 */
-    Elemento *conteudoS3 = malloc(9 * sizeof(Elemento));
+    Elemento *conteudoS3 = malloc(8 * sizeof(Elemento));
     conteudoS3[0] = porta;
     conteudoS3[1] = gaiola;
     conteudoS3[2] = galinha;
     conteudoS3[3] = ovo;
     conteudoS3[4] = bobina;
-    conteudoS3[5] = botao;
-    conteudoS3[6] = metal;
-    conteudoS3[7] = saco;
-    conteudoS3[8] = letra;
+    conteudoS3[5] = metal;
+    conteudoS3[6] = saco;
+    conteudoS3[7] = letra;
+    // conteudoS3[5] = botao;
     
     Elemento sala3 =
     criarElemento(False, "uma","Galinhada",
         "Uma sala circular. No centro há uma gaiola pendurada no teto e uma bobina muito grande no chão.",
         "Uma sala circular. No centro há uma gaiola pendurada no teto e uma bobina muito grande no chão. No fundo há um saco de linho e ao lado uma barra de metal.",
-        conteudoS3, 9);
+        conteudoS3, 8);
 
     return sala3;
 }
@@ -682,9 +683,9 @@ Elemento criarSala4() {
     conteudoS4[1] = poema;
     conteudoS4[2] = balanca;
     conteudoS4[3] = porta;
-    for (int i = 4; i < 14; i++)
-        conteudoS4[i] = blocos[i-4];
-    conteudoS4[14] = letra;
+    conteudoS4[4] = letra;
+    for (int i = 5; i < 15; i++)
+        conteudoS4[i] = blocos[i-5];
 
 
     Elemento sala4 =
@@ -790,4 +791,26 @@ Elemento criarSala5() {
         conteudoS5, 7);
 
     return sala5;
+}
+
+void validarSala4() {
+    int contBlocosNaBalanca = 0;
+    int contBlocosCertos = 0;
+    int i;
+    int atr;
+    for (i=5; i < heroi->salaAtual->nEle; i++) {
+        atr = procurarAtributo(&heroi->salaAtual->conteudo[i], "estaNaBalanca");
+        if (heroi->salaAtual->conteudo[i].detalhe.atributos[atr].valor.valor_estado == True) {
+            contBlocosNaBalanca++;
+            if (strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 1") == 0 ||
+                strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 2") == 0 ||
+                strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 8") == 0) 
+                contBlocosCertos++;
+        }
+    }
+
+    if (contBlocosNaBalanca == 3 && contBlocosCertos == 3) {
+        heroi->salaAtual->conteudo[4].visivel = True;
+        ((func)heroi->salaAtual->conteudo[4].acoes[0])(&heroi->salaAtual->conteudo[4], NULL);
+    }
 }

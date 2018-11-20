@@ -117,6 +117,14 @@ int pegar(Elemento *e1, Elemento *e2);
 
 /*
     Recebe dois ponteiros para elementos.
+    Imprime uma mensagem avisando que atraiu o primeiro elemento
+    utilizando o segundo. Retorna um inteiro indicando se a ação foi
+    bem-sucedida.
+*/
+int atrair(Elemento *e1, Elemento *e2);
+
+/*
+    Recebe dois ponteiros para elementos.
     Imprime uma mensagem avisando que o primeiro elemento
     foi largado.
     Retorna um inteiro indicando se a ação
