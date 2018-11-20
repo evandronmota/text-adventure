@@ -169,21 +169,20 @@ int colocar(Elemento *e1, Elemento *e2) {
     else if (e2 == NULL)
         printf("Colocar onde?");
     else {
-        if (e1 != e2) {
+        if (!strcmp(e1->n, e2->n)) {
             printf("Você colocou %s %s n%s %s.", e1->artigo, e1->n, e2->artigo, e2->n);
             i = procurarAtributo(e1, "estaNaBalanca");
-            if (i != -1) {
+            if (i != -1)
                 e1->detalhe.atributos[i].valor.valor_estado = True;
-            }
             adicionarElemento(e1, e2);
-        } else {
-            printf("Nao é possivel colocar um elemento sobre ele mesmo!");
-        }
+        } else
+            printf("Nao é possível colocar um elemento sobre ele mesmo!");
 
     }
 
     return (e1 == NULL || e2 == NULL || e1 == e2 ? 0 : 1);
 }
+
 
 int alimentar(Elemento *e1, Elemento *e2) {
     int i, alimentou=0;
