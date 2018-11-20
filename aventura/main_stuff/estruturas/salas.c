@@ -22,9 +22,16 @@ void adicionarAtributo(Elemento *e, obj_atr atributo) {
 }
 
 void adicionarElemento(Elemento *e1, Elemento *destino) {
-    destino->nEle++;
-    destino->conteudo = realloc(destino->conteudo, destino->nEle * sizeof(Elemento));
-    destino->conteudo[destino->nEle - 1] = *e1;
+    if (e1 != destino) {
+        destino->nEle++;
+        if (destino->conteudo != NULL) {
+            destino->conteudo = realloc(destino->conteudo, destino->nEle * sizeof(Elemento));
+            destino->conteudo[destino->nEle - 1] = *e1;
+        } else {
+            destino->conteudo = malloc(destino->nEle * sizeof(Elemento));
+            destino->conteudo[destino->nEle - 1] = *e1;
+        }
+    }
 }
 
 
@@ -202,7 +209,7 @@ Elemento criarSala1() {
 
     /* Mensagem */
     Elemento mensagem =
-    criarElemento(True, "uma","Mensagem",
+    criarElemento(True, "uma","Mensagem1",
         "Na parede há uma mensagem: 1 + 1 = 2.",
         "Na parede está escrito com tinta vermelha: 1 + 1 = 2.", NULL, 0);
 
@@ -242,7 +249,7 @@ Elemento criarSala1() {
 
     /* Porta */
     Elemento porta =
-    criarElemento(True, "uma", "Porta",
+    criarElemento(True, "uma", "Porta1",
         "Uma porta para o lobby.",
         "Uma porta de ferro com fechadura dourada para o lobby.", NULL, 0);
 
@@ -310,7 +317,7 @@ Elemento criarSala2() {
 
     /* Mensagem */
     Elemento mensagem =
-    criarElemento(True, "uma","Mensagem",
+    criarElemento(True, "uma","Mensagem2",
         "Está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"",
         "Numa folha de papel amassada está escrito: \".. ... ... --- -. .- --- . -.-. --- -.. .. --. --- -- --- .-. ... .\"",
         NULL, 0);
@@ -320,7 +327,7 @@ Elemento criarSala2() {
 
     /* Porta */
     Elemento porta =
-    criarElemento(True, "uma", "Porta",
+    criarElemento(True, "uma", "Porta2",
         "Uma porta.",
         "Uma porta dourada.", 
         NULL, 0);
@@ -437,7 +444,7 @@ Elemento criarSala3() {
 
     /* Porta */
     Elemento porta =
-    criarElemento(True, "uma", "Porta",
+    criarElemento(True, "uma", "Porta3",
         "Uma porta de madeira.",
         "Uma porta de madeira de ébano.", NULL, 0);
 
@@ -588,7 +595,7 @@ Elemento criarSala4() {
 
     /* Mensagem */
     Elemento mensagem =
-    criarElemento(True, "uma", "Mensagem",
+    criarElemento(True, "uma", "Mensagem4",
         "Na parede há uma mensagem: acho que há pressão demais por aqui.",
         "Na parede está escrito em azul: acho que há pressão demais por aqui.", NULL, 0);
 
@@ -652,7 +659,7 @@ Elemento criarSala4() {
 
     /* Porta */
     Elemento porta =
-    criarElemento(True, "uma", "Porta",
+    criarElemento(True, "uma", "Porta4",
         "Uma porta branca.",
         "Uma porta branca com várias lascas.", 
         NULL, 0);
@@ -712,7 +719,7 @@ Elemento criarSala5() {
 
     /* Enigma */
     Elemento enigma =
-    criarElemento(True, "uma", "Mensagem",
+    criarElemento(True, "uma", "Mensagem5",
         "O que o cientista disse quando encontrou 2 átomos de hélio? HeHe.",
         "Um enigma.", NULL, 0);
 
@@ -757,7 +764,7 @@ Elemento criarSala5() {
 
     /* Porta */
     Elemento porta =
-    criarElemento(True, "uma", "Porta",
+    criarElemento(True, "uma", "Porta5",
         "Uma porta vermelha.",
         "Uma porta vermelha com fechadura preta.", NULL, 0);
 
