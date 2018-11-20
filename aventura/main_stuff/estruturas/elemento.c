@@ -103,9 +103,8 @@ int atrair(Elemento *e1, Elemento *e2) {
                 pegar(e1, NULL);
             }
         }
-        else {
+        else
             printf("Você não pode atrair %s %s usando %s %s!", e1->artigo, e1->n, e2->artigo, e2->n);
-        }
     }
 
     return atraiu; 
@@ -170,7 +169,7 @@ int colocar(Elemento *e1, Elemento *e2) {
     else if (e2 == NULL)
         printf("Colocar onde?");
     else {
-        if (!strcmp(e1->n, e2->n)) {
+        if (strcmp(e1->n, e2->n) != 0) {
             printf("Você colocou %s %s n%s %s.", e1->artigo, e1->n, e2->artigo, e2->n);
             i = procurarAtributo(e1, "estaNaBalanca");
             if (i != -1)
