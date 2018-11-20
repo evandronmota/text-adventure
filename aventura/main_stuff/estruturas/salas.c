@@ -27,15 +27,6 @@ void adicionarElemento(Elemento *e1, Elemento *destino) {
     destino->conteudo[destino->nEle - 1] = *e1;
 }
 
-int procurarAtributo(Elemento *e1, char *atributo) {
-    int i;
-
-    for (i=0; i<e1->nAtr; i++)
-        if (!strcmp(e1->detalhe.atributos[i].nome, atributo))
-            return i;
-
-    return -1;
-}
 
 /*
     Recebe os parâmetros necessários ao elemento.

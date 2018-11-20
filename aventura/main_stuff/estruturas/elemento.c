@@ -3,11 +3,20 @@
 #include <string.h>
 #include "../headers/elemento.h"
 #include "../headers/aventureiro.h"
-#include "../headers/salas.h"
 
 void nome(Elemento e) {
     /* Primeira letra do artigo vira maiúsculo */
     printf("%c%c%c %s.\n", e.artigo[0]-32, e.artigo[1], e.artigo[2], e.n);
+}
+
+int procurarAtributo(Elemento *e1, char *atributo) {
+    int i;
+
+    for (i=0; i<e1->nAtr; i++)
+        if (!strcmp(e1->detalhe.atributos[i].nome, atributo))
+            return i;
+
+    return -1;
 }
 
 int examinar(Elemento *e1, Elemento *e2) {
@@ -91,18 +100,21 @@ int quebrar(Elemento *e1, Elemento *e2) {
             printf("Você já quebrou %s %s!", e1->artigo, e1->n);
     }
 
+
+
     return quebrou;
 }
 
 int colocar(Elemento *e1, Elemento *e2) {
-
     if (e1 == NULL)
         printf("Colocar o quê?");
     else if (e2 == NULL)
         printf("Colocar onde?");
     else {
         printf("Você colocou %s %s n%s %s.", e1->artigo, e1->n, e2->artigo, e2->n);
-        // adicionarElemento(e1, e2);
+        int i = procurarAtributo(e1, "estaNaBalanca");
+        e1->detalhe.atributos[i].valor.valor_estado = True;
+        //adicionarElemento(e1, e2);
     }
 
     return (e1 == NULL || e2 == NULL ? 0 : 1);

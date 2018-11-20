@@ -8,4 +8,7 @@
 -citar string.h
 -adicionar ação especifica de cada objeto de suas salas
 -relatório
--Leonardo: Descreve sua sala no relatório (overleaf)
+-pra arrumar as portas, vai precisar trocar a lista de
+ elementos (conteudo) pra uma lista de ponteiros de elementos
+ e vai crashar tudo.
+

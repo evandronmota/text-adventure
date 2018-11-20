@@ -64,10 +64,3 @@ void adicionarAtributo(Elemento *e, obj_atr atributo);
     primeiro.
 */
 void adicionarElemento(Elemento *e1, Elemento *destino);
-
-
-/*
-    Recebe um elemento e um atributo.
-    Retorna o índice do atributo, caso não ache retorna -1.
-*/
-int procurarAtributo(Elemento *e1, char *atributo);
