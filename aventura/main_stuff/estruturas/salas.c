@@ -648,9 +648,9 @@ Elemento criarSala4() {
     conteudoS4[1] = poema;
     conteudoS4[2] = balanca;
     conteudoS4[3] = porta;
-    for (int i = 4; i < 14; i++)
-        conteudoS4[i] = blocos[i-4];
-    conteudoS4[14] = letra;
+    conteudoS4[4] = letra;
+    for (int i = 5; i < 15; i++)
+        conteudoS4[i] = blocos[i-5];
 
 
     Elemento sala4 =
