@@ -7,6 +7,14 @@ void nome(Elemento e) {
     printf("%c%c%c %s.\n", e.artigo[0]-32, e.artigo[1], e.artigo[2], e.n);
 }
 
+int tentar(Elemento *e1, char *key) {
+    if (key == NULL){}
+    else if (strcmp("Robô", e1->n) == 0) {
+        if (strcmp("SENHA",key) == 0)
+            printf("Não é que nós nos divertimos juntos? Gostaria de dizer que estou prestes a abrir um alçapão em baixo de você que o jogaria em um poço de lava, mas parece que eu não fui permitida. Então esse é apenas um simples adeus. Espero que tenha aproveitada o sonho. \n\n Tudo fica escuro. Você acorda em cima dos livros e lembra que ainda não entregou o EP... \n");
+    }
+}
+
 int examinar(Elemento *e1, Elemento *e2) {
     if (e1 == NULL)
         printf("Examinar o quê?\n");
