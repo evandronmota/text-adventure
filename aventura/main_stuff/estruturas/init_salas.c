@@ -1,10 +1,14 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "../headers/elemento.h"
 #include "../headers/salas.h"
-#include "../headers/initSalas.h"
+#include "../headers/init_salas.h"
 
 Elemento *inicializarSalas() {
+    /* lobby = sala0 (sala principal) */
+
+    int i;
+
     Elemento lobby = criarSala0();
     Elemento sala1 = criarSala1();
     Elemento sala2 = criarSala2();
@@ -12,15 +16,19 @@ Elemento *inicializarSalas() {
     Elemento sala4 = criarSala4();
     Elemento sala5 = criarSala5();
 
+    lobby.detalhe.saidas = malloc(9 * sizeof(saidas*));
     sala1.detalhe.saidas = malloc(5 * sizeof(saidas*));
     sala2.detalhe.saidas = malloc(5 * sizeof(saidas*));
     sala3.detalhe.saidas = malloc(5 * sizeof(saidas*));
     sala4.detalhe.saidas = malloc(5 * sizeof(saidas*));
     sala5.detalhe.saidas = malloc(5 * sizeof(saidas*));
-    lobby.detalhe.saidas = malloc(9 * sizeof(saidas*));
 
-    /* Direções cardeais */
-    for (int i = 0; i < 4; i++) {
+    /* Direções cardeais (não possuem em nosso jogo) */
+    for (i = 0; i < 4; i++) {
+        lobby.detalhe.saidas[i] = malloc(sizeof(saidas));
+        lobby.detalhe.saidas[i]->saida = NULL;
+        lobby.detalhe.saidas[i]->esta_fechada = True;
+
         sala1.detalhe.saidas[i] = malloc(sizeof(saidas));
         sala1.detalhe.saidas[i]->saida = NULL;
         sala1.detalhe.saidas[i]->esta_fechada = True;
@@ -40,12 +48,9 @@ Elemento *inicializarSalas() {
         sala5.detalhe.saidas[i] = malloc(sizeof(saidas));
         sala5.detalhe.saidas[i]->saida = NULL;
         sala5.detalhe.saidas[i]->esta_fechada = True;
-
-        lobby.detalhe.saidas[i] = malloc(sizeof(saidas));
-        lobby.detalhe.saidas[i]->saida = NULL;
-        lobby.detalhe.saidas[i]->esta_fechada = True;
     }
 
+    /* Das salas para o lobby */
     sala1.detalhe.saidas[4] = malloc(sizeof(saidas));
     sala1.detalhe.saidas[4]->saida = &lobby;
     sala1.detalhe.saidas[4]->esta_fechada = False;
@@ -66,6 +71,8 @@ Elemento *inicializarSalas() {
     sala5.detalhe.saidas[4]->saida = &lobby;
     sala5.detalhe.saidas[4]->esta_fechada = False;
 
+
+    /* Do lobby para as salas */
     lobby.detalhe.saidas[4] = malloc(sizeof(saidas));
     lobby.detalhe.saidas[4]->saida = &sala1;
     lobby.detalhe.saidas[4]->esta_fechada = False;
@@ -86,6 +93,7 @@ Elemento *inicializarSalas() {
     lobby.detalhe.saidas[8]->saida = &sala5;
     lobby.detalhe.saidas[8]->esta_fechada = False;
 
+    /* Salas */
     Elemento *salas = malloc(6 * sizeof(Elemento));
 
     salas[0] = lobby;

@@ -6,7 +6,7 @@
 struct elo {
     char *nome;
     Elemento *val;
-    struct elo *next;
+    struct elo *prox;
 };
 
 /* Ponteiro para a lista ligada */

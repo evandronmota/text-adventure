@@ -8,17 +8,17 @@ Lista criaL() {
     if (l == NULL || l->nome==NULL)
         return NULL;
     l->nome = NULL;
-    l->next = NULL;
+    l->prox = NULL;
     l->val = NULL;
     return l;
 }
 
 void destroiL(Lista l) {
-    Lista p = l->next;  
+    Lista p = l->prox;  
     Lista aux;
     free(l);
     while (p != NULL) {
-        aux = p->next;
+        aux = p->prox;
         free(p);
         p = aux;
     }
@@ -29,27 +29,27 @@ Lista insereL(Lista l, Elemento *val) {
     Lista new = criaL();
     if (new == NULL)
         return NULL;
-    new->next = l->next;
+    new->prox = l->prox;
     new->val = val;
-    l->next = new;
+    l->prox = new;
 
     return new;
 }
 
 Elemento *buscaL(Lista l, char *n) {
-    Lista p = l->next;
+    Lista p = l->prox;
     while (p != NULL) {
         if (p->nome == n)
             return p->val;
-        p = p->next;
+        p = p->prox;
     }
     return NULL;
 }
 
 Elemento *retiraL(Lista l, Elemento *val) {
-    Lista p = l->next;
+    Lista p = l->prox;
     if (p==NULL)
         return NULL;
-    l->next = p->next;
+    l->prox = p->prox;
     return p->val;
 }

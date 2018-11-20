@@ -1,44 +1,12 @@
-PARA RODAR:
-make && ./testes
-
-To Do:
--Animação (mesmo se nenhum elemento utiliza)
+-Animação glados
 -artigos pg 3
 -pg 4
--Letras podem ser apenas prints em vez de objetos?
--arrumar descrições/ artigos
--testes para cada ação
--testar objetos?
--função sair da sala?
--o que entregar 6 - verbo de salas?
-
-Doing:
--saida 2.2 - fechada
+-verificar senha
+-Gabriel func alimentar e ligar (eu fiz uma função procurarAtributo)
+-Gabriel "Não é possivel fazer oq?"
+-as portas do lobby não são as mesmas portas das salas
+-citar string.h
 -adicionar ação especifica de cada objeto de suas salas
--Apresentação do jogo (pg 13, 4.5)
 -relatório
--Criar estória
--criar objeto aventureiro
--Documentação
--Entregar (4.6 - parte 4)
--Mudar descricao de portas e chaves (para letras)
--inicialização (4.4)
-
-Done:
--divirta-se
--Descr longa: sala 4 : uma sala triangular? sério?
--Arrumar: Tudo é pegavel e largavel
--Descr longa: sala 3
--Makefile
--Ep1
--Aplicar a tabela de simbolos
--Imports corrigidos
--Entregar (4.6 - parte 2)
--Conectar testes e main1 no Makefile
--jogar tudo para tabela de simbolos
--Definir sala e senha do puzzle final = "SENHA"
--Arrumar testes.c (usar o initSalas.c [ou nao] e sala0)
--largar ??
--comandos default (pegar, examinar e largar)
--Unions com as saidas de cada sala
--função adicionar ação com realloc
+-Leonardo: Descreve sua sala no relatório (overleaf)
+-colocar() não funciona
