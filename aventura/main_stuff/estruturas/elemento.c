@@ -85,6 +85,7 @@ int pegar(Elemento *e1, Elemento *e2) {
 }
 
 int atrair(Elemento *e1, Elemento *e2) {
+    int atraiu = 0;
     if (e1 == NULL)
         printf("Atrair o quê?");
     else if (e2 == NULL)
@@ -97,6 +98,7 @@ int atrair(Elemento *e1, Elemento *e2) {
             }
             else {
                 printf("Você atraiu %s %s com %s %s magnetizado!", e1->artigo, e1->n, e2->artigo, e2->n);
+                atraiu = 1;
                 pegar(e1, NULL);
             }
         }
@@ -105,7 +107,7 @@ int atrair(Elemento *e1, Elemento *e2) {
         }
     }
 
-    return (e1 == NULL || e2 == NULL ? 0 : 1); 
+    return atraiu; 
 }
 
 int largar(Elemento *e1, Elemento *e2) {
@@ -191,7 +193,7 @@ int alimentar(Elemento *e1, Elemento *e2) {
         printf("Alimentar o quê?");
     else if (e2 == NULL)
         printf("Alimentar com o quê?");
-    else {
+    else if (strcmp(e2->n, "Saco") == 0){
         i = procurarAtributo(e1, "estaFaminta"); /* Acha estaFaminta */
         if (i == -1)
             printf("Você não pode alimentar a %s!", e1->n);
@@ -210,12 +212,14 @@ int alimentar(Elemento *e1, Elemento *e2) {
                 printf("Você já alimentou a %s!", e1->n);
         }
     }
+    else 
+        printf("Você não pode alimentar %s %s usando %s %s!", e1->artigo, e1->n, e2->artigo, e2->n);
 
     return alimentou;
 }
 
 int ligar(Elemento *e1, Elemento *e2) {
-    int i;
+    int i, ligou = 0;
 
     if (e1 == NULL)
         printf("Ligar o quê?");
@@ -228,6 +232,7 @@ int ligar(Elemento *e1, Elemento *e2) {
         else {
             if (e2->detalhe.atributos[i].valor.valor_estado == False) { 
                 e2->detalhe.atributos[i].valor.valor_estado = True;
+                ligou = 1;
                 printf("A %s ligou e agora o %s está magnetizado!", e1->n, e2->n);
             }
             else 
@@ -236,7 +241,7 @@ int ligar(Elemento *e1, Elemento *e2) {
     }
     else printf("Não é possível ligar a bobina com %s %s.", e2->artigo, e2->n);
 
-    return (e1 == NULL || e2 == NULL ? 0 : 1);
+    return ligou;
 }
 
 int trocarLugar(Elemento *e1, Elemento *e2) {
