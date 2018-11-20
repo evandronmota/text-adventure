@@ -3,6 +3,7 @@ typedef enum {
     False, True
 } boolean;
 
+
 /* Union para o tipo de atributo */
 typedef union {
     boolean valor_estado;
@@ -10,17 +11,20 @@ typedef union {
     char *valor_str;
 } atr_val;
 
+
 /* Atributos de um objeto */
 typedef struct {
     char *nome; /* Nome do atributo */
     atr_val valor;
 } obj_atr;
 
+
 /* Saídas */
 typedef struct {
     struct ele *saida;
     boolean esta_fechada;
 } saidas;
+
 
 /*
     Union para atributos específicos de sala
@@ -30,6 +34,7 @@ typedef union {
     obj_atr *atributos;
     saidas **saidas;
 } Info;
+
 
 /* Elemento */
 typedef struct ele {
@@ -55,12 +60,23 @@ typedef struct ele {
     Info detalhe;
 } Elemento;
 
+
+
+
+
+/* FUNÇÕES */
+
 /*
     Recebe um elemento. Imprime o nome do elemento
     recebido precedido de seu artigo.
 */
 void nome(Elemento e);
 
+
+
+
+
+/* VERBOS */
 
 /*
     Recebe dois ponteiros para elementos.
@@ -103,11 +119,12 @@ int quebrar(Elemento *e1, Elemento *e2);
 /*
     Recebe dois ponteiros para elementos.
     Imprime uma mensagem avisando que o primeiro
-    elemento foi colocado sobre o segundo.
+    elemento foi colocado no segundo.
     Retorna um inteiro indicando se a ação foi
     bem-sucedida.
 */
-int colocarSobre(Elemento *e1, Elemento *e2);
+int colocar(Elemento *e1, Elemento *e2);
+
 
 /*
     Recebe dois ponteiros para elementos.
@@ -118,6 +135,7 @@ int colocarSobre(Elemento *e1, Elemento *e2);
 */
 int alimentar(Elemento *e1, Elemento *e2);
 
+
 /*
     Recebe dois ponteiros para elementos.
     Imprime uma mensagem avisando que o primeiro
@@ -126,3 +144,10 @@ int alimentar(Elemento *e1, Elemento *e2);
     bem-sucedida.
 */
 int ligar(Elemento *e1, Elemento *e2);
+
+
+/*
+    Recebe um lugar.
+    Retorna se a troca de local foi bem-sucedida.
+*/
+int trocarLugar(Elemento *e1, Elemento *e2);

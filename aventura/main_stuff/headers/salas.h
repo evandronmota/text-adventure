@@ -1,6 +1,7 @@
 /* Ponteiro para as funções dos elementos */
 typedef int (*func)(Elemento *e1, Elemento *e2);
 
+
 /*
     Cria o salão principal do jogo com todos os elementos.
     Retorna a sala criada. 
@@ -41,3 +42,32 @@ Elemento criarSala4();
     Retorna a sala criada.
 */
 Elemento criarSala5();
+
+
+/*
+    Recebe um ponteiro para um elemento e uma função de
+    ação. Adiciona essa ação à lista de ações do elemento.
+*/
+void adicionarAcao(Elemento *e, func acao, int transitividade);
+
+
+/*
+    Recebe um ponteiro para um elemento e um atributo.
+    Adiciona esse atributo à lista de atributos do elemento.
+*/
+void adicionarAtributo(Elemento *e, obj_atr atributo);
+
+
+/* 
+    Recebe dois ponteiros para elementos.
+    Adiciona o segundo elemento à lista de conteúdos do
+    primeiro.
+*/
+void adicionarElemento(Elemento *e1, Elemento *destino);
+
+
+/*
+    Recebe um elemento e um atributo.
+    Retorna o índice do atributo, caso não ache retorna -1.
+*/
+int procurarAtributo(Elemento *e1, char *atributo);

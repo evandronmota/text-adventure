@@ -59,7 +59,7 @@ int retira(TabSim t, char *n) {
         return 0;
     Lista l = t->elementos[h];
 
-    Lista p = l->next;
+    Lista p = l->prox;
     while (p != NULL) {
         if (p->nome == n) {
             if (retiraL(l, el)==NULL) {
@@ -69,7 +69,7 @@ int retira(TabSim t, char *n) {
             return 1;
         }
         l = p;
-        p = p->next;
+        p = p->prox;
     }
 
     return 0;

@@ -5,7 +5,8 @@ typedef struct {
     Elemento *salaAtual;
 } Aventureiro;
 
-extern Aventureiro* heroi;
+extern Aventureiro *heroi;
+
 
 /* Cria aventureiro */
 void criarAventureiro();
@@ -25,8 +26,10 @@ int estaNaMochila(Elemento *e);
     Coloca esse elemento na mochila do
     aventureiro, retirando-o da sala em que ele
     está.
+    Retorna um inteiro indicando se a ação foi
+    bem-sucedida.
 */
-void adicionarNaMochila(Elemento *e);
+int adicionarNaMochila(Elemento *e);
 
 
 /*
@@ -34,5 +37,7 @@ void adicionarNaMochila(Elemento *e);
     Retira esse elemento da mochila do
     aventureiro e o deixa na sala em que ele
     está.
+    Retorna um inteiro indicando se a ação foi
+    bem-sucedida.
 */
-void tirarDaMochila(Elemento *e);
+int tirarDaMochila(Elemento *e);
