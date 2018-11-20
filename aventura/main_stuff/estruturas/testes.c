@@ -150,14 +150,6 @@ void testarSala(Elemento *sala, int num, boolean flag) {
             printf("\n");
         }
     }
-    
-    if (strcmp(sala->n,"Lobby") == 0) {
-        printf(BOLDBLUE"\nANIMAÇÃO da sala:\n"RESET);
-        printf(BOLDWHITE "SENHA INCORRETA:" RESET);
-        tentar("");
-        printf(BOLDWHITE "SENHA CORRETA:" RESET);
-        tentar("SENHA");
-    }
 
     if (flag)
         printf("\n");

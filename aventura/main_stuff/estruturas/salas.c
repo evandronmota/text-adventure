@@ -471,6 +471,7 @@ Elemento criarSala3() {
 
     ovo.visivel = False; /* Não é visível */
 
+
     func quebrarOvo = quebrar, atrairOvo = atrair;
 
     adicionarAtributo(&ovo, estaQuebrado);
