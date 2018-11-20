@@ -80,6 +80,14 @@ void nome(Elemento e);
 int procurarAtributo(Elemento *e1, char *atributo);
 
 
+/*
+    Recebe um elemento. Testa se a string key 
+    corresponde a senha correta.
+*/
+void tentar(char *key);
+
+
+
 
 /* VERBOS */
 

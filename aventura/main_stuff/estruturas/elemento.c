@@ -19,6 +19,18 @@ int procurarAtributo(Elemento *e1, char *atributo) {
     return -1;
 }
 
+void tentar(char *key) {
+    if (key == NULL)
+        printf("Ei humano. Nós do Science Computer-Aided Enrichment Center nós preocupamos muito com o bem estar dos participantes. Nós lhe daremos uma grande fatia de bolo quando me disser a senha correta :)\n");
+    else if (strcmp("SENHA",key) == 0){
+        printf("Não é que nós nos divertimos juntos? Gostaria de dizer que estou prestes a abrir um alçapão em baixo de você que o jogaria em um poço de lava, mas parece que eu não fui permitida. Então esse é apenas um simples adeus. Espero que tenha aproveitada o sonho. \n\nTudo fica escuro. Você acorda em cima dos livros e lembra que ainda não entregou o EP... \n\n");
+        // FIM DE JOGO ?
+    }
+    else
+        printf("Parece que você não sabe a senha...\n");
+
+}
+
 int examinar(Elemento *e1, Elemento *e2) {
     if (e1 == NULL)
         printf("Examinar o quê?");

@@ -14,6 +14,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "../headers/introducao.h"
 #include "../headers/elemento.h"
 #include "../headers/aventureiro.h"
@@ -76,7 +77,7 @@ void insereObjnaTabela(TabSim tabela, char *nome, Elemento *sala) {
 }
 
 /* Testa salas */
-void testarSala(Elemento *sala, int num, boolean flag, TabSim tabela, char *name) {
+void testarSala(Elemento *sala, int num, boolean flag) {
     int i, j, ok;
 
     printf(CYAN "********************************\tTESTE: " BOLDWHITE "SALA %d" RESET CYAN "\t\t********************************\n" RESET, num);
@@ -93,10 +94,6 @@ void testarSala(Elemento *sala, int num, boolean flag, TabSim tabela, char *name
     else printf(BOLDBLUE "Descrição CURTA da sala:\n" RESET);
     examinar(sala, NULL);
     printf("\n");
-
-    /* Insere todos objetos da sala na tabela */
-    if (flag)
-        insereObjnaTabela(tabela, name, sala);
 
     if (flag)
         printf(BOLDBLUE "\nLista de OBJETOS da sala:\n" RESET);
@@ -144,6 +141,14 @@ void testarSala(Elemento *sala, int num, boolean flag, TabSim tabela, char *name
             }
             printf("\n");
         }
+    }
+    
+    if (strcmp(sala->n,"Lobby") == 0) {
+        printf(BOLDBLUE"\nANIMAÇÃO da sala:\n"RESET);
+        printf(BOLDWHITE "SENHA INCORRETA:" RESET);
+        tentar("");
+        printf(BOLDWHITE "SENHA CORRETA:" RESET);
+        tentar("SENHA");
     }
 
     if (flag)
@@ -295,20 +300,26 @@ int main() {
     criarAventureiro(salas[0]);
 
     boolean flag = True; /* Flag de auxílio */
-    int i=0;
+    int i;
+
+    /* Insere todos objetos da sala na tabela */
+    /* Os nomes são dos elementos na tabela de símbolos */
+    for (i=0; i<6; i++)
+        insereObjnaTabela(tab, salas[i].n, &salas[i]);
+
+    i=0;
 
     /* Testes */
     while (True) {
         printf("______________________________________________________________________________________________________________________________\n\n\n\n");
         printf(BOLDWHITE "TESTE DE SALAS - COMANDO: %d\n\n\n" RESET, i++);
 
-        /* Os nomes são dos elementos na tabela de símbolos */
-        testarSala(&salas[0], 0, flag, tab, "Lobby");
-        testarSala(&salas[1], 1, flag, tab, "Fibonacci");
-        testarSala(&salas[2], 2, flag, tab, "Morse");
-        testarSala(&salas[3], 3, flag, tab, "Galinha");
-        testarSala(&salas[4], 4, flag, tab, "Pascal");
-        testarSala(&salas[5], 5, flag, tab, "NePAl");
+        testarSala(&salas[0], 0, flag);
+        testarSala(&salas[1], 1, flag);
+        testarSala(&salas[2], 2, flag);
+        testarSala(&salas[3], 3, flag);
+        testarSala(&salas[4], 4, flag);
+        testarSala(&salas[5], 5, flag);
 
         flag = False;
 

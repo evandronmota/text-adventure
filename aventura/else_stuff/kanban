@@ -8,7 +8,7 @@
 -citar string.h
 -adicionar ação especifica de cada objeto de suas salas
 -relatório
+-colocar() não funciona
 -pra arrumar as portas, vai precisar trocar a lista de
  elementos (conteudo) pra uma lista de ponteiros de elementos
  e vai crashar tudo.
-
