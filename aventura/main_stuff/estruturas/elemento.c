@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "../headers/elemento.h"
+#include "../headers/salas.h"
 #include "../headers/aventureiro.h"
 
 /* FUNÇÕES */

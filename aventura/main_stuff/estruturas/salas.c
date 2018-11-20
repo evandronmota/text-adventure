@@ -501,6 +501,8 @@ Elemento criarSala3() {
         "Uma galinha branca.",
         "Uma galinha grande com penas brancas.", conteudoGalinha, 1);
 
+    galinha.detalhe.atributos[0].valor.valor_estado = False; /* Não é pegável */
+
     adicionarAtributo(&galinha, estaFaminta);
     adicionarAcao(&galinha, alimentarGalinha, 2);
 
@@ -513,6 +515,8 @@ Elemento criarSala3() {
     criarElemento(True, "uma", "Gaiola",
         "Uma gaiola dourada.",
         "Uma grande gaiola dourada. Há uma galinha presa nela? ...", conteudoGaiola, 1);
+
+    gaiola.detalhe.atributos[0].valor.valor_estado = False; /* Não é pegável */
 
     obj_atr estaMagnetizado;
     estaMagnetizado.nome = "estaMagnetizado";
@@ -534,6 +538,8 @@ Elemento criarSala3() {
     criarElemento(True, "uma", "Bobina",
         "Uma grande bobina elétrica.",
         "Uma grande bobina elétrica. No um fio rompido e na lateral um botão vermelho.", NULL, 0);
+
+    bobina.detalhe.atributos[0].valor.valor_estado = False; /* Não é pegável */
     
     adicionarAcao(&bobina, ligarBobina, 2);
 
