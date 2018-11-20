@@ -177,7 +177,6 @@ Elemento criarSala0() {
 
     adicionarAcao(&GLaDOS, tentativaGLaDOS, 3); /* Caso específico em que os argumentos do verbo são diferentes */
 
-
     /* Sala 0 */
     Elemento *conteudoS0 = malloc(6 * sizeof(Elemento));
     conteudoS0[0] = porta1;
@@ -270,7 +269,7 @@ Elemento criarSala1() {
     /* Relógio */
     Elemento relogio =
     criarElemento(True, "um","Relógio",
-        "Relógio quebrado sem um dos ponteiros.",
+        "São 8h e ... ?",
         "Relógio sem o ponteiro dos minutos e com o ponteiro das horas apontando para o VIII.", NULL, 0);
 
     obj_atr senha;
@@ -501,6 +500,8 @@ Elemento criarSala3() {
         "Uma galinha branca.",
         "Uma galinha grande com penas brancas.", conteudoGalinha, 1);
 
+    galinha.detalhe.atributos[0].valor.valor_estado = False; /* Não é pegável */
+
     adicionarAtributo(&galinha, estaFaminta);
     adicionarAcao(&galinha, alimentarGalinha, 2);
 
@@ -513,6 +514,8 @@ Elemento criarSala3() {
     criarElemento(True, "uma", "Gaiola",
         "Uma gaiola dourada.",
         "Uma grande gaiola dourada. Há uma galinha presa nela? ...", conteudoGaiola, 1);
+
+    gaiola.detalhe.atributos[0].valor.valor_estado = False; /* Não é pegável */
 
     obj_atr estaMagnetizado;
     estaMagnetizado.nome = "estaMagnetizado";
@@ -534,6 +537,8 @@ Elemento criarSala3() {
     criarElemento(True, "uma", "Bobina",
         "Uma grande bobina elétrica.",
         "Uma grande bobina elétrica. No um fio rompido e na lateral um botão vermelho.", NULL, 0);
+
+    bobina.detalhe.atributos[0].valor.valor_estado = False; /* Não é pegável */
     
     adicionarAcao(&bobina, ligarBobina, 2);
 

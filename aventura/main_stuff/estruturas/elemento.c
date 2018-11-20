@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "../headers/elemento.h"
+#include "../headers/salas.h"
 #include "../headers/aventureiro.h"
 
 /* FUNÇÕES */
@@ -102,9 +103,8 @@ int atrair(Elemento *e1, Elemento *e2) {
                 pegar(e1, NULL);
             }
         }
-        else {
+        else
             printf("Você não pode atrair %s %s usando %s %s!", e1->artigo, e1->n, e2->artigo, e2->n);
-        }
     }
 
     return atraiu; 
@@ -158,20 +158,17 @@ int quebrar(Elemento *e1, Elemento *e2) {
             printf("Você já quebrou %s %s!", e1->artigo, e1->n);
     }
 
-
-
     return quebrou;
 }
 
 int colocar(Elemento *e1, Elemento *e2) {
     int i;
-
     if (e1 == NULL)
         printf("Colocar o quê?");
     else if (e2 == NULL)
         printf("Colocar onde?");
     else {
-        if (e1 != e2) {
+        if (strcmp(e1->n, e2->n) != 0) {
             printf("Você colocou %s %s n%s %s.", e1->artigo, e1->n, e2->artigo, e2->n);
             i = procurarAtributo(e1, "estaNaBalanca");
             if (i != -1)
