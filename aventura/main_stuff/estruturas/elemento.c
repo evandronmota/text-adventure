@@ -4,6 +4,8 @@
 #include "../headers/elemento.h"
 #include "../headers/aventureiro.h"
 
+/* FUNÇÕES */
+
 void nome(Elemento e) {
     /* Primeira letra do artigo vira maiúsculo */
     printf("%c%c%c %s.\n", e.artigo[0]-32, e.artigo[1], e.artigo[2], e.n);
@@ -21,15 +23,25 @@ int procurarAtributo(Elemento *e1, char *atributo) {
 
 void tentar(char *key) {
     if (key == NULL)
-        printf("Ei humano. Nós do Science Computer-Aided Enrichment Center nós preocupamos muito com o bem estar dos participantes. Nós lhe daremos uma grande fatia de bolo quando me disser a senha correta :)\n");
-    else if (strcmp("SENHA",key) == 0){
-        printf("Não é que nós nos divertimos juntos? Gostaria de dizer que estou prestes a abrir um alçapão em baixo de você que o jogaria em um poço de lava, mas parece que eu não fui permitida. Então esse é apenas um simples adeus. Espero que tenha aproveitada o sonho. \n\nTudo fica escuro. Você acorda em cima dos livros e lembra que ainda não entregou o EP... \n\n");
-        // FIM DE JOGO ?
+        printf("Ei humano. Nós do Science Computer-Aided Enrichment Center nos preocupamos muito com o bem estar dos participantes. Nós lhe daremos uma grande fatia de bolo quando me disser a senha correta :)\n");
+    else if (!strcmp("HNESA", key))
+        printf("que coisa!! \n");
+    else if (!strcmp("SENHA", key)) {
+        printf("Não é que nós nos divertimos juntos? Gostaria de dizer que estou prestes a abrir um alçapão em baixo de você que o jogaria em um poço de lava, mas parece que eu não fui permitida. Então esse é apenas um simples adeus. Espero que tenha aproveitada o sonho. \n\nTudo fica escuro. Você acorda em cima dos livros e lembra que ainda não entregou o EP ... \n\n");
+        /* FIM DE JOGO !? */
+        // exit(0);
     }
     else
-        printf("Parece que você não sabe a senha...\n");
-
+        printf("Parece que você não sabe a senha ...\n");
 }
+
+
+
+
+
+
+
+/* VERBOS */
 
 int examinar(Elemento *e1, Elemento *e2) {
     if (e1 == NULL)
@@ -56,7 +68,7 @@ int pegar(Elemento *e1, Elemento *e2) {
             if (adicionarNaMochila(e1))
                 pegou = 1;
             else
-                printf("Erro ao adicionar %s %s na mochila!\n", e1->artigo, e1->n);
+                printf("Erro ao adicionar %s %s na mochila!", e1->artigo, e1->n);
         }
         else if (x) /* Se já foi pego */
             printf("Você já pegou %s %s!", e1->artigo, e1->n);
@@ -79,7 +91,7 @@ int largar(Elemento *e1, Elemento *e2) {
             largou = 1;
         }
         else
-            printf("Erro ao tirar %s %s da mochila!\n", e1->artigo, e1->n);
+            printf("Erro ao tirar %s %s da mochila!", e1->artigo, e1->n);
     }
 
     else /* Senão está na mochila */
@@ -118,14 +130,17 @@ int quebrar(Elemento *e1, Elemento *e2) {
 }
 
 int colocar(Elemento *e1, Elemento *e2) {
+    int i;
+
     if (e1 == NULL)
         printf("Colocar o quê?");
     else if (e2 == NULL)
         printf("Colocar onde?");
     else {
         printf("Você colocou %s %s n%s %s.", e1->artigo, e1->n, e2->artigo, e2->n);
-        int i = procurarAtributo(e1, "estaNaBalanca");
-        e1->detalhe.atributos[i].valor.valor_estado = True;
+        i = procurarAtributo(e1, "estaNaBalanca");
+        if (i != -1)
+            e1->detalhe.atributos[i].valor.valor_estado = True;
         //adicionarElemento(e1, e2);
     }
 
@@ -133,40 +148,43 @@ int colocar(Elemento *e1, Elemento *e2) {
 }
 
 int alimentar(Elemento *e1, Elemento *e2) {
+    int i, alimentou=0;
+
     if (e1 == NULL)
         printf("Alimentar o quê?");
     else if (e2 == NULL)
         printf("Alimentar com o quê?");
     else {
-        int i;
-        for (i=0; i<e1->nAtr; i++) { /* Procura atributo */
-            if (strcmp(e1->detalhe.atributos[i].nome, "estaFaminta")==0) { /* Acha estaFaminta */
-                if (e1->detalhe.atributos[i].valor.valor_estado == True) { /* Senão está quebrada */
-                    e1->detalhe.atributos[i].valor.valor_estado = False;
-                    printf("A %s botou um ovo prateado!", e1->n);
-                    for (i=0; i<e1->nEle; i++)
-                        if (strcmp(e1->conteudo[i].n, "Ovo")){
-                            e1->conteudo[i].visivel = True;
-                            break;
-                        }
-                }
-                else /* Se está alimentada */
-                    printf("Você já alimentou a %s!", e1->n);
-                break;
+        i = procurarAtributo(e1, "estaFaminta"); /* Acha estaFaminta */
+        if (i == -1)
+            printf("Você não pode alimentar a %s!", e1->n);
+        else {
+            if (e1->detalhe.atributos[i].valor.valor_estado == True) { /* Senão está quebrada */
+                e1->detalhe.atributos[i].valor.valor_estado = False;
+                alimentou = 1;
+                printf("A %s botou um ovo prateado!", e1->n);
+                for (i=0; i<e1->nEle; i++)
+                    if (strcmp(e1->conteudo[i].n, "Ovo")) {
+                        e1->conteudo[i].visivel = True;
+                        break;
+                    }
             }
+            else /* Se está alimentada */
+                printf("Você já alimentou a %s!", e1->n);
         }
     }
 
-    return (e1 == NULL || e2 == NULL ? 0 : 1);
+    return alimentou;
 }
 
 int ligar(Elemento *e1, Elemento *e2) {
+    int i;
+
     if (e1 == NULL)
         printf("Ligar o quê?");
     else if (e2 == NULL) 
         printf("Parece que a bobina não liga com o fio rompido.");
-    else if (strcmp(e2->n, "Metal") == 0) {
-        int i;
+    else if (!strcmp(e2->n, "Metal")) {
         for (i=0; i<e2->nAtr; i++) { /* Procura atributo */
             if (strcmp(e1->detalhe.atributos[i].nome, "estaMagnetizado")==0) { 
                 if (e1->detalhe.atributos[i].valor.valor_estado == False) { /* Senão está quebrada */

@@ -89,6 +89,8 @@ void tentar(char *key);
 
 
 
+
+
 /* VERBOS */
 
 /*

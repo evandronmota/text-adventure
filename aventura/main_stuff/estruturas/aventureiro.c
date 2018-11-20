@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 #include "../headers/elemento.h"
 #include "../headers/aventureiro.h"
 
@@ -33,7 +34,7 @@ int adicionarNaMochila(Elemento *e) {
     /* Pega o último elemento da sala atual e coloca no lugar do elemento adicionado na mochila */
     int i;
     for (i=0; i<heroi->salaAtual->nEle; i++) {
-        if (heroi->salaAtual->conteudo[i].n == e->n) {
+        if (!strcmp(heroi->salaAtual->conteudo[i].n, e->n)) {
             *copia = heroi->salaAtual->conteudo[i];
             heroi->mochila[heroi->nMochila - 1] = copia;
             heroi->salaAtual->conteudo[i] = heroi->salaAtual->conteudo[heroi->salaAtual->nEle - 1];
@@ -50,7 +51,7 @@ int tirarDaMochila(Elemento *e) {
     int i;
 
     for (i=0; i<heroi->nMochila; i++)
-        if (heroi->mochila[i]->n == e->n) {
+        if (!strcmp(heroi->mochila[i]->n, e->n)) {
             /* Adiciona elemento na sala */
             *copia = *e;
             heroi->salaAtual->nEle++;

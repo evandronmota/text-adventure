@@ -152,11 +152,14 @@ Elemento criarSala0() {
     /* GLaDOS */
     Elemento GLaDOS =
     criarElemento(True, "um", "Robô",
-        "Um robô com voz feminina.",
+        "Um robô com voz feminina fala com você: \n \
+        \t\"Olá, seja bem-vindo ao Aperture Science Computer-Aided Enrichment Center. Você poderia me dizer a senha?\"",
         "Um robô com voz feminina fala com você: \n \
         \t\"Olá, seja bem-vindo ao Aperture Science Computer-Aided Enrichment Center. Você poderia me dizer a senha?\"", NULL, 0);
 
     GLaDOS.detalhe.atributos[0].valor.valor_estado = False; /* Não é pegável */
+    GLaDOS.animacao = malloc(sizeof(func));
+    GLaDOS.animacao = GLaDOS.acoes[0];
 
 
     /* Sala 0 */

@@ -137,18 +137,13 @@ void testarSala(Elemento *sala, int num, boolean flag) {
                 }
                 else /* Só para testar (transitividade 2 é nele mesmo) */
                     printf(" %s\n", (((func)obj->acoes[j])(obj, obj)) ? OK : FAIL);
-                /* Animação */
+            }
+            if (obj->animacao != NULL) {
+                printf(BOLDWHITE "ANIMAÇÃO:\t" RESET);
+                printf(" %s\n", (((func)obj->animacao)(obj, NULL) ? OK : FAIL));
             }
             printf("\n");
         }
-    }
-    
-    if (strcmp(sala->n,"Lobby") == 0) {
-        printf(BOLDBLUE"\nANIMAÇÃO da sala:\n"RESET);
-        printf(BOLDWHITE "SENHA INCORRETA:" RESET);
-        tentar("");
-        printf(BOLDWHITE "SENHA CORRETA:" RESET);
-        tentar("SENHA");
     }
 
     if (flag)
@@ -192,11 +187,21 @@ void testarSala(Elemento *sala, int num, boolean flag) {
                     printf(" %s\n", (((func)obj->acoes[j])(obj, NULL)) ? OK : FAIL);
                 else /* Só para testar (transitividade 2 é nele mesmo) */
                     printf(" %s\n", (((func)obj->acoes[j])(obj, obj)) ? OK : FAIL);
-                /* Animação */
+            }
+            if (obj->animacao != NULL) {
+                printf(BOLDWHITE "ANIMAÇÃO:\t" RESET);
+                printf(" %s\n", (((func)obj->animacao)(obj, NULL) ? OK : FAIL));
             }
             printf("\n");
         }
     }
+
+    // if (!strcmp(sala->n,"Lobby")) {
+    //     printf(BOLDWHITE "SENHA INCORRETA:\t" RESET);
+    //     tentar("");
+    //     printf(BOLDWHITE "SENHA CORRETA:\t\t" RESET);
+    //     tentar("SENHA");
+    // }
 
     printf("\n\n\n");
 }
@@ -303,7 +308,6 @@ int main() {
     int i;
 
     /* Insere todos objetos da sala na tabela */
-    /* Os nomes são dos elementos na tabela de símbolos */
     for (i=0; i<6; i++)
         insereObjnaTabela(tab, salas[i].n, &salas[i]);
 
