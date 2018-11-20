@@ -21,18 +21,23 @@ int procurarAtributo(Elemento *e1, char *atributo) {
     return -1;
 }
 
-void tentar(char *key) {
+int tentarGLaDOS(char *key) {
+    int acertou = 0;
+
     if (key == NULL)
-        printf("Ei humano. Nós do Science Computer-Aided Enrichment Center nos preocupamos muito com o bem estar dos participantes. Nós lhe daremos uma grande fatia de bolo quando me disser a senha correta :)\n");
+        printf("Ei humano. Nós do Science Computer-Aided Enrichment Center nos preocupamos muito com o bem estar dos participantes. Nós lhe daremos uma grande fatia de bolo quando me disser a senha correta :)");
     else if (!strcmp("HNESA", key))
-        printf("que coisa!! \n");
+        printf("que coisa!! ");
     else if (!strcmp("SENHA", key)) {
-        printf("Não é que nós nos divertimos juntos? Gostaria de dizer que estou prestes a abrir um alçapão em baixo de você que o jogaria em um poço de lava, mas parece que eu não fui permitida. Então esse é apenas um simples adeus. Espero que tenha aproveitada o sonho. \n\nTudo fica escuro. Você acorda em cima dos livros e lembra que ainda não entregou o EP ... \n\n");
+        printf("Não é que nós nos divertimos juntos? Gostaria de dizer que estou prestes a abrir um alçapão em baixo de você que o jogaria em um poço de lava, mas parece que eu não fui permitida. Então esse é apenas um simples adeus. Espero que tenha aproveitada o sonho. \n\nTudo fica escuro. Você acorda em cima dos livros e lembra que ainda não entregou o EP ... ");
+        acertou = 1;
         /* FIM DE JOGO !? */
         // exit(0);
     }
     else
-        printf("Parece que você não sabe a senha ...\n");
+        printf("Parece que você não sabe a senha ...");
+
+    return acertou;
 }
 
 
@@ -137,10 +142,13 @@ int quebrar(Elemento *e1, Elemento *e2) {
         else if (!e1->detalhe.atributos[i].valor.valor_estado) { /* Senão está quebrada */
             quebrou = 1;
             e1->detalhe.atributos[i].valor.valor_estado = True;
-            printf("Você quebrou %s %s!", e1->artigo, e1->n);
-            if (!strcmp(e1->n, "Concha")) {
+            printf("Você quebrou %s %s! ", e1->artigo, e1->n);
+            if (e1->conteudo == NULL)
+                printf("%c%c%c %s está vazio!", e1->artigo[0]-32, e1->artigo[1], e1->artigo[2], e1->n);
+            else {
                 /* Torna mensagem com letra vísivel */
                 e1->conteudo->visivel = True;
+                printf("%s", e1->conteudo[0].curta);
                 e1->nEle--;
             }
         }
@@ -235,4 +243,36 @@ int trocarLugar(Elemento *e1, Elemento *e2) {
     }
 
     return (e1 == NULL ? 0 : 1);
+}
+
+int tentarSenha(Elemento *e, char *senha) {
+    int i, acertou=0;
+
+    if (e == NULL)
+        printf("Você esqueceu de escrever a senha ...");
+    else {
+        if (!strcmp(e->n, "Robô")) { /* Caso especial da senha principal */
+            if (tentarGLaDOS(senha))
+                acertou = 1;
+        }
+        else {
+            i = procurarAtributo(e, "senha");
+            if (i == -1)
+                printf("%s %s não possui uma senha!", e->artigo, e->n);
+            else {
+                if (!strcmp(e->detalhe.atributos[i].valor.valor_str, senha)) {
+                    printf("A senha \"%s\" está correta! ", senha);
+                    for (i=0; i<heroi->salaAtual->nEle; i++)
+                        if (!strcmp(heroi->salaAtual->conteudo[i].n, "Letra")) {
+                            heroi->salaAtual->conteudo[i].visivel = True;
+                            examinar(&heroi->salaAtual->conteudo[i], NULL);
+                        }
+                    acertou = 1;
+                }
+                else printf("A senha \"%s\" está incorreta!", senha);
+            }
+        }
+    }
+
+    return acertou;
 }
