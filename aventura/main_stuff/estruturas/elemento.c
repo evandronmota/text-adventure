@@ -7,12 +7,16 @@ void nome(Elemento e) {
     printf("%c%c%c %s.\n", e.artigo[0]-32, e.artigo[1], e.artigo[2], e.n);
 }
 
-int tentar(Elemento *e1, char *key) {
-    if (key == NULL){}
-    else if (strcmp("Robô", e1->n) == 0) {
-        if (strcmp("SENHA",key) == 0)
-            printf("Não é que nós nos divertimos juntos? Gostaria de dizer que estou prestes a abrir um alçapão em baixo de você que o jogaria em um poço de lava, mas parece que eu não fui permitida. Então esse é apenas um simples adeus. Espero que tenha aproveitada o sonho. \n\n Tudo fica escuro. Você acorda em cima dos livros e lembra que ainda não entregou o EP... \n");
+void tentar(char *key) {
+    if (key == NULL)
+        printf("Ei humano. Nós do Science Computer-Aided Enrichment Center nós preocupamos muito com o bem estar dos participantes. Nós lhe daremos uma grande fatia de bolo quando me disser a senha correta :)\n");
+    else if (strcmp("SENHA",key) == 0){
+        printf("Não é que nós nos divertimos juntos? Gostaria de dizer que estou prestes a abrir um alçapão em baixo de você que o jogaria em um poço de lava, mas parece que eu não fui permitida. Então esse é apenas um simples adeus. Espero que tenha aproveitada o sonho. \n\nTudo fica escuro. Você acorda em cima dos livros e lembra que ainda não entregou o EP... \n\n");
+        // FIM DE JOGO ?
     }
+    else
+        printf("Parece que você não sabe a senha...\n");
+
 }
 
 int examinar(Elemento *e1, Elemento *e2) {
@@ -143,7 +147,7 @@ int ligar(Elemento *e1, Elemento *e2) {
                     printf("A %s ligou e agora o %s está magnetizado!\n", e1->n, e2->n);
                 }
                 else 
-                    printf("A %s já está ligada e o %s magnetizado. %s!\n", e1->n);
+                    printf("A %s já está ligada e o %s magnetizado!\n", e1->n, e2->n);
                 break;
             }
         }

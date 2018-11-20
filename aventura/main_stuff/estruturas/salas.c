@@ -175,7 +175,7 @@ Elemento criarSala0() {
         "Um robô com voz feminina fala com você: \
         \n \"Olá, seja bem-vindo ao Aperture Science Computer-Aided Enrichment Center. Você poderia me dizer a senha?\"",
         False, False, NULL, 0,
-        NULL);
+        (&tentar));
 
 
     /* Sala 0 */

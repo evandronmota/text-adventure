@@ -12,6 +12,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "../headers/introducao.h"
 #include "../headers/elemento.h"
 #include "../headers/aventureiro.h"
@@ -117,6 +118,14 @@ void testarSala(Elemento *sala, int num, boolean flag, TabSim tabela, char *name
             }
             printf("\n");
         }
+    }
+    
+    if (strcmp(sala->n,"Lobby") == 0) {
+        printf(BOLDBLUE"\nANIMAÇÃO da sala:\n"RESET);
+        printf(BOLDWHITE "SENHA INCORRETA:" RESET);
+        tentar("");
+        printf(BOLDWHITE "SENHA CORRETA:" RESET);
+        tentar("SENHA");
     }
 
     printf("\n\n");
