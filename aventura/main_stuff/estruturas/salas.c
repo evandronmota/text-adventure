@@ -161,6 +161,15 @@ Elemento criarSala0() {
     GLaDOS.animacao = malloc(sizeof(func));
     GLaDOS.animacao = GLaDOS.acoes[0];
 
+    obj_atr senha;
+    senha.nome = "senha";
+    senha.valor.valor_str = "SENHA";
+    adicionarAtributo(&GLaDOS, senha);
+
+    func tentativaGLaDOS = tentarSenha;
+
+    adicionarAcao(&GLaDOS, tentativaGLaDOS, 3); /* Caso específico em que os argumentos do verbo são diferentes */
+
 
     /* Sala 0 */
     Elemento *conteudoS0 = malloc(6 * sizeof(Elemento));
@@ -204,7 +213,7 @@ Elemento criarSala1() {
     Elemento letra =
     criarElemento(True, "uma","Letra",
         "A letra é \"H\"!",
-        "A letra é \"H\"!",
+        "Quebre a concha!",
         NULL, 0);
 
     letra.visivel = False; /* Não é visível */
@@ -256,6 +265,15 @@ Elemento criarSala1() {
     criarElemento(True, "um","Relógio",
         "Relógio quebrado sem um dos ponteiros.",
         "Relógio sem o ponteiro dos minutos e com o ponteiro das horas apontando para o VIII.", NULL, 0);
+
+    obj_atr senha;
+    senha.nome = "senha";
+    senha.valor.valor_str = "13";
+    adicionarAtributo(&relogio, senha);
+
+    func tentativaRelogio = tentarSenha;
+
+    adicionarAcao(&relogio, tentativaRelogio, 3); /* Caso específico em que os argumentos do verbo são diferentes */
 
 
     /* Sala 1 */
@@ -344,6 +362,14 @@ Elemento criarSala2() {
 
     adicionarElemento(&pagina, &livro);
 
+    obj_atr senha;
+    senha.nome = "senha";
+    senha.valor.valor_str = "2094530789280";
+    adicionarAtributo(&livro, senha);
+
+    func tentativaLivro = tentarSenha;
+    adicionarAcao(&livro, tentativaLivro, 3); /* Caso específico em que os argumentos do verbo são diferentes */
+
 
     /* Letra */
     Elemento letra =
@@ -364,7 +390,16 @@ Elemento criarSala2() {
 
     adicionarElemento(&letra, &cofre);
 
+    obj_atr senha2;
+    senha2.nome = "senha";
+    senha2.valor.valor_str = "IMPOSSIVELDEDESCOBRIR";
+    adicionarAtributo(&cofre, senha2);
+
+    func tentativaCofre = tentarSenha;
+    adicionarAcao(&cofre, tentativaCofre, 3); /* Caso específico em que os argumentos do verbo são diferentes */
+
     cofre.detalhe.atributos[0].valor.valor_estado = False; /* Não é pegável */
+
 
 
     /* Sala 2 */
@@ -686,6 +721,16 @@ Elemento criarSala5() {
     criarElemento(True, "um", "Mapa",
         "Qual país está faltando?",
         "Um mapa do mundo faltando um país.", NULL, 0);
+
+
+    obj_atr senha;
+    senha.nome = "senha";
+    senha.valor.valor_str = "Nepal";
+    adicionarAtributo(&mapa, senha);
+
+    func tentativaMapa = tentarSenha;
+
+    adicionarAcao(&mapa, tentativaMapa, 3); /* Caso específico em que os argumentos do verbo são diferentes */
 
 
     /* Poster */
