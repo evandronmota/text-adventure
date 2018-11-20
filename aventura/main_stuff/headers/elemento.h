@@ -55,6 +55,7 @@ typedef struct ele {
         0 = intransitivo
         1 = transitivo
         2 = bitransitivo
+        3 = caso específico para tentarSenha (possui elemento e string como parâmetros)
     */
     void *animacao;
     Info detalhe;
@@ -83,8 +84,10 @@ int procurarAtributo(Elemento *e1, char *atributo);
 /*
     Recebe um elemento. Testa se a string key 
     corresponde a senha correta.
+    Retorna um inteiro indicando se a ação foi
+    bem-sucedida.
 */
-void tentar(char *key);
+int tentarGLaDOS(char *key);
 
 
 
@@ -163,6 +166,16 @@ int ligar(Elemento *e1, Elemento *e2);
 
 /*
     Recebe um lugar.
-    Retorna se a troca de local foi bem-sucedida.
+    Retorna um inteiro indicando se a ação foi
+    bem-sucedida.
 */
 int trocarLugar(Elemento *e1, Elemento *e2);
+
+/*
+    Caso específico de verbo.
+    Recebe um elemento e uma senha,
+    verifica se a senha do elemento é igual a senha.
+    Retorna um inteiro indicando se a ação foi
+    bem-sucedida.
+*/
+int tentarSenha(Elemento *e, char *senha);

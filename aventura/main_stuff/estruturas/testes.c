@@ -78,7 +78,8 @@ void insereObjnaTabela(TabSim tabela, char *nome, Elemento *sala) {
 
 /* Testa salas */
 void testarSala(Elemento *sala, int num, boolean flag) {
-    int i, j, ok;
+    int i, j, ok, r;
+    char *senhas[5] = {"13", "2094530789280", "Nepal", "SENHA", "HNESA"};
 
     printf(CYAN "********************************\tTESTE: " BOLDWHITE "SALA %d" RESET CYAN "\t\t********************************\n" RESET, num);
 
@@ -135,8 +136,12 @@ void testarSala(Elemento *sala, int num, boolean flag) {
                     if (ok)
                         j++;
                 }
-                else /* Só para testar (transitividade 2 é nele mesmo) */
+                else if (obj->transitividade[j] == 2) /* Só para testar (transitividade 2 é nele mesmo) */
                     printf(" %s\n", (((func)obj->acoes[j])(obj, obj)) ? OK : FAIL);
+                else {/* Caso específico da senha */
+                    r = rand() % 5; /* Sorteia senha */
+                    printf(" %s\n", (((func)obj->acoes[j])(obj, senhas[r])) ? OK : FAIL);
+                }
             }
             if (obj->animacao != NULL) {
                 printf(BOLDWHITE "ANIMAÇÃO:\t" RESET);
@@ -185,8 +190,12 @@ void testarSala(Elemento *sala, int num, boolean flag) {
                     printf(" %s\n", (((func)obj->acoes[j])(NULL, NULL)) ? OK : FAIL);
                 else if (obj->transitividade[j] == 1) /* Transitividade = 1 */
                     printf(" %s\n", (((func)obj->acoes[j])(obj, NULL)) ? OK : FAIL);
-                else /* Só para testar (transitividade 2 é nele mesmo) */
+                else if (obj->transitividade[j] == 2) /* Só para testar (transitividade 2 é nele mesmo) */
                     printf(" %s\n", (((func)obj->acoes[j])(obj, obj)) ? OK : FAIL);
+                else {/* Caso específico da senha */
+                    r = rand() % 5; /* Sorteia senha */
+                    printf(" %s\n", (((func)obj->acoes[j])(obj, senhas[r])) ? OK : FAIL);
+                }
             }
             if (obj->animacao != NULL) {
                 printf(BOLDWHITE "ANIMAÇÃO:\t" RESET);
@@ -195,13 +204,6 @@ void testarSala(Elemento *sala, int num, boolean flag) {
             printf("\n");
         }
     }
-
-    // if (!strcmp(sala->n,"Lobby")) {
-    //     printf(BOLDWHITE "SENHA INCORRETA:\t" RESET);
-    //     tentar("");
-    //     printf(BOLDWHITE "SENHA CORRETA:\t\t" RESET);
-    //     tentar("SENHA");
-    // }
 
     printf("\n\n\n");
 }
