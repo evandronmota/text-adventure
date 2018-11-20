@@ -199,7 +199,7 @@ void testarSala(Elemento *sala, int num, boolean flag) {
     }
 
     /* validação puzzle sala 4 */
-    if (strcmp(heroi->salaAtual->n, "Pascal"))
+    if (strcmp(heroi->salaAtual->n, "Pascal") == 0)
         validarSala4();
 
     printf("\n\n\n");
