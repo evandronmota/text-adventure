@@ -213,8 +213,8 @@ int ligar(Elemento *e1, Elemento *e2) {
         if (i == -1)
             printf("Você não pode ligar a bobina com %s %s!", e1->artigo, e1->n);
         else {
-            if (e1->detalhe.atributos[i].valor.valor_estado == False) { 
-                e1->detalhe.atributos[i].valor.valor_estado = True;
+            if (e2->detalhe.atributos[i].valor.valor_estado == False) { 
+                e2->detalhe.atributos[i].valor.valor_estado = True;
                 printf("A %s ligou e agora o %s está magnetizado!", e1->n, e2->n);
             }
             else 
