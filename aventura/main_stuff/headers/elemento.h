@@ -61,6 +61,11 @@ typedef struct ele {
 */
 void nome(Elemento e);
 
+/*
+    Recebe um elemento. Testa se a string key 
+    corresponde a senha correta.
+*/
+void tentar(char *key);
 
 /*
     Recebe dois ponteiros para elementos.
