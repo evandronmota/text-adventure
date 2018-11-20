@@ -543,13 +543,6 @@ Elemento criarSala3() {
     adicionarAcao(&bobina, ligarBobina, 2);
 
 
-    // /* Botão */
-    // Elemento botao = 
-    // criarElemento(True, "um", "Botão",
-    //     "Um botão vermelho.",
-    //     "Um botão grande e vermelho.", NULL, 0);
-
-
     /* Saco */
     Elemento saco = 
     criarElemento(True, "um", "Saco",
@@ -679,7 +672,7 @@ Elemento criarSala4() {
         "Balança um pouco enferrujada. Aparenta ser bem antiga.", NULL, 0);
 
     balanca.animacao = validar;
-    balanca.detalhe.atributos[0].valor.valor_estado = False;
+    balanca.detalhe.atributos[0].valor.valor_estado = False; /* Não é pegável */
 
     /* Letra */
     Elemento letra = 
