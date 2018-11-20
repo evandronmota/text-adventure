@@ -182,7 +182,7 @@ int colocar(Elemento *e1, Elemento *e2) {
 
     }
 
-    return (e1 == NULL || e2 == NULL ? 0 : 1);
+    return (e1 == NULL || e2 == NULL || e1 == e2 ? 0 : 1);
 }
 
 int alimentar(Elemento *e1, Elemento *e2) {
