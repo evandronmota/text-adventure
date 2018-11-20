@@ -171,13 +171,14 @@ int colocar(Elemento *e1, Elemento *e2) {
     else if (e2 == NULL)
         printf("Colocar onde?");
     else {
-        if (!strcmp(e1->n, e2->n)) {
+        if (e1 != e2) {
             printf("Você colocou %s %s n%s %s.", e1->artigo, e1->n, e2->artigo, e2->n);
             i = procurarAtributo(e1, "estaNaBalanca");
             if (i != -1)
                 e1->detalhe.atributos[i].valor.valor_estado = True;
             adicionarElemento(e1, e2);
-        } else
+        }
+        else
             printf("Nao é possível colocar um elemento sobre ele mesmo!");
 
     }
@@ -285,4 +286,29 @@ int tentarSenha(Elemento *e, char *senha) {
     }
 
     return acertou;
+}
+
+int validar(Elemento *e1, Elemento *e2) {
+    if (strcmp(e1->n, "Balança") == 0) {
+        int cont = 0;
+        if (e1->nEle == 3) {
+            int i;
+            for (i=0; i < e1->nEle; i++) {
+                if (strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 1") == 0 ||
+                    strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 2") == 0 ||
+                    strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 8") == 0) 
+                    cont++;
+            }
+
+            if (cont == 3) {
+                heroi->salaAtual->conteudo[4].visivel = True;
+                ((func)heroi->salaAtual->conteudo[4].acoes[0])(&heroi->salaAtual->conteudo[4], NULL);
+                return 1;
+            }
+        }
+
+        printf("Blocos errados na balança!");
+    }
+
+    return 0;
 }

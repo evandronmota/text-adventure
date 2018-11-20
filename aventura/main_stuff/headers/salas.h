@@ -1,6 +1,3 @@
-/* Ponteiro para as funções dos elementos */
-typedef int (*func)(Elemento *e1, Elemento *e2);
-
 
 /*
     Cria o salão principal do jogo com todos os elementos.
@@ -42,12 +39,6 @@ Elemento criarSala4();
     Retorna a sala criada.
 */
 Elemento criarSala5();
-
-
-/*
-    Validação do puzzle na sala 4
-*/
-void validarSala4();
 
 
 /*

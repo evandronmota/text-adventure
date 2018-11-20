@@ -1,3 +1,4 @@
+
 /* Define o tipo boolean */
 typedef enum {
     False, True
@@ -63,6 +64,8 @@ typedef struct ele {
 
 
 
+/* Ponteiro para as funções dos elementos */
+typedef int (*func)(Elemento *e1, Elemento *e2);
 
 
 /* FUNÇÕES */
@@ -187,3 +190,12 @@ int trocarLugar(Elemento *e1, Elemento *e2);
     bem-sucedida.
 */
 int tentarSenha(Elemento *e, char *senha);
+
+
+/*
+    Recebe dois ponteiros para elementos.
+    Faz uma validação do primeiro elemento.
+    Retorna um inteiro indicando se validação
+    ocorreu normalmente.
+*/
+int validar(Elemento *e1, Elemento *e2);
