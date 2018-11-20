@@ -202,17 +202,22 @@ void testarSala(Elemento *sala, int num, boolean flag) {
 
     /* validação do puzzle sala 4 */
     if (strcmp(heroi->salaAtual->n, "Pascal")) {
-        int cont = 0;
+        int contBlocosNaBalanca = 0;
+        int contBlocosCertos = 0;
         int i;
+        int atr;
         for (i=5; i < heroi->salaAtual->nEle; i++) {
-            procurarAtributo(&heroi->salaAtual->conteudo[i], "estaNaBalanca");
-            if (strcmp(heroi->salaAtual->n, "Bloco 1") ||
-                strcmp(heroi->salaAtual->n, "Bloco 2") ||
-                strcmp(heroi->salaAtual->n, "Bloco 8"))
-                cont++;
+            atr = procurarAtributo(&heroi->salaAtual->conteudo[i], "estaNaBalanca");
+            if (heroi->salaAtual->conteudo[i].detalhe.atributos[atr].valor.valor_estado == True) {
+                contBlocosNaBalanca++;
+                if (strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 1") ||
+                    strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 2") ||
+                    strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 8")) 
+                    contBlocosCertos++;
+            }
         }
 
-        if (cont == 3) {
+        if (contBlocosNaBalanca == 3 && contBlocosCertos == 3) {
             heroi->salaAtual->conteudo[4].visivel = True;
             ((func)heroi->salaAtual->conteudo[4].acoes[0])(&heroi->salaAtual->conteudo[4], NULL);
         }
