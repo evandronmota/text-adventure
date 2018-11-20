@@ -494,11 +494,11 @@ Elemento criarSala3() {
     adicionarAcao(&bobina, ligarBobina, 2);
 
 
-    /* Botão */
-    Elemento botao = 
-    criarElemento(True, "um", "Botão",
-        "Um botão vermelho.",
-        "Um botão grande e vermelho.", NULL, 0);
+    // /* Botão */
+    // Elemento botao = 
+    // criarElemento(True, "um", "Botão",
+    //     "Um botão vermelho.",
+    //     "Um botão grande e vermelho.", NULL, 0);
 
 
     /* Saco */
@@ -509,22 +509,22 @@ Elemento criarSala3() {
 
 
     /* Sala 3 */
-    Elemento *conteudoS3 = malloc(9 * sizeof(Elemento));
+    Elemento *conteudoS3 = malloc(8 * sizeof(Elemento));
     conteudoS3[0] = porta;
     conteudoS3[1] = gaiola;
     conteudoS3[2] = galinha;
     conteudoS3[3] = ovo;
     conteudoS3[4] = bobina;
-    conteudoS3[5] = botao;
-    conteudoS3[6] = metal;
-    conteudoS3[7] = saco;
-    conteudoS3[8] = letra;
+    conteudoS3[5] = metal;
+    conteudoS3[6] = saco;
+    conteudoS3[7] = letra;
+    // conteudoS3[5] = botao;
     
     Elemento sala3 =
     criarElemento(False, "uma","Galinhada",
         "Uma sala circular. No centro há uma gaiola pendurada no teto e uma bobina muito grande no chão.",
         "Uma sala circular. No centro há uma gaiola pendurada no teto e uma bobina muito grande no chão. No fundo há um saco de linho e ao lado uma barra de metal.",
-        conteudoS3, 9);
+        conteudoS3, 8);
 
     return sala3;
 }

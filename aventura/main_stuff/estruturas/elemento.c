@@ -185,16 +185,16 @@ int ligar(Elemento *e1, Elemento *e2) {
     else if (e2 == NULL) 
         printf("Parece que a bobina não liga com o fio rompido.");
     else if (!strcmp(e2->n, "Metal")) {
-        for (i=0; i<e2->nAtr; i++) { /* Procura atributo */
-            if (strcmp(e1->detalhe.atributos[i].nome, "estaMagnetizado")==0) { 
-                if (e1->detalhe.atributos[i].valor.valor_estado == False) { /* Senão está quebrada */
-                    e1->detalhe.atributos[i].valor.valor_estado = True;
-                    printf("A %s ligou e agora o %s está magnetizado!", e1->n, e2->n);
-                }
-                else 
-                    printf("A %s já está ligada e o %s magnetizado!", e1->n, e2->n);
-                break;
+        i = procurarAtributo(e2, "estaMagnetizado");
+        if (i == -1)
+            printf("Você não pode ligar a bobina com %s %s!", e1->artigo, e1->n);
+        else {
+            if (e1->detalhe.atributos[i].valor.valor_estado == False) { 
+                e1->detalhe.atributos[i].valor.valor_estado = True;
+                printf("A %s ligou e agora o %s está magnetizado!", e1->n, e2->n);
             }
+            else 
+                printf("A %s já está ligada e o %s magnetizado!", e1->n, e2->n);
         }
     }
     else printf("Não é possível fazer isso!");
