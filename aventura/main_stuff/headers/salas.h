@@ -45,6 +45,12 @@ Elemento criarSala5();
 
 
 /*
+    Validação do puzzle na sala 4
+*/
+void validarSala4();
+
+
+/*
     Recebe um ponteiro para um elemento e uma função de
     ação. Adiciona essa ação à lista de ações do elemento.
 */

@@ -747,3 +747,27 @@ Elemento criarSala5() {
 
     return sala5;
 }
+
+void validarSala4() {
+    if (strcmp(heroi->salaAtual->n, "Pascal")) {
+        int contBlocosNaBalanca = 0;
+        int contBlocosCertos = 0;
+        int i;
+        int atr;
+        for (i=5; i < heroi->salaAtual->nEle; i++) {
+            atr = procurarAtributo(&heroi->salaAtual->conteudo[i], "estaNaBalanca");
+            if (heroi->salaAtual->conteudo[i].detalhe.atributos[atr].valor.valor_estado == True) {
+                contBlocosNaBalanca++;
+                if (strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 1") == 0 ||
+                    strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 2") == 0 ||
+                    strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 8") == 0) 
+                    contBlocosCertos++;
+            }
+        }
+
+        if (contBlocosNaBalanca == 3 && contBlocosCertos == 3) {
+            heroi->salaAtual->conteudo[4].visivel = True;
+            ((func)heroi->salaAtual->conteudo[4].acoes[0])(&heroi->salaAtual->conteudo[4], NULL);
+        }
+    }
+}
