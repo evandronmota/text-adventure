@@ -22,9 +22,16 @@ void adicionarAtributo(Elemento *e, obj_atr atributo) {
 }
 
 void adicionarElemento(Elemento *e1, Elemento *destino) {
-    destino->nEle++;
-    destino->conteudo = realloc(destino->conteudo, destino->nEle * sizeof(Elemento));
-    destino->conteudo[destino->nEle - 1] = *e1;
+    if (e1 != destino) {
+        destino->nEle++;
+        if (destino->conteudo != NULL) {
+            destino->conteudo = realloc(destino->conteudo, destino->nEle * sizeof(Elemento));
+            destino->conteudo[destino->nEle - 1] = *e1;
+        } else {
+            destino->conteudo = malloc(destino->nEle * sizeof(Elemento));
+            destino->conteudo[destino->nEle - 1] = *e1;
+        }
+    }
 }
 
 
