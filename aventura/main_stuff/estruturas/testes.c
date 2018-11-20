@@ -291,12 +291,14 @@ int main() {
     criarAventureiro(salas[0]);
 
     boolean flag = True; /* Flag de auxílio */
-    int i=0;
+    int i;
 
     /* Insere todos objetos da sala na tabela */
     /* Os nomes são dos elementos na tabela de símbolos */
     for (i=0; i<6; i++)
         insereObjnaTabela(tab, salas[i].n, &salas[i]);
+
+    i=0;
 
     /* Testes */
     while (True) {
