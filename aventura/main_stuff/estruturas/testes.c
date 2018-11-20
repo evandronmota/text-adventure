@@ -210,9 +210,9 @@ void testarSala(Elemento *sala, int num, boolean flag) {
             atr = procurarAtributo(&heroi->salaAtual->conteudo[i], "estaNaBalanca");
             if (heroi->salaAtual->conteudo[i].detalhe.atributos[atr].valor.valor_estado == True) {
                 contBlocosNaBalanca++;
-                if (strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 1") ||
-                    strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 2") ||
-                    strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 8")) 
+                if (strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 1") == 0 ||
+                    strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 2") == 0 ||
+                    strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 8") == 0) 
                     contBlocosCertos++;
             }
         }
