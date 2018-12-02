@@ -5,13 +5,13 @@
 #include "../headers/lista_ligada.h"
 #include "../headers/salas.h"
 #include "../headers/tabela_de_sim.h"
-  
+
 int yylex();
 int yyerror(char *);
 %}
 
 %union {
-    Elemento *ele;
+    struct ele *ele;
     char *str;
     func verbo;
 }
@@ -33,7 +33,7 @@ cmd: VERBO              { $1(NULL, NULL); }
                                 $1($2, NULL);                    
                         }
     | VERBO NONE        { printf("Mas o que é %s?", $2); }
-    | VERBO OBJ NONE    { printf("Não vejo %s por aqui.", $3); }
+    | VERBO OBJ NONE    { printf("Não vejo nada por aqui.", $3); }
     | VERBO NONE NONE   { printf("WTF?"); }
 ;
 
@@ -48,6 +48,6 @@ lugar: LOBBY        { $$ = $1; }
 %%
 /* Não se encaixa em nenhuma regra */
 int yyerror(char *s) {
-  printf("Impossível compreender.\n");
-  return 0;
+    printf("Impossível compreender.\n");
+    return 0;
 }

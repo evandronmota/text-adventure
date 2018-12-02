@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_YY_BISON_TAB_H_INCLUDED
-# define YY_YY_BISON_TAB_H_INCLUDED
+#ifndef YY_YY_AVENT_TAB_H_INCLUDED
+# define YY_YY_AVENT_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -45,15 +45,20 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    OBJ = 258,
-    LOBBY = 259,
-    FIBONACCI = 260,
-    BINARIA = 261,
-    GALINHADA = 262,
-    PASCAL = 263,
-    NEPAL = 264,
-    NONE = 265,
-    VERBO = 266
+    VERBO = 258,
+    OBJ = 259,
+    LUGAR = 260,
+    DESC = 261,
+    NORTE = 262,
+    SUL = 263,
+    LESTE = 264,
+    OESTE = 265,
+    CIMA = 266,
+    BAIXO = 267,
+    VAPARA = 268,
+    EOL = 269,
+    FIM = 270,
+    INVENT = 271
   };
 #endif
 
@@ -62,13 +67,13 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 13 "bison.y" /* yacc.c:1909  */
+#line 33 "avent.y" /* yacc.c:1909  */
 
-    struct ele *ele;
-    char *str;
-    func verbo;
+  symrec *tptr;
+  char *str;
+  int  direc;
 
-#line 72 "bison.tab.h" /* yacc.c:1909  */
+#line 77 "avent.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -81,4 +86,4 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_BISON_TAB_H_INCLUDED  */
+#endif /* !YY_YY_AVENT_TAB_H_INCLUDED  */

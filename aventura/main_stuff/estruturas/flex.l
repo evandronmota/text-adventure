@@ -1,6 +1,7 @@
 %{
 
 /* Para readline */
+#include "../headers/elemento.h"
 #include "bison.tab.h"
 #include <readline/readline.h>
 #include <readline/history.h>
@@ -42,7 +43,7 @@ static int mygetinput(char *buf, int size) {
 
 [\t\n]
 
-lobby   printf("LOBBY: %s\n", yytext);
+lobby   { return LOBBY;}
 
 bin(á|a)ria printf("BINARIA: %s\n", yytext);
 
@@ -54,10 +55,10 @@ fibonacci   printf("FICONACCI: %s\n", yytext);
 
 galinhada   printf("GALINHADA: %s\n", yytext);
 
-[a-zA-Z]+r printf("VERBO: %s\n", yytext);
+[a-zA-Z]+[^r \n]  { return OBJ; }
 
-[a-zA-Z]+[^r\n]  printf("OBJ: %s\n", yytext);
+[a-zA-Z]+r  { return VERBO; }
 
-.   printf("NONE: %s\n", yytext);
+.   { return NONE; }
 
 %%
