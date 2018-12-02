@@ -21,23 +21,25 @@ int yyerror(char *);
 %token <str> NONE /* palavra inválida */
 %token <verbo> VERBO
 
+%type <ele> obj
 %type <ele> lugar
 
 %defines
 
 %%
-cmd: VERBO              { $1(NULL, NULL); }
-    | VERBO OBJ         { $1($2, NULL); }
-    | VERBO OBJ OBJ     { $1($2, $3); }
-    | VERBO lugar       { if($1 == trocarLugar)
+
+cmd:    VERBO              { $1(NULL, NULL); }
+    |   VERBO obj         { examinar($2, NULL); }
+    |   VERBO obj obj     { $1($2, $3); }
+    |   VERBO lugar       { if($1 == trocarLugar)
                                 $1($2, NULL);                    
                         }
-    | VERBO NONE        { printf("Mas o que é %s?", $2); }
-    | VERBO OBJ NONE    { printf("Não vejo nada por aqui.", $3); }
-    | VERBO NONE NONE   { printf("WTF?"); }
+    |   VERBO NONE        { printf("Mas o que é %s?\n", $2); }
+    |   VERBO obj NONE    { printf("Não vejo nada por aqui.\n", $3); }
+    |   VERBO NONE NONE   { printf("WTF?\n"); }
 ;
 
-lugar: LOBBY        { $$ = $1; }
+lugar: LOBBY        { printf("testi\n"); }
         | FIBONACCI { $$ = $1; }
         | BINARIA   { $$ = $1; }
         | GALINHADA { $$ = $1; }
@@ -45,13 +47,12 @@ lugar: LOBBY        { $$ = $1; }
         | NEPAL     { $$ = $1; }
 ;
 
-desconhecido: NONE {printf("Não sei o que é %s", $1);}
-            | NONE NONE {printf("Não sei o que é %s e nem %s", $1, $2);}
+obj:    OBJ     { $$ = $1;}
 ;
 
 %%
 /* Não se encaixa em nenhuma regra */
 int yyerror(char *s) {
-    printf("Impossível compreender.\n");
+    printf("Impossível compreender %s.\n", s);
     return 0;
 }

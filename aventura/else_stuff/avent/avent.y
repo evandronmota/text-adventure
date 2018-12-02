@@ -115,6 +115,7 @@ cmd: VERBO {
 
 obj: OBJ    { $$ = $1;}
    | LUGAR  { $$ = $1;}
+;
 
 dir: NORTE	  { puts("norte"); $$=0;}
 	 | SUL	  { puts("sul");   $$=1;}
@@ -126,6 +127,7 @@ dir: NORTE	  { puts("norte"); $$=0;}
 ;
 
 eol: EOL {return 1;}
+;
 %%
 
 int yyerror(char *s) {

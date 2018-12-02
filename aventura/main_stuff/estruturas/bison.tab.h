@@ -62,7 +62,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 9 "bison.y" /* yacc.c:1909  */
+#line 13 "bison.y" /* yacc.c:1909  */
 
     struct ele *ele;
     char *str;

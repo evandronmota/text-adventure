@@ -472,8 +472,8 @@ static const yytype_uint8 yyrline[] =
 {
        0,    54,    54,    55,    56,    60,    56,    67,    67,    77,
       77,    86,    87,    88,    91,    91,    95,    95,    99,    99,
-     103,   103,   106,   106,   109,   109,   116,   117,   119,   120,
-     121,   122,   123,   124,   125,   128
+     103,   103,   106,   106,   109,   109,   116,   117,   120,   121,
+     122,   123,   124,   125,   126,   129
 };
 #endif
 
@@ -1402,49 +1402,49 @@ yyreduce:
     break;
 
   case 28:
-#line 119 "avent.y" /* yacc.c:1646  */
+#line 120 "avent.y" /* yacc.c:1646  */
     { puts("norte"); (yyval.direc)=0;}
 #line 1408 "avent.tab.c" /* yacc.c:1646  */
     break;
 
   case 29:
-#line 120 "avent.y" /* yacc.c:1646  */
+#line 121 "avent.y" /* yacc.c:1646  */
     { puts("sul");   (yyval.direc)=1;}
 #line 1414 "avent.tab.c" /* yacc.c:1646  */
     break;
 
   case 30:
-#line 121 "avent.y" /* yacc.c:1646  */
+#line 122 "avent.y" /* yacc.c:1646  */
     { puts("leste"); (yyval.direc)=2;}
 #line 1420 "avent.tab.c" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 122 "avent.y" /* yacc.c:1646  */
+#line 123 "avent.y" /* yacc.c:1646  */
     { puts("oeste"); (yyval.direc)=3;}
 #line 1426 "avent.tab.c" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 123 "avent.y" /* yacc.c:1646  */
+#line 124 "avent.y" /* yacc.c:1646  */
     { puts("cima");  (yyval.direc)=4;}
 #line 1432 "avent.tab.c" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 124 "avent.y" /* yacc.c:1646  */
+#line 125 "avent.y" /* yacc.c:1646  */
     { puts("baixo"); (yyval.direc)=5;}
 #line 1438 "avent.tab.c" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 125 "avent.y" /* yacc.c:1646  */
+#line 126 "avent.y" /* yacc.c:1646  */
     { puts("... (onde é isso?)"); (yyval.direc)=-1;}
 #line 1444 "avent.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 128 "avent.y" /* yacc.c:1646  */
+#line 129 "avent.y" /* yacc.c:1646  */
     {return 1;}
 #line 1450 "avent.tab.c" /* yacc.c:1646  */
     break;
@@ -1678,7 +1678,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 129 "avent.y" /* yacc.c:1906  */
+#line 131 "avent.y" /* yacc.c:1906  */
 
 
 int yyerror(char *s) {

@@ -1,9 +1,9 @@
 %{
-#include "../headers/elemento.h"
-#include "bison.tab.h"
 
 /* Para readline */
 #include "../headers/elemento.h"
+#include "../headers/lista_ligada.h"
+#include "../headers/tabela_de_sim.h"
 #include "bison.tab.h"
 #include <readline/readline.h>
 #include <readline/history.h>
@@ -39,6 +39,8 @@ static int mygetinput(char *buf, int size) {
 }   
 %}
 
+
+
 %option caseless
 
 %%
@@ -57,9 +59,9 @@ fibonacci   printf("FICONACCI: %s\n", yytext);
 
 galinhada   printf("GALINHADA: %s\n", yytext);
 
-[a-zA-Z]+[^r \n]  { return OBJ; }
+[a-zA-Z]+[^r \n]  { Elemento *e = busca(tabela, yytext); if (e == NULL) return NONE; yylval.ele = e; return OBJ; }
 
-[a-zA-Z]+r  { return VERBO; }
+examinar[ ]* { yylval.verbo = examinar; return VERBO; }
 
-.   { return NONE; }
+.   { printf("he: %s\n", yytext); }
 
