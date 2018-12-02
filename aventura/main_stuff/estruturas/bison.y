@@ -29,9 +29,8 @@ int yyerror(char *);
 cmd: VERBO              { $1(NULL, NULL); }
     | VERBO OBJ         { $1($2, NULL); }
     | VERBO OBJ OBJ     { $1($2, $3); }
-    | VERBO lugar       { if(%1 == trocarLugar) {
-                                %1(%2, NULL);
-                            }
+    | VERBO lugar       { if(%1 == trocarLugar)
+                                %1(%2, NULL);                    
                         }
     | VERBO NONE        { printf("Mas o que é %s?", $2); }
     | VERBO OBJ NONE    { printf("Não vejo %s por aqui.", $3); }

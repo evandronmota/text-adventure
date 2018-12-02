@@ -46,13 +46,13 @@ extern int yydebug;
   enum yytokentype
   {
     OBJ = 258,
-    NONE = 259,
-    LOBBY = 260,
-    FIBONACCI = 261,
-    BINARIA = 262,
-    GALINHADA = 263,
-    PASCAL = 264,
-    NEPAL = 265,
+    LOBBY = 259,
+    FIBONACCI = 260,
+    BINARIA = 261,
+    GALINHADA = 262,
+    PASCAL = 263,
+    NEPAL = 264,
+    NONE = 265,
     VERBO = 266
   };
 #endif
