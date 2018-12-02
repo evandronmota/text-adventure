@@ -86,12 +86,10 @@ void init_tabela() {
     int j;
     for (i = 0; i < 6; i++) {
         /* Insere sala */
-        insere(tabela, nome, &salas[i]);
+        insere(tabela, salas[i].n, &salas[i]);
 
         /* Insere todos os objetos dentro da sala */
         for (j = 0; j<salas[j].nEle; j++)
             insere(tabela, salas[j].conteudo[j].n, &salas[j].conteudo[j]);
     }
-
-    return tabela;
 }
