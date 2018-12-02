@@ -45,6 +45,10 @@ lugar: LOBBY        { $$ = $1; }
         | NEPAL     { $$ = $1; }
 ;
 
+desconhecido: NONE {printf("Não sei o que é %s", $1);}
+            | NONE NONE {printf("Não sei o que é %s e nem %s", $1, $2);}
+;
+
 %%
 /* Não se encaixa em nenhuma regra */
 int yyerror(char *s) {

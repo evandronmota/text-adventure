@@ -74,7 +74,7 @@
 int yylex();
 int yyerror(char *);
 
-#line 78 "bison.tab.c" /* yacc.c:339  */
+#line 74 "bison.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -126,13 +126,13 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 13 "bison.y" /* yacc.c:355  */
+#line 9 "bison.y" /* yacc.c:355  */
 
     struct ele *ele;
     char *str;
     func verbo;
 
-#line 136 "bison.tab.c" /* yacc.c:355  */
+#line 132 "bison.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -149,7 +149,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 153 "bison.tab.c" /* yacc.c:358  */
+#line 149 "bison.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -447,8 +447,8 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    29,    29,    30,    31,    32,    35,    36,    37,    40,
-      41,    42,    43,    44,    45
+       0,    25,    25,    26,    27,    28,    31,    32,    33,    36,
+      37,    38,    39,    40,    41
 };
 #endif
 
@@ -1223,35 +1223,35 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 29 "bison.y" /* yacc.c:1646  */
+#line 25 "bison.y" /* yacc.c:1646  */
     { (yyvsp[0].verbo)(NULL, NULL); }
-#line 1229 "bison.tab.c" /* yacc.c:1646  */
+#line 1225 "bison.tab.c" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 30 "bison.y" /* yacc.c:1646  */
+#line 26 "bison.y" /* yacc.c:1646  */
     { (yyvsp[-1].verbo)((yyvsp[0].ele), NULL); }
-#line 1235 "bison.tab.c" /* yacc.c:1646  */
+#line 1231 "bison.tab.c" /* yacc.c:1646  */
     break;
 
   case 4:
-#line 31 "bison.y" /* yacc.c:1646  */
+#line 27 "bison.y" /* yacc.c:1646  */
     { (yyvsp[-2].verbo)((yyvsp[-1].ele), (yyvsp[0].ele)); }
-#line 1241 "bison.tab.c" /* yacc.c:1646  */
+#line 1237 "bison.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 32 "bison.y" /* yacc.c:1646  */
+#line 28 "bison.y" /* yacc.c:1646  */
     { if((yyvsp[-1].verbo) == trocarLugar)
                                 (yyvsp[-1].verbo)((yyvsp[0].ele), NULL);                    
                         }
-#line 1249 "bison.tab.c" /* yacc.c:1646  */
+#line 1245 "bison.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 35 "bison.y" /* yacc.c:1646  */
+#line 31 "bison.y" /* yacc.c:1646  */
     { printf("Mas o que é %s?", (yyvsp[0].str)); }
-#line 1255 "bison.tab.c" /* yacc.c:1646  */
+#line 1251 "bison.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
@@ -1261,49 +1261,49 @@ yyreduce:
     break;
 
   case 8:
-#line 37 "bison.y" /* yacc.c:1646  */
+#line 33 "bison.y" /* yacc.c:1646  */
     { printf("WTF?"); }
-#line 1267 "bison.tab.c" /* yacc.c:1646  */
+#line 1263 "bison.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 40 "bison.y" /* yacc.c:1646  */
+#line 36 "bison.y" /* yacc.c:1646  */
     { (yyval.ele) = (yyvsp[0].ele); }
-#line 1273 "bison.tab.c" /* yacc.c:1646  */
+#line 1269 "bison.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 41 "bison.y" /* yacc.c:1646  */
+#line 37 "bison.y" /* yacc.c:1646  */
     { (yyval.ele) = (yyvsp[0].ele); }
-#line 1279 "bison.tab.c" /* yacc.c:1646  */
+#line 1275 "bison.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 42 "bison.y" /* yacc.c:1646  */
+#line 38 "bison.y" /* yacc.c:1646  */
     { (yyval.ele) = (yyvsp[0].ele); }
-#line 1285 "bison.tab.c" /* yacc.c:1646  */
+#line 1281 "bison.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 43 "bison.y" /* yacc.c:1646  */
+#line 39 "bison.y" /* yacc.c:1646  */
     { (yyval.ele) = (yyvsp[0].ele); }
-#line 1291 "bison.tab.c" /* yacc.c:1646  */
+#line 1287 "bison.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 44 "bison.y" /* yacc.c:1646  */
+#line 40 "bison.y" /* yacc.c:1646  */
     { (yyval.ele) = (yyvsp[0].ele); }
-#line 1297 "bison.tab.c" /* yacc.c:1646  */
+#line 1293 "bison.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 45 "bison.y" /* yacc.c:1646  */
+#line 41 "bison.y" /* yacc.c:1646  */
     { (yyval.ele) = (yyvsp[0].ele); }
-#line 1303 "bison.tab.c" /* yacc.c:1646  */
+#line 1299 "bison.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1307 "bison.tab.c" /* yacc.c:1646  */
+#line 1303 "bison.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1531,7 +1531,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 48 "bison.y" /* yacc.c:1906  */
+#line 44 "bison.y" /* yacc.c:1906  */
 
 /* Não se encaixa em nenhuma regra */
 int yyerror(char *s) {

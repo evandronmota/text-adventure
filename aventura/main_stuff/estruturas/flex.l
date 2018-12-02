@@ -1,4 +1,6 @@
 %{
+#include "../headers/elemento.h"
+#include "bison.tab.h"
 
 /* Para readline */
 #include "../headers/elemento.h"
@@ -61,4 +63,3 @@ galinhada   printf("GALINHADA: %s\n", yytext);
 
 .   { return NONE; }
 
-%%
