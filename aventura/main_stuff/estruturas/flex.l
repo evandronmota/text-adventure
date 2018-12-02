@@ -1,5 +1,9 @@
 %{
 #include "../headers/elemento.h"
+#include "../headers/aventureiro.h"
+#include "../headers/lista_ligada.h"
+#include "../headers/tabela_de_sim.h"
+#include "../headers/init_salas.h"
 #include "bison.tab.h"
 
 /* Para readline */
@@ -41,7 +45,7 @@ static int mygetinput(char *buf, int size) {
 
 %%
 
-[\t\n]
+\n {return EOL;}
 
 lobby   printf("LOBBY: %s\n", yytext);
 
@@ -55,9 +59,20 @@ fibonacci   printf("FICONACCI: %s\n", yytext);
 
 galinhada   printf("GALINHADA: %s\n", yytext);
 
-[a-zA-Z]+r printf("VERBO: %s\n", yytext);
+[a-zA-Z]+r { printf("verbozao");yylval.verbo = examinar;
+            return VERBO;}
 
-[a-zA-Z]+[^r\n]  printf("OBJ: %s\n", yytext);
+[a-zA-Z]+[^r\n] { Elemento* e = busca(tabela, yytext);
+                    if (e != NULL) {
+                        printf("OBJ");
+                        yylval.ele = e;
+                        return OBJ;
+                    } else {
+                        yylval.str = yytext;
+                        printf("yylval.str: %s", yylval.str);
+                        return NONE;
+                    }
+                }
 
 .   printf("NONE: %s\n", yytext);
 

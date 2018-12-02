@@ -16,6 +16,7 @@ int yyerror(char *);
 %token <ele> LOBBY FIBONACCI BINARIA GALINHADA PASCAL NEPAL
 %token <str> NONE /* palavra inválida */
 %token <verbo> VERBO
+%token <str> EOL
 
 %type <ele> lugar
 
@@ -23,8 +24,8 @@ int yyerror(char *);
 
 %%
 cmd: VERBO              { $1(NULL, NULL); }
-    | VERBO OBJ         { $1($2, NULL); }
-    | VERBO OBJ OBJ     { $1($2, $3); }
+    | VERBO OBJ eol     { $1($2, NULL); }
+    | VERBO OBJ OBJ{ $1($2, $3); }
     | VERBO lugar       { if($1 == trocarLugar)
                                 $1($2, NULL);                    
                         }

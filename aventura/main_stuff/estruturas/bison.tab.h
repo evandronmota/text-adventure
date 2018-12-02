@@ -53,7 +53,8 @@ extern int yydebug;
     PASCAL = 263,
     NEPAL = 264,
     NONE = 265,
-    VERBO = 266
+    VERBO = 266,
+    EOL = 267
   };
 #endif
 
@@ -68,7 +69,7 @@ union YYSTYPE
     char *str;
     func verbo;
 
-#line 72 "bison.tab.h" /* yacc.c:1909  */
+#line 73 "bison.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
