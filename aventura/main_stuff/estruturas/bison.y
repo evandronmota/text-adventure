@@ -1,10 +1,6 @@
 %{
 #include <stdio.h>
 #include "../headers/elemento.h"
-/* #include "../headers/aventureiro.h"
-#include "../headers/lista_ligada.h"
-#include "../headers/salas.h"
-#include "../headers/tabela_de_sim.h" */
   
 int yylex();
 int yyerror(char *);
@@ -43,6 +39,10 @@ lugar: LOBBY        { $$ = $1; }
         | GALINHADA { $$ = $1; }
         | PASCAL    { $$ = $1; }
         | NEPAL     { $$ = $1; }
+;
+
+desconhecido: NONE {printf("Não sei o que é %s", $1);}
+            | NONE NONE {printf("Não sei o que é %s e nem %s", $1, $2);}
 ;
 
 %%

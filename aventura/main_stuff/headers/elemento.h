@@ -63,7 +63,6 @@ typedef struct ele {
 } Elemento;
 
 
-
 /* Ponteiro para as funções dos elementos */
 typedef int (*func)(Elemento *e1, Elemento *e2);
 

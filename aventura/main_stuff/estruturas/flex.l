@@ -1,8 +1,8 @@
 %{
+#include "../headers/elemento.h"
+#include "bison.tab.h"
 
 /* Para readline */
-#include "bison.tab.h"
-#include "../headers/elemento.h"
 #include <readline/readline.h>
 #include <readline/history.h>
 

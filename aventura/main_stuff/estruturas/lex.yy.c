@@ -519,10 +519,10 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "flex.l"
 #line 2 "flex.l"
+#include "../headers/elemento.h"
+#include "bison.tab.h"
 
 /* Para readline */
-#include "bison.tab.h"
-#include "../headers/elemento.h"
 #include <readline/readline.h>
 #include <readline/history.h>
 

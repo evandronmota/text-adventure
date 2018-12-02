@@ -68,12 +68,7 @@ Elemento *criaElemento(char *n) { /* FASE 1 */
 void insereObjnaTabela(TabSim tabela, char *nome, Elemento *sala) {
     int i;
 
-    /* Insere sala */
-    insere(tabela, nome, sala);
-
-    /* Insere todos os objetos dentro da sala */
-    for (i = 0; i<sala->nEle; i++)
-        insere(tabela, sala->conteudo[i].n, &sala->conteudo[i]);
+    
 }
 
 /* Testa salas */
