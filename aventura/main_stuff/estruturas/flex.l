@@ -53,9 +53,9 @@ fibonacci   printf("FICONACCI: %s\n", yytext);
 
 galinhada   printf("GALINHADA: %s\n", yytext);
 
-[a-zA-Z]+r$ printf("VERBO: %s\n", yytext);
+[a-zA-Z]+r printf("VERBO: %s\n", yytext);
 
-[a-zA-Z]+[^r]$  printf("OBJ: %s\n", yytext);
+[a-zA-Z]+[^r\n]  printf("OBJ: %s\n", yytext);
 
 .   printf("NONE: %s\n", yytext);
 

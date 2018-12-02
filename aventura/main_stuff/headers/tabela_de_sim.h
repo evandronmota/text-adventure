@@ -10,6 +10,7 @@ typedef struct {
 /* Ponteiro para tabela de símbolos */
 typedef tabSim *TabSim;
 
+extern TabSim tabela;
 
 /*
     Recebe o tamanho da tabela de símbolos.
@@ -52,3 +53,9 @@ Elemento *busca(TabSim t, char *n);
     operação foi bem-sucedida.
 */
 int retira(TabSim t, char *n);
+
+
+/*
+    Inicializa a tabela com os elementos.
+*/
+void init_tabela();

@@ -10,6 +10,8 @@
 #include "../headers/init_salas.h"
 
 int main() {
+    init_tabela();
+
     while(yyparse());
 
     return 0;

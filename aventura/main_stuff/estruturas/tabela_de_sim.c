@@ -2,6 +2,9 @@
 #include "../headers/elemento.h"
 #include "../headers/lista_ligada.h"
 #include "../headers/tabela_de_sim.h"
+#include "../headers/init_salas.h"
+
+TabSim tabela;
 
 /* 
     Recebe o tamanho da tabela de símbolos e uma
@@ -73,4 +76,22 @@ int retira(TabSim t, char *n) {
     }
 
     return 0;
+}
+
+void init_tabela() {
+    tabela = cria(100);
+    Elemento *salas = inicializarSalas();
+
+    int i;
+    int j;
+    for (i = 0; i < 6; i++) {
+        /* Insere sala */
+        insere(tabela, nome, &salas[i]);
+
+        /* Insere todos os objetos dentro da sala */
+        for (j = 0; j<salas[j].nEle; j++)
+            insere(tabela, salas[j].conteudo[j].n, &salas[j].conteudo[j]);
+    }
+
+    return tabela;
 }
