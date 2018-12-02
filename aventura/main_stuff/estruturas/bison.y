@@ -17,8 +17,8 @@ int yyerror(char *);
 }
 
 %token <ele> OBJ
+%token <ele> LOBBY FIBONACCI BINARIA GALINHADA PASCAL NEPAL
 %token <str> NONE /* palavra inválida */
-%token <str> LOBBY FIBONACCI BINARIA GALINHADA PASCAL NEPAL
 %token <verbo> VERBO
 
 %type <ele> lugar
