@@ -1,6 +1,7 @@
 %{
 
 /* Para readline */
+#include "bison.tab.h"
 #include <readline/readline.h>
 #include <readline/history.h>
 
@@ -60,7 +61,3 @@ galinhada   printf("GALINHADA: %s\n", yytext);
 .   printf("NONE: %s\n", yytext);
 
 %%
-
-int main() {
-    yylex();
-}
