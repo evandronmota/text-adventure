@@ -58,9 +58,3 @@ galinhada   printf("GALINHADA: %s\n", yytext);
 [a-zA-Z]+[^r\n]  printf("OBJ: %s\n", yytext);
 
 .   printf("NONE: %s\n", yytext);
-
-%%
-
-int main() {
-    yylex();
-}
