@@ -1242,8 +1242,8 @@ yyreduce:
 
   case 5:
 #line 32 "bison.y" /* yacc.c:1646  */
-    { if(%1 == trocarLugar)
-                                %1(%2, NULL);                    
+    { if((yyvsp[-1].verbo) == trocarLugar)
+                                (yyvsp[-1].verbo)((yyvsp[0].ele), NULL);                    
                         }
 #line 1249 "bison.tab.c" /* yacc.c:1646  */
     break;
