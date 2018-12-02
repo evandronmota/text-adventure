@@ -1,10 +1,10 @@
 %{
 #include <stdio.h>
 #include "../headers/elemento.h"
-#include "../headers/aventureiro.h"
+/* #include "../headers/aventureiro.h"
 #include "../headers/lista_ligada.h"
 #include "../headers/salas.h"
-#include "../headers/tabela_de_sim.h"
+#include "../headers/tabela_de_sim.h" */
   
 int yylex();
 int yyerror(char *);

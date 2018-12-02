@@ -1,6 +1,8 @@
 %{
 
 /* Para readline */
+#include "bison.tab.h"
+#include "../headers/elemento.h"
 #include <readline/readline.h>
 #include <readline/history.h>
 
@@ -58,3 +60,4 @@ galinhada   printf("GALINHADA: %s\n", yytext);
 [a-zA-Z]+[^r\n]  printf("OBJ: %s\n", yytext);
 
 .   printf("NONE: %s\n", yytext);
+
