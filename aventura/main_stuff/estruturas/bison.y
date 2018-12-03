@@ -1,9 +1,7 @@
 %{
 #include <stdio.h>
 #include "../headers/elemento.h"
-#include "../headers/aventureiro.h"
 #include "../headers/lista_ligada.h"
-#include "../headers/salas.h"
 #include "../headers/tabela_de_sim.h"
 
 int yylex();
@@ -13,37 +11,33 @@ func verbo;
 %}
 
 %union {
-    struct ele *ele;
+    Elemento *ele;
     char *str;
 }
 
 %token <ele> OBJ
 %token <ele> LOBBY FIBONACCI BINARIA GALINHADA PASCAL NEPAL
-%token <str> NONE /* palavra inválida */
-%token <str> VERBO
+%token <str> VERBO NONE /* palavra inválida */
 %token EOL
 
 %type <ele> obj
 %type <ele> lugar
 
-%defines
 
 %%
 
-input: cmd | lugar | obj | desconhecido | eol
+input: EOL | cmd | lugar | obj
 ;
 
-cmd:  VERBO             {  } eol
-    | VERBO obj         { verbo = (func)busca(tabela, $1);
-                            if (verbo == NULL)
-                                printf("NULLZAOz%s\n", $1);
-                            else
-                                verbo($1, NULL); 
-                        } eol
+cmd:  VERBO             { printf("%s?\n", $1); } eol
+    | VERBO obj         { printf("VERBO---%s?\n", $1);
+                            printf("yylval: nadaaa\n");
+                            return 1;
+                        }
     | VERBO obj obj     {  } eol
     | VERBO lugar       {  } eol
-    | VERBO NONE        { printf("Você quer %s o quê?\n", $1); return 1;}
-    | VERBO obj NONE    { printf("Não vejo nada por aqui.\n", $3); } eol
+    | VERBO NONE        { printf("Você quer z%sz o quê?\n", $1);} eol
+    | VERBO obj NONE    { printf("Não vejo nada por aqui.\n"); } eol
     | VERBO NONE NONE   { printf("WTF?\n"); } eol
 ;
 

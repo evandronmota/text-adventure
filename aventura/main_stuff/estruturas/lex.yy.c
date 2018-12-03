@@ -775,6 +775,7 @@ char *yytext;
 #include "../headers/lista_ligada.h"
 #include "../headers/tabela_de_sim.h"
 #include "bison.tab.h"
+#include <string.h>
 
 /* Para readline */
 #include <readline/readline.h>
@@ -809,7 +810,7 @@ static int mygetinput(char *buf, int size) {
     free(line);
     return strlen(buf);
 }   
-#line 813 "lex.yy.c"
+#line 814 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -1027,10 +1028,10 @@ YY_DECL
 		}
 
 	{
-#line 46 "flex.l"
+#line 47 "flex.l"
 
 
-#line 1034 "lex.yy.c"
+#line 1035 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1090,51 +1091,55 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 48 "flex.l"
+#line 49 "flex.l"
 { return EOL; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 50 "flex.l"
+#line 51 "flex.l"
 { return LOBBY;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 52 "flex.l"
+#line 53 "flex.l"
 printf("BINARIA: %s\n", yytext);
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 54 "flex.l"
+#line 55 "flex.l"
 printf("PASCAL: %s\n", yytext);
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 56 "flex.l"
+#line 57 "flex.l"
 printf("NEPAL: %s\n", yytext);
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 58 "flex.l"
-printf("FICONACCI: %s\n", yytext);
+#line 59 "flex.l"
+printf("FIBONACCI: %s\n", yytext);
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 60 "flex.l"
+#line 61 "flex.l"
 printf("GALINHADA: %s\n", yytext);
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 62 "flex.l"
-{ yylval.str = yytext; 
+#line 63 "flex.l"
+{
+            char* txt = malloc(strlen(yytext));
+            strcpy(txt, yytext);
+            yylval.str = yytext;
             printf("verbo yytext: z%sz\n", yytext);
             return VERBO; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 66 "flex.l"
+#line 70 "flex.l"
 { Elemento *e = busca(tabela, yytext);
                         if (e == NULL) {
+                            yylval.str = NULL;
                             yylval.str = yytext;
                             printf("none yytext: z%sz\n", yytext);
                             return NONE;
@@ -1145,10 +1150,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 76 "flex.l"
+#line 81 "flex.l"
 ECHO;
 	YY_BREAK
-#line 1152 "lex.yy.c"
+#line 1157 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2149,4 +2154,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 76 "flex.l"
+#line 81 "flex.l"

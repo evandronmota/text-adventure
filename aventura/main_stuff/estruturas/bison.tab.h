@@ -52,8 +52,8 @@ extern int yydebug;
     GALINHADA = 262,
     PASCAL = 263,
     NEPAL = 264,
-    NONE = 265,
-    VERBO = 266,
+    VERBO = 265,
+    NONE = 266,
     EOL = 267
   };
 #endif
@@ -63,9 +63,9 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 15 "bison.y" /* yacc.c:1909  */
+#line 13 "bison.y" /* yacc.c:1909  */
 
-    struct ele *ele;
+    Elemento *ele;
     char *str;
 
 #line 72 "bison.tab.h" /* yacc.c:1909  */

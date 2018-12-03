@@ -11,6 +11,8 @@
 #define RESET   "\033[0m"
 #define BOLDYELLOW  "\033[1m\033[33m"      /* Bold Yellow */
 
+TabSim tabela;
+
 int main() {
     printf("Bem-vindo ao " BOLDYELLOW "INSERT GAME TITLE." RESET "\n\n \
             Você é um estudante de matemática e computação. É domingo, 21h, você tem que entregar um EP até 24h, você decide jogar video game. \n \
