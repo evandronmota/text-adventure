@@ -921,14 +921,14 @@ YY_RULE_SETUP
 {
 			   /* identificador */
                symrec *s;
-			   if ((s = getsym(sym_table, yytext))) {
-				 yylval.tptr = s;
-				 return s->tipo;
-			   }
-			   else {
-				 yylval.str = yytext;
-				 return DESC;
-			   }
+			    if ((s = getsym(sym_table, yytext))) {
+				    yylval.tptr = s;
+				    return s->tipo;
+			    }
+			    else {
+				    yylval.str = yytext;
+				    return DESC;
+			    }
 			  }
 	YY_BREAK
 case 13:

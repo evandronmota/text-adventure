@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 #include "../headers/elemento.h"
 #include "../headers/lista_ligada.h"
 
@@ -39,7 +40,7 @@ Lista insereL(Lista l, Elemento *val) {
 Elemento *buscaL(Lista l, char *n) {
     Lista p = l->prox;
     while (p != NULL) {
-        if (p->nome == n)
+        if (!strcmp(p->nome, n))
             return p->val;
         p = p->prox;
     }

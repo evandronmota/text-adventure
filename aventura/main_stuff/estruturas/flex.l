@@ -1,9 +1,7 @@
 %{
 #include "../headers/elemento.h"
-#include "../headers/aventureiro.h"
 #include "../headers/lista_ligada.h"
 #include "../headers/tabela_de_sim.h"
-#include "../headers/init_salas.h"
 #include "bison.tab.h"
 
 /* Para readline */
@@ -41,13 +39,15 @@ static int mygetinput(char *buf, int size) {
 }   
 %}
 
+
+
 %option caseless
 
 %%
 
-\n {return EOL;}
+[\n]  { return EOL; }
 
-lobby   printf("LOBBY: %s\n", yytext);
+lobby   { return LOBBY;}
 
 bin(á|a)ria printf("BINARIA: %s\n", yytext);
 
@@ -59,20 +59,18 @@ fibonacci   printf("FICONACCI: %s\n", yytext);
 
 galinhada   printf("GALINHADA: %s\n", yytext);
 
-[a-zA-Z]+r { printf("verbozao");yylval.verbo = examinar;
-            return VERBO;}
+[a-zA-Z]+r { yylval.str = yytext; 
+            printf("verbo yytext: z%sz\n", yytext);
+            return VERBO; }
 
-[a-zA-Z]+[^r\n] { Elemento* e = busca(tabela, yytext);
-                    if (e != NULL) {
-                        printf("OBJ");
+[a-zA-Z]+[^r \n]    { Elemento *e = busca(tabela, yytext);
+                        if (e == NULL) {
+                            yylval.str = " a boca";
+                            printf("none yytext: z%sz\n", yytext);
+                            return NONE;
+                        } 
                         yylval.ele = e;
-                        return OBJ;
-                    } else {
-                        yylval.str = yytext;
-                        printf("yylval.str: %s", yylval.str);
-                        return NONE;
+                        return OBJ; 
                     }
-                }
 
-.   printf("NONE: %s\n", yytext);
-
+examinar[ ]* { yylval.verbo = examinar; return VERBO; }

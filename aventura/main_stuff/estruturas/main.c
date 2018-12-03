@@ -10,7 +10,16 @@
 #include "../headers/init_salas.h"
 
 int main() {
+    introducao();
+
     init_tabela();
+    Elemento *salas = inicializarSalas();
+    criarAventureiro(salas[0]);
+
+    // printf(">>>%s\n", busca(tabela, "Robo")->n);
+
+    examinar(heroi->salaAtual, NULL);
+    printf("\n");
 
     while(yyparse());
 

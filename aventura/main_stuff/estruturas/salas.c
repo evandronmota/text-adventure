@@ -158,7 +158,7 @@ Elemento criarSala0() {
 
     /* GLaDOS */
     Elemento GLaDOS =
-    criarElemento(True, "um", "Robô",
+    criarElemento(True, "um", "Robo",
         "Um robô com voz feminina fala com você: \n \
         \t\"Olá, seja bem-vindo ao Aperture Science Computer-Aided Enrichment Center. Você poderia me dizer a senha?\"",
         "Um robô com voz feminina fala com você: \n \

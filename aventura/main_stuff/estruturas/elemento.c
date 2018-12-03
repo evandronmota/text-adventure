@@ -56,7 +56,7 @@ int examinar(Elemento *e1, Elemento *e2) {
     else if (e1->conhecido)
         printf("%s", e1->curta);
     else {
-        printf("%s", e1->longa);
+        printf("longa: %s.", e1->longa);
         e1->conhecido = True;
     }
 
