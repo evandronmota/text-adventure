@@ -15,7 +15,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "../headers/introducao.h"
 #include "../headers/elemento.h"
 #include "../headers/aventureiro.h"
 #include "../headers/lista_ligada.h"
@@ -60,15 +59,6 @@ Elemento *criaElemento(char *n) { /* FASE 1 */
     el->n = malloc(80*sizeof(char));
     el->n = n;
     return el;
-}
-
-
-
-/* Insere objetos na tabela */
-void insereObjnaTabela(TabSim tabela, char *nome, Elemento *sala) {
-    int i;
-
-    
 }
 
 /* Testa salas */
@@ -285,7 +275,10 @@ int main() {
     printf(BOLDMAGENTA "\n\n################################################################\tFASE 2\t\t################################################################\n\n\n\n" RESET);
 
     /* Introdução */
-    introducao();
+    printf("Bem-vindo ao " BOLDYELLOW "INSERT GAME TITLE." RESET "\n\n \
+        Você é um estudante de matemática e computação. É domingo, 21h, você tem que entregar um EP até 24h, você decide jogar video game. \n \
+        Grande fã de puzzles, você pega seu jogo favorito Portal 2 e começa a jogar. \n \
+        Você pega no sono e de repente acorda numa sala e uma vóz robótica começa a te dar instruções.\n\n\n");
 
     printf("______________________________________________________________________________________________________________________________\n\n\n\n");
 
@@ -306,8 +299,7 @@ int main() {
 
     /* Insere todos objetos da sala na tabela */
     /* Os nomes são dos elementos na tabela de símbolos */
-    for (i=0; i<6; i++)
-        insereObjnaTabela(tab, salas[i].n, &salas[i]);
+    init_tabela();
 
     i=0;
 

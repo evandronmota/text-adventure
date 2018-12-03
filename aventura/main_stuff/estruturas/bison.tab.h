@@ -46,15 +46,26 @@ extern int yydebug;
   enum yytokentype
   {
     OBJ = 258,
-    LOBBY = 259,
-    FIBONACCI = 260,
-    BINARIA = 261,
-    GALINHADA = 262,
-    PASCAL = 263,
-    NEPAL = 264,
-    NONE = 265,
-    VERBO = 266,
-    EOL = 267
+    INVENT = 259,
+    LOBBY = 260,
+    SALA1 = 261,
+    SALA2 = 262,
+    SALA3 = 263,
+    SALA4 = 264,
+    SALA5 = 265,
+    NONE = 266,
+    VERBO = 267,
+    EXAMINAR = 268,
+    IRPARA = 269,
+    PEGAR = 270,
+    LARGAR = 271,
+    QUEBRAR = 272,
+    ATRAIR = 273,
+    COLOCAR = 274,
+    ALIMENTAR = 275,
+    LIGAR = 276,
+    TENTAR = 277,
+    EOL = 278
   };
 #endif
 
@@ -68,7 +79,7 @@ union YYSTYPE
     struct ele *ele;
     char *str;
 
-#line 72 "bison.tab.h" /* yacc.c:1909  */
+#line 83 "bison.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

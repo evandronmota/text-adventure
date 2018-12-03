@@ -6,3 +6,6 @@ lex.yy.c : flex.l
 
 bison.tab.c : bison.y
 	bison -d bison.y
+
+testes : testes.c lista_ligada.c salas.c tabela_de_sim.c init_salas.c aventureiro.c elemento.c
+	gcc -Wall -o testes testes.c lista_ligada.c salas.c tabela_de_sim.c init_salas.c aventureiro.c elemento.c

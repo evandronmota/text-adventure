@@ -17,59 +17,62 @@ func verbo;
     char *str;
 }
 
-%token <ele> OBJ
-%token <ele> LOBBY FIBONACCI BINARIA GALINHADA PASCAL NEPAL
+%token <ele> OBJ INVENT
+%token <ele> LOBBY SALA1 SALA2 SALA3 SALA4 SALA5
 %token <str> NONE /* palavra inválida */
-%token <str> VERBO
+%token <str> VERBO EXAMINAR IRPARA PEGAR LARGAR QUEBRAR ATRAIR COLOCAR ALIMENTAR LIGAR TENTAR
 %token EOL
 
 %type <ele> obj
-%type <ele> lugar
 
 %defines
 
 %%
 
-input: cmd | lugar | obj | desconhecido | eol
+input: cmd | obj | desconhecido | eol
 ;
 
-cmd:  VERBO             {  } eol
-    | VERBO obj         { verbo = (func)busca(tabela, $1);
-                            if (verbo == NULL)
-                                printf("NULLZAOz%s\n", $1);
-                            else
-                                verbo($1, NULL); 
-                        } eol
-    | VERBO obj obj     {  } eol
-    | VERBO lugar       {  } eol
-    | VERBO NONE        { printf("Você quer %s o quê?\n", $1); return 1;}
-    | VERBO obj NONE    { printf("Não vejo nada por aqui.\n", $3); } eol
-    | VERBO NONE NONE   { printf("WTF?\n"); } eol
-;
+cmd:  EXAMINAR obj           { examinar($2, NULL);printf("\n"); } eol
+    | IRPARA obj             { trocarLugar($2, NULL); }
+    | PEGAR obj              { pegar($2, NULL); }
+    | LARGAR obj             { largar($2, NULL); }
+    | QUEBRAR obj            { quebrar($2, NULL); }
+    | ATRAIR obj             { atrair($2, NULL); }
+    | COLOCAR obj            { colocar($2, NULL); }
+    | ALIMENTAR obj          { alimentar($2, NULL); }
+    | LIGAR obj              { ligar($2, NULL); }
+    | TENTAR obj NONE        { tentarSenha($2, $3); }
 
-lugar: LOBBY    { printf("lobbyzao\n");
-                    return 1;
-                }
-    | FIBONACCI { $$ = $1; }
-    | BINARIA   { $$ = $1; }
-    | GALINHADA { $$ = $1; }
-    | PASCAL    { $$ = $1; }
-    | NEPAL     { $$ = $1; }
-;
+    | INVENT                 { olharMochila(NULL, NULL); }
 
-obj: OBJ { $$ = $1; }
+    | VERBO NONE             { printf("Você quer %s o quê?\n", $1); return 1;}
+    | VERBO obj NONE         { printf("Não vejo nada por aqui.\n", $3); } eol
+    | VERBO NONE NONE        { printf("WTF?\n"); } eol
 ;
 
 
-desconhecido: NONE  { printf("O que é %s?\n", $1); } eol
+obj:  OBJ                    { $$ = $1; }
+    | LOBBY                  { $$ = $1; }
+    | SALA1                  { $$ = $1; }
+    | SALA2                  { $$ = $1; }
+    | SALA3                  { $$ = $1; }
+    | SALA4                  { $$ = $1; }
+    | SALA5                  { $$ = $1; }
+
 ;
+
+
+desconhecido: NONE           { printf("O que é %s?\n", $1); } eol
+;
+
 
 eol: EOL { return 1; }
 ;
 
 %%
+
 /* Não se encaixa em nenhuma regra */
 int yyerror(char *s) {
-    printf("Impossível compreender.\n");
+    printf("\nERRO: %s!\n", s);
     return 0;
 }
