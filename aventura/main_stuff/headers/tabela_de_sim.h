@@ -34,7 +34,7 @@ void destroi(TabSim t);
     recebida. Retorna um inteiro indicando se a
     operação foi bem-sucedida.
 */
-int insere(TabSim t, char *n, Elemento *val);
+int insere(TabSim t, char *n, void *val);
 
 
 /*
@@ -43,7 +43,7 @@ int insere(TabSim t, char *n, Elemento *val);
     string recebida. Retorna um ponteiro para o
     elemento associado à tal string.
 */
-Elemento *busca(TabSim t, char *n);
+void *busca(TabSim t, char *n);
 
 
 /*

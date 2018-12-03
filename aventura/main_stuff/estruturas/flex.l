@@ -45,7 +45,7 @@ static int mygetinput(char *buf, int size) {
 
 %%
 
-[\n]  { return EOL; }
+\n  { return EOL; }
 
 lobby   { return LOBBY;}
 
@@ -65,7 +65,7 @@ galinhada   printf("GALINHADA: %s\n", yytext);
 
 [a-zA-Z]+[^r \n]    { Elemento *e = busca(tabela, yytext);
                         if (e == NULL) {
-                            yylval.str = " a boca";
+                            yylval.str = yytext;
                             printf("none yytext: z%sz\n", yytext);
                             return NONE;
                         } 
@@ -73,4 +73,3 @@ galinhada   printf("GALINHADA: %s\n", yytext);
                         return OBJ; 
                     }
 
-examinar[ ]* { yylval.verbo = examinar; return VERBO; }

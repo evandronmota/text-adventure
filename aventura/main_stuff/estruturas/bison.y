@@ -8,12 +8,13 @@
 
 int yylex();
 int yyerror(char *);
+
+func verbo;
 %}
 
 %union {
     struct ele *ele;
     char *str;
-    func verbo;
 }
 
 %token <ele> OBJ
@@ -33,7 +34,12 @@ input: cmd | lugar | obj | desconhecido | eol
 ;
 
 cmd:  VERBO             {  } eol
-    | VERBO obj         { examinar($2, NULL); } eol
+    | VERBO obj         { verbo = (func)busca(tabela, $1);
+                            if (verbo == NULL)
+                                printf("NULLZAOz%s\n", $1);
+                            else
+                                verbo($1, NULL); 
+                        } eol
     | VERBO obj obj     {  } eol
     | VERBO lugar       {  } eol
     | VERBO NONE        { printf("Você quer %s o quê?\n", $1); return 1;}

@@ -41,7 +41,7 @@ void destroi(TabSim t) {
     free(t);
 }
 
-int insere(TabSim t, char *n, Elemento *val) {
+int insere(TabSim t, char *n, void *val) {
     int h = hash(t->tam, n);
     Lista l = insereL(t->elementos[h], val);
     if (l == NULL)
@@ -50,14 +50,14 @@ int insere(TabSim t, char *n, Elemento *val) {
     return 1;
 }
 
-Elemento *busca(TabSim t, char *n) {
+void *busca(TabSim t, char *n) {
     int h = hash(t->tam, n);
     return buscaL(t->elementos[h], n);
 }
 
 int retira(TabSim t, char *n) {
     int h = hash(t->tam, n);
-    Elemento *el = busca(t, n);
+    void *el = busca(t, n);
     if (el==NULL)
         return 0;
     Lista l = t->elementos[h];
@@ -96,4 +96,28 @@ void init_tabela() {
             // printf("YOO: %s\n", salas[i].conteudo[j].n);
         }
     }
+
+    func vExaminar = examinar;
+    func vPegar = pegar;
+    func vAtrair = atrair;
+    func vLargar = largar;
+    func vQuebrar = quebrar;
+    func vColocar = colocar;
+    func vAlimentar = alimentar;
+    func vLigar = ligar;
+    func vTrocarLugar = trocarLugar;
+    func vValidar = validar;
+
+    insere(tabela, "examinar", vExaminar);
+    insere(tabela, "pegar", vPegar);
+    insere(tabela, "atrair", vAtrair);
+    insere(tabela, "largar", vLargar);
+    insere(tabela, "quebrar", vQuebrar);
+    insere(tabela, "colocar", vColocar);
+    insere(tabela, "alimentar", vAlimentar);
+    insere(tabela, "ligar", vLigar);
+    insere(tabela, "trocarLugar", vTrocarLugar);
+    insere(tabela, "validar", vValidar);
+    insere(tabela, "tentarSenha", tentarSenha);
+
 }

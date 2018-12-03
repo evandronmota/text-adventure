@@ -26,7 +26,7 @@ void destroiL(Lista l) {
     free(p);
 }
 
-Lista insereL(Lista l, Elemento *val) {
+Lista insereL(Lista l, void *val) {
     Lista new = criaL();
     if (new == NULL)
         return NULL;
@@ -37,7 +37,7 @@ Lista insereL(Lista l, Elemento *val) {
     return new;
 }
 
-Elemento *buscaL(Lista l, char *n) {
+void *buscaL(Lista l, char *n) {
     Lista p = l->prox;
     while (p != NULL) {
         if (!strcmp(p->nome, n))
@@ -47,7 +47,7 @@ Elemento *buscaL(Lista l, char *n) {
     return NULL;
 }
 
-Elemento *retiraL(Lista l, Elemento *val) {
+void *retiraL(Lista l, void *val) {
     Lista p = l->prox;
     if (p==NULL)
         return NULL;

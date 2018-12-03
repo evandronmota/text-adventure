@@ -63,13 +63,12 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 13 "bison.y" /* yacc.c:1909  */
+#line 15 "bison.y" /* yacc.c:1909  */
 
     struct ele *ele;
     char *str;
-    func verbo;
 
-#line 73 "bison.tab.h" /* yacc.c:1909  */
+#line 72 "bison.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

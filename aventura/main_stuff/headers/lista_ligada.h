@@ -5,7 +5,7 @@
 */
 struct elo {
     char *nome;
-    Elemento *val;
+    void *val;
     struct elo *prox;
 };
 
@@ -29,7 +29,7 @@ void destroiL(Lista l);
     um elemento. Insere nessa lista o elemento
     recebido.
 */
-Lista insereL(Lista l, Elemento *val);
+Lista insereL(Lista l, void *val);
 
 
 /*
@@ -39,7 +39,7 @@ Lista insereL(Lista l, Elemento *val);
     associado a tal string, em caso de sucesso, ou
     NULL, caso contrário.
 */
-Elemento *buscaL(Lista l, char *n);
+void *buscaL(Lista l, char *n);
 
 
 /*
@@ -48,4 +48,4 @@ Elemento *buscaL(Lista l, char *n);
     Retorna um ponteiro para tal elemento, em caso
     de sucesso, ou NULL, caso contrário.
 */
-Elemento *retiraL(Lista l, Elemento *val);
+void *retiraL(Lista l, void *val);
