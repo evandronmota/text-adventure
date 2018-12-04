@@ -384,7 +384,7 @@ struct yy_trans_info
 	};
 static yyconst flex_int16_t yy_accept[103] =
     {   0,
-        0,    0,   21,   20,    1,   20,   20,   20,   20,   12,
+       12,   12,   21,   20,    1,   20,   20,   20,   20,   20,
        20,   20,   20,   20,   20,   19,   19,    0,   19,   19,
        19,   19,   19,    0,   19,   19,   19,   19,   19,   19,
        19,   19,    0,   19,   19,   19,    0,    0,   19,   19,
@@ -679,41 +679,7 @@ char *yytext;
 #include "../headers/tabela_de_sim.h"
 #include "bison.tab.h"
 
-/* Para readline */
-#include <readline/readline.h>
-#include <readline/history.h>
-
-/* Redefinição da entrada do Flex para usar o readline */
-#define YY_INPUT(buf,result,max_size) result = mygetinput(buf, max_size);
-
-
-/* Função que substitui a entrada */
-static int mygetinput(char *buf, int size) {
-    char *line;
-
-    /* final de arquivo */
-    if (feof(yyin))  return YY_NULL;
-
-    /* Lê uma linha, com o prompt "> " */
-    line = readline("> ");
-    if(!line)        return YY_NULL;
-
-    /* segurança */
-    if(strlen(line) > size-2){
-        fprintf(stderr,"input line too long\n");
-        return YY_NULL;
-    }
-
-    /* copia para o buffer de entrada */
-    sprintf(buf,"%s\n",line);
-    /* adiciona ao histórico */
-    add_history(line);
-
-    /* libera memória */
-    free(line);
-    return strlen(buf);
-}   
-#line 717 "lex.yy.c"
+#line 683 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -931,10 +897,10 @@ YY_DECL
 		}
 
 	{
-#line 46 "flex.l"
+#line 12 "flex.l"
 
 
-#line 938 "lex.yy.c"
+#line 904 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -994,98 +960,99 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 48 "flex.l"
+#line 14 "flex.l"
 { return EOL; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 50 "flex.l"
+#line 16 "flex.l"
 { return EXAMINAR; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 51 "flex.l"
+#line 17 "flex.l"
 { return PEGAR; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 52 "flex.l"
+#line 18 "flex.l"
 { return LARGAR; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 53 "flex.l"
+#line 19 "flex.l"
 { return QUEBRAR; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 54 "flex.l"
+#line 20 "flex.l"
 { return ATRAIR; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 55 "flex.l"
+#line 21 "flex.l"
 { return COLOCAR; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 56 "flex.l"
+#line 22 "flex.l"
 { return ALIMENTAR; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 57 "flex.l"
+#line 23 "flex.l"
 { return LIGAR; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 58 "flex.l"
+#line 24 "flex.l"
 { return TENTAR; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 59 "flex.l"
+#line 25 "flex.l"
 { return IRPARA; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 61 "flex.l"
+#line 27 "flex.l"
 { return INVENT; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 63 "flex.l"
+#line 29 "flex.l"
 { yylval.ele = busca(tabela, yytext); return LOBBY; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 64 "flex.l"
+#line 30 "flex.l"
 { yylval.ele = busca(tabela, yytext); return SALA1; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 65 "flex.l"
+#line 31 "flex.l"
 { yylval.ele = busca(tabela, yytext); return SALA2; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 66 "flex.l"
+#line 32 "flex.l"
 { yylval.ele = busca(tabela, yytext); return SALA3; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 67 "flex.l"
+#line 33 "flex.l"
 { yylval.ele = busca(tabela, yytext); return SALA4; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 68 "flex.l"
+#line 34 "flex.l"
 { yylval.ele = busca(tabela, yytext); return SALA5; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 70 "flex.l"
-{ Elemento *e = busca(tabela, yytext);
+#line 36 "flex.l"
+{ 
+                            Elemento *e = busca(tabela, yytext);
                             if (e == NULL) {
                                 yylval.str = yytext;
                                 return NONE;
@@ -1096,10 +1063,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 78 "flex.l"
+#line 45 "flex.l"
 ECHO;
 	YY_BREAK
-#line 1103 "lex.yy.c"
+#line 1070 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2100,4 +2067,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 78 "flex.l"
+#line 45 "flex.l"
