@@ -32,8 +32,8 @@ int tentarGLaDOS(char *key) {
     else if (!strcmp("SENHA", key)) {
         printf("Não é que nós nos divertimos juntos? Gostaria de dizer que estou prestes a abrir um alçapão em baixo de você que o jogaria em um poço de lava, mas parece que eu não fui permitida. Então esse é apenas um simples adeus. Espero que tenha aproveitada o sonho. \n\nTudo fica escuro. Você acorda em cima dos livros e lembra que ainda não entregou o EP ... ");
         acertou = 1;
-        /* FIM DE JOGO !? */
-        // exit(0);
+        printf("****************** FIM DE JOGO ****************** \n");
+        exit(0);
     }
     else
         printf("Parece que você não sabe a senha ...");
@@ -87,6 +87,7 @@ int pegar(Elemento *e1, Elemento *e2) {
 
 int atrair(Elemento *e1, Elemento *e2) {
     int atraiu = 0;
+
     if (e1 == NULL)
         printf("Atrair o quê?");
     else if (e2 == NULL)
@@ -262,7 +263,7 @@ int tentarSenha(Elemento *e, char *senha) {
     if (e == NULL)
         printf("Você esqueceu de escrever a senha ...");
     else {
-        if (!strcmp(e->n, "Robô")) { /* Caso especial da senha principal */
+        if (!strcmp(e->n, "Robo")) { /* Caso especial da senha principal */
             if (tentarGLaDOS(senha))
                 acertou = 1;
         }
@@ -289,14 +290,14 @@ int tentarSenha(Elemento *e, char *senha) {
 }
 
 int validar(Elemento *e1, Elemento *e2) {
-    if (strcmp(e1->n, "Balança") == 0) {
+    if (!strcmp(e1->n, "Balança")) {
         int cont = 0;
         if (e1->nEle == 3) {
             int i;
             for (i=0; i < e1->nEle; i++) {
-                if (strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 1") == 0 ||
-                    strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 2") == 0 ||
-                    strcmp(heroi->salaAtual->conteudo[i].n, "Bloco 8") == 0) 
+                if (strcmp(e1->conteudo[i].n, "Bloco1") == 0 ||
+                    strcmp(e1->conteudo[i].n, "Bloco2") == 0 ||
+                    strcmp(e1->conteudo[i].n, "Bloco8") == 0) 
                     cont++;
             }
 
@@ -322,4 +323,25 @@ int olharMochila(Elemento *e1, Elemento *e2) {
         printf("-%s\n", heroi->mochila[i]->n);
 
     return 1;
+}
+
+Elemento *copiaEle (Elemento e) {
+    Elemento *novo = malloc(sizeof(Elemento));
+    novo->artigo = e.artigo;
+    novo->n = e.n;
+    novo->curta = e.curta;
+    novo->longa = e.longa;
+    novo->ativo = e.ativo;
+    novo->visivel = e.visivel;
+    novo->conhecido = e.conhecido;
+    novo->conteudo = e.conteudo;
+    novo->nEle = e.nEle; /* Número de elementos na lista de conteúdos */
+    novo->nAcoes = e.nAcoes; /* Número de ações do elemento */
+    novo->nAtr = e.nAtr; /* Número de atributos do elemento */
+    novo->acoes = e.acoes;
+    novo->transitividade = e.transitividade;
+    novo->animacao = e.animacao;
+    novo->detalhe = e.detalhe;
+
+    return novo;
 }

@@ -78,9 +78,8 @@ int retira(TabSim t, char *n) {
     return 0;
 }
 
-void init_tabela() {
+void init_tabela(Elemento *salas) {
     tabela = cria(97);
-    Elemento *salas = inicializarSalas();
 
     int i;
     int j;
@@ -88,13 +87,9 @@ void init_tabela() {
         /* Insere sala */
         insere(tabela, salas[i].n, &salas[i]);
 
-        // printf("SALAS: %s\n", salas[i].n);
-
         /* Insere todos os objetos dentro da sala */
-        for (j = 0; j<salas[i].nEle; j++) {
+        for (j = 0; j<salas[i].nEle; j++)
             insere(tabela, salas[i].conteudo[j].n, &salas[i].conteudo[j]);
-            // printf("YOO: %s\n", salas[i].conteudo[j].n);
-        }
     }
 
 }

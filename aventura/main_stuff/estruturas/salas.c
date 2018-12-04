@@ -621,7 +621,7 @@ Elemento criarSala4() {
         num[0] = i + 48;
         num[1] = '\0';
 
-        char nome[] = "Bloco ";
+        char nome[] = "Bloco";
         char desc1Ini[] = "Bloco com o número ";
         char desc1Fim[] = ".";
         char desc2Ini[] = "Bloco empoeirado e com o número ";
@@ -692,7 +692,7 @@ Elemento criarSala4() {
     conteudoS4[2] = balanca;
     conteudoS4[3] = porta;
     conteudoS4[4] = letra;
-    for (int i = 5; i < 15; i++)
+    for (i = 5; i < 15; i++)
         conteudoS4[i] = blocos[i-5];
 
 

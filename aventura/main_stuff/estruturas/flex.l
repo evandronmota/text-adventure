@@ -1,44 +1,45 @@
 %{
 
+#include <string.h>
 #include "../headers/elemento.h"
 #include "../headers/lista_ligada.h"
 #include "../headers/tabela_de_sim.h"
 #include "bison.tab.h"
 
-// /* Para readline */
-// #include <readline/readline.h>
-// #include <readline/history.h>
+/* Para readline */
+#include <readline/readline.h>
+#include <readline/history.h>
 
-// /* Redefinição da entrada do Flex para usar o readline */
-// #define YY_INPUT(buf,result,max_size) result = mygetinput(buf, max_size);
+/* Redefinição da entrada do Flex para usar o readline */
+#define YY_INPUT(buf,result,max_size) result = mygetinput(buf, max_size);
 
 
-// /* Função que substitui a entrada */
-// static int mygetinput(char *buf, int size) {
-//     char *line;
+/* Função que substitui a entrada */
+static int mygetinput(char *buf, int size) {
+    char *line;
 
-//     /* final de arquivo */
-//     if (feof(yyin))  return YY_NULL;
+    /* final de arquivo */
+    if (feof(yyin))  return YY_NULL;
 
-//     /* Lê uma linha, com o prompt "> " */
-//     line = readline("> ");
-//     if(!line)        return YY_NULL;
+    /* Lê uma linha, com o prompt "> " */
+    line = readline("\n> ");
+    if(!line)        return YY_NULL;
 
-//     /* segurança */
-//     if(strlen(line) > size-2){
-//         fprintf(stderr,"input line too long\n");
-//         return YY_NULL;
-//     }
+    /* segurança */
+    if(strlen(line) > size-2){
+        fprintf(stderr,"input line too long\n");
+        return YY_NULL;
+    }
 
-//     /* copia para o buffer de entrada */
-//     sprintf(buf,"%s\n",line);
-//     /* adiciona ao histórico */
-//     add_history(line);
+    /* copia para o buffer de entrada */
+    sprintf(buf,"%s\n",line);
+    /* adiciona ao histórico */
+    add_history(line);
 
-//     /* libera memória */
-//     free(line);
-//     return strlen(buf);
-// }
+    /* libera memória */
+    free(line);
+    return strlen(buf);
+}
 
 %}
 
@@ -59,21 +60,27 @@ ligar                   { return LIGAR; }
 tentar                  { return TENTAR; }
 ir[ ]para               { return IRPARA; }
 
-(invent((a|á)rio)?)?     { return INVENT; }
+(invent((a|á)rio)?)?    { return INVENT; }
 
-lobby                   { yylval.ele = busca(tabela, yytext); return LOBBY; }
-sala[ ]1                { yylval.ele = busca(tabela, yytext); return SALA1; }
-sala[ ]2                { yylval.ele = busca(tabela, yytext); return SALA2; }
-sala[ ]3                { yylval.ele = busca(tabela, yytext); return SALA3; }
-sala[ ]4                { yylval.ele = busca(tabela, yytext); return SALA4; }
-sala[ ]5                { yylval.ele = busca(tabela, yytext); return SALA5; }
+lobby                   { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return LOBBY; }
+sala[ ]1                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA1; }
+sala[ ]2                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA2; }
+sala[ ]3                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA3; }
+sala[ ]4                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA4; }
+sala[ ]5                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA5; }
 
-[a-z0-9]+[^r \n]        { 
+[a-z]+r     {   yylval.str = yytext; 
+                return NONVERBO; }
+
+[a-zçáéíóúâêîôû0-9]+[^r \n]        { 
+                            yytext[0] = toupper(yytext[0]);
+                            // printf("yytext: %s\n", yytext);
                             Elemento *e = busca(tabela, yytext);
                             if (e == NULL) {
                                 yylval.str = yytext;
                                 return NONE;
-                            } 
+                            }
+                            // printf("voce achou %s\n", e->n);
                             yylval.ele = e;
                             return OBJ; 
                         }
