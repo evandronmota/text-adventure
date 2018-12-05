@@ -268,7 +268,7 @@ Elemento criarSala1() {
 
     /* Relógio */
     Elemento relogio =
-    criarElemento(True, "um","Relógio",
+    criarElemento(True, "um","Relogio",
         "São 8h e ... ?",
         "Relógio sem o ponteiro dos minutos e com o ponteiro das horas apontando para o VIII.", NULL, 0);
 
@@ -292,7 +292,7 @@ Elemento criarSala1() {
     conteudoS1[5] = mensagem;
 
     Elemento sala1 =
-    criarElemento(False, "uma", "Fibonacci",
+    criarElemento(False, "uma", "Sala 1",
         "Uma sala empoeirada com cheiro de mofo.",
         "Uma sala empoeirada com cheiro de mofo. Há um relógio e um ponteiro no chão. Na parede está escrita uma mensagem e sob um pedestal há uma concha. Além disso, tem uma porta no fundo da sala.", conteudoS1, 6);
 
@@ -419,7 +419,7 @@ Elemento criarSala2() {
     conteudoS2[6] = mensagem;
 
     Elemento sala2 =
-    criarElemento(False, "uma","Binaria",
+    criarElemento(False, "uma","Sala 2",
         "Uma sala legal.",
         "Uma sala com um cofre, livro, mensagem, página, morsa de pelúcia e porta aberta.", conteudoS2, 7);
 
@@ -563,7 +563,7 @@ Elemento criarSala3() {
     // conteudoS3[5] = botao;
     
     Elemento sala3 =
-    criarElemento(False, "uma","Galinhada",
+    criarElemento(False, "uma","Sala 3",
         "Uma sala circular. No centro há uma gaiola pendurada no teto e uma bobina muito grande no chão.",
         "Uma sala circular. No centro há uma gaiola pendurada no teto e uma bobina muito grande no chão. No fundo há um saco de linho e ao lado uma barra de metal.",
         conteudoS3, 8);
@@ -697,7 +697,7 @@ Elemento criarSala4() {
 
 
     Elemento sala4 =
-    criarElemento(False, "uma", "Pascal",
+    criarElemento(False, "uma", "Sala 4",
     "Uma sala triangular.",
     "Uma sala triangular. Há uma mesa com blocos, um papel com um poema no chão, uma mensagem na parede e uma balança.",
     conteudoS4, 15);
@@ -793,7 +793,7 @@ Elemento criarSala5() {
     conteudoS5[6] = letra;
 
     Elemento sala5 =
-    criarElemento(False, "uma", "NePAl",
+    criarElemento(False, "uma", "Sala 5",
         "A room.",
         "Um poster, uma caixa de fósforo, uma lata de refrigerante de guaraná, um mapa e uma porta para o lobby.", 
         conteudoS5, 7);

@@ -97,27 +97,4 @@ void init_tabela() {
         }
     }
 
-    func vExaminar = examinar;
-    func vPegar = pegar;
-    func vAtrair = atrair;
-    func vLargar = largar;
-    func vQuebrar = quebrar;
-    func vColocar = colocar;
-    func vAlimentar = alimentar;
-    func vLigar = ligar;
-    func vTrocarLugar = trocarLugar;
-    func vValidar = validar;
-
-    insere(tabela, "examinar", vExaminar);
-    insere(tabela, "pegar", vPegar);
-    insere(tabela, "atrair", vAtrair);
-    insere(tabela, "largar", vLargar);
-    insere(tabela, "quebrar", vQuebrar);
-    insere(tabela, "colocar", vColocar);
-    insere(tabela, "alimentar", vAlimentar);
-    insere(tabela, "ligar", vLigar);
-    insere(tabela, "trocarLugar", vTrocarLugar);
-    insere(tabela, "validar", vValidar);
-    insere(tabela, "tentarSenha", tentarSenha);
-
 }

@@ -56,7 +56,7 @@ int examinar(Elemento *e1, Elemento *e2) {
     else if (e1->conhecido)
         printf("%s", e1->curta);
     else {
-        printf("longa: %s.", e1->longa);
+        printf("%s", e1->longa);
         e1->conhecido = True;
     }
 
@@ -248,6 +248,9 @@ int trocarLugar(Elemento *e1, Elemento *e2) {
     else {
         heroi->salaAtual = e1;
         printf("Você se moveu para %s %s!", e1->artigo, e1->n);
+        printf("\n");
+        examinar(heroi->salaAtual, NULL);
+        printf("\n");
     }
 
     return (e1 == NULL ? 0 : 1);
@@ -308,4 +311,15 @@ int validar(Elemento *e1, Elemento *e2) {
     }
 
     return 0;
+}
+
+
+int olharMochila(Elemento *e1, Elemento *e2) {
+    int i;
+
+    printf("Você possui:\n");
+    for (i=0; i<heroi->nMochila; i++)
+        printf("-%s\n", heroi->mochila[i]->n);
+
+    return 1;
 }
