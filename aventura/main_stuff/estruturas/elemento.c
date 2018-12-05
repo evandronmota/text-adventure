@@ -190,7 +190,7 @@ int alimentar(Elemento *e1, Elemento *e2) {
         printf("Alimentar o quê?");
     else if (e2 == NULL)
         printf("Alimentar com o quê?");
-    else if (strcmp(e2->n, "Saco") == 0){
+    else if (strcmp(e2->n, "Saco") == 0 && estaNaMochila(e2)){
         i = procurarAtributo(e1, "estaFaminta"); /* Acha estaFaminta */
         if (i == -1)
             printf("Você não pode alimentar a %s!", e1->n);
@@ -209,9 +209,11 @@ int alimentar(Elemento *e1, Elemento *e2) {
                 printf("Você já alimentou a %s!", e1->n);
         }
     }
-    else 
-        printf("Você não pode alimentar %s %s usando %s %s!", e1->artigo, e1->n, e2->artigo, e2->n);
-
+    else{ 
+        printf("Você não pode alimentar %s %s usando %s %s", e1->artigo, e1->n, e2->artigo, e2->n);
+        if (!estaNaMochila(e2)) printf(" que você não está carregando.");
+        else printf(".");
+    }
     return alimentou;
 }
 
