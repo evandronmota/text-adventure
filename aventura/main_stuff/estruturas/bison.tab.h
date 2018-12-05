@@ -54,7 +54,7 @@ extern int yydebug;
     SALA4 = 264,
     SALA5 = 265,
     NONE = 266,
-    VERBO = 267,
+    NONVERBO = 267,
     EXAMINAR = 268,
     IRPARA = 269,
     PEGAR = 270,
@@ -74,7 +74,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 13 "bison.y" /* yacc.c:1909  */
+#line 12 "bison.y" /* yacc.c:1909  */
 
     Elemento *ele;
     char *str;

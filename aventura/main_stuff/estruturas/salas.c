@@ -5,6 +5,9 @@
 #include "../headers/aventureiro.h"
 #include "../headers/salas.h"
 
+#define RESET   "\033[0m"
+#define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
+
 
 void adicionarAcao(Elemento *e, func acao, int transitividade) {
     e->nAcoes++;
@@ -48,6 +51,7 @@ Elemento criarElemento(boolean isObjeto, char *artigo, char *nome, char *curta,
     novo.n = nome;
     novo.curta = curta;
     novo.longa = longa;
+    novo.isObjeto = isObjeto;
     novo.ativo = True; /* Todos objetos começam ativos */
     novo.visivel = True; /* Por padrão os elementos começam visiveis */
     novo.conhecido = False; /* Todos objetos começam desconhecidos */
@@ -159,10 +163,10 @@ Elemento criarSala0() {
     /* GLaDOS */
     Elemento GLaDOS =
     criarElemento(True, "um", "Robo",
-        "Um robô com voz feminina fala com você: \n \
-        \t\"Olá, seja bem-vindo ao Aperture Science Computer-Aided Enrichment Center. Você poderia me dizer a senha?\"",
-        "Um robô com voz feminina fala com você: \n \
-        \t\"Olá, seja bem-vindo ao Aperture Science Computer-Aided Enrichment Center. Você poderia me dizer a senha?\"", NULL, 0);
+        "\nUm robô com voz feminina fala com você: \n \
+        \t\"Olá, seja bem-vindo ao Aperture Science Computer-Aided Enrichment Center. Você poderia me dizer a senha?\"\n",
+        "\nUm robô com voz feminina fala com você: \n \
+        \t\"Olá, seja bem-vindo ao Aperture Science Computer-Aided Enrichment Center. Você poderia me dizer a senha?\"\n", NULL, 0);
 
     GLaDOS.detalhe.atributos[0].valor.valor_estado = False; /* Não é pegável */
     GLaDOS.animacao = malloc(sizeof(func));
@@ -218,7 +222,7 @@ Elemento criarSala1() {
     /* Letra */
     Elemento letra =
     criarElemento(True, "uma","Letra",
-        "A letra é \"H\"!",
+        "A letra é \"" BOLDCYAN "H" RESET "\"!",
         "Quebre a concha!",
         NULL, 0);
 
@@ -341,7 +345,7 @@ Elemento criarSala2() {
 
     func quebrarMorsa = quebrar;
     Elemento morsa =
-    criarElemento(True, "uma","Pelúcia",
+    criarElemento(True, "uma","Pelucia",
         "Uma morsa de pelúcia.",
         "Uma morsa de pelúcia marrom.", 
         NULL, 0);
@@ -352,7 +356,7 @@ Elemento criarSala2() {
 
     /* Página */
     Elemento pagina =
-    criarElemento(True, "uma","Página",
+    criarElemento(True, "uma","Pagina",
         "Você já tentou procurar embaixo do cofre?",
         "Você já tentou procurar embaixo do cofre?",
         NULL, 0);
@@ -380,8 +384,8 @@ Elemento criarSala2() {
     /* Letra */
     Elemento letra =
     criarElemento(True, "uma","Letra",
-        "A letra é \"N\"!",
-        "A letra é \"N\"!",
+        "A letra é \"" BOLDCYAN "N" RESET "\"!",
+        "A letra é \"" BOLDCYAN "N" RESET "\"!",
         NULL, 0);
 
     letra.visivel = False; /* Não é visível */
@@ -453,8 +457,8 @@ Elemento criarSala3() {
     /* Letra */
     Elemento letra = 
     criarElemento(True, "uma", "Letra",
-        "A letra é \"E\"!",
-        "A letra é \"E\"!",
+        "A letra é \"" BOLDCYAN "E" RESET "\"!",
+        "A letra é \"" BOLDCYAN "E" RESET "\"!",
         NULL, 0);
 
     letra.visivel = False; /* Não é visível */
@@ -565,7 +569,7 @@ Elemento criarSala3() {
     Elemento sala3 =
     criarElemento(False, "uma","Sala 3",
         "Uma sala circular. No centro há uma gaiola pendurada no teto e uma bobina muito grande no chão.",
-        "Uma sala circular. No centro há uma gaiola pendurada no teto e uma bobina muito grande no chão. No fundo há um saco de linho e ao lado uma barra de metal.",
+        "Uma sala circular. No centro há uma gaiola pendurada no teto e uma bobina muito grande no chão. No fundo há um saco de minho e ao lado uma barra de metal.",
         conteudoS3, 8);
 
     return sala3;
@@ -621,7 +625,7 @@ Elemento criarSala4() {
         num[0] = i + 48;
         num[1] = '\0';
 
-        char nome[] = "Bloco ";
+        char nome[] = "Bloco";
         char desc1Ini[] = "Bloco com o número ";
         char desc1Fim[] = ".";
         char desc2Ini[] = "Bloco empoeirado e com o número ";
@@ -677,8 +681,8 @@ Elemento criarSala4() {
     /* Letra */
     Elemento letra = 
     criarElemento(True, "uma", "Letra",
-        "A letra é \"S\"!",
-        "A letra é \"S\"!",
+        "A letra é \"" BOLDCYAN "S" RESET "\"!",
+        "A letra é \"" BOLDCYAN "S" RESET "\"!",
         NULL, 0);
 
     letra.visivel = False; /* Não é visível */
@@ -692,7 +696,7 @@ Elemento criarSala4() {
     conteudoS4[2] = balanca;
     conteudoS4[3] = porta;
     conteudoS4[4] = letra;
-    for (int i = 5; i < 15; i++)
+    for (i = 5; i < 15; i++)
         conteudoS4[i] = blocos[i-5];
 
 
@@ -750,14 +754,14 @@ Elemento criarSala5() {
 
     /* Caixa de fósforo */
     Elemento caixadefosforo =
-    criarElemento(True, "uma", "Caixa de fósforo",
+    criarElemento(True, "uma", "Caixa",
         "Uma caixa de fósforo.",
         "Uma caixa de fósforo.", NULL, 0);
 
 
     /* Lata de refrigerante */
     Elemento lataderefri =
-    criarElemento(True, "uma", "Lata de refrigerante",
+    criarElemento(True, "uma", "Lata",
         "Lata de refrigerante.",
         "Lata de refrigerante.", NULL, 0);
 
@@ -774,8 +778,8 @@ Elemento criarSala5() {
     /* Letra */
     Elemento letra = 
     criarElemento(True, "uma", "Letra",
-        "A letra é \"A\"!",
-        "A letra é \"A\"!",
+        "A letra é \"" BOLDCYAN "A" RESET "\"!",
+        "A letra é \"" BOLDCYAN "A" RESET "\"!",
         NULL, 0);
 
     letra.visivel = False; /* Não é visível */

@@ -55,5 +55,8 @@ void *busca(TabSim t, char *n);
 int retira(TabSim t, char *n);
 
 
-/* Inicializa a tabela com os elementos. */
-void init_tabela();
+/* 
+    Recebe um vetor com as salas inicializadas.
+    Inicializa a tabela com os elementos. 
+*/
+void init_tabela(Elemento *salas);

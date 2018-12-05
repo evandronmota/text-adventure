@@ -43,6 +43,7 @@ typedef struct ele {
     char *n;
     char *curta;
     char *longa;
+    boolean isObjeto;
     boolean ativo;
     boolean visivel;
     boolean conhecido;
@@ -199,5 +200,7 @@ int tentarSenha(Elemento *e, char *senha);
 */
 int validar(Elemento *e1, Elemento *e2);
 
+
 /* Recebe nada e imprime todos os itens da mochila. */
 int olharMochila(Elemento *e1, Elemento *e2);
+

@@ -1,5 +1,6 @@
 %{
 
+#include <string.h>
 #include "../headers/elemento.h"
 #include "../headers/lista_ligada.h"
 #include "../headers/tabela_de_sim.h"
@@ -12,6 +13,8 @@
 /* Redefinição da entrada do Flex para usar o readline */
 #define YY_INPUT(buf,result,max_size) result = mygetinput(buf, max_size);
 
+#define RESET   "\033[0m"
+#define BOLDMAGENTA "\033[1m\033[35m"      /* Bold Magenta */
 
 /* Função que substitui a entrada */
 static int mygetinput(char *buf, int size) {
@@ -21,7 +24,7 @@ static int mygetinput(char *buf, int size) {
     if (feof(yyin))  return YY_NULL;
 
     /* Lê uma linha, com o prompt "> " */
-    line = readline("> ");
+    line = readline( BOLDMAGENTA "\n> " RESET);
     if(!line)        return YY_NULL;
 
     /* segurança */
@@ -38,7 +41,8 @@ static int mygetinput(char *buf, int size) {
     /* libera memória */
     free(line);
     return strlen(buf);
-}   
+}
+
 %}
 
 %option caseless
@@ -47,7 +51,7 @@ static int mygetinput(char *buf, int size) {
 
 \n  { return EOL; }
 
-(E|e)xaminar            { return EXAMINAR; }
+examinar                { return EXAMINAR; }
 pegar                   { return PEGAR; }
 largar                  { return LARGAR; }
 quebrar                 { return QUEBRAR; }
@@ -58,20 +62,24 @@ ligar                   { return LIGAR; }
 tentar                  { return TENTAR; }
 ir[ ]para               { return IRPARA; }
 
-(i|I)(nvent((a|á)rio)?)?  { return INVENT; }
+(invent((a|á)rio)?)?    { return INVENT; }
 
-(L|l)obby               { yylval.ele = busca(tabela, yytext); return LOBBY; }
-(S|s)ala[ ]1            { yylval.ele = busca(tabela, yytext); return SALA1; }
-(S|s)ala[ ]2            { yylval.ele = busca(tabela, yytext); return SALA2; }
-(S|s)ala[ ]3            { yylval.ele = busca(tabela, yytext); return SALA3; }
-(S|s)ala[ ]4            { yylval.ele = busca(tabela, yytext); return SALA4; }
-(S|s)ala[ ]5            { yylval.ele = busca(tabela, yytext); return SALA5; }
+lobby                   { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return LOBBY; }
+sala[ ]1                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA1; }
+sala[ ]2                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA2; }
+sala[ ]3                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA3; }
+sala[ ]4                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA4; }
+sala[ ]5                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA5; }
 
-[a-zA-Z0-9]+[^r \n]        { Elemento *e = busca(tabela, yytext);
+[a-z]+r                 { yylval.str = yytext; return NONVERBO; }
+
+[a-zçáéíóúâêîôû0-9]+[^r \n]        { 
+                            yytext[0] = toupper(yytext[0]);
+                            Elemento *e = busca(tabela, yytext);
                             if (e == NULL) {
                                 yylval.str = yytext;
                                 return NONE;
-                            } 
+                            }
                             yylval.ele = e;
                             return OBJ; 
                         }

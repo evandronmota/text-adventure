@@ -299,7 +299,7 @@ int main() {
 
     /* Insere todos objetos da sala na tabela */
     /* Os nomes são dos elementos na tabela de símbolos */
-    init_tabela();
+    init_tabela(salas);
 
     i=0;
 

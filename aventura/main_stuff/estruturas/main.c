@@ -19,15 +19,27 @@ int main() {
             Você é um estudante de matemática e computação. É domingo, 21h, você tem que entregar um EP até 24h, você decide jogar video game. \n \
             Grande fã de puzzles, você pega seu jogo favorito Portal 2 e começa a jogar. \n \
             Você pega no sono e de repente acorda numa sala e uma vóz robótica começa a te dar instruções.\n\n\n");
-    init_tabela();
 
+    /* Cria salas */
     Elemento *salas = inicializarSalas();
-    criarAventureiro(salas[0]);
 
+    /* Insere elementos na tabela de símbolos */
+    init_tabela(salas);
+
+    /* Cria aventureiro na sala0 */
+    criarAventureiro(&salas[0]);
+
+    /* Descrição inicial da sala0 */
     examinar(heroi->salaAtual, NULL);
     printf("\n");
 
-    while(yyparse());
-
+    int validou = 0;
+    while(yyparse()) {
+        if (!validou && !strcmp(heroi->salaAtual->n, "Sala 4"))
+            if (validar((Elemento*) busca(tabela,"Balança"), NULL))
+                validou = 1;
+        if (!strcmp(heroi->salaAtual->n, "Lobby"))
+            ((func)heroi->salaAtual->conteudo[5].animacao)(&heroi->salaAtual->conteudo[5], NULL);
+    }
     return 0;
 }
