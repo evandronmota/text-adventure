@@ -17,7 +17,7 @@ int yyerror(char *);
 %token <ele> OBJ INVENT
 %token <ele> LOBBY SALA1 SALA2 SALA3 SALA4 SALA5
 %token <str> NONE /* palavra inválida */
-%token <str> NONVERBO EXAMINAR IRPARA PEGAR LARGAR QUEBRAR ATRAIR COLOCAR ALIMENTAR LIGAR TENTAR
+%token <str> NONVERBO EXAMINAR IRPARA PEGAR LARGAR QUEBRAR ATRAIR COLOCAR ALIMENTAR LIGAR TENTAR LISTAR
 %token EOL
 
 %type <ele> obj
@@ -38,12 +38,12 @@ cmd:  EXAMINAR obj           { examinar($2, NULL); } eol
     | ALIMENTAR obj NONE obj { alimentar($2, $4); } eol
     | LIGAR obj NONE obj     { ligar($2, $4); } eol
     | TENTAR obj NONE        { tentarSenha($2, $3); } eol
+    | LISTAR obj             { listarElementos($2); } eol
 
     | INVENT                 { olharMochila(NULL, NULL); } eol
 
     | NONVERBO obj           { printf("Eu não understand o que você falou!\n"); } eol
     | NONVERBO NONE          { printf("Você quer %s o quê?\n", $1); } eol
-    | NONVERBO obj NONE      { printf("Não vejo nada por aqui.\n", $3); } eol
     | NONVERBO NONE NONE     { printf("WTF?\n"); } eol
 ;
 

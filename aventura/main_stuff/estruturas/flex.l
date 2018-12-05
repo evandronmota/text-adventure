@@ -60,6 +60,7 @@ colocar                 { return COLOCAR; }
 alimentar               { return ALIMENTAR; }
 ligar                   { return LIGAR; }
 tentar                  { return TENTAR; }
+listar                  { return LISTAR; }
 ir[ ]para               { return IRPARA; }
 
 (invent((a|á)rio)?)?    { return INVENT; }

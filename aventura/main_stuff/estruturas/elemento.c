@@ -40,6 +40,27 @@ int tentarGLaDOS(char *key) {
 }
 
 
+int estaNaSala(Elemento* e, Elemento* sala) {
+    int i;
+    for (i = 0; i < sala->nEle; i++) {
+        if (!strcmp(e->n, sala->conteudo[i].n))
+            return 1;
+    }
+
+    return 0;
+}
+
+void listarElementos(Elemento* sala) {
+    if (!sala->isObjeto) {
+        int i;
+        for (i = 0; i < sala->nEle; i++) {
+            printf("- %s\n", sala->conteudo[i].n);
+        }
+    }
+    else
+        printf("Não é possível listar um objeto!\n");
+}
+
 
 
 
@@ -68,19 +89,23 @@ int pegar(Elemento *e1, Elemento *e2) {
         printf("Pegar o quê?");
     else  {
         if (e1->isObjeto) {
-            int i = procurarAtributo(e1, "pegavel");
-            int pegavel = e1->detalhe.atributos[i].valor.valor_estado;
-            if (pegavel && !x) { /* Se for um elemento pegável e não foi pego*/
-                printf("Você pegou %s %s!", e1->artigo, e1->n);
-                if (adicionarNaMochila(e1))
-                    pegou = 1;
-                else
-                    printf("Erro ao adicionar %s %s na mochila!", e1->artigo, e1->n);
+            if (estaNaSala(e1, heroi->salaAtual)) {
+                int i = procurarAtributo(e1, "pegavel");
+                int pegavel = e1->detalhe.atributos[i].valor.valor_estado;
+                if (pegavel && !x) { /* Se for um elemento pegável e não foi pego*/
+                    printf("Você pegou %s %s!", e1->artigo, e1->n);
+                    if (adicionarNaMochila(e1))
+                        pegou = 1;
+                    else
+                        printf("Erro ao adicionar %s %s na mochila!", e1->artigo, e1->n);
+                }
+                else if (!pegavel)/* Se não é pegável */
+                    printf("Você não pode pegar %s %s!", e1->artigo, e1->n);
+                else /* Se já foi pego */
+                    printf("Você já pegou %s %s!", e1->artigo, e1->n);
             }
-            else if (!pegavel)/* Se não é pegável */
-                printf("Você não pode pegar %s %s!", e1->artigo, e1->n);
-            else /* Se já foi pego */
-                printf("Você já pegou %s %s!", e1->artigo, e1->n);
+            else
+                printf("Não vejo %s %s por aqui!", e1->artigo, e1->n);
         }
         else 
             printf("Você não pode pegar %s %s!", e1->artigo, e1->n);
@@ -257,7 +282,7 @@ int trocarLugar(Elemento *e1, Elemento *e2) {
             printf("Você já está n%s %s!", e1->artigo, e1->n);
             return 0;
         }
-        
+
         if (strcmp(heroi->salaAtual->n, "Lobby") != 0 &&
             strcmp(e1->n, "Lobby") != 0) {
             printf("Você não pode ir para %s %s!", e1->artigo, e1->n);

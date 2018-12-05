@@ -93,6 +93,25 @@ int procurarAtributo(Elemento *e1, char *atributo);
 int tentarGLaDOS(char *key);
 
 
+/*
+    Recebe dois ponteiros para elementos.
+    Verifica se o objeto esta dentro da sala.
+    Retorna um inteiro indicando se a ação foi
+    bem-sucedida.
+*/
+int estaNaSala(Elemento* e, Elemento* sala);
+
+
+/*
+    Recebe um ponteiro para elemento.
+    Lista todos os objetos dentro do elemento,
+    caso ele seja uma sala.
+*/
+void listarElementos(Elemento* sala);
+
+
+
+
 
 
 
