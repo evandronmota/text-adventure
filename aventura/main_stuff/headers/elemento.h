@@ -199,8 +199,7 @@ int tentarSenha(Elemento *e, char *senha);
 */
 int validar(Elemento *e1, Elemento *e2);
 
+
 /* Recebe nada e imprime todos os itens da mochila. */
 int olharMochila(Elemento *e1, Elemento *e2);
 
-
-Elemento *copiaEle (Elemento e);

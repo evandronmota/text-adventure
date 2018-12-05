@@ -58,16 +58,19 @@ int tirarDaMochila(Elemento *e) {
 
     for (i=0; i<heroi->nMochila; i++)
         if (!strcmp(heroi->mochila[i]->n, e->n)) {
-            /* Adiciona elemento na sala */
-            *copia = *e;
-            heroi->salaAtual->nEle++;
-            heroi->salaAtual->conteudo = realloc(heroi->salaAtual->conteudo, heroi->salaAtual->nEle * sizeof(Elemento));
-            heroi->salaAtual->conteudo[heroi->salaAtual->nEle - 1] = *e;
-
             /* Coloca o último elemento da mochila no lugar do elemento removido */
             heroi->mochila[i] = heroi->mochila[heroi->nMochila - 1];
             heroi->mochila[heroi->nMochila-1] = NULL;
             heroi->nMochila--;
+
+            /* Adiciona elemento na sala */
+            *copia = *e;
+            retira(tabela, e->n);
+            insere(tabela, copia->n, copia);
+            heroi->salaAtual->nEle++;
+            heroi->salaAtual->conteudo = realloc(heroi->salaAtual->conteudo, heroi->salaAtual->nEle * sizeof(Elemento));
+            heroi->salaAtual->conteudo[heroi->salaAtual->nEle - 1] = *e;
+
             return 1;
         }
 

@@ -13,6 +13,8 @@
 /* Redefinição da entrada do Flex para usar o readline */
 #define YY_INPUT(buf,result,max_size) result = mygetinput(buf, max_size);
 
+#define RESET   "\033[0m"
+#define BOLDMAGENTA "\033[1m\033[35m"      /* Bold Magenta */
 
 /* Função que substitui a entrada */
 static int mygetinput(char *buf, int size) {
@@ -22,7 +24,7 @@ static int mygetinput(char *buf, int size) {
     if (feof(yyin))  return YY_NULL;
 
     /* Lê uma linha, com o prompt "> " */
-    line = readline("\n> ");
+    line = readline( BOLDMAGENTA "\n> " RESET);
     if(!line)        return YY_NULL;
 
     /* segurança */
@@ -69,18 +71,15 @@ sala[ ]3                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tab
 sala[ ]4                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA4; }
 sala[ ]5                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA5; }
 
-[a-z]+r     {   yylval.str = yytext; 
-                return NONVERBO; }
+[a-z]+r                 { yylval.str = yytext; return NONVERBO; }
 
 [a-zçáéíóúâêîôû0-9]+[^r \n]        { 
                             yytext[0] = toupper(yytext[0]);
-                            // printf("yytext: %s\n", yytext);
                             Elemento *e = busca(tabela, yytext);
                             if (e == NULL) {
                                 yylval.str = yytext;
                                 return NONE;
                             }
-                            // printf("voce achou %s\n", e->n);
                             yylval.ele = e;
                             return OBJ; 
                         }

@@ -20,24 +20,24 @@ int main() {
 
     /* Cria salas */
     Elemento *salas = inicializarSalas();
+
     /* Insere elementos na tabela de símbolos */
     init_tabela(salas);
 
     /* Cria aventureiro na sala0 */
     criarAventureiro(&salas[0]);
 
-    Elemento* ponteiro = (Elemento*) busca(tabela, "Ponteiro");
-    // pegar(ponteiro, NULL);
-    // largar(ponteiro, NULL);
-    // printf("\nDEU RUIM DNV!!!!!!!!!\n");
-    // printf("mochilao: %s\n", heroi->mochila[0]->n);
-
     /* Descrição inicial da sala0 */
     examinar(heroi->salaAtual, NULL);
     printf("\n");
 
-    while(yyparse())
-        if (!strcmp(heroi->salaAtual->n, "Sala 4"))
-            validar((Elemento*)busca(tabela,"Balança"), NULL);
+    int validou = 0;
+    while(yyparse()) {
+        if (!validou && !strcmp(heroi->salaAtual->n, "Sala 4"))
+            if (validar((Elemento*) busca(tabela,"Balança"), NULL))
+                validou = 1;
+        if (!strcmp(heroi->salaAtual->n, "Lobby"))
+            ((func)heroi->salaAtual->conteudo[5].animacao)(&heroi->salaAtual->conteudo[5], NULL);
+    }
     return 0;
 }

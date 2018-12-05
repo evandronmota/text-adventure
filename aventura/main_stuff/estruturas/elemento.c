@@ -23,22 +23,20 @@ int procurarAtributo(Elemento *e1, char *atributo) {
 }
 
 int tentarGLaDOS(char *key) {
-    int acertou = 0;
 
     if (key == NULL)
         printf("Ei humano. Nós do Science Computer-Aided Enrichment Center nos preocupamos muito com o bem estar dos participantes. Nós lhe daremos uma grande fatia de bolo quando me disser a senha correta :)");
     else if (!strcmp("HNESA", key))
         printf("que coisa!! ");
     else if (!strcmp("SENHA", key)) {
-        printf("Não é que nós nos divertimos juntos? Gostaria de dizer que estou prestes a abrir um alçapão em baixo de você que o jogaria em um poço de lava, mas parece que eu não fui permitida. Então esse é apenas um simples adeus. Espero que tenha aproveitada o sonho. \n\nTudo fica escuro. Você acorda em cima dos livros e lembra que ainda não entregou o EP ... ");
-        acertou = 1;
-        printf("****************** FIM DE JOGO ****************** \n");
+        printf("Não é que nós nos divertimos juntos? Gostaria de dizer que estou prestes a abrir um alçapão em baixo de você que o jogaria em um poço de lava, mas parece que eu não fui permitida. Então esse é apenas um simples adeus. Espero que tenha aproveitado o sonho. \n\nTudo fica escuro. Você acorda em cima dos livros e lembra que ainda não entregou o EP ... ");
+        printf("\n\n****************** FIM DE JOGO ****************** \n");
         exit(0);
     }
     else
         printf("Parece que você não sabe a senha ...");
 
-    return acertou;
+    return 0;
 }
 
 
@@ -308,7 +306,7 @@ int validar(Elemento *e1, Elemento *e2) {
             }
         }
 
-        printf("Blocos errados na balança!");
+        printf("\nBlocos errados na balança!\n");
     }
 
     return 0;
@@ -318,30 +316,14 @@ int validar(Elemento *e1, Elemento *e2) {
 int olharMochila(Elemento *e1, Elemento *e2) {
     int i;
 
-    printf("Você possui:\n");
-    for (i=0; i<heroi->nMochila; i++)
-        printf("-%s\n", heroi->mochila[i]->n);
+    if (heroi->nMochila == 0)
+        printf("Você não possui nada! :(");
+
+    else {
+        printf("Você possui:\n");
+        for (i=0; i<heroi->nMochila; i++)
+            printf("-%s\n", heroi->mochila[i]->n);
+    }
 
     return 1;
-}
-
-Elemento *copiaEle (Elemento e) {
-    Elemento *novo = malloc(sizeof(Elemento));
-    novo->artigo = e.artigo;
-    novo->n = e.n;
-    novo->curta = e.curta;
-    novo->longa = e.longa;
-    novo->ativo = e.ativo;
-    novo->visivel = e.visivel;
-    novo->conhecido = e.conhecido;
-    novo->conteudo = e.conteudo;
-    novo->nEle = e.nEle; /* Número de elementos na lista de conteúdos */
-    novo->nAcoes = e.nAcoes; /* Número de ações do elemento */
-    novo->nAtr = e.nAtr; /* Número de atributos do elemento */
-    novo->acoes = e.acoes;
-    novo->transitividade = e.transitividade;
-    novo->animacao = e.animacao;
-    novo->detalhe = e.detalhe;
-
-    return novo;
 }
