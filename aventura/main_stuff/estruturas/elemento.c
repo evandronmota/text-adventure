@@ -82,7 +82,6 @@ int validar(Elemento *e) {
 
 
 
-
 /* VERBOS */
 
 int examinar(Elemento *e1, Elemento *e2) {

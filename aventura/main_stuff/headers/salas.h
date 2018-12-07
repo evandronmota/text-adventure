@@ -45,7 +45,7 @@ Elemento criarSala5();
     Recebe um ponteiro para um elemento e uma função de
     ação. Adiciona essa ação à lista de ações do elemento.
 */
-void adicionarAcao(Elemento *e, func acao, int transitividade);
+void adicionarAcao(Elemento *e, void* acao, int transitividade);
 
 
 /*

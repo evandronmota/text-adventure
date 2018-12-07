@@ -37,7 +37,7 @@ cmd:  EXAMINAR obj           { examinar($2, NULL); } eol
     | ALIMENTAR obj NONE obj { alimentar($2, $4); } eol
     | LIGAR obj NONE obj     { ligar($2, $4); } eol
     | TENTAR obj NONE        { tentarSenha($2, $3); } eol
-    | TENTAR obj obj         { printf("%s não é uma senha! ", $3->n); } eol
+    | TENTAR obj obj         { tentarSenha($2, $3->n); } eol
     | LISTAR                 { listarElementos(NULL, NULL); } eol
 
     | INVENT                 { olharMochila(NULL, NULL); } eol
@@ -45,7 +45,7 @@ cmd:  EXAMINAR obj           { examinar($2, NULL); } eol
     | NONVERBO obj           { printf("Eu não understand o que você falou!"); } eol
     | NONVERBO obj NONE obj  { printf("Você não pode fazer isso!"); } eol
     | NONVERBO obj obj       { printf("Acho melhor você reler as instruções!"); } eol
-    | NONVERBO NONE          { printf("Você quer %s o quê?", $1); } eol
+    | NONVERBO NONE          { printf("Você quer fazer o quê?"); } eol
     | NONVERBO NONE NONE     { printf("WTF?"); } eol
 
     | DEFINIR EXAMINAR       { printf("É um verbo!"); } eol

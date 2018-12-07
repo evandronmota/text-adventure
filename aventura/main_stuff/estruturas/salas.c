@@ -9,7 +9,7 @@
 #define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
 
 
-void adicionarAcao(Elemento *e, func acao, int transitividade) {
+void adicionarAcao(Elemento *e, void* acao, int transitividade) {
     e->nAcoes++;
     e->acoes = realloc(e->acoes, e->nAcoes * sizeof(func));
     e->acoes[e->nAcoes - 1] = acao;
@@ -177,9 +177,9 @@ Elemento criarSala0() {
     senha.valor.valor_str = "SENHA";
     adicionarAtributo(&GLaDOS, senha);
 
-    func tentativaGLaDOS = tentarSenha;
+    //
 
-    adicionarAcao(&GLaDOS, tentativaGLaDOS, 3); /* Caso específico em que os argumentos do verbo são diferentes */
+    adicionarAcao(&GLaDOS, tentarSenha, 3); /* Caso específico em que os argumentos do verbo são diferentes */
 
     /* Sala 0 */
     Elemento *conteudoS0 = malloc(6 * sizeof(Elemento));
@@ -281,9 +281,9 @@ Elemento criarSala1() {
     senha.valor.valor_str = "13";
     adicionarAtributo(&relogio, senha);
 
-    func tentativaRelogio = tentarSenha;
+    
 
-    adicionarAcao(&relogio, tentativaRelogio, 3); /* Caso específico em que os argumentos do verbo são diferentes */
+    adicionarAcao(&relogio, tentarSenha, 3); /* Caso específico em que os argumentos do verbo são diferentes */
 
 
     /* Sala 1 */
@@ -377,8 +377,8 @@ Elemento criarSala2() {
     senha.valor.valor_str = "2094530789280";
     adicionarAtributo(&livro, senha);
 
-    func tentativaLivro = tentarSenha;
-    adicionarAcao(&livro, tentativaLivro, 3); /* Caso específico em que os argumentos do verbo são diferentes */
+    
+    adicionarAcao(&livro, tentarSenha, 3); /* Caso específico em que os argumentos do verbo são diferentes */
 
 
     /* Letra */
@@ -405,8 +405,8 @@ Elemento criarSala2() {
     senha2.valor.valor_str = "IMPOSSIVELDEDESCOBRIR";
     adicionarAtributo(&cofre, senha2);
 
-    func tentativaCofre = tentarSenha;
-    adicionarAcao(&cofre, tentativaCofre, 3); /* Caso específico em que os argumentos do verbo são diferentes */
+    
+    adicionarAcao(&cofre, tentarSenha, 3); /* Caso específico em que os argumentos do verbo são diferentes */
 
     cofre.detalhe.atributos[0].valor.valor_estado = False; /* Não é pegável */
 
@@ -740,9 +740,9 @@ Elemento criarSala5() {
     senha.valor.valor_str = "Nepal";
     adicionarAtributo(&mapa, senha);
 
-    func tentativaMapa = tentarSenha;
+    
 
-    adicionarAcao(&mapa, tentativaMapa, 3); /* Caso específico em que os argumentos do verbo são diferentes */
+    adicionarAcao(&mapa, tentarSenha, 3); /* Caso específico em que os argumentos do verbo são diferentes */
 
 
     /* Poster */

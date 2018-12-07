@@ -121,8 +121,6 @@ int validar(Elemento *e);
 
 
 
-
-
 /* VERBOS */
 
 /*
@@ -223,8 +221,8 @@ int olharMochila(Elemento *e1, Elemento *e2);
 
 
 /*
-    Recebe um ponteiro para elemento.
-    Lista todos os objetos dentro do elemento,
-    caso ele seja uma sala.
+    Recebe dois ponteiros para elementos.
+    Lista todos os objetos dentro da sala em
+    que o aventureiro está.
 */
 int listarElementos(Elemento *e1, Elemento *e2);
