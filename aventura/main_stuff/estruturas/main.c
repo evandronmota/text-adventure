@@ -33,7 +33,7 @@ int main() {
 
     while(yyparse()) {
         if (!validou && !strcmp(heroi->salaAtual->n, "Sala 4")) {
-            if (validar((Elemento*) busca(tabela,"Balança"), NULL))
+            if (validar((Elemento*) busca(tabela,"Balança")))
                 validou = 1;
         }
         if (!strcmp(heroi->salaAtual->n, "Lobby"))

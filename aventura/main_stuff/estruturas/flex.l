@@ -62,6 +62,7 @@ ligar                              { return LIGAR; }
 tentar                             { return TENTAR; }
 listar                             { return LISTAR; }
 trocar                             { return IRPARA; }
+definir                            { return DEFINIR; }
 
 mochila                            { return INVENT; }
 

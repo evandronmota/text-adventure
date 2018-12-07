@@ -66,7 +66,8 @@ extern int yydebug;
     LIGAR = 276,
     TENTAR = 277,
     LISTAR = 278,
-    EOL = 279
+    DEFINIR = 279,
+    EOL = 280
   };
 #endif
 
@@ -80,7 +81,7 @@ union YYSTYPE
     Elemento *ele;
     char *str;
 
-#line 84 "bison.tab.h" /* yacc.c:1909  */
+#line 85 "bison.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

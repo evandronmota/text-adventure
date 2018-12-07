@@ -33,6 +33,7 @@ void introducao() {
     printf(CYAN "listar" RESET " - para ver os objetos na sala.\n");
     printf(CYAN "<verbo> <objeto> ou <verbo> <objeto> <preposição> <objeto>" RESET " - para utilizar um comando.\n");
     printf(CYAN "tentar <objeto> <senha>" RESET " - para tentar uma senha.\n");
+    printf(CYAN "definir <palavra>" RESET " - para saber se tal palavra existe. Caso exista, se é um verbo ou substantivo.\n\n");
     printf(CYAN "mochila" RESET " - para ver a mochila.\n\n");
 
     printf("______________________________________________________________________________________________________________________________\n\n\n\n");

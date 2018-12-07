@@ -51,6 +51,34 @@ int estaNaSala(Elemento* e, Elemento* sala) {
 }
 
 
+int validar(Elemento *e) {
+    if (!strcmp(e->n, "Balança")) {
+        int cont = 0;
+        if (e->nEle == 3) {
+            int i;
+            for (i=0; i < e->nEle; i++) {
+                if (strcmp(e->conteudo[i].n, "Bloco1") == 0 ||
+                    strcmp(e->conteudo[i].n, "Bloco2") == 0 ||
+                    strcmp(e->conteudo[i].n, "Bloco8") == 0) 
+                    cont++;
+            }
+
+            if (cont == 3) {
+                heroi->salaAtual->conteudo[4].visivel = True;
+                printf("\n");
+                ((func)heroi->salaAtual->conteudo[4].acoes[0])(&heroi->salaAtual->conteudo[4], NULL);
+                printf("\n");
+                return 1;
+            }
+        }
+
+        printf("\nBlocos errados na balança!\n");
+    }
+
+    return 0;
+}
+
+
 
 
 
@@ -316,34 +344,6 @@ int tentarSenha(Elemento *e, char *senha) {
     return acertou;
 }
 
-int validar(Elemento *e1, Elemento *e2) {
-    if (!strcmp(e1->n, "Balança")) {
-        int cont = 0;
-        if (e1->nEle == 3) {
-            int i;
-            for (i=0; i < e1->nEle; i++) {
-                if (strcmp(e1->conteudo[i].n, "Bloco1") == 0 ||
-                    strcmp(e1->conteudo[i].n, "Bloco2") == 0 ||
-                    strcmp(e1->conteudo[i].n, "Bloco8") == 0) 
-                    cont++;
-            }
-
-            if (cont == 3) {
-                heroi->salaAtual->conteudo[4].visivel = True;
-                printf("\n");
-                ((func)heroi->salaAtual->conteudo[4].acoes[0])(&heroi->salaAtual->conteudo[4], NULL);
-                printf("\n");
-                return 1;
-            }
-        }
-
-        printf("\nBlocos errados na balança!\n");
-    }
-
-    return 0;
-}
-
-
 int olharMochila(Elemento *e1, Elemento *e2) {
     int i;
 
@@ -366,10 +366,3 @@ int listarElementos(Elemento *e1, Elemento *e2) {
             printf("- %s\n", heroi->salaAtual->conteudo[i].n);
     return 1;
 }
-
-// int definir(Elemento *e1, char *palavra) {
-//     char **listaDeVerbos = {
-//         ""
-//     }
-//     if (!strcmp(palavra, ))
-// }

@@ -16,7 +16,7 @@ int yyerror(char *);
 %token <ele> OBJ INVENT
 %token <ele> LOBBY SALA1 SALA2 SALA3 SALA4 SALA5
 %token <str> NONE /* palavra inválida */
-%token <str> NONVERBO EXAMINAR IRPARA PEGAR LARGAR QUEBRAR ATRAIR COLOCAR ALIMENTAR LIGAR TENTAR LISTAR
+%token <str> NONVERBO EXAMINAR IRPARA PEGAR LARGAR QUEBRAR ATRAIR COLOCAR ALIMENTAR LIGAR TENTAR LISTAR DEFINIR
 %token EOL
 
 %type <ele> obj
@@ -37,6 +37,7 @@ cmd:  EXAMINAR obj           { examinar($2, NULL); } eol
     | ALIMENTAR obj NONE obj { alimentar($2, $4); } eol
     | LIGAR obj NONE obj     { ligar($2, $4); } eol
     | TENTAR obj NONE        { tentarSenha($2, $3); } eol
+    | TENTAR obj obj         { printf("%s não é uma senha! ", $3->n); } eol
     | LISTAR                 { listarElementos(NULL, NULL); } eol
 
     | INVENT                 { olharMochila(NULL, NULL); } eol
@@ -46,6 +47,22 @@ cmd:  EXAMINAR obj           { examinar($2, NULL); } eol
     | NONVERBO obj obj       { printf("Acho melhor você reler as instruções!"); } eol
     | NONVERBO NONE          { printf("Você quer %s o quê?", $1); } eol
     | NONVERBO NONE NONE     { printf("WTF?"); } eol
+
+    | DEFINIR EXAMINAR       { printf("É um verbo!"); } eol
+    | DEFINIR PEGAR          { printf("É um verbo!"); } eol
+    | DEFINIR LARGAR         { printf("É um verbo!"); } eol
+    | DEFINIR QUEBRAR        { printf("É um verbo!"); } eol
+    | DEFINIR ATRAIR         { printf("É um verbo!"); } eol
+    | DEFINIR COLOCAR        { printf("É um verbo!"); } eol
+    | DEFINIR ALIMENTAR      { printf("É um verbo!"); } eol
+    | DEFINIR LIGAR          { printf("É um verbo!"); } eol
+    | DEFINIR TENTAR         { printf("É um verbo!"); } eol
+    | DEFINIR LISTAR         { printf("É um verbo!"); } eol
+    | DEFINIR DEFINIR        { printf("É um verbo!"); } eol
+    | DEFINIR NONE           { printf("Isso não existe!"); } eol
+    | DEFINIR NONVERBO       { printf("Isso não existe!"); } eol
+    | DEFINIR obj            { printf("É um substantivo!"); } eol
+    | DEFINIR INVENT         { printf("É um substantivo!"); } eol
 ;
 
 obj:  OBJ                    { $$ = $1; }
@@ -70,6 +87,6 @@ eol: EOL                     { printf("\n"); return 1; }
 
 /* Não se encaixa em nenhuma regra */
 int yyerror(char *s) {
-    printf("Não entendi, disseste ...");
+    printf("Não entendi o que você disse ...");
     return 0;
 }
