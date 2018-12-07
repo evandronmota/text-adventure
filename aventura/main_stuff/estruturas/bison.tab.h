@@ -75,7 +75,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 12 "bison.y" /* yacc.c:1909  */
+#line 11 "bison.y" /* yacc.c:1909  */
 
     Elemento *ele;
     char *str;

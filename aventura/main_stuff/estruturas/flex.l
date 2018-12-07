@@ -49,38 +49,45 @@ static int mygetinput(char *buf, int size) {
 
 %%
 
-\n  { return EOL; }
+\n                                 { return EOL; }
 
-examinar                { return EXAMINAR; }
-pegar                   { return PEGAR; }
-largar                  { return LARGAR; }
-quebrar                 { return QUEBRAR; }
-atrair                  { return ATRAIR; }
-colocar                 { return COLOCAR; }
-alimentar               { return ALIMENTAR; }
-ligar                   { return LIGAR; }
-tentar                  { return TENTAR; }
-listar                  { return LISTAR; }
-ir[ ]para               { return IRPARA; }
+examinar                           { return EXAMINAR; }
+pegar                              { return PEGAR; }
+largar                             { return LARGAR; }
+quebrar                            { return QUEBRAR; }
+atrair                             { return ATRAIR; }
+colocar                            { return COLOCAR; }
+alimentar                          { return ALIMENTAR; }
+ligar                              { return LIGAR; }
+tentar                             { return TENTAR; }
+listar                             { return LISTAR; }
+trocar                             { return IRPARA; }
 
-(invent((a|á)rio)?)?    { return INVENT; }
+mochila                            { return INVENT; }
 
-lobby                   { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return LOBBY; }
-sala[ ]1                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA1; }
-sala[ ]2                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA2; }
-sala[ ]3                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA3; }
-sala[ ]4                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA4; }
-sala[ ]5                { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA5; }
+lobby                              { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return LOBBY; }
+sala[ ]1                           { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA1; }
+sala[ ]2                           { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA2; }
+sala[ ]3                           { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA3; }
+sala[ ]4                           { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA4; }
+sala[ ]5                           { yytext[0] = toupper(yytext[0]); yylval.ele = busca(tabela, yytext); return SALA5; }
 
-[a-z]+r                 { yylval.str = yytext; return NONVERBO; }
+poster                             {
+                                        yytext[0] = toupper(yytext[0]);
+                                        Elemento *e = busca(tabela, yytext);
+                                        yylval.ele = e; return OBJ; 
+                                        return OBJ;
+                                    }
+
+[a-z]+r                            { yylval.str = yytext; return NONVERBO; }
 
 [a-zçáéíóúâêîôû0-9]+[^r \n]        { 
-                            yytext[0] = toupper(yytext[0]);
-                            Elemento *e = busca(tabela, yytext);
-                            if (e == NULL) {
-                                yylval.str = yytext;
-                                return NONE;
-                            }
-                            yylval.ele = e;
-                            return OBJ; 
-                        }
+                                        yytext[0] = toupper(yytext[0]);
+                                        Elemento *e = busca(tabela, yytext);
+                                        if (e == NULL) {
+                                            yylval.str = yytext;
+                                            return NONE;
+                                        }
+                                        yylval.ele = e;
+                                        return OBJ; 
+                                    }

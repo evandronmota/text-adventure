@@ -1,122 +1,91 @@
-examinar lobby
-pegar robo
-largar robo
-ir para sala 1
-examinar sala 1
+listar
+trocar sala 1
+
+
+
+mochila
+listar
+examinar mensagem1
 examinar ponteiro
-examinar ponteiro
-inventario
 pegar ponteiro
-inventario
-largar ponteiro
-inventario
-examinar mensagem1
-examinar mensagem1
-inventario
-pegar mensagem1
-inventario
-largar mensagem1
-inventario
+mochila
+examinar concha
 examinar relogio
-examinar relogio
-inventario
-pegar relogio
-inventario
-largar relogio
-inventario
 tentar relogio 13
-examinar concha
-examinar concha
-inventario
-pegar concha
-inventario
-largar concha
-inventario
 quebrar concha
-ir para sala 2
-examinar sala 2
+largar ponteiro
+mochila
+trocar lobby
+trocar sala 2
+
+
+
+
+listar
 examinar cofre
-examinar cofre
-inventario
-pegar cofre
-inventario
-largar cofre
-inventario
+examinar livro
+examinar livro
 examinar pelucia
-examinar pelucia
-inventario
 pegar pelucia
-inventario
-largar pelucia
-inventario
+quebrar pelucia
 examinar mensagem2
-examinar mensagem2
-inventario
-pegar mensagem2
-inventario
-largar mensagem2
-inventario
-examinar livro
-examinar livro
-inventario
-pegar livro
-inventario
-largar livro
-inventario
 tentar livro 2094530789280
-ir para sala 4
-examinar sala 4
+trocar lobby
+trocar sala 3
+
+
+
+
+listar
+examinar gaiola
+examinar galinha
+examinar bobina
+examinar metal
+examinar saco
+pegar saco
+mochila
+alimentar galinha com saco
+pegar metal
+ligar bobina com metal
+atrair ovo com metal
+pegar ovo
+mochila
+quebrar ovo
+largar saco
+largar ovo
+largar metal
+mochila
+
+
+
+
+trocar lobby
+trocar sala 4
+listar
 examinar mensagem4
-inventario
-pegar mensagem4
-inventario
-largar mensagem4
-inventario
-examinar poema  
-inventario
-pegar poema
-inventario
-largar poema
-inventario
+examinar poema
 examinar balança
-inventario
-pegar balança
-inventario
-largar balança
-inventario
-colocar bloco1 na balança
-colocar bloco2 na balança
-colocar bloco8 na balança
-ir para sala 5
-examinar sala 5
+examinar bloco0
+colocar bloco1 em balança
+colocar bloco2 em balança
+colocar bloco8 em balança
+trocar lobby
+trocar sala 5
+
+
+
+
+listar
 examinar mensagem5
-inventario
-pegar mensagem5
-inventario
-largar mensagem5
 examinar poster
-inventario
-pegar poster
-inventario
-largar poster
 examinar caixa
-inventario
-pegar caixa
-inventario
-largar caixa
 examinar lata
-inventario
-pegar lata
-inventario
-largar lata
-inventario
 examinar mapa
-inventario
-pegar mapa
-inventario
-largar mapa
-inventario
 tentar mapa Nepal
-ir para lobby
+
+
+
+
+trocar lobby
 tentar robo HNESA
 tentar robo SENHA

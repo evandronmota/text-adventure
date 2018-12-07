@@ -50,17 +50,6 @@ int estaNaSala(Elemento* e, Elemento* sala) {
     return 0;
 }
 
-void listarElementos(Elemento* sala) {
-    if (!sala->isObjeto) {
-        int i;
-        for (i = 0; i < sala->nEle; i++) {
-            printf("- %s\n", sala->conteudo[i].n);
-        }
-    }
-    else
-        printf("Não é possível listar um objeto!\n");
-}
-
 
 
 
@@ -130,7 +119,6 @@ int atrair(Elemento *e1, Elemento *e2) {
             else {
                 printf("Você atraiu %s %s com %s %s magnetizado!", e1->artigo, e1->n, e2->artigo, e2->n);
                 atraiu = 1;
-                pegar(e1, NULL);
             }
         }
         else
@@ -283,17 +271,14 @@ int trocarLugar(Elemento *e1, Elemento *e2) {
             return 0;
         }
 
-        if (strcmp(heroi->salaAtual->n, "Lobby") != 0 &&
-            strcmp(e1->n, "Lobby") != 0) {
+        if (strcmp(heroi->salaAtual->n, "Lobby") != 0 && strcmp(e1->n, "Lobby") != 0) {
             printf("Você não pode ir para %s %s!", e1->artigo, e1->n);
             return 0;
         }
 
         heroi->salaAtual = e1;
-        printf("Você se moveu para %s %s!", e1->artigo, e1->n);
-        printf("\n");
+        printf("Você se moveu para %s %s!\n", e1->artigo, e1->n);
         examinar(heroi->salaAtual, NULL);
-        printf("\n");
     }
 
     return (e1 == NULL ? 0 : 1);
@@ -345,7 +330,9 @@ int validar(Elemento *e1, Elemento *e2) {
 
             if (cont == 3) {
                 heroi->salaAtual->conteudo[4].visivel = True;
+                printf("\n");
                 ((func)heroi->salaAtual->conteudo[4].acoes[0])(&heroi->salaAtual->conteudo[4], NULL);
+                printf("\n");
                 return 1;
             }
         }
@@ -371,3 +358,18 @@ int olharMochila(Elemento *e1, Elemento *e2) {
 
     return 1;
 }
+
+int listarElementos(Elemento *e1, Elemento *e2) {
+    int i;
+    for (i = 0; i < heroi->salaAtual->nEle; i++)
+        if (heroi->salaAtual->conteudo[i].visivel)
+            printf("- %s\n", heroi->salaAtual->conteudo[i].n);
+    return 1;
+}
+
+// int definir(Elemento *e1, char *palavra) {
+//     char **listaDeVerbos = {
+//         ""
+//     }
+//     if (!strcmp(palavra, ))
+// }
