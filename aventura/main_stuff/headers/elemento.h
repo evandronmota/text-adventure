@@ -68,6 +68,12 @@ typedef struct ele {
 typedef int (*func)(Elemento *e1, Elemento *e2);
 
 
+
+
+
+
+
+
 /* FUNÇÕES */
 
 /*
@@ -100,14 +106,6 @@ int tentarGLaDOS(char *key);
     bem-sucedida.
 */
 int estaNaSala(Elemento* e, Elemento* sala);
-
-
-/*
-    Recebe um ponteiro para elemento.
-    Lista todos os objetos dentro do elemento,
-    caso ele seja uma sala.
-*/
-void listarElementos();
 
 
 
@@ -223,3 +221,10 @@ int validar(Elemento *e1, Elemento *e2);
 /* Recebe nada e imprime todos os itens da mochila. */
 int olharMochila(Elemento *e1, Elemento *e2);
 
+
+/*
+    Recebe dois ponteiros para elementos.
+    Lista todos os objetos dentro da sala em
+    que o aventureiro está.
+*/
+int listarElementos(Elemento *e1, Elemento *e2);

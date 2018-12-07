@@ -6,7 +6,6 @@
 
 int yylex();
 int yyerror(char *);
-
 %}
 
 %union {
@@ -38,13 +37,16 @@ cmd:  EXAMINAR obj           { examinar($2, NULL); } eol
     | ALIMENTAR obj NONE obj { alimentar($2, $4); } eol
     | LIGAR obj NONE obj     { ligar($2, $4); } eol
     | TENTAR obj NONE        { tentarSenha($2, $3); } eol
-    | LISTAR                 { listarElementos(); } eol
+    | TENTAR obj obj        { tentarSenha($2, $3->n); } eol
+    | LISTAR                 { listarElementos(NULL, NULL); } eol
 
     | INVENT                 { olharMochila(NULL, NULL); } eol
 
-    | NONVERBO obj           { printf("Eu não understand o que você falou!\n"); } eol
-    | NONVERBO NONE          { printf("Você quer %s o quê?\n", $1); } eol
-    | NONVERBO NONE NONE     { printf("WTF?\n"); } eol
+    | NONVERBO obj           { printf("Eu não understand o que você falou!"); } eol
+    | NONVERBO obj NONE obj  { printf("Você não pode fazer isso!"); } eol
+    | NONVERBO obj obj       { printf("Acho melhor você reler as instruções!"); } eol
+    | NONVERBO NONE          { printf("Você quer fazer o quê?"); } eol
+    | NONVERBO NONE NONE     { printf("WTF?"); } eol
 ;
 
 obj:  OBJ                    { $$ = $1; }
@@ -57,17 +59,18 @@ obj:  OBJ                    { $$ = $1; }
 ;
 
 
-desconhecido: NONE           { printf("O que é %s?\n", $1); } eol
+desconhecido: NONE           { printf("O que é %s?", $1); } eol
 ;
 
 
-eol: EOL                     { return 1; }
+eol: EOL                     { printf("\n"); return 1; }
 ;
+
 
 %%
 
 /* Não se encaixa em nenhuma regra */
 int yyerror(char *s) {
-    printf("Não entendi o que disseste...\n");
+    printf("Não entendi, disseste ...");
     return 0;
 }

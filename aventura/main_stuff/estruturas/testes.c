@@ -21,6 +21,7 @@
 #include "../headers/salas.h"
 #include "../headers/tabela_de_sim.h"
 #include "../headers/init_salas.h"
+#include "../headers/introducao.h"
 
 /* Cores */
 #define RESET   "\033[0m"
@@ -62,16 +63,19 @@ Elemento *criaElemento(char *n) { /* FASE 1 */
 }
 
 /* Testa salas */
-void testarSala(Elemento *sala, int num, boolean flag) {
+void testarSala(Elemento *sala, int num, boolean flag, Elemento *lobby) {
     int i, j, ok, r;
-    char *senhas[5] = {"13", "2094530789280", "Nepal", "SENHA", "HNESA"};
+    char *senhas[4] = {"13", "2094530789280", "Nepal", "HNESA"};
 
     printf(CYAN "********************************\tTESTE: " BOLDWHITE "SALA %d" RESET CYAN "\t\t********************************\n" RESET, num);
 
     /* Trocar de sala */
-    printf(BOLDBLUE "VERBO exclusivo do Aventureiro:\n" RESET);
+    printf(BOLDBLUE "VERBOS exclusivos do Aventureiro:\n" RESET);
     printf(BOLDWHITE "TROCAR DE SALA:\t" RESET);
+    printf(" %s\n", (trocarLugar(lobby, NULL) ? OK : FAIL));
     printf(" %s\n", (trocarLugar(sala, NULL) ? OK : FAIL));
+    printf(BOLDWHITE "LISTA DE SALA:\n" RESET);
+    printf(" %s\n", (listarElementos(sala, NULL) ? OK : FAIL));
     printf("\n");
 
     /* Descrição longa ou curta */
@@ -124,7 +128,7 @@ void testarSala(Elemento *sala, int num, boolean flag) {
                 else if (obj->transitividade[j] == 2) /* Só para testar (transitividade 2 é nele mesmo) */
                     printf(" %s\n", (((func)obj->acoes[j])(obj, obj)) ? OK : FAIL);
                 else {/* Caso específico da senha */
-                    r = rand() % 5; /* Sorteia senha */
+                    r = rand() % 4; /* Sorteia senha */
                     printf(" %s\n", (((func)obj->acoes[j])(obj, senhas[r])) ? OK : FAIL);
                 }
             }
@@ -178,7 +182,7 @@ void testarSala(Elemento *sala, int num, boolean flag) {
                 else if (obj->transitividade[j] == 2) /* Só para testar (transitividade 2 é nele mesmo) */
                     printf(" %s\n", (((func)obj->acoes[j])(obj, obj)) ? OK : FAIL);
                 else {/* Caso específico da senha */
-                    r = rand() % 5; /* Sorteia senha */
+                    r = rand() % 4; /* Sorteia senha */
                     printf(" %s\n", (((func)obj->acoes[j])(obj, senhas[r])) ? OK : FAIL);
                 }
             }
@@ -275,12 +279,7 @@ int main() {
     printf(BOLDMAGENTA "\n\n################################################################\tFASE 2\t\t################################################################\n\n\n\n" RESET);
 
     /* Introdução */
-    printf("Bem-vindo ao " BOLDYELLOW "INSERT GAME TITLE." RESET "\n\n \
-        Você é um estudante de matemática e computação. É domingo, 21h, você tem que entregar um EP até 24h, você decide jogar video game. \n \
-        Grande fã de puzzles, você pega seu jogo favorito Portal 2 e começa a jogar. \n \
-        Você pega no sono e de repente acorda numa sala e uma vóz robótica começa a te dar instruções.\n\n\n");
-
-    printf("______________________________________________________________________________________________________________________________\n\n\n\n");
+    introducao();
 
     /* Legenda */
     printf(BOLDWHITE "LEGENDA:\n\n" RESET);
@@ -292,7 +291,7 @@ int main() {
     Elemento *salas = inicializarSalas();
 
     /* Criar heroi */
-    criarAventureiro(salas[0]);
+    criarAventureiro(&salas[0]);
 
     boolean flag = True; /* Flag de auxílio */
     int i;
@@ -308,12 +307,12 @@ int main() {
         printf("______________________________________________________________________________________________________________________________\n\n\n\n");
         printf(BOLDWHITE "TESTE DE SALAS - COMANDO: %d\n\n\n" RESET, i++);
 
-        testarSala(&salas[0], 0, flag);
-        testarSala(&salas[1], 1, flag);
-        testarSala(&salas[2], 2, flag);
-        testarSala(&salas[3], 3, flag);
-        testarSala(&salas[4], 4, flag);
-        testarSala(&salas[5], 5, flag);
+        testarSala(&salas[0], 0, flag, &salas[0]);
+        testarSala(&salas[1], 1, flag, &salas[0]);
+        testarSala(&salas[2], 2, flag, &salas[0]);
+        testarSala(&salas[3], 3, flag, &salas[0]);
+        testarSala(&salas[4], 4, flag, &salas[0]);
+        testarSala(&salas[5], 5, flag, &salas[0]);
 
         flag = False;
 

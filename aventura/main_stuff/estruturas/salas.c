@@ -9,7 +9,7 @@
 #define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
 
 
-void adicionarAcao(Elemento *e, func acao, int transitividade) {
+void adicionarAcao(Elemento *e, void* acao, int transitividade) {
     e->nAcoes++;
     e->acoes = realloc(e->acoes, e->nAcoes * sizeof(func));
     e->acoes[e->nAcoes - 1] = acao;
@@ -117,7 +117,7 @@ Elemento criarSala0() {
 
     /* Porta 1 */
     Elemento porta1 =
-    criarElemento(True, "uma", "Porta 1",
+    criarElemento(True, "uma", "Porta1",
         "Uma porta de ferro.",
         "Uma porta de ferro com fechadura dourada.", NULL, 0);
 
@@ -126,7 +126,7 @@ Elemento criarSala0() {
 
     /* Porta 2 */
     Elemento porta2 =
-    criarElemento(True, "uma", "Porta 2",
+    criarElemento(True, "uma", "Porta2",
         "Uma porta dourada.",
         "Uma porta dourada muito velha.", NULL, 0);
 
@@ -135,7 +135,7 @@ Elemento criarSala0() {
 
     /* Porta 3 */
     Elemento porta3 =
-    criarElemento(True, "uma", "Porta 3",
+    criarElemento(True, "uma", "Porta3",
         "Uma porta de madeira.",
         "Uma porta de madeira de ébano.", NULL, 0);
 
@@ -144,7 +144,7 @@ Elemento criarSala0() {
 
     /* Porta 4 */
     Elemento porta4 =
-    criarElemento(True, "uma", "Porta 4",
+    criarElemento(True, "uma", "Porta4",
         "Uma porta branca.",
         "Uma porta branca cheia de lascas.", NULL, 0);
 
@@ -153,7 +153,7 @@ Elemento criarSala0() {
 
     /* Porta 5 */
     Elemento porta5 =
-    criarElemento(True, "uma", "Porta 5",
+    criarElemento(True, "uma", "Porta5",
         "Uma porta vermelha.",
         "Uma porta vermelha com fechadura preta.", NULL, 0);
 
@@ -177,9 +177,9 @@ Elemento criarSala0() {
     senha.valor.valor_str = "SENHA";
     adicionarAtributo(&GLaDOS, senha);
 
-    func tentativaGLaDOS = tentarSenha;
+    //
 
-    adicionarAcao(&GLaDOS, tentativaGLaDOS, 3); /* Caso específico em que os argumentos do verbo são diferentes */
+    adicionarAcao(&GLaDOS, tentarSenha, 3); /* Caso específico em que os argumentos do verbo são diferentes */
 
     /* Sala 0 */
     Elemento *conteudoS0 = malloc(6 * sizeof(Elemento));
@@ -281,9 +281,9 @@ Elemento criarSala1() {
     senha.valor.valor_str = "13";
     adicionarAtributo(&relogio, senha);
 
-    func tentativaRelogio = tentarSenha;
+    
 
-    adicionarAcao(&relogio, tentativaRelogio, 3); /* Caso específico em que os argumentos do verbo são diferentes */
+    adicionarAcao(&relogio, tentarSenha, 3); /* Caso específico em que os argumentos do verbo são diferentes */
 
 
     /* Sala 1 */
@@ -377,8 +377,8 @@ Elemento criarSala2() {
     senha.valor.valor_str = "2094530789280";
     adicionarAtributo(&livro, senha);
 
-    func tentativaLivro = tentarSenha;
-    adicionarAcao(&livro, tentativaLivro, 3); /* Caso específico em que os argumentos do verbo são diferentes */
+    
+    adicionarAcao(&livro, tentarSenha, 3); /* Caso específico em que os argumentos do verbo são diferentes */
 
 
     /* Letra */
@@ -405,8 +405,8 @@ Elemento criarSala2() {
     senha2.valor.valor_str = "IMPOSSIVELDEDESCOBRIR";
     adicionarAtributo(&cofre, senha2);
 
-    func tentativaCofre = tentarSenha;
-    adicionarAcao(&cofre, tentativaCofre, 3); /* Caso específico em que os argumentos do verbo são diferentes */
+    
+    adicionarAcao(&cofre, tentarSenha, 3); /* Caso específico em que os argumentos do verbo são diferentes */
 
     cofre.detalhe.atributos[0].valor.valor_estado = False; /* Não é pegável */
 
@@ -530,7 +530,7 @@ Elemento criarSala3() {
     Elemento metal =
     criarElemento(True, "um", "Metal",
         "Uma pequena barra de metal.",
-        "Uma pequena barra de metal. Nela está gradado: \"Co\"", NULL, 0);
+        "Uma pequena barra de metal. Nela está gradado: \"Co\".", NULL, 0);
 
     adicionarAtributo(&metal, estaMagnetizado);
 
@@ -540,7 +540,7 @@ Elemento criarSala3() {
     Elemento bobina =
     criarElemento(True, "uma", "Bobina",
         "Uma grande bobina elétrica.",
-        "Uma grande bobina elétrica. No um fio rompido e na lateral um botão vermelho.", NULL, 0);
+        "Uma grande bobina elétrica. Com um fio rompido e na lateral um botão vermelho.", NULL, 0);
 
     bobina.detalhe.atributos[0].valor.valor_estado = False; /* Não é pegável */
     
@@ -569,7 +569,7 @@ Elemento criarSala3() {
     Elemento sala3 =
     criarElemento(False, "uma","Sala 3",
         "Uma sala circular. No centro há uma gaiola pendurada no teto e uma bobina muito grande no chão.",
-        "Uma sala circular. No centro há uma gaiola pendurada no teto e uma bobina muito grande no chão. No fundo há um saco de minho e ao lado uma barra de metal.",
+        "Uma sala circular. No centro há uma gaiola pendurada no teto e uma bobina muito grande no chão. No fundo há um saco de milho e ao lado uma barra de metal.",
         conteudoS3, 8);
 
     return sala3;
@@ -598,7 +598,7 @@ Elemento criarSala4() {
     /* Mensagem */
     Elemento mensagem =
     criarElemento(True, "uma", "Mensagem4",
-        "Na parede há uma mensagem: acho que há pressão demais por aqui.",
+        "Na parede há uma mensagem: \"acho que há pressão demais por aqui\".",
         "Na parede está escrito em azul: acho que há pressão demais por aqui.", NULL, 0);
 
     mensagem.detalhe.atributos[0].valor.valor_estado = False; /* Não é pegável */
@@ -724,8 +724,8 @@ Elemento criarSala5() {
     /* Enigma */
     Elemento enigma =
     criarElemento(True, "uma", "Mensagem5",
-        "O que o cientista disse quando encontrou 2 átomos de hélio? HeHe.",
-        "Um enigma.", NULL, 0);
+        "Um enigma.",
+        "O que o cientista disse quando encontrou 2 átomos de hélio? HeHe.", NULL, 0);
 
 
     /* Mapa */
@@ -740,9 +740,9 @@ Elemento criarSala5() {
     senha.valor.valor_str = "Nepal";
     adicionarAtributo(&mapa, senha);
 
-    func tentativaMapa = tentarSenha;
+    
 
-    adicionarAcao(&mapa, tentativaMapa, 3); /* Caso específico em que os argumentos do verbo são diferentes */
+    adicionarAcao(&mapa, tentarSenha, 3); /* Caso específico em que os argumentos do verbo são diferentes */
 
 
     /* Poster */
