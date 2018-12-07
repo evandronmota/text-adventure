@@ -107,7 +107,7 @@ int estaNaSala(Elemento* e, Elemento* sala);
     Lista todos os objetos dentro do elemento,
     caso ele seja uma sala.
 */
-void listarElementos(Elemento* sala);
+void listarElementos();
 
 
 

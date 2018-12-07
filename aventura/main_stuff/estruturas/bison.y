@@ -38,7 +38,7 @@ cmd:  EXAMINAR obj           { examinar($2, NULL); } eol
     | ALIMENTAR obj NONE obj { alimentar($2, $4); } eol
     | LIGAR obj NONE obj     { ligar($2, $4); } eol
     | TENTAR obj NONE        { tentarSenha($2, $3); } eol
-    | LISTAR obj             { listarElementos($2); } eol
+    | LISTAR                 { listarElementos(); } eol
 
     | INVENT                 { olharMochila(NULL, NULL); } eol
 

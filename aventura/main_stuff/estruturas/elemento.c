@@ -50,15 +50,11 @@ int estaNaSala(Elemento* e, Elemento* sala) {
     return 0;
 }
 
-void listarElementos(Elemento* sala) {
-    if (!sala->isObjeto) {
-        int i;
-        for (i = 0; i < sala->nEle; i++) {
-            printf("- %s\n", sala->conteudo[i].n);
-        }
+void listarElementos() {
+    int i;
+    for (i = 0; i < heroi->salaAtual->nEle; i++) {
+        nome(heroi->salaAtual->conteudo[i]);
     }
-    else
-        printf("Não é possível listar um objeto!\n");
 }
 
 
