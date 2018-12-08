@@ -11,4 +11,4 @@ testes : testes.c lista_ligada.c salas.c tabela_de_sim.c init_salas.c aventureir
 	gcc -Wall -o testes testes.c lista_ligada.c salas.c tabela_de_sim.c init_salas.c aventureiro.c elemento.c introducao.c
 
 clean:
-	rm avent bison.tab.c bison.tab.h lex.yy.c testes
+	rm avent bison.tab.c bison.tab.h lex.yy.c

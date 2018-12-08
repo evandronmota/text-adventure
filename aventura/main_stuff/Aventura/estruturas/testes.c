@@ -287,7 +287,6 @@ int main() {
     printf(INVIS "- Invisível\n\n\n");
 
     /* Criar tabela e salas */
-    TabSim tab = cria(97);
     Elemento *salas = inicializarSalas();
 
     /* Criar heroi */
