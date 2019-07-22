@@ -1,5 +1,5 @@
 avent : main.c aventureiro.c elemento.c init_salas.c lista_ligada.c salas.c tabela_de_sim.c introducao.c lex.yy.c bison.tab.c
-	gcc -Wall -g main.c aventureiro.c elemento.c init_salas.c lista_ligada.c salas.c tabela_de_sim.c introducao.c lex.yy.c bison.tab.c -o avent -lfl -lreadline
+	gcc -Wall -g main.c aventureiro.c elemento.c init_salas.c lista_ligada.c salas.c tabela_de_sim.c introducao.c lex.yy.c bison.tab.c -lreadline -lfl -o avent
 
 lex.yy.c : flex.l
 	flex flex.l
